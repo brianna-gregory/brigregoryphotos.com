@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Book a Session | Brianna Gregory Photography</title>
+
+  <meta
+    name="description"
+    content="Book a photography session with Brianna Gregory Photography in San Diego, California."
+  />
+
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="/" class="site-logo">Brianna Gregory Photography</a>
+
+      <div class="nav-right">
+        <a href="/#gallery">Portfolio</a>
+        <a href="/#pricing">Services</a>
+        <a href="/#about">About</a>
+        <a href="/booking/">Book</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="booking-page">
+
+    <section class="booking-hero">
+      <p class="eyebrow">BOOKING INQUIRY</p>
+
+      <h1>Reserve Your Photo Session</h1>
+
+      <p class="booking-intro">
+        Tell me a little about your vision and I’ll personally follow up
+        with availability, pricing, pricing details, and next steps.
+      </p>
+    </section>
+
+    <section class="booking-form-section">
+      <form class="booking-form" id="bookingForm">
+
+        <div class="form-row">
+          <label for="name">Full Name *</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            autocomplete="name"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email Address *</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="phone">Phone Number</label>
+          <input
+            id="phone"
+            type="tel"
+            name="phone"
+            autocomplete="tel"
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="sessionType">Session Type *</label>
+          <select id="sessionType" name="session_type" required>
+            <option value="">Select a session type</option>
+            <option value="Portrait Session">Portrait Session</option>
+            <option value="Couples Session">Couples Session</option>
+            <option value="Graduation Session">Graduation Session</option>
+            <option value="Lifestyle Session">Lifestyle Session</option>
+            <option value="Event Coverage">Event Coverage</option>
+            <option value="Creative Branding">Creative Branding</option>
+            <option value="Landscape Inquiry">Landscape Inquiry</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="date">Preferred Date *</label>
+          <input
+            id="date"
+            type="date"
+            name="preferred_date"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="location">Preferred Location</label>
+          <input
+            id="location"
+            type="text"
+            name="location"
+            placeholder="Beach, downtown San Diego, studio, park, etc."
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="budget">Estimated Budget</label>
+          <select id="budget" name="budget">
+            <option value="">Select budget range</option>
+            <option value="$200-$400">$200–$400</option>
+            <option value="$400-$700">$400–$700</option>
+            <option value="$700-$1200">$700–$1200</option>
+            <option value="$1200+">$1200+</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Tell Me About Your Vision *</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="8"
+            required
+            placeholder="Tell me about the occasion, number of people, inspiration, aesthetic, timeline, or anything you'd like me to know."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">
+          Submit Inquiry
+        </button>
+
+        <p class="booking-note">
+          Your date is not officially reserved until I confirm availability.
+        </p>
+
+        <p id="formMessage" class="form-message"></p>
+
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="booking-footer">
+    <a href="mailto:gregorybri@outlook.com">gregorybri@outlook.com</a>
+    <p>© 2026 Brianna Gregory Photography</p>
+  </footer>
+
+  <script>
+    const bookingForm = document.getElementById("bookingForm");
+    const formMessage = document.getElementById("formMessage");
+
+    bookingForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      formMessage.textContent =
+        "Thank you! Your inquiry has been received. I’ll personally follow up with you soon.";
+
+      bookingForm.reset();
+    });
+  </script>
+
+</body>
+</html>
