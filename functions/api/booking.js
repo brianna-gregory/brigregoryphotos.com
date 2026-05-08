@@ -2,7 +2,7 @@ export async function onRequestPost({ request }) {
   try {
     const formData = await request.formData();
 
-    const name = formData.get("name") || "Not provided";
+    const name = formData.get("name") || "Not provided"; 
     const email = formData.get("email") || "Not provided";
     const phone = formData.get("phone") || "Not provided";
     const session = formData.get("session") || "Not provided";
