@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brianna Gregory Photography</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
-  <nav>
-    <div class="logo">Brianna Gregory</div>
+  <nav class="site-nav">
+    <a href="#" class="logo">Brianna Gregory</a>
 
     <div class="nav-links">
       <a href="#about">About</a>
@@ -20,10 +20,12 @@
 
   <main>
     <section class="hero">
-      <div class="hero-image">Hero Image Placeholder</div>
+      <div class="hero-image">
+        Hero Image Placeholder
+      </div>
 
       <div class="hero-content">
-        <div class="eyebrow">San Diego, California</div>
+        <p class="eyebrow">San Diego, California</p>
 
         <h1>
           Brianna Gregory
@@ -31,7 +33,7 @@
           <em>Photography</em>
         </h1>
 
-        <p>
+        <p class="hero-text">
           Editorial imagery for intimate events, portraits, and meaningful moments
           with a distinctly California point of view.
         </p>
@@ -40,31 +42,29 @@
       </div>
     </section>
 
-    <section id="about">
-      <div class="about-layout">
-        <div class="about-label">About</div>
+    <section id="about" class="about">
+      <div class="section-label">About</div>
 
-        <div>
-          <h2>
-            Images that feel
-            <em>quietly personal</em>
-          </h2>
+      <div class="about-copy">
+        <h2>
+          Images that feel
+          <em>quietly personal</em>
+        </h2>
 
-          <p>
-            I’m Brianna — a San Diego-based photographer inspired by honest moments,
-            soft coastal light, and imagery that feels elevated without losing warmth.
-          </p>
+        <p>
+          I’m Brianna — a San Diego-based photographer inspired by honest moments,
+          soft coastal light, and imagery that feels elevated without losing warmth.
+        </p>
 
-          <p>
-            My approach blends editorial composition with natural storytelling,
-            creating photographs that feel timeless, intentional, and deeply personal.
-          </p>
-        </div>
+        <p>
+          My approach blends editorial composition with natural storytelling,
+          creating photographs that feel timeless, intentional, and deeply personal.
+        </p>
       </div>
     </section>
 
-    <section id="gallery">
-      <div class="eyebrow">Selected Work</div>
+    <section id="gallery" class="gallery">
+      <p class="eyebrow">Selected Work</p>
 
       <h2>
         California stories,
@@ -78,8 +78,8 @@
       </div>
     </section>
 
-    <section id="contact">
-      <div class="eyebrow">Now Booking</div>
+    <section id="contact" class="contact">
+      <p class="eyebrow">Now Booking</p>
 
       <h2>
         Let’s create something
@@ -106,14 +106,9 @@
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Instagram"
+      class="instagram-link"
     >
-      <svg
-        class="instagram-icon"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-      >
-        <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.25-2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
-      </svg>
+      Instagram
     </a>
 
     <p>© 2026 Brianna Gregory Photography</p>
