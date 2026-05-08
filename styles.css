@@ -531,3 +531,6 @@ footer {
     font-size: 4rem;
   }
 }
+body.menu-open {
+  overflow: hidden;
+}
