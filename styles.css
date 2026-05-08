@@ -41,23 +41,37 @@ body {
   border-right: 1px solid #111;
   padding: 40px;
   z-index: 1000;
-  transition: 0.3s ease;
+  transition: left 0.3s ease;
 }
 
 .menu-toggle:checked ~ .side-menu {
   left: 0;
 }
 
-.side-menu a,
+/* FIXED CLOSE BUTTON */
+
 .close-menu {
+  display: inline-block;
+  margin-bottom: 40px;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #111;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+/* MENU LINKS */
+
+.side-menu a {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
   text-decoration: none;
   color: #111;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-size: 12px;
-  cursor: pointer;
 }
 
 /* HEADER NAV */
@@ -270,6 +284,13 @@ body {
 .contact a {
   color: #111;
   text-decoration: none;
+  border-bottom: 1px solid #111;
+  padding-bottom: 2px;
+  transition: opacity 0.3s ease;
+}
+
+.contact a:hover {
+  opacity: 0.6;
 }
 
 /* FOOTER */
