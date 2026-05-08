@@ -13,6 +13,11 @@ html {
   scroll-behavior: smooth;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
 /* DESKTOP NAV */
 
 .site-header {
@@ -27,6 +32,7 @@ html {
   align-items: center;
   gap: 70px;
   min-height: 120px;
+  padding: 0 40px;
 }
 
 .site-nav a {
@@ -146,6 +152,121 @@ footer {
   border-top: 1px solid #111;
 }
 
+/* BOOKING PAGE */
+
+.booking-page {
+  padding: 80px 8%;
+  background: #fafafa;
+}
+
+.booking-hero {
+  max-width: 800px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.booking-hero h1 {
+  font-size: 64px;
+  font-weight: normal;
+  line-height: 1;
+  margin: 20px 0;
+}
+
+.booking-intro {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.booking-form-section {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.booking-form {
+  background: white;
+  border: 1px solid #111;
+  padding: 48px;
+}
+
+.form-row {
+  margin-bottom: 28px;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 12px;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #111;
+  background: white;
+  color: #111;
+  font-family: "Times New Roman", serif;
+  font-size: 17px;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+  outline: none;
+  border: 2px solid #111;
+}
+
+.form-row textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 18px;
+  border: 1px solid #111;
+  background: #111;
+  color: white;
+  font-family: "Times New Roman", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.form-submit:hover {
+  background: white;
+  color: #111;
+}
+
+.booking-note,
+.form-message {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.form-message {
+  font-style: italic;
+}
+
+.booking-footer {
+  padding: 40px 30px;
+  text-align: center;
+  border-top: 1px solid #111;
+  background: white;
+}
+
+.booking-footer a {
+  color: #111;
+  text-decoration: none;
+  border-bottom: 1px solid #111;
+}
+
 /* MOBILE */
 
 @media (max-width: 900px) {
@@ -223,7 +344,20 @@ footer {
     margin-bottom: 24px;
   }
 
-  .hero-content h1 {
+  .hero-content h1,
+  .booking-hero h1 {
     font-size: 42px;
+  }
+
+  .booking-page {
+    padding: 90px 6% 60px;
+  }
+
+  .booking-form {
+    padding: 28px;
+  }
+
+  .booking-intro {
+    font-size: 18px;
   }
 }
