@@ -2,66 +2,47 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  font-family: "Times New Roman", serif;
+  background: #fff;
+  color: #111;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-  font-family: "Times New Roman", serif;
-  background: white;
-  color: #111;
-}
-
-/* MOBILE MENU - HIDDEN ON DESKTOP */
-
-.mobile-menu-toggle {
-  display: none;
-}
-
-.hamburger,
-.side-menu {
-  display: none;
-}
-
-/* DESKTOP HEADER */
+/* DESKTOP NAV */
 
 .site-header {
+  display: block;
+  border-bottom: 1px solid #ddd;
   background: white;
-  border-bottom: 1px solid #d8d8d8;
-  position: relative;
-  z-index: 999;
 }
 
 .site-nav {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  gap: 70px;
   min-height: 120px;
-  padding: 0 60px;
-}
-
-.logo {
-  font-size: 18px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #111;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 48px;
 }
 
 .site-nav a {
   text-decoration: none;
   color: #111;
   text-transform: uppercase;
-  letter-spacing: 0.35em;
-  font-size: 13px;
-  font-weight: 300;
+  letter-spacing: 0.28em;
+  font-size: 14px;
+}
+
+/* MOBILE MENU HIDDEN ON DESKTOP */
+
+.menu-toggle,
+.hamburger,
+.side-menu {
+  display: none;
 }
 
 /* HERO */
@@ -75,17 +56,15 @@ body {
 }
 
 .hero-image {
-  width: 100%;
   max-width: 560px;
   height: 600px;
-  overflow: hidden;
   border: 1px solid #111;
+  overflow: hidden;
 }
 
 .hero-image img,
 .about-image img,
-.photo-card img,
-.feature-image img {
+.photo-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -95,10 +74,6 @@ body {
   font-size: 72px;
   font-weight: normal;
   line-height: 0.95;
-}
-
-.hero-content em {
-  font-style: italic;
 }
 
 .hero-text {
@@ -116,73 +91,44 @@ body {
 .button {
   display: inline-block;
   margin-top: 20px;
-  color: #111;
   text-decoration: none;
+  color: #111;
   border-bottom: 1px solid #111;
-  padding-bottom: 5px;
 }
 
-/* ABOUT */
+/* SECTIONS */
+
+.about,
+.gallery,
+.pricing,
+.locations,
+.contact {
+  padding: 80px 8%;
+}
 
 .about {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 50px;
-  padding: 80px 8%;
-}
-
-.about h2,
-.pricing h2,
-.locations h2,
-.contact h2 {
-  font-size: 58px;
-  font-weight: normal;
 }
 
 .about-image {
-  width: 100%;
   max-width: 420px;
   height: 520px;
-  overflow: hidden;
   border: 1px solid #111;
-}
-
-/* GALLERY */
-
-.gallery {
-  padding: 80px 8%;
+  overflow: hidden;
 }
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-top: 40px;
 }
 
 .photo-card {
   height: 360px;
-  overflow: hidden;
   border: 1px solid #111;
-}
-
-/* FEATURE */
-
-.feature-image img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-}
-
-/* SERVICES */
-
-.pricing,
-.locations {
-  padding: 80px 8%;
-}
-
-.pricing-list {
-  margin-top: 40px;
+  overflow: hidden;
 }
 
 .pricing-item {
@@ -190,52 +136,17 @@ body {
   border-top: 1px solid #111;
 }
 
-.locations p {
-  max-width: 900px;
-  font-size: 18px;
-  line-height: 1.7;
-}
-
-/* CONTACT */
-
 .contact {
-  padding: 80px 8%;
   text-align: center;
 }
-
-.contact p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.contact a {
-  color: #111;
-  text-decoration: none;
-  border-bottom: 1px solid #111;
-  padding-bottom: 2px;
-  transition: opacity 0.3s ease;
-}
-
-.contact a:hover {
-  opacity: 0.6;
-}
-
-/* FOOTER */
 
 footer {
-  padding: 30px;
   text-align: center;
+  padding: 30px;
   border-top: 1px solid #111;
 }
 
-.instagram-link {
-  color: #111;
-  text-decoration: none;
-  border-bottom: 1px solid #111;
-  padding-bottom: 2px;
-}
-
-/* MOBILE ONLY */
+/* MOBILE */
 
 @media (max-width: 900px) {
   .site-header {
@@ -245,20 +156,18 @@ footer {
   .hamburger {
     display: block;
     position: fixed;
-    top: 32px;
+    top: 30px;
     left: 24px;
     z-index: 1001;
-    width: 30px;
-    height: 22px;
+    width: 32px;
     cursor: pointer;
   }
 
   .hamburger span {
     display: block;
-    width: 26px;
-    height: 1px;
+    height: 2px;
     background: #111;
-    margin: 7px 0;
+    margin: 8px 0;
   }
 
   .side-menu {
@@ -269,34 +178,32 @@ footer {
     width: 300px;
     height: 100%;
     background: white;
-    border-right: 1px solid #111;
-    padding: 110px 40px 40px;
+    padding: 100px 40px;
     z-index: 1000;
-    transition: left 0.3s ease;
+    transition: 0.3s ease;
+    border-right: 1px solid #111;
   }
 
-  .mobile-menu-toggle:checked ~ .side-menu {
+  .menu-toggle:checked ~ .side-menu {
     left: 0;
   }
 
   .close-menu {
     position: absolute;
-    top: 28px;
-    left: 28px;
-    font-size: 34px;
-    line-height: 1;
+    top: 24px;
+    left: 24px;
+    font-size: 32px;
     cursor: pointer;
-    color: #111;
   }
 
   .side-menu a {
     display: block;
-    margin-bottom: 32px;
+    margin-bottom: 30px;
     text-decoration: none;
     color: #111;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-size: 12px;
+    letter-spacing: 0.2em;
+    font-size: 13px;
   }
 
   .hero,
@@ -306,7 +213,7 @@ footer {
   }
 
   .hero {
-    padding-top: 90px;
+    padding-top: 100px;
   }
 
   .hero-image,
@@ -316,23 +223,7 @@ footer {
     margin-bottom: 24px;
   }
 
-  .hero-content h1,
-  .about h2,
-  .pricing h2,
-  .locations h2,
-  .contact h2 {
+  .hero-content h1 {
     font-size: 42px;
-  }
-
-  .hero-image {
-    height: 420px;
-  }
-
-  .photo-card {
-    height: 300px;
-  }
-
-  .feature-image img {
-    height: 360px;
   }
 }
