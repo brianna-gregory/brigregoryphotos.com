@@ -33,7 +33,7 @@
     </section>
 
     <section class="booking-form-section">
-      <form class="booking-form" action="/api/booking" method="POST">
+      <form class="booking-form" id="bookingForm">
 
         <div class="form-row">
           <label for="name">Full Name *</label>
@@ -95,11 +95,11 @@
           <textarea id="message" name="message" rows="8" required></textarea>
         </div>
 
-        <button type="submit" class="form-submit">
+        <button type="submit" class="form-submit" id="submitBtn">
           Submit Inquiry
         </button>
 
-        <p class="booking-note">
+        <p id="formStatus" class="booking-note">
           Your date is not officially reserved until I confirm availability.
         </p>
 
@@ -111,5 +111,41 @@
     <a href="mailto:gregorybri@outlook.com">gregorybri@outlook.com</a>
     <p>© 2026 Brianna Gregory Photography</p>
   </footer>
+
+  <script>
+    const form = document.getElementById("bookingForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const status = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+      status.textContent = "Sending your inquiry...";
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch("/api/booking", {
+          method: "POST",
+          body: formData
+        });
+
+        if (response.ok) {
+          status.textContent = "Success! Your inquiry was sent. I'll be in touch soon 💛";
+          form.reset();
+        } else {
+          status.textContent = `Submission failed (${response.status}).`;
+        }
+      } catch (error) {
+        console.error(error);
+        status.textContent = "Something went wrong connecting to the server.";
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit Inquiry";
+    });
+  </script>
 </body>
 </html>
