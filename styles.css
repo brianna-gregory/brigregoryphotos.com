@@ -5,9 +5,9 @@
 html,
 body {
   width: 100%;
-  overflow-x: hidden;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 body {
@@ -16,8 +16,9 @@ body {
   color: #111111;
 }
 
-/* NAV */
-nav {
+/* NAVIGATION */
+
+.site-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,6 +28,8 @@ nav {
 }
 
 .logo {
+  color: #111111;
+  text-decoration: none;
   font-size: 18px;
   font-weight: normal;
   letter-spacing: 0.08em;
@@ -35,7 +38,6 @@ nav {
 
 .nav-links {
   display: flex;
-  align-items: center;
   gap: 24px;
 }
 
@@ -48,6 +50,7 @@ nav {
 }
 
 /* HERO */
+
 .hero {
   min-height: 90vh;
   padding: 70px 6%;
@@ -57,8 +60,8 @@ nav {
   align-items: end;
 }
 
-.hero-image,
-.photo-card {
+.hero-image {
+  min-height: 620px;
   background: #eeeeee;
   border: 1px solid #111111;
   display: flex;
@@ -68,86 +71,92 @@ nav {
   font-style: italic;
 }
 
-.hero-image {
-  min-height: 620px;
+.hero-content {
+  max-width: 620px;
 }
 
-.hero-content {
-  width: 100%;
+.eyebrow,
+.section-label {
+  margin: 0 0 22px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .hero h1 {
+  margin: 0 0 24px;
   font-size: 86px;
   font-weight: normal;
   line-height: 0.92;
-  margin: 0 0 24px;
 }
 
 .hero h1 em,
-section h2 em {
+h2 em {
   font-style: italic;
 }
 
-.hero p,
+.hero-text,
 section p {
   font-size: 20px;
   line-height: 1.55;
-  max-width: 700px;
 }
 
 .button {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 18px;
   padding-bottom: 6px;
-  border-bottom: 1px solid #111111;
   color: #111111;
   text-decoration: none;
+  border-bottom: 1px solid #111111;
   font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 /* SECTIONS */
+
 section {
   padding: 90px 6%;
   border-top: 1px solid #111111;
 }
 
-section h2 {
+h2 {
+  margin: 0 0 24px;
   font-size: 64px;
   font-weight: normal;
   line-height: 0.95;
-  margin: 0 0 24px;
-}
-
-/* LABELS */
-.section-label,
-.about-label,
-.eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
 }
 
 /* ABOUT */
-.about-layout {
+
+.about {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 60px;
-  align-items: start;
+}
+
+.about-copy {
+  max-width: 820px;
 }
 
 /* GALLERY */
+
 .gallery-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr 1fr;
   gap: 24px;
-  width: 100%;
+  margin-top: 36px;
 }
 
 .photo-card {
   min-height: 420px;
+  background: #eeeeee;
+  border: 1px solid #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555555;
+  font-style: italic;
 }
 
 .photo-card.tall {
@@ -161,22 +170,24 @@ section h2 {
 }
 
 /* CONTACT */
-#contact {
+
+.contact {
   text-align: center;
 }
 
-#contact p {
+.contact p {
   margin-left: auto;
   margin-right: auto;
 }
 
-#contact a {
+.contact a {
   color: #111111;
   text-decoration: none;
   border-bottom: 1px solid #111111;
 }
 
 /* FOOTER */
+
 footer {
   padding: 36px 6%;
   background: #111111;
@@ -184,22 +195,26 @@ footer {
   text-align: center;
 }
 
+footer a {
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid #ffffff;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 footer p {
-  margin: 12px 0 0;
+  margin: 16px 0 0;
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.instagram-icon {
-  width: 24px;
-  height: 24px;
-  fill: #ffffff;
-}
-
 /* MOBILE */
+
 @media (max-width: 800px) {
-  nav {
+  .site-nav {
     flex-direction: column;
     gap: 18px;
     text-align: center;
@@ -230,16 +245,12 @@ footer p {
     padding: 60px 6%;
   }
 
-  section h2 {
+  h2 {
     font-size: 42px;
   }
 
-  .about-layout {
+  .about {
     display: block;
-  }
-
-  .about-label {
-    margin-bottom: 20px;
   }
 
   .gallery-grid {
