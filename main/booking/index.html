@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="/styles.css" />
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Book a Session | Brianna Gregory Photography</title>
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/main/booking/styles.css" />
 </head>
 
 <body>
   <header class="site-header">
     <nav class="site-nav">
-      <a href="/" class="site-logo">Brianna Gregory Photography</a>
+      <a href="/main/" class="site-logo">Brianna Gregory Photography</a>
 
       <div class="nav-right">
-        <a href="/#gallery">Portfolio</a>
-        <a href="/#pricing">Services</a>
-        <a href="/#about">About</a>
-        <a href="/booking/">Book</a>
-        <a href="/#contact">Contact</a>
+        <a href="/main/#gallery">Portfolio</a>
+        <a href="/main/#pricing">Services</a>
+        <a href="/main/#about">About</a>
+        <a href="/main/booking/">Book</a>
+        <a href="/main/#contact">Contact</a>
       </div>
     </nav>
   </header>
@@ -34,7 +33,8 @@
     </section>
 
     <section class="booking-form-section">
-      <form class="booking-form">
+      <form class="booking-form" action="/booking" method="POST">
+
         <div class="form-row">
           <label for="name">Full Name *</label>
           <input id="name" name="name" type="text" required />
@@ -71,7 +71,12 @@
 
         <div class="form-row">
           <label for="location">Preferred Location</label>
-          <input id="location" name="location" type="text" placeholder="Beach, studio, downtown, park, etc." />
+          <input
+            id="location"
+            name="location"
+            type="text"
+            placeholder="Beach, studio, downtown, park, etc."
+          />
         </div>
 
         <div class="form-row">
@@ -90,11 +95,14 @@
           <textarea id="message" name="message" rows="8" required></textarea>
         </div>
 
-        <button type="submit" class="form-submit">Submit Inquiry</button>
+        <button type="submit" class="form-submit">
+          Submit Inquiry
+        </button>
 
         <p class="booking-note">
           Your date is not officially reserved until I confirm availability.
         </p>
+
       </form>
     </section>
   </main>
