@@ -7,6 +7,7 @@ body {
   font-family: "Times New Roman", serif;
   background: #fff;
   color: #111;
+  font-size: 16px;
 }
 
 html {
@@ -83,7 +84,7 @@ img {
 }
 
 .hero-text {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.6;
   max-width: 500px;
 }
@@ -91,7 +92,7 @@ img {
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .button {
@@ -100,6 +101,7 @@ img {
   text-decoration: none;
   color: #111;
   border-bottom: 1px solid #111;
+  font-size: 15px;
 }
 
 /* SECTIONS */
@@ -125,6 +127,14 @@ img {
   overflow: hidden;
 }
 
+.about-copy p,
+.pricing-item p,
+.locations p,
+.contact p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -146,10 +156,56 @@ img {
   text-align: center;
 }
 
-footer {
+/* FOOTER */
+
+.site-footer {
+  border-top: 1px solid #ddd;
+  background: #fff;
+  padding: 55px 8%;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
   text-align: center;
-  padding: 30px;
+}
+
+.footer-brand {
+  margin: 0 0 28px;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 42px;
+  flex-wrap: wrap;
+  padding: 24px 0;
   border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 12px;
+}
+
+.footer-nav a:hover,
+.site-nav a:hover,
+.side-menu a:hover {
+  opacity: 0.6;
+}
+
+.footer-copy {
+  margin: 28px 0 0;
+  font-size: 13px;
+  letter-spacing: 0.08em;
 }
 
 /* BOOKING PAGE */
@@ -173,7 +229,7 @@ footer {
 }
 
 .booking-intro {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.6;
 }
 
@@ -197,7 +253,7 @@ footer {
   margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .form-row input,
@@ -209,7 +265,7 @@ footer {
   background: white;
   color: #111;
   font-family: "Times New Roman", serif;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .form-row input:focus,
@@ -246,7 +302,7 @@ footer {
 .form-message {
   margin-top: 22px;
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -349,6 +405,11 @@ footer {
     font-size: 42px;
   }
 
+  .hero-text,
+  .booking-intro {
+    font-size: 17px;
+  }
+
   .booking-page {
     padding: 90px 6% 60px;
   }
@@ -357,7 +418,12 @@ footer {
     padding: 28px;
   }
 
-  .booking-intro {
-    font-size: 18px;
+  .site-footer {
+    padding: 45px 6%;
+  }
+
+  .footer-nav {
+    display: grid;
+    gap: 20px;
   }
 }
