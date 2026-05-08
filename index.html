@@ -1,70 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brianna Gregory Photography</title>
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
-  <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-
-  <label for="menu-toggle" class="hamburger" aria-label="Open menu">
-    <span></span>
-    <span></span>
-  </label>
-
-  <aside class="side-menu">
-    <label for="menu-toggle" class="close-menu">Close</label>
-    <a href="#">Home</a>
-    <a href="#gallery">Portfolio</a>
-    <a href="#about">About</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#contact">Contact</a>
-    <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener noreferrer">Instagram</a>
-  </aside>
-
   <nav class="site-nav">
     <a href="#" class="logo">Brianna Gregory Photography</a>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
 
   <main>
     <section class="hero">
-      <picture class="hero-image">
-        <source srcset="./DSCF1898_web.webp" type="image/webp" />
-        <img src="./DSCF1898_web.jpg" alt="Black and white editorial portrait by Brianna Gregory Photography" />
-      </picture>
+      <div class="hero-image">Hero Image Placeholder</div>
 
       <div class="hero-content">
         <p class="eyebrow">San Diego, California</p>
-        <h1>Brianna Gregory <em>Photography</em></h1>
+
+        <h1>
+          Brianna Gregory
+          <br>
+          <em>Photography</em>
+        </h1>
+
         <p class="hero-text">
-          Refined photography for portraits, celebrations, and everyday moments along the Southern California coast.
+          Editorial imagery for intimate events, portraits, and meaningful moments
+          with a distinctly California point of view.
         </p>
+
         <a href="#contact" class="button">Inquire</a>
-      </div>
-    </section>
-
-    <section id="gallery" class="gallery">
-      <p class="eyebrow">Selected Work</p>
-      <h2>San Diego stories, <em>elegantly captured</em></h2>
-
-      <div class="gallery-grid">
-        <picture class="photo-card portrait-card">
-          <source srcset="./DSCF2564_web.webp" type="image/webp" />
-          <img src="./DSCF2564_web.jpg" alt="Couple portrait photography in San Diego" />
-        </picture>
-
-        <picture class="photo-card tall architecture-card">
-          <source srcset="./DSCF2648_web.webp" type="image/webp" />
-          <img src="./DSCF2648_web.jpg" alt="Editorial architecture and travel photography" />
-        </picture>
-
-        <picture class="photo-card short coastal-card">
-          <source srcset="./DSCF1200_web.webp" type="image/webp" />
-          <img src="./DSCF1200_web.jpg" alt="Coastal lifestyle photography" />
-        </picture>
       </div>
     </section>
 
@@ -72,75 +44,69 @@
       <div class="section-label">About</div>
 
       <div class="about-copy">
-        <h2>Classic imagery with <em>coastal ease</em></h2>
+        <h2>
+          Images that feel
+          <em>quietly personal</em>
+        </h2>
+
         <p>
-          Brianna Gregory Photography is based in San Diego and inspired by natural light,
-          clean composition, and the effortless beauty of California living.
+          I’m Brianna — a San Diego-based photographer inspired by honest moments,
+          soft coastal light, and imagery that feels elevated without losing warmth.
         </p>
+
         <p>
-          From portraits to small events and lifestyle sessions, each gallery is approached
-          with care, simplicity, and an editorial eye.
+          My approach blends editorial composition with natural storytelling,
+          creating photographs that feel timeless, intentional, and deeply personal.
         </p>
       </div>
-
-      <picture class="about-image">
-        <source srcset="./DSCF1738_web.webp" type="image/webp" />
-        <img src="./DSCF1738_web.jpg" alt="Brianna Gregory photographer portrait" />
-      </picture>
     </section>
 
-    <section class="feature-image">
-      <picture>
-        <source srcset="./DSCF1732_web.webp" type="image/webp" />
-        <img src="./DSCF1732_web.jpg" alt="Evening architectural photography" />
-      </picture>
-    </section>
+    <section id="gallery" class="gallery">
+      <p class="eyebrow">Selected Work</p>
 
-    <section id="pricing" class="pricing">
-      <div class="section-label">Pricing</div>
+      <h2>
+        California stories,
+        <em>beautifully told</em>
+      </h2>
 
-      <div class="pricing-copy">
-        <h2>Thoughtful sessions for <em>beautiful moments</em></h2>
-        <p>
-          Photography collections are designed for clients who want elevated, natural images
-          without an overly complicated experience.
-        </p>
-
-        <div class="pricing-list">
-          <div class="pricing-item">
-            <h3>Portrait Sessions</h3>
-            <p>Ideal for individuals, couples, graduates, creatives, and refreshed personal imagery.</p>
-          </div>
-
-          <div class="pricing-item">
-            <h3>Events</h3>
-            <p>Coverage for intimate gatherings, celebrations, showers, dinners, and special occasions.</p>
-          </div>
-
-          <div class="pricing-item">
-            <h3>Lifestyle</h3>
-            <p>Natural, polished photography for families, brands, interiors, and everyday California moments.</p>
-          </div>
-        </div>
-
-        <a href="#contact" class="button">Request Pricing</a>
+      <div class="gallery-grid">
+        <div class="photo-card">Portrait Placeholder</div>
+        <div class="photo-card tall">Event Placeholder</div>
+        <div class="photo-card short">Lifestyle Placeholder</div>
       </div>
     </section>
 
     <section id="contact" class="contact">
       <p class="eyebrow">Now Booking</p>
-      <h2>Let’s create something <em>beautiful</em></h2>
+
+      <h2>
+        Let’s create something
+        <em>beautiful</em>
+      </h2>
+
       <p>For bookings, collaborations, or creative inquiries.</p>
 
-      <p><a href="mailto:gregorybri@outlook.com">gregorybri@outlook.com</a></p>
-      <p><a href="tel:6197878910">(619) 787-8910</a></p>
+      <p>
+        <a href="mailto:gregorybri@outlook.com">gregorybri@outlook.com</a>
+      </p>
+
+      <p>
+        <a href="tel:6197878910">(619) 787-8910</a>
+      </p>
     </section>
   </main>
 
   <footer>
-    <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener noreferrer">
-      Follow on Instagram
+    <a
+      href="https://instagram.com/photo.britheg"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Instagram"
+      class="instagram-link"
+    >
+      Instagram
     </a>
+
     <p>© 2026 Brianna Gregory Photography</p>
   </footer>
 </body>
