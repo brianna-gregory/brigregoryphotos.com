@@ -1,8 +1,14 @@
-export async function onRequestPost({ request }) {
+export async function onRequest({ request }) {
+  if (request.method !== "POST") {
+    return new Response("This endpoint only accepts POST booking submissions.", {
+      status: 405
+    });
+  }
+
   try {
     const formData = await request.formData();
 
-    const name = formData.get("name") || "Not provided"; 
+    const name = formData.get("name") || "Not provided";
     const email = formData.get("email") || "Not provided";
     const phone = formData.get("phone") || "Not provided";
     const session = formData.get("session") || "Not provided";
@@ -105,13 +111,4 @@ ${message}
       }
     );
   }
-}
-
-export async function onRequestGet() {
-  return new Response(
-    "This endpoint only accepts booking form submissions.",
-    {
-      status: 405
-    }
-  );
 }
