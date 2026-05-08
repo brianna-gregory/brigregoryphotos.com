@@ -159,53 +159,84 @@ img {
 /* FOOTER */
 
 .site-footer {
-  border-top: 1px solid #ddd;
+  margin-top: 40px;
   background: #fff;
-  padding: 55px 8%;
+  border-top: 1px solid #ddd;
 }
 
-.footer-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
+.footer-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+  min-height: 120px;
+  padding: 0 40px;
+  border-bottom: 1px solid #ddd;
 }
 
-.footer-brand {
-  margin: 0 0 28px;
-  font-size: 18px;
-  letter-spacing: 0.12em;
+.footer-top a {
+  text-decoration: none;
+  color: #111;
   text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 14px;
 }
 
-.footer-nav {
+.footer-main {
+  text-align: center;
+  padding: 85px 8% 70px;
+}
+
+.footer-eyebrow {
+  margin: 0 0 35px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 13px;
+}
+
+.footer-main h2 {
+  margin: 0;
+  font-size: 64px;
+  font-weight: normal;
+  line-height: 0.95;
+}
+
+.footer-contact {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 42px;
   flex-wrap: wrap;
-  padding: 24px 0;
-  border-top: 1px solid #111;
-  border-bottom: 1px solid #111;
+  margin-top: 45px;
 }
 
-.footer-nav a {
+.footer-contact a {
   text-decoration: none;
   color: #111;
   text-transform: uppercase;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.2em;
   font-size: 12px;
+  border-bottom: 1px solid transparent;
 }
 
-.footer-nav a:hover,
+.footer-contact a:hover,
+.footer-top a:hover,
 .site-nav a:hover,
 .side-menu a:hover {
   opacity: 0.6;
 }
 
-.footer-copy {
-  margin: 28px 0 0;
-  font-size: 13px;
-  letter-spacing: 0.08em;
+.footer-bottom {
+  border-top: 1px solid #ddd;
+  text-align: center;
+  padding: 28px 8%;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 /* BOOKING PAGE */
@@ -418,12 +449,23 @@ img {
     padding: 28px;
   }
 
-  .site-footer {
-    padding: 45px 6%;
+  .footer-top {
+    display: grid;
+    gap: 24px;
+    min-height: auto;
+    padding: 42px 24px;
   }
 
-  .footer-nav {
+  .footer-main {
+    padding: 65px 6% 55px;
+  }
+
+  .footer-main h2 {
+    font-size: 42px;
+  }
+
+  .footer-contact {
     display: grid;
-    gap: 20px;
+    gap: 22px;
   }
 }
