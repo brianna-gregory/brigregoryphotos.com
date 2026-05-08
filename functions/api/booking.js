@@ -36,8 +36,8 @@ ${message}
           {
             to: [
               {
-                email: "booking@brigregoryphotos.com",
-                name: "Brianna Gregory Photography"
+                email: "gregorybri@outlook.com",
+                name: "Brianna Gregory"
               }
             ]
           }
@@ -63,18 +63,55 @@ ${message}
     if (!mailResponse.ok) {
       const errorText = await mailResponse.text();
 
-      return new Response(`Email failed to send: ${errorText}`, {
-        status: 500
-      });
+      return new Response(
+        JSON.stringify({
+          success: false,
+          message: "Email failed to send",
+          error: errorText
+        }),
+        {
+          status: 500,
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      );
     }
 
-    return Response.redirect(
-      "https://brigregoryphotos.com/main/booking/?success=true",
-      303
+    return new Response(
+      JSON.stringify({
+        success: true,
+        message: "Booking inquiry sent successfully"
+      }),
+      {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
     );
   } catch (error) {
-    return new Response(`Something went wrong: ${error.message}`, {
-      status: 500
-    });
+    return new Response(
+      JSON.stringify({
+        success: false,
+        message: "Something went wrong",
+        error: error.message
+      }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
   }
+}
+
+export async function onRequestGet() {
+  return new Response(
+    "This endpoint only accepts booking form submissions.",
+    {
+      status: 405
+    }
+  );
 }
