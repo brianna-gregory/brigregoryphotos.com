@@ -2,14 +2,14 @@ export async function onRequestPost({ request }) {
   try {
     const formData = await request.formData();
 
-    const name = formData.get("name");
-    const email = formData.get("email");
+    const name = formData.get("name") || "Not provided";
+    const email = formData.get("email") || "Not provided";
     const phone = formData.get("phone") || "Not provided";
-    const session = formData.get("session");
-    const date = formData.get("date");
+    const session = formData.get("session") || "Not provided";
+    const date = formData.get("date") || "Not provided";
     const location = formData.get("location") || "Not provided";
     const budget = formData.get("budget") || "Not provided";
-    const message = formData.get("message");
+    const message = formData.get("message") || "Not provided";
 
     const emailBody = `
 NEW PHOTOGRAPHY BOOKING INQUIRY
@@ -26,7 +26,7 @@ CLIENT VISION:
 ${message}
 `;
 
-    const response = await fetch("https://api.mailchannels.net/tx/v1/send", {
+    const mailResponse = await fetch("https://api.mailchannels.net/tx/v1/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -60,16 +60,21 @@ ${message}
       })
     });
 
-    if (!response.ok) {
-      return new Response("Email failed to send.", { status: 500 });
+    if (!mailResponse.ok) {
+      const errorText = await mailResponse.text();
+
+      return new Response(`Email failed to send: ${errorText}`, {
+        status: 500
+      });
     }
 
     return Response.redirect(
       "https://brigregoryphotos.com/main/booking/?success=true",
       303
     );
-
   } catch (error) {
-    return new Response("Something went wrong.", { status: 500 });
+    return new Response(`Something went wrong: ${error.message}`, {
+      status: 500
+    });
   }
 }
