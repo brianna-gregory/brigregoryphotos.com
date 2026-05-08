@@ -9,12 +9,13 @@ body {
   color: #1f1f1f;
 }
 
+/* Navigation */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 24px 8%;
-  background: #fffaf5;
+  background: #fffaf7;
   border-bottom: 1px solid #e5d8cc;
 }
 
@@ -29,12 +30,13 @@ nav {
   color: #1f1f1f;
 }
 
+/* Hero */
 .hero {
   min-height: 80vh;
   padding: 80px 8%;
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, #f7f3ee, #eadfd4);
+  background: linear-gradient(to right, #fffaf7, #f3ece4);
 }
 
 .hero-content {
@@ -51,7 +53,10 @@ nav {
   line-height: 1.5;
 }
 
+/* Buttons */
+.button,
 button {
+  display: inline-block;
   margin-top: 24px;
   padding: 14px 24px;
   border: none;
@@ -60,12 +65,26 @@ button {
   font-size: 16px;
   border-radius: 999px;
   cursor: pointer;
+  text-decoration: none;
 }
 
+/* Sections */
 section {
   padding: 70px 8%;
 }
 
+section h2 {
+  font-size: 36px;
+  margin-bottom: 18px;
+}
+
+section p {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 760px;
+}
+
+/* Gallery */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -83,34 +102,85 @@ section {
   border: 1px solid #e3d8ce;
 }
 
-.login-box {
-  max-width: 420px;
-  background: white;
-  padding: 32px;
-  border-radius: 18px;
-  border: 1px solid #e3d8ce;
+/* Contact */
+#contact a {
+  color: #1f1f1f;
 }
 
-.login-box input {
-  width: 100%;
-  padding: 14px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-
+/* Footer */
 footer {
   text-align: center;
   padding: 30px;
-  background: #1f1f1f;
-  color: white;
+  background: #fffaf7;
+  color: #1f1f1f;
+  border-top: 1px solid #e5d8cc;
 }
+
+.instagram-link {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.instagram-icon {
+  width: 28px;
+  height: 28px;
+  fill: #000;
+}
+
+/* Mobile */
 @media (max-width: 700px) {
+  nav {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 5%;
+  }
+
+  .nav-links a {
+    margin: 0 10px;
+    font-size: 14px;
+  }
+
+  .hero {
+    padding: 50px 5%;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
   .hero h1 {
     font-size: 42px;
   }
 
   .hero p {
     font-size: 18px;
+  }
+
+  .button,
+  button {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  section {
+    padding: 50px 5%;
+  }
+
+  section h2 {
+    font-size: 30px;
+  }
+
+  section p {
+    font-size: 17px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    padding: 24px;
   }
 }
