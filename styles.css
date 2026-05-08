@@ -19,8 +19,6 @@ img {
   max-width: 100%;
 }
 
-/* DESKTOP NAV */
-
 .site-header {
   display: block;
   border-bottom: 1px solid #ddd;
@@ -36,7 +34,8 @@ img {
   padding: 0 40px;
 }
 
-.site-nav a {
+.site-nav a,
+.footer-nav a {
   text-decoration: none;
   color: #111;
   text-transform: uppercase;
@@ -44,15 +43,18 @@ img {
   font-size: 14px;
 }
 
-/* MOBILE MENU HIDDEN ON DESKTOP */
+.site-nav a:hover,
+.footer-nav a:hover,
+.footer-links a:hover,
+.side-menu a:hover {
+  opacity: 0.6;
+}
 
 .menu-toggle,
 .hamburger,
 .side-menu {
   display: none;
 }
-
-/* HERO */
 
 .hero {
   display: grid;
@@ -104,8 +106,6 @@ img {
   font-size: 15px;
 }
 
-/* SECTIONS */
-
 .about,
 .gallery,
 .pricing,
@@ -156,15 +156,13 @@ img {
   text-align: center;
 }
 
-/* FOOTER */
-
 .site-footer {
   margin-top: 40px;
   background: #fff;
   border-top: 1px solid #ddd;
 }
 
-.footer-top {
+.footer-nav {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -174,17 +172,9 @@ img {
   border-bottom: 1px solid #ddd;
 }
 
-.footer-top a {
-  text-decoration: none;
-  color: #111;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 14px;
-}
-
-.footer-main {
+.footer-content {
+  padding: 90px 8% 75px;
   text-align: center;
-  padding: 85px 8% 70px;
 }
 
 .footer-eyebrow {
@@ -194,14 +184,14 @@ img {
   font-size: 13px;
 }
 
-.footer-main h2 {
+.footer-content h2 {
   margin: 0;
   font-size: 64px;
   font-weight: normal;
   line-height: 0.95;
 }
 
-.footer-contact {
+.footer-links {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -210,20 +200,12 @@ img {
   margin-top: 45px;
 }
 
-.footer-contact a {
+.footer-links a {
   text-decoration: none;
   color: #111;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 12px;
-  border-bottom: 1px solid transparent;
-}
-
-.footer-contact a:hover,
-.footer-top a:hover,
-.site-nav a:hover,
-.side-menu a:hover {
-  opacity: 0.6;
 }
 
 .footer-bottom {
@@ -238,8 +220,6 @@ img {
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-
-/* BOOKING PAGE */
 
 .booking-page {
   padding: 80px 8%;
@@ -354,8 +334,6 @@ img {
   border-bottom: 1px solid #111;
 }
 
-/* MOBILE */
-
 @media (max-width: 900px) {
   .site-header {
     display: none;
@@ -449,22 +427,22 @@ img {
     padding: 28px;
   }
 
-  .footer-top {
+  .footer-nav {
     display: grid;
     gap: 24px;
     min-height: auto;
     padding: 42px 24px;
   }
 
-  .footer-main {
+  .footer-content {
     padding: 65px 6% 55px;
   }
 
-  .footer-main h2 {
+  .footer-content h2 {
     font-size: 42px;
   }
 
-  .footer-contact {
+  .footer-links {
     display: grid;
     gap: 22px;
   }
