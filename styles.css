@@ -1,5 +1,13 @@
+/* =====================================================
+   GLOBAL RESET / BASE STYLES
+====================================================== */
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -10,14 +18,14 @@ body {
   font-size: 16px;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 img {
   display: block;
   max-width: 100%;
 }
+
+/* =====================================================
+   HEADER / DESKTOP NAVIGATION
+====================================================== */
 
 .site-header {
   display: block;
@@ -50,11 +58,20 @@ img {
   opacity: 0.6;
 }
 
+/* =====================================================
+   MOBILE NAVIGATION DEFAULT STATE
+   Hidden until mobile breakpoint activates
+====================================================== */
+
 .menu-toggle,
 .hamburger,
 .side-menu {
   display: none;
 }
+
+/* =====================================================
+   HERO SECTION
+====================================================== */
 
 .hero {
   display: grid;
@@ -106,6 +123,10 @@ img {
   font-size: 15px;
 }
 
+/* =====================================================
+   MAIN CONTENT SECTIONS
+====================================================== */
+
 .about,
 .gallery,
 .pricing,
@@ -113,6 +134,10 @@ img {
 .contact {
   padding: 80px 8%;
 }
+
+/* =====================================================
+   ABOUT SECTION
+====================================================== */
 
 .about {
   display: grid;
@@ -135,6 +160,10 @@ img {
   line-height: 1.6;
 }
 
+/* =====================================================
+   GALLERY
+====================================================== */
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -147,14 +176,26 @@ img {
   overflow: hidden;
 }
 
+/* =====================================================
+   SERVICES / PRICING
+====================================================== */
+
 .pricing-item {
   padding: 20px 0;
   border-top: 1px solid #111;
 }
 
+/* =====================================================
+   CONTACT CTA
+====================================================== */
+
 .contact {
   text-align: center;
 }
+
+/* =====================================================
+   FOOTER
+====================================================== */
 
 .site-footer {
   margin-top: 40px;
@@ -221,6 +262,10 @@ img {
   text-transform: uppercase;
 }
 
+/* =====================================================
+   BOOKING PAGE
+====================================================== */
+
 .booking-page {
   padding: 80px 8%;
   background: #fafafa;
@@ -243,6 +288,10 @@ img {
   font-size: 18px;
   line-height: 1.6;
 }
+
+/* =====================================================
+   BOOKING FORM
+====================================================== */
 
 .booking-form-section {
   max-width: 780px;
@@ -334,11 +383,17 @@ img {
   border-bottom: 1px solid #111;
 }
 
+/* =====================================================
+   MOBILE RESPONSIVE STYLES
+====================================================== */
+
 @media (max-width: 900px) {
+  /* Hide desktop nav */
   .site-header {
     display: none;
   }
 
+  /* Hamburger button */
   .hamburger {
     display: block;
     position: fixed;
@@ -354,8 +409,10 @@ img {
     height: 2px;
     background: #111;
     margin: 8px 0;
+    transition: 0.3s ease;
   }
 
+  /* Mobile side menu */
   .side-menu {
     display: block;
     position: fixed;
@@ -370,16 +427,14 @@ img {
     border-right: 1px solid #111;
   }
 
+  /* Open menu */
   .menu-toggle:checked ~ .side-menu {
     left: 0;
   }
 
+  /* X REMOVED */
   .close-menu {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    font-size: 32px;
-    cursor: pointer;
+    display: none;
   }
 
   .side-menu a {
@@ -392,6 +447,7 @@ img {
     font-size: 13px;
   }
 
+  /* Stack layouts vertically */
   .hero,
   .about,
   .gallery-grid {
