@@ -60,7 +60,6 @@ img {
 
 /* =====================================================
    MOBILE NAVIGATION DEFAULT STATE
-   Hidden until mobile breakpoint activates
 ====================================================== */
 
 .menu-toggle,
@@ -85,7 +84,7 @@ img {
   max-width: 560px;
   height: 600px;
   border: 1px solid #111;
-  overflow: none;
+  overflow: hidden;
 }
 
 .hero-image img,
@@ -149,7 +148,7 @@ img {
   max-width: 420px;
   height: 520px;
   border: 1px solid #111;
-  overflow: none;
+  overflow: hidden;
 }
 
 .about-copy p,
@@ -173,7 +172,7 @@ img {
 .photo-card {
   height: 360px;
   border: 1px solid #111;
-  overflow: none;
+  overflow: hidden;
 }
 
 /* =====================================================
@@ -388,12 +387,10 @@ img {
 ====================================================== */
 
 @media (max-width: 900px) {
-  /* Hide desktop nav */
   .site-header {
     display: none;
   }
 
-  /* Hamburger button */
   .hamburger {
     display: block;
     position: fixed;
@@ -412,7 +409,6 @@ img {
     transition: 0.3s ease;
   }
 
-  /* Mobile side menu */
   .side-menu {
     display: block;
     position: fixed;
@@ -427,12 +423,10 @@ img {
     border-right: 1px solid #111;
   }
 
-  /* Open menu */
   .menu-toggle:checked ~ .side-menu {
     left: 0;
   }
 
-  /* X REMOVED */
   .close-menu {
     display: none;
   }
@@ -447,7 +441,6 @@ img {
     font-size: 13px;
   }
 
-  /* Stack layouts vertically */
   .hero,
   .about,
   .gallery-grid {
@@ -458,11 +451,24 @@ img {
     padding-top: 100px;
   }
 
+  /* FIXED MOBILE IMAGE STYLING */
   .hero-image,
   .about-image,
   .photo-card {
     max-width: 100%;
+    width: 100%;
+    height: auto;
     margin-bottom: 24px;
+    border: none;
+    overflow: hidden;
+  }
+
+  .hero-image img,
+  .about-image img,
+  .photo-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 
   .hero-content h1,
