@@ -1,77 +1,126 @@
-export async function onRequestPost({ request, env }) {
-  try {
-    const formData = await request.formData(); 
+export async function onRequestPost(context) {
+  const { request, env } = context;
 
-    const name = String(formData.get("name") || "Not provided");
-    const email = String(formData.get("email") || "Not provided");
-    const phone = String(formData.get("phone") || "Not provided");
-    const session = String(formData.get("session") || "Not provided");
-    const date = String(formData.get("date") || "Not provided");
-    const location = String(formData.get("location") || "Not provided");
-    const budget = String(formData.get("budget") || "Not provided");
-    const message = String(formData.get("message") || "Not provided");
+  // Handle CORS
+  const corsHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type"
+  };
 
-    const emailText = `
-NEW PHOTOGRAPHY BOOKING INQUIRY
-
-Full Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Session Type: ${session}
-Preferred Date: ${date}
-Preferred Location: ${location}
-Estimated Budget: ${budget}
-
-CLIENT VISION:
-${message}
-`;
-
-    const mailResponse = await fetch("https://api.mailchannels.net/tx/v1/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Api-Key": env.MAILCHANNELS_API_KEY
-      },
-      body: JSON.stringify({
-        personalizations: [
-          {
-            to: [
-              {
-                email: "briannagregory763@gmail.com",
-                name: "Brianna Gregory"
-              }
-            ]
-          }
-        ],
-        from: {
-          email: "booking@brigregoryphotos.com",
-          name: "Brianna Gregory Photography"
-        },
-        reply_to: {
-          email: email,
-          name: name
-        },
-        subject: `New Photography Booking Inquiry from ${name}`,
-        content: [
-          {
-            type: "text/plain",
-            value: emailText
-          }
-        ]
-      })
+  // Handle preflight
+  if (request.method === "OPTIONS") {
+    return new Response(null, {
+      status: 204,
+      headers: corsHeaders
     });
+  }
 
-    const mailResult = await mailResponse.text();
+  try {
+    const body = await request.json();
+
+    const {
+      name,
+      email,
+      phone,
+      service,
+      date,
+      message
+    } = body;
+
+    // Validation
+    if (!name || !email) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: "Name and email are required."
+        }),
+        {
+          status: 400,
+          headers: {
+            ...corsHeaders,
+            "Content-Type": "application/json"
+          }
+        }
+      );
+    }
+
+    // Ensure API key exists
+    if (!env.MAILCHANNELS_API_KEY) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: "MAILCHANNELS_API_KEY is missing in Cloudflare."
+        }),
+        {
+          status: 500,
+          headers: {
+            ...corsHeaders,
+            "Content-Type": "application/json"
+          }
+        }
+      );
+    }
+
+    const emailPayload = {
+      personalizations: [
+        {
+          to: [
+            {
+              email: "briannagregory763@gmail.com",
+              name: "Brianna Gregory"
+            }
+          ]
+        }
+      ],
+      from: {
+        email: "booking@brigregoryphotos.com",
+        name: "Brig Gregory Photos"
+      },
+      subject: `New Booking Inquiry from ${name}`,
+      content: [
+        {
+          type: "text/plain",
+          value: `
+New Booking Inquiry
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone || "Not provided"}
+Service: ${service || "Not provided"}
+Preferred Date: ${date || "Not provided"}
+
+Message:
+${message || "No message provided"}
+          `
+        }
+      ]
+    };
+
+    const mailResponse = await fetch(
+      "https://api.mailchannels.net/tx/v1/send",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${env.MAILCHANNELS_API_KEY}`
+        },
+        body: JSON.stringify(emailPayload)
+      }
+    );
+
+    const responseText = await mailResponse.text();
 
     if (!mailResponse.ok) {
       return new Response(
         JSON.stringify({
           success: false,
-          error: `MailChannels error: ${mailResult}`
+          error: `MailChannels error: ${responseText}`
         }),
         {
-          status: 200,
+          status: mailResponse.status,
           headers: {
+            ...corsHeaders,
             "Content-Type": "application/json"
           }
         }
@@ -86,6 +135,7 @@ ${message}
       {
         status: 200,
         headers: {
+          ...corsHeaders,
           "Content-Type": "application/json"
         }
       }
@@ -94,29 +144,15 @@ ${message}
     return new Response(
       JSON.stringify({
         success: false,
-        error: error.message || "Unknown server error"
+        error: error.message
       }),
       {
-        status: 200,
+        status: 500,
         headers: {
+          ...corsHeaders,
           "Content-Type": "application/json"
         }
       }
     );
   }
-}
-
-export async function onRequestGet() {
-  return new Response(
-    JSON.stringify({
-      success: true,
-      message: "Booking API is live. Submit the form using POST."
-    }),
-    {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }
-  );
 }
