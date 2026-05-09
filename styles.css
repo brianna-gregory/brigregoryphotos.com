@@ -85,7 +85,7 @@ img {
   max-width: 560px;
   height: 600px;
   border: 1px solid #111;
-  overflow: hidden;
+  overflow: none;
 }
 
 .hero-image img,
@@ -149,7 +149,7 @@ img {
   max-width: 420px;
   height: 520px;
   border: 1px solid #111;
-  overflow: hidden;
+  overflow: none;
 }
 
 .about-copy p,
@@ -173,7 +173,7 @@ img {
 .photo-card {
   height: 360px;
   border: 1px solid #111;
-  overflow: hidden;
+  overflow: none;
 }
 
 /* =====================================================
