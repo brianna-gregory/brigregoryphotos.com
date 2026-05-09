@@ -11,11 +11,7 @@ export async function onRequestPost({ request }) {
     const budget = formData.get("budget") || "Not provided";
     const message = formData.get("message") || "Not provided";
 
-    const payload = {
-      from: "booking@brigregoryphotos.com",
-      to: "gregorybri@outlook.com",
-      subject: "New Photography Booking Inquiry",
-      text: `
+    const emailText = `
 NEW PHOTOGRAPHY BOOKING INQUIRY
 
 Full Name: ${name}
@@ -28,10 +24,9 @@ Estimated Budget: ${budget}
 
 CLIENT VISION:
 ${message}
-      `
-    };
+`;
 
-    await fetch("https://api.mailchannels.net/tx/v1/send", {
+    const mailResponse = await fetch("https://api.mailchannels.net/tx/v1/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -39,28 +34,56 @@ ${message}
       body: JSON.stringify({
         personalizations: [
           {
-            to: [{ email: "gregorybri@outlook.com" }]
+            to: [
+              {
+                email: "gregorybri@outlook.com",
+                name: "Brianna Gregory"
+              }
+            ]
           }
         ],
         from: {
           email: "booking@brigregoryphotos.com",
           name: "Brianna Gregory Photography"
         },
-        subject: "New Photography Booking Inquiry",
+        reply_to: {
+          email: email,
+          name: name
+        },
+        subject: `New Photography Booking Inquiry from ${name}`,
         content: [
           {
             type: "text/plain",
-            value: payload.text
+            value: emailText
           }
         ]
       })
     });
 
+    if (!mailResponse.ok) {
+      const errorText = await mailResponse.text();
+
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: `Email failed to send: ${errorText}`
+        }),
+        {
+          status: 502,
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      );
+    }
+
     return new Response(
       JSON.stringify({
-        success: true
+        success: true,
+        message: "Booking inquiry sent successfully."
       }),
       {
+        status: 200,
         headers: {
           "Content-Type": "application/json"
         }
