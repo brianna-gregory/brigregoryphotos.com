@@ -1,6 +1,6 @@
 export async function onRequestPost({ request, env }) {
   try {
-    const formData = await request.formData();
+    const formData = await request.formData(); 
 
     const name = String(formData.get("name") || "Not provided");
     const email = String(formData.get("email") || "Not provided");
