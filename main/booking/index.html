@@ -106,7 +106,7 @@
   </main>
 
   <footer class="booking-footer">
-    <a href="mailto:gregorybri@outlook.com">gregorybri@outlook.com</a>
+    <a href="mailto:YOUR_GMAIL@gmail.com">YOUR_GMAIL@gmail.com</a>
     <p>© 2026 Brianna Gregory Photography</p>
   </footer>
 
@@ -130,16 +130,20 @@
           body: formData
         });
 
-        if (response.ok) {
-          status.textContent = "Success! Your inquiry was sent. I'll be in touch soon 💛";
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          status.textContent =
+            "Success! Your inquiry was sent. I'll be in touch soon 💛";
           form.reset();
         } else {
-          const errorText = await response.text();
-          status.textContent = `Submission failed (${response.status}): ${errorText}`;
+          status.textContent =
+            result.error || "Something went wrong sending your inquiry.";
         }
       } catch (error) {
         console.error(error);
-        status.textContent = `Something went wrong connecting to the server: ${error.message}`;
+        status.textContent =
+          "Connection issue. Please try again in a moment.";
       }
 
       submitBtn.disabled = false;
