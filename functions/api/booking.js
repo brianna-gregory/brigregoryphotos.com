@@ -23,6 +23,8 @@ export async function onRequestPost(context) {
       phone,
       service,
       date,
+      location,
+      budget,
       message
     } = body;
 
@@ -46,7 +48,7 @@ export async function onRequestPost(context) {
       return new Response(
         JSON.stringify({
           success: false,
-          error: "MAILCHANNELS_API_KEY missing"
+          error: "MAILCHANNELS_API_KEY missing in Cloudflare."
         }),
         {
           status: 500,
@@ -63,7 +65,8 @@ export async function onRequestPost(context) {
         {
           to: [
             {
-              email: "briannagregory763@gmail.com"
+              email: "briannagregory763@gmail.com",
+              name: "Brianna Gregory"
             }
           ]
         }
@@ -84,6 +87,8 @@ Email: ${email}
 Phone: ${phone || "Not provided"}
 Service: ${service || "Not provided"}
 Preferred Date: ${date || "Not provided"}
+Preferred Location: ${location || "Not provided"}
+Budget: ${budget || "Not provided"}
 
 Message:
 ${message || "No message provided"}
@@ -98,7 +103,7 @@ ${message || "No message provided"}
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${env.MAILCHANNELS_API_KEY}`
+          "X-Api-Key": env.MAILCHANNELS_API_KEY
         },
         body: JSON.stringify(emailPayload)
       }
@@ -110,7 +115,7 @@ ${message || "No message provided"}
       return new Response(
         JSON.stringify({
           success: false,
-          error: responseText
+          error: `MailChannels error: ${responseText}`
         }),
         {
           status: mailResponse.status,
@@ -125,7 +130,7 @@ ${message || "No message provided"}
     return new Response(
       JSON.stringify({
         success: true,
-        message: "Sent successfully"
+        message: "Booking inquiry sent successfully."
       }),
       {
         status: 200,
