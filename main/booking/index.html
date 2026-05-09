@@ -6,6 +6,71 @@
 
   <title>Book a Session | Brianna Gregory Photography</title>
   <link rel="stylesheet" href="/main/booking/styles.css" />
+
+  <style>
+    .success-popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 24px;
+    }
+
+    .success-popup-overlay.is-visible {
+      display: flex;
+    }
+
+    .success-popup {
+      background: #ffffff;
+      max-width: 480px;
+      width: 100%;
+      padding: 40px 32px;
+      text-align: center;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+      position: relative;
+    }
+
+    .success-popup-close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      border: none;
+      background: transparent;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      color: #333333;
+    }
+
+    .success-popup h2 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #333333;
+    }
+
+    .success-popup p {
+      margin: 0 0 24px;
+      font-size: 17px;
+      line-height: 1.6;
+      color: #555555;
+    }
+
+    .success-popup-button {
+      display: inline-block;
+      padding: 14px 28px;
+      background: #333333;
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 13px;
+    }
+  </style>
 </head>
 
 <body>
@@ -120,12 +185,30 @@
     <p>© 2026 Brianna Gregory Photography</p>
   </footer>
 
+  <div class="success-popup-overlay" id="successPopup">
+    <div class="success-popup">
+      <button class="success-popup-close" id="closePopup" aria-label="Close success message">
+        ×
+      </button>
+
+      <h2>Thank You</h2>
+      <p>
+        Your inquiry was sent successfully. I’ll be in touch soon with availability,
+        pricing, and next steps.
+      </p>
+
+      <a href="/main/" class="success-popup-button">Return Home</a>
+    </div>
+  </div>
+
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const form = document.getElementById("bookingForm");
       const nameField = document.getElementById("name");
       const subjectField = document.getElementById("dynamicSubject");
       const status = document.getElementById("formStatus");
+      const popup = document.getElementById("successPopup");
+      const closePopup = document.getElementById("closePopup");
 
       function updateSubject() {
         const clientName = nameField.value.trim() || "Client";
@@ -133,16 +216,38 @@
         subjectField.value = `New Inquiry from ${clientName} - ${timestamp}`;
       }
 
-      nameField.addEventListener("input", updateSubject);
-      form.addEventListener("submit", updateSubject);
+      function showSuccessPopup() {
+        if (popup) {
+          popup.classList.add("is-visible");
+        }
+
+        if (status) {
+          status.textContent = "Success! Your inquiry was sent. I’ll be in touch soon 💛";
+        }
+
+        setTimeout(function () {
+          window.location.href = "/main/";
+        }, 5000);
+      }
+
+      if (nameField && subjectField) {
+        nameField.addEventListener("input", updateSubject);
+        form.addEventListener("submit", updateSubject);
+        updateSubject();
+      }
+
+      if (closePopup) {
+        closePopup.addEventListener("click", function () {
+          popup.classList.remove("is-visible");
+          window.location.href = "/main/";
+        });
+      }
 
       const params = new URLSearchParams(window.location.search);
 
-      if (params.get("success") === "true" && status) {
-        status.textContent = "Success! Your inquiry was sent. I’ll be in touch soon 💛";
+      if (params.get("success") === "true") {
+        showSuccessPopup();
       }
-
-      updateSubject();
     });
   </script>
 </body>
