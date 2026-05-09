@@ -17,6 +17,24 @@ export async function onRequestPost(context) {
   try {
     const body = await request.json();
 
+    return new Response(
+      JSON.stringify({
+        success: true,
+        message: "Temporary API key test",
+        apiKeyExists: !!env.MAILCHANNELS_API_KEY,
+        apiKeyPreview: env.MAILCHANNELS_API_KEY
+          ? env.MAILCHANNELS_API_KEY.slice(0, 10)
+          : null
+      }),
+      {
+        status: 200,
+        headers: {
+          ...corsHeaders,
+          "Content-Type": "application/json"
+        }
+      }
+    );
+
     const {
       name,
       email,
