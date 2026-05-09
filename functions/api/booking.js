@@ -1,10 +1,4 @@
-export async function onRequest({ request }) {
-  if (request.method !== "POST") {
-    return new Response("This endpoint only accepts POST booking submissions.", {
-      status: 405
-    });
-  }
-
+export async function onRequestPost({ request }) {
   try {
     const formData = await request.formData();
 
@@ -17,7 +11,11 @@ export async function onRequest({ request }) {
     const budget = formData.get("budget") || "Not provided";
     const message = formData.get("message") || "Not provided";
 
-    const emailBody = `
+    const payload = {
+      from: "booking@brigregoryphotos.com",
+      to: "gregorybri@outlook.com",
+      subject: "New Photography Booking Inquiry",
+      text: `
 NEW PHOTOGRAPHY BOOKING INQUIRY
 
 Full Name: ${name}
@@ -30,9 +28,10 @@ Estimated Budget: ${budget}
 
 CLIENT VISION:
 ${message}
-`;
+      `
+    };
 
-    const mailResponse = await fetch("https://api.mailchannels.net/tx/v1/send", {
+    await fetch("https://api.mailchannels.net/tx/v1/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -40,57 +39,28 @@ ${message}
       body: JSON.stringify({
         personalizations: [
           {
-            to: [
-              {
-                email: "gregorybri@outlook.com",
-                name: "Brianna Gregory"
-              }
-            ]
+            to: [{ email: "gregorybri@outlook.com" }]
           }
         ],
         from: {
           email: "booking@brigregoryphotos.com",
           name: "Brianna Gregory Photography"
         },
-        reply_to: {
-          email: email,
-          name: name
-        },
         subject: "New Photography Booking Inquiry",
         content: [
           {
             type: "text/plain",
-            value: emailBody
+            value: payload.text
           }
         ]
       })
     });
 
-    if (!mailResponse.ok) {
-      const errorText = await mailResponse.text();
-
-      return new Response(
-        JSON.stringify({
-          success: false,
-          message: "Email failed to send",
-          error: errorText
-        }),
-        {
-          status: 500,
-          headers: {
-            "Content-Type": "application/json"
-          }
-        }
-      );
-    }
-
     return new Response(
       JSON.stringify({
-        success: true,
-        message: "Booking inquiry sent successfully"
+        success: true
       }),
       {
-        status: 200,
         headers: {
           "Content-Type": "application/json"
         }
@@ -100,7 +70,6 @@ ${message}
     return new Response(
       JSON.stringify({
         success: false,
-        message: "Something went wrong",
         error: error.message
       }),
       {
