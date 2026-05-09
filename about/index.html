@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>About Me | Brianna Gregory Photography</title>
 
   <meta
@@ -11,28 +10,251 @@
     content="Meet Brianna Gregory, a San Diego native photographer who loves capturing people, families, friends, portraits, and meaningful moments."
   />
 
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="Brianna Gregory Photography" />
-  <link rel="canonical" href="https://brigregoryphotos.com/about/" />
-
-  <meta property="og:title" content="About Brianna Gregory Photography" />
-  <meta
-    property="og:description"
-    content="San Diego native photographer capturing people, connection, creativity, and meaningful moments."
-  />
-  <meta
-    property="og:image"
-    content="https://brigregoryphotos.com/about/about-photo-placeholder.jpg"
-  />
-  <meta property="og:url" content="https://brigregoryphotos.com/about/" />
-  <meta property="og:type" content="website" />
-
-  <!-- FONT PRELOAD -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- CSS FILE -->
-  <link rel="stylesheet" href="./styles.css?v=3" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #fbfaf7;
+      color: #1f1f1d;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.75;
+      letter-spacing: 0.03em;
+    }
+
+    .site-header {
+      background: #fbfaf7;
+      border-bottom: 1px solid rgba(31, 31, 29, 0.1);
+    }
+
+    .site-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 7%;
+    }
+
+    .site-logo,
+    .site-nav a,
+    .footer-links a {
+      text-decoration: none;
+      color: #1f1f1d;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .about-hero {
+      padding: 70px 7% 48px;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      background:
+        linear-gradient(135deg, rgba(31, 31, 29, 0.06) 25%, transparent 25%) -18px 0,
+        linear-gradient(225deg, rgba(31, 31, 29, 0.06) 25%, transparent 25%) -18px 0,
+        linear-gradient(315deg, rgba(31, 31, 29, 0.06) 25%, transparent 25%),
+        linear-gradient(45deg, rgba(31, 31, 29, 0.06) 25%, transparent 25%);
+      background-color: #dedbd4;
+      background-size: 36px 36px;
+      border: 1px solid rgba(31, 31, 29, 0.12);
+      display: grid;
+      place-items: center;
+      color: rgba(31, 31, 29, 0.45);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hero-placeholder {
+      min-height: 620px;
+    }
+
+    .about-intro {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 50px 7% 100px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      margin: 0 0 22px;
+    }
+
+    h1, h2, h3, p {
+      font-family: "Cormorant Garamond", serif;
+    }
+
+    h1, h2, h3 {
+      color: #1f1f1d;
+      font-weight: 300;
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: 64px;
+      line-height: 1;
+      letter-spacing: 0.03em;
+      margin-bottom: 36px;
+    }
+
+    h2 {
+      font-size: 46px;
+      line-height: 1.08;
+      letter-spacing: 0.03em;
+      margin-bottom: 28px;
+    }
+
+    h3 {
+      font-size: 29px;
+      line-height: 1.2;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+
+    p {
+      margin-top: 0;
+      font-size: 18px;
+      line-height: 1.85;
+      letter-spacing: 0.026em;
+    }
+
+    .intro-copy {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 0.78fr;
+      gap: 72px;
+      align-items: center;
+      padding: 20px 10% 110px;
+    }
+
+    .split-placeholder {
+      min-height: 560px;
+    }
+
+    .split-copy {
+      max-width: 430px;
+    }
+
+    .capture-section {
+      padding: 96px 9%;
+      text-align: center;
+      border-top: 1px solid rgba(31, 31, 29, 0.1);
+    }
+
+    .capture-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 34px;
+      margin-top: 58px;
+      text-align: left;
+    }
+
+    .capture-item {
+      border-top: 1px solid rgba(31, 31, 29, 0.18);
+      padding-top: 28px;
+    }
+
+    .contact-section {
+      padding: 100px 9% 120px;
+      text-align: center;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 26px;
+      text-decoration: none;
+      color: #1f1f1d;
+      border-bottom: 1px solid rgba(31, 31, 29, 0.55);
+      font-size: 14px;
+      letter-spacing: 0.16em;
+      font-weight: 400;
+    }
+
+    .site-footer {
+      background: #fbfaf7;
+      border-top: 1px solid rgba(31, 31, 29, 0.1);
+    }
+
+    .footer-nav {
+      padding: 46px 8%;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(31, 31, 29, 0.1);
+      text-align: center;
+      padding: 28px 8%;
+    }
+
+    @media (max-width: 900px) {
+      .site-nav {
+        display: block;
+        text-align: center;
+      }
+
+      .nav-right {
+        display: grid;
+        gap: 18px;
+        margin-top: 24px;
+        justify-content: center;
+      }
+
+      .about-split,
+      .capture-grid {
+        display: block;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      h2 {
+        font-size: 34px;
+      }
+
+      h3 {
+        font-size: 26px;
+      }
+
+      .capture-item {
+        margin-bottom: 34px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -53,35 +275,25 @@
   <main>
 
     <section class="about-hero">
-      <div class="about-hero-image">
-        <img
-          src="./about-photo-placeholder.jpg"
-          alt="Portrait of Brianna Gregory"
-        />
-      </div>
-
-      <div class="about-hero-copy">
-        <p class="eyebrow">About the Photographer</p>
-        <h1>Hi, I’m Brianna.</h1>
-
-        <p class="intro">
-          I’m a San Diego native with a love for capturing people, connection,
-          and the small moments that become lasting memories.
-        </p>
+      <div class="photo-placeholder hero-placeholder">
+        <span>Photo Placeholder</span>
       </div>
     </section>
 
-    <section class="about-story">
-      <div class="section-label">
-        <p>My Story</p>
-      </div>
+    <section class="about-intro">
+      <p class="eyebrow">About the Photographer</p>
+      <h1>About Brianna Gregory</h1>
 
-      <div class="story-copy">
-        <h2>Photography started as a hobby — and slowly became something more.</h2>
+      <div class="intro-copy">
+        <p>
+          I’m a San Diego native with a love for capturing people, connection,
+          and the small moments that become lasting memories.
+        </p>
 
         <p>
-          My name is Brianna, and I’ve always been drawn to creativity,
-          emotion, and the way a single image can hold so much meaning.
+          Photography started as a hobby — and slowly became something more.
+          I’ve always been drawn to creativity, emotion, and the way a single
+          image can hold so much meaning.
         </p>
 
         <p>
@@ -89,35 +301,29 @@
           I love natural light, relaxed environments, and images that feel
           effortless but intentional.
         </p>
-
-        <p>
-          I love capturing people as they are — laughing, moving,
-          connecting, celebrating, or simply being present.
-        </p>
       </div>
     </section>
 
-    <section class="about-image-break">
-      <img
-        src="./brianna-about-placeholder.jpg"
-        alt="Brianna Gregory Photography"
-      />
-    </section>
+    <section class="about-split">
+      <div class="photo-placeholder split-placeholder">
+        <span>Photo Placeholder</span>
+      </div>
 
-    <section class="creative-section">
-      <div class="creative-copy">
+      <div class="split-copy">
         <p class="eyebrow">Creative Approach</p>
-
         <h2>Calm, thoughtful, and personal.</h2>
 
         <p>I want every session to feel comfortable and easy.</p>
 
-        <p>My style is refined, natural, and centered around emotion.</p>
+        <p>
+          My style is refined, natural, and centered around emotion.
+        </p>
       </div>
     </section>
 
     <section class="capture-section">
-      <h2>What I Love to Capture</h2>
+      <p class="eyebrow">What I Love to Capture</p>
+      <h2>People, families, friends, and special moments.</h2>
 
       <div class="capture-grid">
         <div class="capture-item">
@@ -144,7 +350,6 @@
 
     <section class="contact-section">
       <p class="eyebrow">Let’s Create Together</p>
-
       <h2>Ready to make something beautiful?</h2>
 
       <p>
@@ -156,30 +361,6 @@
     </section>
 
   </main>
-
-  <footer class="site-footer">
-    <nav class="footer-nav">
-      <div class="footer-links">
-        <a href="mailto:booking@brigregoryphotos.com">
-          booking@brigregoryphotos.com
-        </a>
-
-        <a href="tel:+16197878910">(619) 787-8910</a>
-
-        <a
-          href="https://instagram.com/photo.britheg"
-          target="_blank"
-          rel="noopener"
-        >
-          Instagram
-        </a>
-      </div>
-    </nav>
-
-    <div class="footer-bottom">
-      <p>© 2026 Brianna Gregory Photography</p>
-    </div>
-  </footer>
 
 </body>
 </html>
