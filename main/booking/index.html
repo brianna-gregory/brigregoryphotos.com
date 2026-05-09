@@ -3,81 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Book a Session | Brianna Gregory Photography</title>
 
+  <!-- MAKE SURE THIS PATH MATCHES YOUR ACTUAL CSS FILE -->
   <link rel="stylesheet" href="/main/booking/styles.css" />
-
-  <style>
-    .success-popup-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 24px;
-    }
-
-    .success-popup-overlay.is-visible {
-      display: flex;
-    }
-
-    .success-popup {
-      background: #ffffff;
-      max-width: 480px;
-      width: 100%;
-      padding: 40px 32px;
-      text-align: center;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
-      position: relative;
-      border-radius: 12px;
-    }
-
-    .success-popup-close {
-      position: absolute;
-      top: 14px;
-      right: 18px;
-      border: none;
-      background: transparent;
-      font-size: 28px;
-      line-height: 1;
-      cursor: pointer;
-      color: #333333;
-    }
-
-    .success-popup h2 {
-      margin: 0 0 14px;
-      font-size: 28px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #333333;
-    }
-
-    .success-popup p {
-      margin: 0 0 24px;
-      font-size: 17px;
-      line-height: 1.6;
-      color: #555555;
-    }
-
-    .success-popup-button {
-      display: inline-block;
-      padding: 14px 28px;
-      background: #333333;
-      color: #ffffff;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-size: 13px;
-      border-radius: 8px;
-    }
-
-    .success-popup-button:hover {
-      opacity: 0.9;
-    }
-  </style>
 </head>
 
 <body>
@@ -102,7 +31,7 @@
     <a href="/privacy-policy/">Privacy Policy</a>
   </aside>
 
-  <!-- DESKTOP HEADER -->
+  <!-- DESKTOP NAV -->
   <header class="site-header">
     <nav class="site-nav">
       <a href="/">Home</a>
@@ -121,7 +50,7 @@
       <h1>Reserve Your Photo Session</h1>
 
       <p class="booking-intro">
-        Tell me a little about your vision and I’ll personally follow up with availability, pricing, and next steps.
+        Tell me a little about your vision and I’ll personally follow up with availability, pricing, pricing, and next steps.
       </p>
     </section>
 
@@ -139,17 +68,17 @@
 
         <div class="form-row">
           <label for="name">Full Name *</label>
-          <input id="name" name="Full Name" type="text" autocomplete="name" required />
+          <input id="name" name="Full Name" type="text" required />
         </div>
 
         <div class="form-row">
           <label for="email">Email Address *</label>
-          <input id="email" name="Email Address" type="email" autocomplete="email" required />
+          <input id="email" name="Email Address" type="email" required />
         </div>
 
         <div class="form-row">
           <label for="phone">Phone Number</label>
-          <input id="phone" name="Phone Number" type="tel" autocomplete="tel" />
+          <input id="phone" name="Phone Number" type="tel" />
         </div>
 
         <div class="form-row">
@@ -173,12 +102,7 @@
 
         <div class="form-row">
           <label for="location">Preferred Location</label>
-          <input
-            id="location"
-            name="Preferred Location"
-            type="text"
-            placeholder="Beach, studio, downtown, park, etc."
-          />
+          <input id="location" name="Preferred Location" type="text" />
         </div>
 
         <div class="form-row">
@@ -200,10 +124,6 @@
         <button type="submit" class="form-submit">
           Submit Inquiry
         </button>
-
-        <p class="booking-note">
-          Your date is not officially reserved until I confirm availability.
-        </p>
       </form>
     </section>
   </main>
@@ -213,60 +133,6 @@
     <p>© 2026 Brianna Gregory Photography</p>
   </footer>
 
-  <div class="success-popup-overlay" id="successPopup">
-    <div class="success-popup">
-      <button class="success-popup-close" id="closePopup">×</button>
-
-      <h2>Thank You!</h2>
-
-      <p>
-        Your inquiry was sent successfully. I’ll be in touch soon with availability,
-        pricing, and next steps.
-      </p>
-
-      <a href="https://brigregoryphotos.com" class="success-popup-button">
-        Return to Website
-      </a>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.getElementById("bookingForm");
-      const nameField = document.getElementById("name");
-      const subjectField = document.getElementById("dynamicSubject");
-      const popup = document.getElementById("successPopup");
-      const closePopup = document.getElementById("closePopup");
-
-      function updateSubject() {
-        const clientName = nameField.value.trim() || "Client";
-        const timestamp = new Date().toLocaleString();
-        subjectField.value = `New Inquiry from ${clientName} - ${timestamp}`;
-      }
-
-      function showSuccessPopup() {
-        popup.classList.add("is-visible");
-      }
-
-      if (nameField && subjectField && form) {
-        nameField.addEventListener("input", updateSubject);
-        form.addEventListener("submit", updateSubject);
-        updateSubject();
-      }
-
-      if (closePopup) {
-        closePopup.addEventListener("click", function () {
-          window.location.href = "https://brigregoryphotos.com";
-        });
-      }
-
-      const params = new URLSearchParams(window.location.search);
-
-      if (params.get("success") === "true") {
-        showSuccessPopup();
-      }
-    });
-  </script>
-
+  <script src="/main/booking/booking.js"></script>
 </body>
 </html>
