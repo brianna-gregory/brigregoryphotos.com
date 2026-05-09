@@ -2,14 +2,14 @@ export async function onRequestPost({ request }) {
   try {
     const formData = await request.formData();
 
-    const name = formData.get("name") || "Not provided";
-    const email = formData.get("email") || "Not provided";
-    const phone = formData.get("phone") || "Not provided";
-    const session = formData.get("session") || "Not provided";
-    const date = formData.get("date") || "Not provided";
-    const location = formData.get("location") || "Not provided";
-    const budget = formData.get("budget") || "Not provided";
-    const message = formData.get("message") || "Not provided";
+    const name = String(formData.get("name") || "Not provided");
+    const email = String(formData.get("email") || "Not provided");
+    const phone = String(formData.get("phone") || "Not provided");
+    const session = String(formData.get("session") || "Not provided");
+    const date = String(formData.get("date") || "Not provided");
+    const location = String(formData.get("location") || "Not provided");
+    const budget = String(formData.get("budget") || "Not provided");
+    const message = String(formData.get("message") || "Not provided");
 
     const emailText = `
 NEW PHOTOGRAPHY BOOKING INQUIRY
@@ -60,13 +60,13 @@ ${message}
       })
     });
 
-    if (!mailResponse.ok) {
-      const errorText = await mailResponse.text();
+    const mailResult = await mailResponse.text();
 
+    if (!mailResponse.ok) {
       return new Response(
         JSON.stringify({
           success: false,
-          error: `Email failed to send: ${errorText}`
+          error: `Email failed to send: ${mailResult}`
         }),
         {
           status: 502,
@@ -93,7 +93,7 @@ ${message}
     return new Response(
       JSON.stringify({
         success: false,
-        error: error.message
+        error: error.message || "Unknown server error"
       }),
       {
         status: 500,
@@ -103,4 +103,19 @@ ${message}
       }
     );
   }
+}
+
+export async function onRequestGet() {
+  return new Response(
+    JSON.stringify({
+      success: false,
+      message: "Booking API is working. Submit the form using POST."
+    }),
+    {
+      status: 405,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+  );
 }
