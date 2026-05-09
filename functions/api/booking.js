@@ -1,14 +1,12 @@
 export async function onRequestPost(context) {
   const { request, env } = context;
 
-  // Handle CORS
   const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type"
   };
 
-  // Handle preflight
   if (request.method === "OPTIONS") {
     return new Response(null, {
       status: 204,
@@ -28,7 +26,6 @@ export async function onRequestPost(context) {
       message
     } = body;
 
-    // Validation
     if (!name || !email) {
       return new Response(
         JSON.stringify({
@@ -45,12 +42,11 @@ export async function onRequestPost(context) {
       );
     }
 
-    // Ensure API key exists
     if (!env.MAILCHANNELS_API_KEY) {
       return new Response(
         JSON.stringify({
           success: false,
-          error: "MAILCHANNELS_API_KEY is missing in Cloudflare."
+          error: "MAILCHANNELS_API_KEY missing"
         }),
         {
           status: 500,
@@ -67,8 +63,7 @@ export async function onRequestPost(context) {
         {
           to: [
             {
-              email: "briannagregory763@gmail.com",
-              name: "Brianna Gregory"
+              email: "briannagregory763@gmail.com"
             }
           ]
         }
@@ -92,7 +87,7 @@ Preferred Date: ${date || "Not provided"}
 
 Message:
 ${message || "No message provided"}
-          `
+`
         }
       ]
     };
@@ -115,7 +110,7 @@ ${message || "No message provided"}
       return new Response(
         JSON.stringify({
           success: false,
-          error: `MailChannels error: ${responseText}`
+          error: responseText
         }),
         {
           status: mailResponse.status,
@@ -130,7 +125,7 @@ ${message || "No message provided"}
     return new Response(
       JSON.stringify({
         success: true,
-        message: "Booking inquiry sent successfully."
+        message: "Sent successfully"
       }),
       {
         status: 200,
