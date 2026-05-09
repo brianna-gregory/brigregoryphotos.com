@@ -69,7 +69,7 @@ ${message}
           error: `MailChannels error: ${mailResult}`
         }),
         {
-          status: 502,
+          status: 200,
           headers: {
             "Content-Type": "application/json"
           }
@@ -96,7 +96,7 @@ ${message}
         error: error.message || "Unknown server error"
       }),
       {
-        status: 500,
+        status: 200,
         headers: {
           "Content-Type": "application/json"
         }
