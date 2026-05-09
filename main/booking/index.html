@@ -34,7 +34,6 @@
 
     <section class="booking-form-section">
       <form class="booking-form" id="bookingForm">
-
         <div class="form-row">
           <label for="name">Full Name *</label>
           <input id="name" name="name" type="text" required />
@@ -102,7 +101,6 @@
         <p id="formStatus" class="booking-note">
           Your date is not officially reserved until I confirm availability.
         </p>
-
       </form>
     </section>
   </main>
@@ -136,11 +134,12 @@
           status.textContent = "Success! Your inquiry was sent. I'll be in touch soon 💛";
           form.reset();
         } else {
-          status.textContent = `Submission failed (${response.status}).`;
+          const errorText = await response.text();
+          status.textContent = `Submission failed (${response.status}): ${errorText}`;
         }
       } catch (error) {
         console.error(error);
-        status.textContent = "Something went wrong connecting to the server.";
+        status.textContent = `Something went wrong connecting to the server: ${error.message}`;
       }
 
       submitBtn.disabled = false;
