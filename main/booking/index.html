@@ -1,48 +1,55 @@
 <script>
-  const form = document.getElementById("bookingForm");
-  const submitBtn = document.getElementById("submitBtn");
-  const status = document.getElementById("formStatus");
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("bookingForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const status = document.getElementById("formStatus");
 
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
+    if (!form || !submitBtn || !status) {
+      console.error("Booking form elements not found.");
+      return;
+    }
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Submitting...";
-    status.textContent = "Sending your inquiry...";
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
 
-    const formData = new FormData(form);
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+      status.textContent = "Sending your inquiry...";
 
-    try {
-      const response = await fetch("/api/booking", {
-        method: "POST",
-        body: formData
-      });
+      const formData = new FormData(form);
 
-      const text = await response.text();
-
-      let result = {};
       try {
-        result = JSON.parse(text);
-      } catch {
-        result = {
-          success: false,
-          error: text
-        };
+        const response = await fetch("/api/booking", {
+          method: "POST",
+          body: formData
+        });
+
+        const text = await response.text();
+        let result = {};
+
+        try {
+          result = JSON.parse(text);
+        } catch (error) {
+          result = {
+            success: false,
+            error: text
+          };
+        }
+
+        if (response.ok && result.success) {
+          status.textContent = "Success! Your inquiry was sent. I’ll be in touch soon 💛";
+          form.reset();
+        } else {
+          status.textContent = result.error || "Something went wrong sending your inquiry.";
+          console.error("Booking error:", result);
+        }
+      } catch (error) {
+        console.error("Connection error:", error);
+        status.textContent = "Connection issue: " + error.message;
       }
 
-      if (response.ok && result.success) {
-        status.textContent = "Success! Your inquiry was sent. I’ll be in touch soon 💛";
-        form.reset();
-      } else {
-        status.textContent = result.error || "Something went wrong sending your inquiry.";
-        console.error("Booking error:", result);
-      }
-    } catch (error) {
-      console.error("Connection error:", error);
-      status.textContent = "Connection issue: " + error.message;
-    } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = "Submit Inquiry";
-    }
+    });
   });
 </script>
