@@ -36,7 +36,7 @@ ${message}
           {
             to: [
               {
-                email: "gregorybri@outlook.com",
+                email: "YOUR_GMAIL@gmail.com",
                 name: "Brianna Gregory"
               }
             ]
