@@ -1,55 +1,170 @@
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("bookingForm");
-    const submitBtn = document.getElementById("submitBtn");
-    const status = document.getElementById("formStatus");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    if (!form || !submitBtn || !status) {
-      console.error("Booking form elements not found.");
-      return;
-    }
+  <title>Book a Session | Brianna Gregory Photography</title>
+  <link rel="stylesheet" href="/main/booking/styles.css" />
+</head>
 
-    form.addEventListener("submit", async function (event) {
-      event.preventDefault();
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="/main/" class="site-logo">Brianna Gregory Photography</a>
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Submitting...";
-      status.textContent = "Sending your inquiry...";
+      <div class="nav-right">
+        <a href="/main/#gallery">Portfolio</a>
+        <a href="/main/#pricing">Services</a>
+        <a href="/main/#about">About</a>
+        <a href="/main/booking/">Book</a>
+        <a href="/main/#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-      const formData = new FormData(form);
+  <main class="booking-page">
+    <section class="booking-hero">
+      <p class="eyebrow">BOOKING INQUIRY</p>
+      <h1>Reserve Your Photo Session</h1>
+      <p class="booking-intro">
+        Tell me a little about your vision and I’ll personally follow up with availability, pricing, and next steps.
+      </p>
+    </section>
 
-      try {
-        const response = await fetch("/api/booking", {
-          method: "POST",
-          body: formData
-        });
+    <section class="booking-form-section">
+      <form class="booking-form" id="bookingForm" method="POST" action="/api/booking">
+        <div class="form-row">
+          <label for="name">Full Name *</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
 
-        const text = await response.text();
-        let result = {};
+        <div class="form-row">
+          <label for="email">Email Address *</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
 
-        try {
-          result = JSON.parse(text);
-        } catch (error) {
-          result = {
-            success: false,
-            error: text
-          };
-        }
+        <div class="form-row">
+          <label for="phone">Phone Number</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" />
+        </div>
 
-        if (response.ok && result.success) {
-          status.textContent = "Success! Your inquiry was sent. I’ll be in touch soon 💛";
-          form.reset();
-        } else {
-          status.textContent = result.error || "Something went wrong sending your inquiry.";
-          console.error("Booking error:", result);
-        }
-      } catch (error) {
-        console.error("Connection error:", error);
-        status.textContent = "Connection issue: " + error.message;
+        <div class="form-row">
+          <label for="session">Session Type *</label>
+          <select id="session" name="session" required>
+            <option value="">Select a session type</option>
+            <option value="Portrait Session">Portrait Session</option>
+            <option value="Couples Session">Couples Session</option>
+            <option value="Graduation Session">Graduation Session</option>
+            <option value="Lifestyle Session">Lifestyle Session</option>
+            <option value="Event Coverage">Event Coverage</option>
+            <option value="Creative Branding">Creative Branding</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="date">Preferred Date *</label>
+          <input id="date" name="date" type="date" required />
+        </div>
+
+        <div class="form-row">
+          <label for="location">Preferred Location</label>
+          <input
+            id="location"
+            name="location"
+            type="text"
+            placeholder="Beach, studio, downtown, park, etc."
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="budget">Estimated Budget</label>
+          <select id="budget" name="budget">
+            <option value="">Select budget range</option>
+            <option value="$200–$400">$200–$400</option>
+            <option value="$400–$700">$400–$700</option>
+            <option value="$700–$1200">$700–$1200</option>
+            <option value="$1200+">$1200+</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Tell Me About Your Vision *</label>
+          <textarea id="message" name="message" rows="8" required></textarea>
+        </div>
+
+        <button type="submit" class="form-submit" id="submitBtn">
+          Submit Inquiry
+        </button>
+
+        <p id="formStatus" class="booking-note" aria-live="polite">
+          Your date is not officially reserved until I confirm availability.
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="booking-footer">
+    <a href="mailto:booking@brigregoryphotos.com">booking@brigregoryphotos.com</a>
+    <p>© 2026 Brianna Gregory Photography</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("bookingForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const status = document.getElementById("formStatus");
+
+      if (!form || !submitBtn || !status) {
+        console.error("Booking form elements not found.");
+        return;
       }
 
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Submit Inquiry";
+      form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
+        status.textContent = "Sending your inquiry...";
+
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch("/api/booking", {
+            method: "POST",
+            body: formData
+          });
+
+          const text = await response.text();
+
+          let result = {};
+          try {
+            result = JSON.parse(text);
+          } catch (error) {
+            result = {
+              success: false,
+              error: text
+            };
+          }
+
+          if (response.ok && result.success) {
+            status.textContent = "Success! Your inquiry was sent. I’ll be in touch soon 💛";
+            form.reset();
+          } else {
+            status.textContent =
+              result.error || "Something went wrong sending your inquiry.";
+            console.error("Booking error:", result);
+          }
+        } catch (error) {
+          console.error("Connection error:", error);
+          status.textContent = "Connection issue: " + error.message;
+        }
+
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Inquiry";
+      });
     });
-  });
-</script>
+  </script>
+</body>
+</html>
