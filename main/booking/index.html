@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Book a Session | Brianna Gregory Photography</title>
+
   <link rel="stylesheet" href="/main/booking/styles.css" />
 
   <style>
@@ -79,24 +81,45 @@
 </head>
 
 <body>
+
+  <!-- MOBILE MENU -->
+  <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+
+  <label for="menu-toggle" class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  <aside class="side-menu">
+    <label for="menu-toggle" class="close-menu">&times;</label>
+
+    <a href="/">Home</a>
+    <a href="/#gallery">Portfolio</a>
+    <a href="/#pricing">Services</a>
+    <a href="/about/">About</a>
+    <a href="/main/booking/">Book</a>
+    <a href="/privacy-policy/">Privacy Policy</a>
+  </aside>
+
+  <!-- DESKTOP HEADER -->
   <header class="site-header">
     <nav class="site-nav">
-      <a href="https://brigregoryphotos.com" class="site-logo">Brianna Gregory Photography</a>
-
-      <div class="nav-right">
-        <a href="https://brigregoryphotos.com/#gallery">Portfolio</a>
-        <a href="https://brigregoryphotos.com/#pricing">Services</a>
-        <a href="https://brigregoryphotos.com/#about">About</a>
-        <a href="https://brigregoryphotos.com/main/booking/">Book</a>
-        <a href="https://brigregoryphotos.com/#contact">Contact</a>
-      </div>
+      <a href="/">Home</a>
+      <a href="/#gallery">Portfolio</a>
+      <a href="/#pricing">Services</a>
+      <a href="/about/">About</a>
+      <a href="/main/booking/">Book</a>
+      <a href="/privacy-policy/">Privacy Policy</a>
     </nav>
   </header>
 
   <main class="booking-page">
     <section class="booking-hero">
       <p class="eyebrow">BOOKING INQUIRY</p>
+
       <h1>Reserve Your Photo Session</h1>
+
       <p class="booking-intro">
         Tell me a little about your vision and I’ll personally follow up with availability, pricing, and next steps.
       </p>
@@ -195,6 +218,7 @@
       <button class="success-popup-close" id="closePopup">×</button>
 
       <h2>Thank You!</h2>
+
       <p>
         Your inquiry was sent successfully. I’ll be in touch soon with availability,
         pricing, and next steps.
@@ -243,5 +267,6 @@
       }
     });
   </script>
+
 </body>
 </html>
