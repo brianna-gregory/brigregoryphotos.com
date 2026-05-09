@@ -1,4 +1,4 @@
-export async function onRequestPost({ request }) {
+export async function onRequestPost({ request, env }) {
   try {
     const formData = await request.formData();
 
@@ -29,7 +29,8 @@ ${message}
     const mailResponse = await fetch("https://api.mailchannels.net/tx/v1/send", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "X-Api-Key": env.MAILCHANNELS_API_KEY
       },
       body: JSON.stringify({
         personalizations: [
