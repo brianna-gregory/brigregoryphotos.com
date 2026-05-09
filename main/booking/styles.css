@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "Times New Roman", serif;
@@ -17,39 +21,39 @@ img {
 /* HEADER */
 
 .site-header {
+  display: block;
+  border-bottom: 1px solid #ddd;
   background: white;
-  border-bottom: 1px solid #e5e5e5;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 
 .site-nav {
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  padding: 32px 60px;
-}
-
-.site-logo {
-  font-size: 24px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #111;
-}
-
-.nav-right {
-  display: flex;
-  gap: 32px;
+  gap: 70px;
+  min-height: 120px;
+  padding: 0 40px;
 }
 
 .site-nav a {
   text-decoration: none;
   color: #111;
-  font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.28em;
+  font-size: 14px;
+}
+
+.site-nav a:hover,
+.side-menu a:hover {
+  opacity: 0.6;
+}
+
+/* MOBILE MENU BASE */
+
+.menu-toggle,
+.hamburger,
+.side-menu {
+  display: none;
 }
 
 /* HERO */
@@ -310,21 +314,70 @@ footer {
 /* MOBILE */
 
 @media (max-width: 900px) {
-  .site-nav {
-    flex-direction: column;
-    gap: 20px;
-    padding: 24px;
+  .site-header {
+    display: none;
   }
 
-  .nav-right {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
+  .menu-toggle {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+    position: fixed;
+    top: 30px;
+    left: 24px;
+    z-index: 1001;
+    width: 32px;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    display: block;
+    height: 2px;
+    background: #111;
+    margin: 8px 0;
+  }
+
+  .side-menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 300px;
+    height: 100%;
+    background: white;
+    padding: 100px 40px;
+    z-index: 1000;
+    transition: 0.3s ease;
+    border-right: 1px solid #111;
+  }
+
+  .menu-toggle:checked ~ .side-menu {
+    left: 0;
+  }
+
+  .close-menu {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-size: 32px;
+    cursor: pointer;
+  }
+
+  .side-menu a {
+    display: block;
+    margin-bottom: 30px;
+    text-decoration: none;
+    color: #111;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 13px;
   }
 
   .hero {
     grid-template-columns: 1fr;
-    padding: 50px 6%;
+    padding: 90px 6% 50px;
   }
 
   .hero-content h1 {
@@ -344,6 +397,6 @@ footer {
   }
 
   .booking-page {
-    padding: 50px 6%;
+    padding: 90px 6% 50px;
   }
 }
