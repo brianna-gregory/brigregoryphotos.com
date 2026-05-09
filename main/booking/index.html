@@ -39,7 +39,7 @@
         method="POST"
         action="https://formsubmit.co/briannagregory763@gmail.com"
       >
-        <input type="hidden" name="_subject" value="New Booking Inquiry | Brianna Gregory Photography" />
+        <input type="hidden" id="dynamicSubject" name="_subject" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_next" value="https://brigregoryphotos.com/main/booking/?success=true" />
@@ -121,12 +121,29 @@
   </footer>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const status = document.getElementById("formStatus");
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("bookingForm");
+      const nameField = document.getElementById("name");
+      const subjectField = document.getElementById("dynamicSubject");
+      const status = document.getElementById("formStatus");
 
-    if (params.get("success") === "true" && status) {
-      status.textContent = "Success! Your inquiry was sent. I’ll be in touch soon 💛";
-    }
+      function updateSubject() {
+        const clientName = nameField.value.trim() || "Client";
+        const timestamp = new Date().toLocaleString();
+        subjectField.value = `New Inquiry from ${clientName} - ${timestamp}`;
+      }
+
+      nameField.addEventListener("input", updateSubject);
+      form.addEventListener("submit", updateSubject);
+
+      const params = new URLSearchParams(window.location.search);
+
+      if (params.get("success") === "true" && status) {
+        status.textContent = "Success! Your inquiry was sent. I’ll be in touch soon 💛";
+      }
+
+      updateSubject();
+    });
   </script>
 </body>
 </html>
