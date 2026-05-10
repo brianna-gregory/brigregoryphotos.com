@@ -173,6 +173,10 @@ img {
 }
 
 .calendar-day {
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
   min-height: 54px;
   padding: 12px 6px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.32);
@@ -180,6 +184,7 @@ img {
   color: white;
   cursor: pointer;
   text-align: center;
+  font-family: "Times New Roman", serif;
   font-size: 18px;
   font-weight: bold;
 }
