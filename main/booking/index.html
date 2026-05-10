@@ -1,238 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Sets the character encoding so text displays correctly -->
-  <meta charset="UTF-8" />
+<!-- THANK YOU POPUP -->
+<div id="thankYouModal" class="thank-you-modal">
+  <div class="thank-you-box">
+    <button id="closeModal" class="thank-you-close" aria-label="Close popup">
+      ×
+    </button>
 
-  <!-- Makes the page responsive on phones, tablets, and desktops -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <h2>Thank You 💛</h2>
 
-  <!-- Browser tab title -->
-  <title>Book a Session | Brianna Gregory Photography</title>
+    <p>
+      Your inquiry has been submitted successfully. I’ll personally review your
+      message and follow up soon with availability, pricing, and next steps.
+    </p>
 
-  <!-- Connects this HTML page to the booking page CSS file -->
-  <link rel="stylesheet" href="/main/booking/styles.css" />
-</head>
-
-<body>
-  <!-- 
-    Mobile menu toggle:
-    This hidden checkbox controls whether the side menu opens or closes.
-    CSS can detect when this checkbox is checked.
-  -->
-  <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-
-  <!-- Hamburger menu button -->
-  <label for="menu-toggle" class="hamburger" aria-label="Open mobile menu">
-    <span></span>
-    <span></span>
-  </label>
-
-  <!-- Mobile side menu -->
-  <aside class="side-menu">
-    <label for="menu-toggle" class="close-menu">×</label>
-
-    <a href="https://brigregoryphotos.com/">Home</a>
-    <a href="https://brigregoryphotos.com/portfolio">Portfolio</a>
-    <a href="https://brigregoryphotos.com/services">Services</a>
-    <a href="https://brigregoryphotos.com/about/">About</a>
-    <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a>
-    <a href="https://instagram.com/photo.britheg" target="_blank">Instagram</a>
-  </aside>
-
-  <!-- Header -->
-  <header class="site-header">
-    <nav class="site-nav">
-      <a href="https://brigregoryphotos.com/">Home</a>
-      <a href="https://brigregoryphotos.com/portfolio">Portfolio</a>
-      <a href="https://brigregoryphotos.com/services">Services</a>
-      <a href="https://brigregoryphotos.com/about/">About</a>
-      <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a>
-    </nav>
-  </header>
-
-  <!-- Main Content -->
-  <main class="booking-page">
-    <section class="booking-hero">
-      <p class="eyebrow">BOOKING INQUIRY</p>
-
-      <h1>Reserve Your Photo Session</h1>
-
-      <p class="booking-intro">
-        Tell me a little about your vision and I’ll personally follow up with availability, pricing, and next steps.
-      </p>
-    </section>
-
-    <section class="booking-form-section">
-      <form
-        class="booking-form"
-        id="bookingForm"
-        method="POST"
-        action="https://formsubmit.co/briannagregory763@gmail.com"
-      >
-        <input type="hidden" id="dynamicSubject" name="_subject" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_next" value="https://brigregoryphotos.com/main/booking/?success=true" />
-
-        <div class="form-row">
-          <label for="name">Full Name *</label>
-          <input id="name" name="Full Name" type="text" required />
-        </div>
-
-        <div class="form-row">
-          <label for="email">Email Address *</label>
-          <input id="email" name="Email Address" type="email" required />
-        </div>
-
-        <div class="form-row">
-          <label for="phone">Phone Number</label>
-          <input id="phone" name="Phone Number" type="tel" />
-        </div>
-
-        <div class="form-row">
-          <label for="session">Session Type *</label>
-          <select id="session" name="Session Type" required>
-            <option value="">Select a session type</option>
-            <option value="Portrait Session">Portrait Session</option>
-            <option value="Couples Session">Couples Session</option>
-            <option value="Graduation Session">Graduation Session</option>
-            <option value="Lifestyle Session">Lifestyle Session</option>
-            <option value="Event Coverage">Event Coverage</option>
-            <option value="Creative Branding">Creative Branding</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-
-        <div class="form-row">
-          <label for="date">Preferred Date *</label>
-          <input id="date" name="Preferred Date" type="date" required />
-        </div>
-
-        <div class="form-row">
-          <label for="location">Preferred Location</label>
-          <input id="location" name="Preferred Location" type="text" />
-        </div>
-
-        <div class="form-row">
-          <label for="budget">Estimated Budget</label>
-          <select id="budget" name="Estimated Budget">
-            <option value="">Select budget range</option>
-            <option value="$200-$400">$200-$400</option>
-            <option value="$400-$700">$400-$700</option>
-            <option value="$700-$1200">$700-$1200</option>
-            <option value="$1200+">$1200+</option>
-          </select>
-        </div>
-
-        <div class="form-row">
-          <label for="message">Tell Me About Your Vision *</label>
-          <textarea id="message" name="Vision / Message" rows="8" required></textarea>
-        </div>
-
-        <button type="submit" class="form-submit">
-          Submit Inquiry
-        </button>
-      </form>
-    </section>
-  </main>
-
-  <!-- THANK YOU POPUP -->
-  <div
-    id="thankYouModal"
-    style="
-      display:none;
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.55);
-      z-index:9999;
-      align-items:center;
-      justify-content:center;
-    "
-  >
-    <div
-      style="
-        background:white;
-        padding:40px 30px;
-        max-width:500px;
-        width:90%;
-        border-radius:18px;
-        text-align:center;
-        box-shadow:0 20px 60px rgba(0,0,0,0.25);
-        position:relative;
-      "
-    >
-      <button
-        id="closeModal"
-        style="
-          position:absolute;
-          top:15px;
-          right:18px;
-          background:none;
-          border:none;
-          font-size:28px;
-          cursor:pointer;
-        "
-      >
-        ×
-      </button>
-
-      <h2 style="margin-bottom:15px;">Thank You 💛</h2>
-
-      <p style="margin-bottom:28px; line-height:1.6;">
-        Your inquiry has been submitted successfully. I’ll personally review your message and follow up soon with availability, pricing, and next steps.
-      </p>
-
-      <a
-        href="https://brigregoryphotos.com"
-        style="
-          display:inline-block;
-          padding:14px 28px;
-          background:black;
-          color:white;
-          text-decoration:none;
-          border-radius:10px;
-          font-weight:600;
-        "
-      >
-        Back to Main Site
-      </a>
-    </div>
+    <a href="https://brigregoryphotos.com" class="thank-you-button">
+      Back to Main Site
+    </a>
   </div>
+</div>
 
-  <!-- Footer -->
-  <footer class="booking-footer">
-    <a href="mailto:booking@brigregoryphotos.com">booking@brigregoryphotos.com</a>
-    <p>© 2026 Brianna Gregory Photography</p>
-  </footer>
+<style>
+  .thank-you-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
 
-  <script src="/main/booking/booking.js"></script>
+  .thank-you-box {
+    background: white;
+    padding: 40px 30px;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    position: relative;
+    box-sizing: border-box;
+  }
 
-  <!-- THANK YOU POPUP SCRIPT -->
-  <script>
+  .thank-you-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    color: black;
+  }
+
+  .thank-you-box h2 {
+    margin: 0 0 15px;
+    font-size: 26px;
+  }
+
+  .thank-you-box p {
+    margin: 0 0 28px;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  .thank-you-button {
+    display: inline-block;
+    padding: 14px 28px;
+    background: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .thank-you-modal {
+      align-items: center;
+      padding: 16px;
+    }
+
+    .thank-you-box {
+      width: 100%;
+      max-width: 360px;
+      padding: 34px 22px 30px;
+      border-radius: 16px;
+    }
+
+    .thank-you-box h2 {
+      font-size: 24px;
+    }
+
+    .thank-you-box p {
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .thank-you-button {
+      width: 100%;
+      max-width: 230px;
+      padding: 14px 18px;
+    }
+  }
+</style>
+
+<!-- THANK YOU POPUP SCRIPT -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
     const params = new URLSearchParams(window.location.search);
     const modal = document.getElementById("thankYouModal");
     const closeBtn = document.getElementById("closeModal");
 
-    if (params.get("success") === "true") {
+    if (params.get("success") === "true" && modal) {
       modal.style.display = "flex";
 
-      // Clean URL so refresh doesn't reopen popup
-      window.history.replaceState({}, document.title, window.location.pathname);
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname
+      );
     }
 
-    closeBtn.addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) {
+    if (closeBtn && modal) {
+      closeBtn.addEventListener("click", function () {
         modal.style.display = "none";
-      }
-    });
-  </script>
-</body>
-</html>
+      });
+
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    }
+  });
+</script>
