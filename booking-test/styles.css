@@ -1,114 +1,27 @@
-* {
-  box-sizing: border-box;
-}
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  font-family: "Times New Roman", serif;
-  background: #fafafa;
-  color: #111;
-  font-size: 16px;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-.site-header {
-  display: block;
-  border-bottom: 1px solid #ddd;
-  background: white;
-}
-
-.site-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 70px;
-  min-height: 120px;
-  padding: 0 40px;
-}
-
-.site-nav a,
-.footer-nav a {
-  text-decoration: none;
-  color: #111;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 14px;
-}
-
-.site-nav a:hover,
-.footer-nav a:hover,
-.footer-links a:hover,
-.side-menu a:hover {
-  opacity: 0.6;
-}
-
-.menu-toggle,
-.hamburger,
-.side-menu {
-  display: none;
-}
-
-.booking-page {
-  padding: 80px 8%;
-}
-
-.booking-hero {
-  max-width: 850px;
-  margin: 0 auto 60px;
-  text-align: center;
-}
-
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 11px;
-}
-
-.booking-hero h1 {
-  font-size: 64px;
-  font-weight: normal;
-  line-height: 1;
-  margin: 20px 0;
-}
-
-.booking-intro {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.booking-layout {
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: 50px;
-  max-width: 1180px;
-  margin: 0 auto;
-  align-items: start;
-}
-
-/* CALENDAR */
+/* =====================================================
+   CALENDAR - DARK GLASS STYLE
+====================================================== */
 
 .calendar-card {
-  background:
-    linear-gradient(rgba(17, 17, 17, 0.58), rgba(17, 17, 17, 0.9)),
+  background: linear-gradient(
+      rgba(17, 17, 17, 0.58),
+      rgba(17, 17, 17, 0.88)
+    ),
     #3a2a24;
   border: none;
   padding: 42px;
   color: white;
+  max-width: 520px;
+  margin: 0 auto;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
 }
 
+.calendar-card .eyebrow,
 .calendar-label {
   display: block;
   text-align: center;
-  margin: 0 0 26px;
+  margin-bottom: 26px;
   color: white;
   text-transform: uppercase;
   letter-spacing: 0.45em;
@@ -127,11 +40,15 @@ img {
   margin: 0;
   text-align: center;
   color: white;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
 }
 
-.calendar-header button {
+.calendar-nav {
+  display: contents;
+}
+
+.calendar-nav button {
   width: 48px;
   height: 48px;
   border: none;
@@ -139,12 +56,13 @@ img {
   color: white;
   padding: 0;
   font-family: "Times New Roman", serif;
-  font-size: 38px;
+  font-size: 34px;
   line-height: 1;
   cursor: pointer;
 }
 
-.calendar-header button:hover {
+.calendar-nav button:hover {
+  background: transparent;
   opacity: 0.65;
 }
 
@@ -155,11 +73,13 @@ img {
 }
 
 .calendar-weekdays {
+  border: none;
   margin-bottom: 12px;
 }
 
 .calendar-weekdays div {
   padding: 10px 4px;
+  border: none;
   text-align: center;
   color: white;
   text-transform: uppercase;
@@ -169,24 +89,21 @@ img {
 }
 
 .calendar-grid {
+  border-left: none;
   border-top: 1px solid rgba(255, 255, 255, 0.45);
 }
 
 .calendar-day {
-  appearance: none;
-  -webkit-appearance: none;
-  border: none;
-  outline: none;
-  min-height: 54px;
+  min-height: 51px;
   padding: 12px 6px;
+  border-right: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.32);
   background: rgba(255, 255, 255, 0.08);
   color: white;
   cursor: pointer;
+  position: relative;
   text-align: center;
-  font-family: "Times New Roman", serif;
   font-size: 18px;
-  font-weight: bold;
 }
 
 .calendar-day:hover {
@@ -196,6 +113,11 @@ img {
 .calendar-day.empty {
   background: rgba(255, 255, 255, 0.03);
   cursor: default;
+}
+
+.calendar-day .day-number {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .calendar-day.available {
@@ -209,47 +131,29 @@ img {
 }
 
 .calendar-day.unavailable {
-  background: rgba(17, 17, 17, 0.42);
+  background: rgba(17, 17, 17, 0.4);
   color: rgba(255, 255, 255, 0.32);
   cursor: not-allowed;
 }
 
 .calendar-day.selected {
-  background: rgba(214, 183, 162, 0.72);
+  background: rgba(214, 183, 162, 0.65);
   color: white;
+  outline: none;
 }
 
-.calendar-legend {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-top: 22px;
-  font-size: 13px;
+.calendar-day.available::after,
+.calendar-day.partial::after,
+.calendar-day.unavailable::after {
+  content: "";
+  display: none;
 }
 
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+/* Optional: bottom button like your inspo image */
 
-.legend-box {
-  width: 16px;
-  height: 16px;
-  border: 1px solid white;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.legend-box.partial {
-  background: rgba(214, 183, 162, 0.45);
-}
-
-.legend-box.unavailable {
-  background: rgba(17, 17, 17, 0.65);
-}
-
-.calendar-confirm {
+.calendar-next,
+.calendar-confirm,
+.form-submit {
   width: 100%;
   max-width: 240px;
   display: block;
@@ -265,246 +169,9 @@ img {
   cursor: pointer;
 }
 
-.calendar-confirm:hover {
-  background: white;
-  color: #111;
-}
-
-/* FORM */
-
-.booking-form {
-  background: white;
-  border: 1px solid #111;
-  padding: 48px;
-}
-
-.booking-form h2 {
-  margin-top: 0;
-  font-size: 34px;
-  font-weight: normal;
-}
-
-.form-row {
-  margin-bottom: 24px;
-}
-
-.form-row label {
-  display: block;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 11px;
-}
-
-.form-row input,
-.form-row select,
-.form-row textarea {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #111;
-  background: white;
-  color: #111;
-  font-family: "Times New Roman", serif;
-  font-size: 16px;
-}
-
-.form-row input:focus,
-.form-row select:focus,
-.form-row textarea:focus {
-  outline: none;
-  border: 2px solid #111;
-}
-
-.form-row textarea {
-  min-height: 160px;
-  resize: vertical;
-}
-
-.form-submit {
-  width: 100%;
-  padding: 18px;
-  border: 1px solid #111;
-  background: #111;
-  color: white;
-  font-family: "Times New Roman", serif;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 12px;
-  cursor: pointer;
-}
-
+.calendar-next:hover,
+.calendar-confirm:hover,
 .form-submit:hover {
   background: white;
   color: #111;
-}
-
-.booking-note,
-.form-message {
-  margin-top: 22px;
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.form-message {
-  font-style: italic;
-}
-
-/* FOOTER */
-
-.site-footer {
-  margin-top: 40px;
-  background: #fff;
-  border-top: 1px solid #ddd;
-}
-
-.footer-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 120px;
-  padding: 0 40px;
-  border-bottom: 1px solid #ddd;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 42px;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  text-decoration: none;
-  color: #111;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 12px;
-}
-
-.footer-bottom {
-  text-align: center;
-  padding: 28px 8%;
-}
-
-.footer-bottom p {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-/* MOBILE */
-
-@media (max-width: 900px) {
-  .site-header {
-    display: none;
-  }
-
-  .hamburger {
-    display: block;
-    position: fixed;
-    top: 30px;
-    left: 24px;
-    z-index: 1001;
-    width: 32px;
-    cursor: pointer;
-  }
-
-  .hamburger span {
-    display: block;
-    height: 2px;
-    background: #111;
-    margin: 8px 0;
-  }
-
-  .side-menu {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: -320px;
-    width: 300px;
-    height: 100%;
-    background: white;
-    padding: 100px 40px;
-    z-index: 1000;
-    transition: 0.3s ease;
-    border-right: 1px solid #111;
-  }
-
-  .menu-toggle:checked ~ .side-menu {
-    left: 0;
-  }
-
-  .side-menu a {
-    display: block;
-    margin-bottom: 30px;
-    text-decoration: none;
-    color: #111;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: 13px;
-  }
-
-  .booking-page {
-    padding: 90px 6% 60px;
-  }
-
-  .booking-hero h1 {
-    font-size: 42px;
-  }
-
-  .booking-intro {
-    font-size: 17px;
-  }
-
-  .booking-layout {
-    display: block;
-  }
-
-  .calendar-card,
-  .booking-form {
-    padding: 28px;
-    margin-bottom: 32px;
-  }
-
-  .footer-nav {
-    padding: 42px 24px;
-    min-height: auto;
-  }
-
-  .footer-links {
-    display: grid;
-    gap: 22px;
-  }
-}
-
-@media (max-width: 560px) {
-  .calendar-card {
-    padding: 22px;
-  }
-
-  .calendar-label {
-    font-size: 11px;
-    letter-spacing: 0.32em;
-  }
-
-  .calendar-header h2 {
-    font-size: 22px;
-  }
-
-  .calendar-weekdays div {
-    font-size: 12px;
-  }
-
-  .calendar-day {
-    min-height: 46px;
-    padding: 10px 4px;
-    font-size: 16px;
-  }
-
-  .calendar-legend {
-    font-size: 12px;
-  }
 }
