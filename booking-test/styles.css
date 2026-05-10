@@ -148,7 +148,11 @@
   content: "";
   display: none;
 }
+ <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
+<body>
 /* Optional: bottom button like your inspo image */
 
 .calendar-next,
