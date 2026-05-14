@@ -6,9 +6,23 @@
 
   <title>Portfolio | Brianna Gregory Photography</title>
 
+  <!-- Main site stylesheet -->
   <link rel="stylesheet" href="/main/booking/styles.css" />
 
   <style>
+    /*
+      PORTFOLIO PAGE NOTES:
+      - This page uses three image carousels:
+        1. People & Portraits
+        2. Architecture & Travel
+        3. Nature & Outdoor
+
+      IMAGE PATH RULES:
+      - Images inside the /photos folder use: /photos/image-name.webp
+      - Images uploaded directly to the root of GitHub use: /DSCF-file-name.webp or /DSCF-file-name.jpg
+      - Any image beginning with DSCF is currently treated as a root-level file, not inside /photos.
+    */
+
     .portfolio-page {
       padding: 70px 24px;
       background: #faf8f5;
@@ -110,7 +124,11 @@
       bottom: 0;
       padding: 28px;
       color: white;
-      background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0));
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0)
+      );
       font-size: 15px;
       letter-spacing: 0.04em;
       pointer-events: none;
@@ -181,13 +199,16 @@
 
 <body>
 
+  <!-- Mobile menu checkbox toggle -->
   <input type="checkbox" id="menu-toggle" class="menu-toggle" />
 
+  <!-- Mobile hamburger icon -->
   <label for="menu-toggle" class="hamburger" aria-label="Open mobile menu">
     <span></span>
     <span></span>
   </label>
 
+  <!-- Mobile side menu -->
   <aside class="side-menu">
     <label for="menu-toggle" class="close-menu">×</label>
     <a href="https://brigregoryphotos.com/">Home</a>
@@ -198,6 +219,7 @@
     <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener">Instagram</a>
   </aside>
 
+  <!-- Desktop navigation -->
   <header class="site-header">
     <nav class="site-nav">
       <a href="https://brigregoryphotos.com/">Home</a>
@@ -210,6 +232,7 @@
 
   <main class="portfolio-page">
 
+    <!-- Page intro -->
     <section class="portfolio-hero">
       <p class="portfolio-eyebrow">Brianna Gregory Photography</p>
       <h1>Portfolio</h1>
@@ -218,7 +241,17 @@
       </p>
     </section>
 
-    <!-- PEOPLE & PORTRAITS -->
+    <!-- 
+      PEOPLE & PORTRAITS CAROUSEL
+
+      Included here:
+      - Renaissance festival portrait: clearly a person-focused image.
+      - DSCF2564_web.jpg: root-level DSC image added to portraits.
+      - DSCF1275_web.webp: root-level DSC image added here per your request.
+
+      Removed:
+      - ocean-cliff-portrait-black-and-white.webp
+    -->
     <section class="portfolio-section">
       <h2>People & Portraits</h2>
       <p class="portfolio-section-intro">
@@ -231,17 +264,17 @@
         <div class="carousel-track" id="peopleCarousel">
 
           <div class="carousel-slide">
-            <img src="/photos/renaissance-festival-portrait-black-and-white.webp" alt="Renaissance festival portrait in black and white">
+            <img src="/photos/renaissance-festival-portrait-black-and-white.webp" alt="Black and white portrait at a renaissance festival">
             <div class="carousel-caption">Renaissance Festival Portrait</div>
           </div>
 
           <div class="carousel-slide">
-            <img src="/photos/DSCF2564_web.jpg" alt="Outdoor portrait photography">
+            <img src="/DSCF2564_web.jpg" alt="Outdoor portrait with natural landscape background">
             <div class="carousel-caption">Outdoor Portrait</div>
           </div>
 
           <div class="carousel-slide">
-            <img src="/photos/DSCF1275_web.webp" alt="Portrait under wooden pier">
+            <img src="/DSCF1275_web.webp" alt="Portrait-style image beneath a wooden pier">
             <div class="carousel-caption">Pier Portrait</div>
           </div>
 
@@ -251,7 +284,19 @@
       </div>
     </section>
 
-    <!-- ARCHITECTURE & TRAVEL -->
+    <!-- 
+      ARCHITECTURE & TRAVEL CAROUSEL
+
+      Included here:
+      - Balboa Park archway
+      - Spanish architecture facade
+      - Botanical Building reflection images
+      - Blue hour architecture detail
+
+      Removed:
+      - Japan images
+      - San Diego skyline, moved out of Architecture because it fits better as outdoor/cityscape.
+    -->
     <section class="portfolio-section">
       <h2>Architecture & Travel</h2>
       <p class="portfolio-section-intro">
@@ -269,22 +314,22 @@
           </div>
 
           <div class="carousel-slide">
-            <img src="/photos/balboa-park-spanish-architecture-facade.webp" alt="Spanish architecture facade at Balboa Park">
+            <img src="/photos/balboa-park-spanish-architecture-facade.webp" alt="Spanish-style architectural facade at Balboa Park">
             <div class="carousel-caption">Spanish Architecture</div>
           </div>
 
           <div class="carousel-slide">
-            <img src="/photos/balboa-park-botanical-building-reflection-wide.webp" alt="Balboa Park Botanical Building reflected in water">
+            <img src="/photos/balboa-park-botanical-building-reflection-wide.webp" alt="Wide view of the Balboa Park Botanical Building reflected in water">
             <div class="carousel-caption">Botanical Building Reflection</div>
           </div>
 
           <div class="carousel-slide">
-            <img src="/photos/balboa-park-botanical-building-reflection-portrait.webp" alt="Portrait view of Balboa Park Botanical Building reflected in water">
-            <div class="carousel-caption">Botanical Building Portrait</div>
+            <img src="/photos/balboa-park-botanical-building-reflection-portrait.webp" alt="Vertical view of the Balboa Park Botanical Building reflected in water">
+            <div class="carousel-caption">Botanical Building Portrait View</div>
           </div>
 
           <div class="carousel-slide">
-            <img src="/photos/balboa-park-botanical-building-blue-hour-close.webp" alt="Close view of Balboa Park Botanical Building at blue hour">
+            <img src="/photos/balboa-park-botanical-building-blue-hour-close.webp" alt="Close view of the Balboa Park Botanical Building during blue hour">
             <div class="carousel-caption">Blue Hour Architecture</div>
           </div>
 
@@ -294,7 +339,13 @@
       </div>
     </section>
 
-    <!-- NATURE & OUTDOOR -->
+    <!-- 
+      NATURE & OUTDOOR CAROUSEL
+
+      Included here:
+      - Palm street at dusk: outdoor scene.
+      - San Diego skyline at twilight: cityscape/outdoor atmosphere.
+    -->
     <section class="portfolio-section">
       <h2>Nature & Outdoor</h2>
       <p class="portfolio-section-intro">
@@ -324,12 +375,21 @@
 
   </main>
 
+  <!-- Site footer -->
   <footer class="booking-footer">
     <a href="mailto:booking@brigregoryphotos.com">booking@brigregoryphotos.com</a>
     <p>© 2026 Brianna Gregory Photography</p>
   </footer>
 
   <script>
+    /*
+      CAROUSEL FUNCTION NOTES:
+      - Each carousel has its own ID.
+      - The left/right buttons call this same function.
+      - direction = -1 moves left.
+      - direction = 1 moves right.
+      - The carousel scrolls exactly one full slide width at a time.
+    */
     function scrollCarousel(carouselId, direction) {
       const carousel = document.getElementById(carouselId);
       const slideWidth = carousel.offsetWidth;
