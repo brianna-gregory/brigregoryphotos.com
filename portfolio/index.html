@@ -241,28 +241,17 @@
       </p>
     </section>
 
-    <!-- 
-      PEOPLE & PORTRAITS CAROUSEL
-
-      Included here:
-      - Renaissance festival portrait: clearly a person-focused image.
-      - DSCF2564_web.jpg: root-level DSC image added to portraits.
-      - DSCF1275_web.webp: root-level DSC image added here per your request.
-
-      Removed:
-      - ocean-cliff-portrait-black-and-white.webp
-    -->
+    <!-- PEOPLE & PORTRAITS CAROUSEL -->
     <section class="portfolio-section">
-      <h2>People & Portraits</h2>
+      <h2>People &amp; Portraits</h2>
       <p class="portfolio-section-intro">
         Portraits, candid moments, black and white storytelling, and personality-focused photography.
       </p>
 
       <div class="carousel">
-        <button class="carousel-arrow left" onclick="scrollCarousel('peopleCarousel', -1)">‹</button>
+        <button class="carousel-arrow left" type="button" aria-label="Previous people and portraits photo" onclick="scrollCarousel('peopleCarousel', -1)">‹</button>
 
         <div class="carousel-track" id="peopleCarousel">
-
           <div class="carousel-slide">
             <img src="/photos/renaissance-festival-portrait-black-and-white.webp" alt="Black and white portrait at a renaissance festival">
             <div class="carousel-caption">Renaissance Festival Portrait</div>
@@ -273,36 +262,27 @@
             <div class="carousel-caption">Outdoor Portrait</div>
           </div>
 
+          <div class="carousel-slide">
+            <img src="/DSCF1275_web.webp" alt="Portrait-style image beneath a wooden pier">
+            <div class="carousel-caption">Pier Portrait</div>
+          </div>
         </div>
 
-        <button class="carousel-arrow right" onclick="scrollCarousel('peopleCarousel', 1)">›</button>
+        <button class="carousel-arrow right" type="button" aria-label="Next people and portraits photo" onclick="scrollCarousel('peopleCarousel', 1)">›</button>
       </div>
     </section>
 
-    <!-- 
-      ARCHITECTURE & TRAVEL CAROUSEL
-
-      Included here:
-      - Balboa Park archway
-      - Spanish architecture facade
-      - Botanical Building reflection images
-      - Blue hour architecture detail
-
-      Removed:
-      - Japan images
-      - San Diego skyline, moved out of Architecture because it fits better as outdoor/cityscape.
-    -->
+    <!-- ARCHITECTURE & TRAVEL CAROUSEL -->
     <section class="portfolio-section">
-      <h2>Architecture</h2>
+      <h2>Architecture &amp; Travel</h2>
       <p class="portfolio-section-intro">
         Historic architecture, travel moments, city landmarks, and visual storytelling through place.
       </p>
 
       <div class="carousel">
-        <button class="carousel-arrow left" onclick="scrollCarousel('architectureCarousel', -1)">‹</button>
+        <button class="carousel-arrow left" type="button" aria-label="Previous architecture and travel photo" onclick="scrollCarousel('architectureCarousel', -1)">‹</button>
 
         <div class="carousel-track" id="architectureCarousel">
-
           <div class="carousel-slide">
             <img src="/photos/balboa-park-archway-blue-hour.webp" alt="Balboa Park archway during blue hour">
             <div class="carousel-caption">Balboa Park Archway</div>
@@ -326,53 +306,36 @@
           <div class="carousel-slide">
             <img src="/photos/balboa-park-botanical-building-blue-hour-close.webp" alt="Close view of the Balboa Park Botanical Building during blue hour">
             <div class="carousel-caption">Blue Hour Architecture</div>
-
-            <div class="carousel-slide">
-            <img src="/photos/san-diego-palm-street-dusk.webp" alt="Palm trees lining a San Diego street at dusk">
-            <div class="carousel-caption">San Diego Palm Street at Dusk</div>
-          
           </div>
-
         </div>
 
-        <button class="carousel-arrow right" onclick="scrollCarousel('architectureCarousel', 1)">›</button>
+        <button class="carousel-arrow right" type="button" aria-label="Next architecture and travel photo" onclick="scrollCarousel('architectureCarousel', 1)">›</button>
       </div>
     </section>
 
-    <!-- 
-      NATURE & OUTDOOR CAROUSEL
-
-      Included here:
-      - Palm street at dusk: outdoor scene.
-      - San Diego skyline at twilight: cityscape/outdoor atmosphere.
-    -->
+    <!-- NATURE & OUTDOOR CAROUSEL -->
     <section class="portfolio-section">
-      <h2>Nature & Outdoor</h2>
+      <h2>Nature &amp; Outdoor</h2>
       <p class="portfolio-section-intro">
         Coastal scenes, twilight cityscapes, palms, landscapes, and quiet moments outdoors.
       </p>
 
       <div class="carousel">
-        <button class="carousel-arrow left" onclick="scrollCarousel('natureCarousel', -1)">‹</button>
+        <button class="carousel-arrow left" type="button" aria-label="Previous nature and outdoor photo" onclick="scrollCarousel('natureCarousel', -1)">‹</button>
 
         <div class="carousel-track" id="natureCarousel">
-
-          
+          <div class="carousel-slide">
+            <img src="/photos/san-diego-palm-street-dusk.webp" alt="Palm trees lining a San Diego street at dusk">
+            <div class="carousel-caption">San Diego Palm Street at Dusk</div>
           </div>
-  <div class="carousel-slide">
-            <img src="/DSCF1275_web.webp" alt="Portrait-style image beneath a wooden pier">
-            <div class="carousel-caption">Beneath the Pier</div>
-    
+
           <div class="carousel-slide">
             <img src="/photos/san-diego-skyline-twilight-highway.webp" alt="San Diego skyline and highway at twilight">
             <div class="carousel-caption">San Diego Skyline at Twilight</div>
-            </div>
-           
           </div>
-
         </div>
 
-        <button class="carousel-arrow right" onclick="scrollCarousel('natureCarousel', 1)">›</button>
+        <button class="carousel-arrow right" type="button" aria-label="Next nature and outdoor photo" onclick="scrollCarousel('natureCarousel', 1)">›</button>
       </div>
     </section>
 
@@ -395,7 +358,9 @@
     */
     function scrollCarousel(carouselId, direction) {
       const carousel = document.getElementById(carouselId);
-      const slideWidth = carousel.offsetWidth;
+      if (!carousel) return;
+
+      const slideWidth = carousel.clientWidth;
 
       carousel.scrollBy({
         left: direction * slideWidth,
