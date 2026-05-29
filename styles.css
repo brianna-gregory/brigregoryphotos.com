@@ -35,8 +35,8 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 36px;
-  background: rgba(0, 0, 0, 0.85);
+  padding: 18px 36px;
+  background: rgba(0, 0, 0, 0.78);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
@@ -51,7 +51,7 @@ a {
 
 .site-nav {
   display: flex;
-  gap: 34px;
+  gap: 30px;
 }
 
 .site-nav a:hover,
@@ -80,13 +80,13 @@ a {
   height: 100%;
   z-index: 200;
   background: #f8f6f2;
-  padding: 110px 36px;
+  padding: 96px 34px;
   transition: left 0.35s ease;
 }
 
 .side-menu a {
   display: block;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   color: #111;
   text-transform: uppercase;
   letter-spacing: 0.28em;
@@ -101,7 +101,7 @@ a {
 
 .hero {
   position: relative;
-  height: 360px;
+  height: 300px;
   padding: 0;
   overflow: hidden;
   background: #000;
@@ -122,27 +122,27 @@ a {
 
 .hero-media img {
   object-fit: cover;
-  object-position: center 22%;
+  object-position: center 24%;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.32);
   z-index: 1;
 }
 
 .hero-content {
   position: absolute;
-  left: 8%;
-  bottom: 54px;
+  left: 7%;
+  bottom: 38px;
   z-index: 2;
-  max-width: 600px;
+  max-width: 560px;
   color: white;
 }
 
 .eyebrow {
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   text-transform: uppercase;
   letter-spacing: 0.34em;
   font-size: 8px;
@@ -151,28 +151,28 @@ a {
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(22px, 3.5vw, 41px);
+  font-size: clamp(38px, 5vw, 62px);
   font-weight: 400;
-  line-height: 0.92;
-  letter-spacing: -0.04em;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
 }
 
 .hero h1 span {
   display: block;
   font-style: italic;
-  font-size: 0.65em;
+  font-size: 0.68em;
 }
 
 .hero-text {
-  margin-top: 22px;
-  max-width: 400px;
-  font-size: 6.5px;
-  line-height: 1.8;
+  margin-top: 18px;
+  max-width: 380px;
+  font-size: 11px;
+  line-height: 1.65;
 }
 
 .button {
   display: inline-block;
-  margin-top: 24px;
+  margin-top: 20px;
   padding-bottom: 6px;
   border-bottom: 1px solid currentColor;
   text-transform: uppercase;
@@ -183,13 +183,15 @@ a {
 /* ---------------- SECTIONS ---------------- */
 
 section:not(.hero) {
-  padding: 84px 8%;
+  padding: 46px 7%;
 }
 
 .intro {
   text-align: center;
   max-width: 760px;
   margin: 0 auto;
+  padding-top: 48px;
+  padding-bottom: 34px;
 }
 
 .intro h2,
@@ -197,9 +199,9 @@ section:not(.hero) {
 .locations h2,
 .final-cta h2 {
   margin: 0;
-  font-size: 6.5px;
+  font-size: clamp(20px, 3vw, 34px);
   font-weight: 300;
-  line-height: 1;
+  line-height: 1.05;
   letter-spacing: -0.03em;
 }
 
@@ -212,31 +214,35 @@ section:not(.hero) {
 
 .intro p:not(.eyebrow) {
   max-width: 520px;
-  margin: 24px auto 0;
-  font-size: 6.5px;
-  line-height: 1.9;
+  margin: 18px auto 0;
+  font-size: 11px;
+  line-height: 1.75;
 }
 
 /* ---------------- SERVICES ---------------- */
 
+.services-preview {
+  padding-top: 36px;
+}
+
 .section-heading {
-  margin-bottom: 42px;
+  margin-bottom: 26px;
 }
 
 .service-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 36px;
-  margin-top: 42px;
+  gap: 28px;
+  margin-top: 26px;
 }
 
 .service-list article {
   border-top: 1px solid rgba(17, 17, 17, 0.45);
-  padding-top: 20px;
+  padding-top: 18px;
 }
 
 .service-list h3 {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   text-transform: uppercase;
   letter-spacing: 0.3em;
   font-size: 10px;
@@ -245,24 +251,28 @@ section:not(.hero) {
 
 .service-list p {
   margin: 0;
-  font-size: 6.5px;
-  line-height: 1.8;
+  font-size: 11px;
+  line-height: 1.65;
 }
 
 /* ---------------- LOCATION ---------------- */
 
 .locations {
   background: #ebe6dd;
+  padding-top: 52px;
+  padding-bottom: 52px;
 }
 
 .locations h2 {
-  max-width: 780px;
+  max-width: 760px;
 }
 
 /* ---------------- CTA ---------------- */
 
 .final-cta {
   text-align: center;
+  padding-top: 54px;
+  padding-bottom: 58px;
 }
 
 .final-cta .button {
@@ -275,8 +285,9 @@ section:not(.hero) {
 .site-footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
-  padding: 30px 8%;
+  padding: 24px 7%;
   border-top: 1px solid rgba(0, 0, 0, 0.12);
   font-size: 8px;
   text-transform: uppercase;
@@ -287,7 +298,7 @@ section:not(.hero) {
 
 @media (max-width: 900px) {
   .site-header {
-    padding: 18px 20px;
+    padding: 16px 20px;
   }
 
   .site-nav {
@@ -309,8 +320,7 @@ section:not(.hero) {
   }
 
   .hero {
-    height: 360px;
-    padding: 0;
+    height: 340px;
   }
 
   .hero-media img {
@@ -320,38 +330,133 @@ section:not(.hero) {
   .hero-content {
     left: 24px;
     right: 24px;
-    bottom: 34px;
-    max-width: 320px;
+    bottom: 32px;
+    max-width: 330px;
   }
 
   .hero h1 {
-    font-size: 9px;
+    font-size: 38px;
   }
 
   .hero-text {
     max-width: 300px;
-    font-size: 6px;
+    font-size: 11px;
+    line-height: 1.65;
   }
 
   section:not(.hero) {
-    padding: 64px 24px;
+    padding: 42px 24px;
+  }
+
+  .intro {
+    padding-top: 44px;
+    padding-bottom: 30px;
   }
 
   .intro h2,
   .section-heading h2,
   .locations h2,
   .final-cta h2 {
-    font-size: 12px;
+    font-size: 26px;
+    line-height: 1.08;
+  }
+
+  .intro p:not(.eyebrow),
+  .service-list p {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .services-preview {
+    padding-top: 32px;
+  }
+
+  .section-heading {
+    margin-bottom: 22px;
   }
 
   .service-list {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 26px;
+    margin-top: 24px;
+  }
+
+  .service-list article {
+    padding-top: 16px;
+  }
+
+  .locations {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  .final-cta {
+    padding-top: 46px;
+    padding-bottom: 50px;
   }
 
   .site-footer {
     display: grid;
     text-align: center;
+    justify-content: center;
     gap: 14px;
+    padding: 26px 24px;
+  }
+}
+
+/* ---------------- SMALL MOBILE ---------------- */
+
+@media (max-width: 520px) {
+  .site-logo {
+    font-size: 9px;
+  }
+
+  .side-menu {
+    padding: 90px 28px;
+  }
+
+  .hero {
+    height: 330px;
+  }
+
+  .hero-content {
+    bottom: 30px;
+  }
+
+  .eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.32em;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero-text {
+    font-size: 10.5px;
+  }
+
+  .button {
+    font-size: 7px;
+  }
+
+  section:not(.hero) {
+    padding: 38px 22px;
+  }
+
+  .intro h2,
+  .section-heading h2,
+  .locations h2,
+  .final-cta h2 {
+    font-size: 24px;
+  }
+
+  .intro p:not(.eyebrow),
+  .service-list p {
+    font-size: 10.5px;
+  }
+
+  .service-list h3 {
+    font-size: 9px;
   }
 }
