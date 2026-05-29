@@ -1,244 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- =====================================================
-       BASIC PAGE SETUP
-       Sets character encoding and makes the site responsive
-       on phones, tablets, and desktop screens.
-  ====================================================== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Browser tab title -->
   <title>San Diego Photographer | Brianna Gregory Photography</title>
 
-  <!-- =====================================================
-       SEO META TAGS
-       These help search engines understand your website.
-  ====================================================== -->
   <meta
     name="description"
-    content="Affordable portrait, lifestyle, event, and special occasion photography throughout San Diego County including Balboa Park, La Jolla, Coronado, Chula Vista, Oceanside, and Carlsbad."
+    content="Refined portrait, lifestyle, event, and special occasion photography throughout San Diego County."
   />
 
   <meta
     name="keywords"
-    content="San Diego photographer, affordable photographer San Diego, lifestyle photographer San Diego, portrait photographer, Balboa Park photographer, event photographer"
+    content="San Diego photographer, portrait photographer San Diego, lifestyle photographer San Diego, Balboa Park photographer, event photographer"
   />
 
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Brianna Gregory Photography" />
 
-  <!-- Main website URL for search engines -->
   <link rel="canonical" href="https://brigregoryphotos.com/" />
 
-  <!-- =====================================================
-       SOCIAL SHARE PREVIEW
-       Controls how your website appears when shared on
-       Facebook, LinkedIn, messages, etc.
-  ====================================================== -->
   <meta property="og:title" content="Brianna Gregory Photography | San Diego Photographer" />
-  <meta property="og:description" content="Affordable portrait and lifestyle photography throughout San Diego County." />
+  <meta property="og:description" content="Refined portrait and lifestyle photography throughout San Diego County." />
   <meta property="og:image" content="https://brigregoryphotos.com/DSCF1898_web.jpg" />
   <meta property="og:url" content="https://brigregoryphotos.com/" />
   <meta property="og:type" content="website" />
 
-  <!-- Main stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <!-- =====================================================
-       MOBILE MENU TOGGLE
-       This hidden checkbox opens/closes the mobile menu.
-       The hamburger label below controls this checkbox.
-  ====================================================== -->
   <input type="checkbox" id="menu-toggle" class="menu-toggle" />
 
-  <!-- Hamburger button for mobile navigation -->
-  <label for="menu-toggle" class="hamburger" aria-label="Open mobile menu">
-    <span></span>
-    <span></span>
-  </label>
-
-  <!-- =====================================================
-       MOBILE SIDE MENU
-       The X close button was removed to prevent overlap
-       with the hamburger icon on mobile.
-  ====================================================== -->
-  <aside class="side-menu">
-    <a href="https://brigregoryphotos.com/portfolio">Portfolio</a>
-    <a href="https://brigregoryphotos.com/services/">Services</a>
-    <a href="https://brigregoryphotos.com/about/">About</a>
-    <a href="https://brigregoryphotos.com/main/booking/">Book</a>
-    <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a>
-    <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener noreferrer">Instagram</a>
-  </aside>
-
-  <!-- =====================================================
-       DESKTOP HEADER NAVIGATION
-       This is the top navigation bar for larger screens.
-  ====================================================== -->
   <header class="site-header">
+    <a href="/" class="site-logo">Brianna Gregory</a>
+
+    <label for="menu-toggle" class="hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+    </label>
+
     <nav class="site-nav">
-      <a href="https://brigregoryphotos.com/portfolio/">Portfolio</a>
-      <a href="https://brigregoryphotos.com/services/">Services</a>
-      <a href="https://brigregoryphotos.com/about/">About</a>
-      <a href="https://brigregoryphotos.com/main/booking/">Book</a>
-      <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/services/">Services</a>
+      <a href="/about/">About</a>
+      <a href="/main/booking/">Book</a>
+      <a href="/privacy-policy/">Privacy</a>
     </nav>
   </header>
 
-  <!-- =====================================================
-       MAIN WEBSITE CONTENT
-  ====================================================== -->
+  <aside class="side-menu">
+    <a href="/portfolio/">Portfolio</a>
+    <a href="/services/">Services</a>
+    <a href="/about/">About</a>
+    <a href="/main/booking/">Book</a>
+    <a href="/privacy-policy/">Privacy</a>
+    <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener noreferrer">
+      Instagram
+    </a>
+  </aside>
+
   <main>
-    <!-- =====================================================
-         HERO SECTION
-         First section visitors see. Includes your main image,
-         brand name, short intro, and booking button.
-    ====================================================== -->
     <section class="hero">
-      <picture class="hero-image">
+      <picture class="hero-media">
         <source srcset="DSCF1898_web.webp" type="image/webp" />
-        <img src="DSCF1898_web.jpg" alt="San Diego portrait photography" />
+        <img src="DSCF1898_web.jpg" alt="San Diego photography by Brianna Gregory" />
       </picture>
+
+      <div class="hero-overlay"></div>
 
       <div class="hero-content">
         <p class="eyebrow">San Diego Photographer</p>
 
         <h1>
           Brianna Gregory
-          <br />
-          <em>Photography</em>
+          <span>Photography</span>
         </h1>
 
         <p class="hero-text">
-          Affordable, refined portrait, lifestyle, and special occasion photography across San Diego County.
+          Refined portrait, lifestyle, and occasion photography for honest, beautiful moments.
         </p>
 
-        <a href="https://brigregoryphotos.com/main/booking/" class="button">
-          Book a Session
-        </a>
+        <a href="/main/booking/" class="button">Book a Session</a>
       </div>
     </section>
 
-    <!-- =====================================================
-         ABOUT SECTION
-         Adds personality and gives visitors a feel for your
-         photography style.
-    ====================================================== -->
-    <section id="about" class="about">
-      <div class="about-copy">
-        <h2>Classic imagery for real moments</h2>
+    <section class="intro">
+      <p class="eyebrow">Portraits · Lifestyle · Occasions</p>
 
-        <p>
-          Timeless photography inspired by natural light, authentic connection, and iconic San Diego locations.
-        </p>
-      </div>
+      <h2>Classic imagery with a soft editorial feel.</h2>
 
-      <picture class="about-image">
-        <source srcset="DSCF1738_web.webp" type="image/webp" />
-        <img src="DSCF1738_web.jpg" alt="Photographer portrait" />
-      </picture>
+      <p>
+        Photography inspired by natural light, thoughtful composition, and the quiet beauty of real connection.
+      </p>
     </section>
 
-    <!-- =====================================================
-         GALLERY SECTION
-         Portfolio preview showing selected photography work.
-    ====================================================== -->
-    <section id="gallery" class="gallery">
-      <p class="eyebrow">Selected Work</p>
+    <section class="featured-work">
+      <div class="section-heading">
+        <p class="eyebrow">Selected Work</p>
+        <h2>Recent Stories</h2>
+      </div>
 
       <div class="gallery-grid">
-        <picture class="photo-card">
+        <picture>
           <source srcset="DSCF2564_web.webp" type="image/webp" />
-          <img src="DSCF2564_web.jpg" alt="Portrait photography" />
+          <img src="DSCF2564_web.jpg" alt="Portrait photography session" />
         </picture>
 
-        <picture class="photo-card">
+        <picture>
           <source srcset="DSCF2648_web.webp" type="image/webp" />
-          <img src="DSCF2648_web.jpg" alt="Lifestyle photography" />
+          <img src="DSCF2648_web.jpg" alt="Lifestyle photography session" />
         </picture>
 
-        <picture class="photo-card">
+        <picture>
           <source srcset="DSCF1200_web.webp" type="image/webp" />
           <img src="DSCF1200_web.jpg" alt="Special occasion photography" />
         </picture>
       </div>
     </section>
 
-    <!-- =====================================================
-         SERVICES SECTION
-         Lists your main photography service categories.
-    ====================================================== -->
-    <section id="pricing" class="pricing">
-      <h2>Photography Services</h2>
+    <section class="services-preview">
+      <div class="section-heading">
+        <p class="eyebrow">Services</p>
+        <h2>Photography for meaningful moments.</h2>
+      </div>
 
-      <div class="pricing-list">
-        <div class="pricing-item">
+      <div class="service-list">
+        <article>
           <h3>Portraits</h3>
-          <p>Individuals, couples, graduates, creatives.</p>
-        </div>
+          <p>Individuals, couples, graduates, creatives, and personal branding.</p>
+        </article>
 
-        <div class="pricing-item">
-          <h3>Special Occasions</h3>
-          <p>Celebrations, milestones, intimate events.</p>
-        </div>
-
-        <div class="pricing-item">
+        <article>
           <h3>Lifestyle</h3>
-          <p>Natural editorial storytelling.</p>
-        </div>
+          <p>Natural, editorial storytelling with a relaxed and intentional feel.</p>
+        </article>
+
+        <article>
+          <h3>Occasions</h3>
+          <p>Milestones, intimate events, celebrations, and meaningful gatherings.</p>
+        </article>
       </div>
     </section>
 
-    <!-- =====================================================
-         LOCATION SECTION
-         Helps local SEO by listing your service areas.
-    ====================================================== -->
-    <section id="locations" class="locations">
-      <h2>Serving San Diego County</h2>
+    <section class="locations">
+      <p class="eyebrow">Serving San Diego County</p>
 
-      <p>
-        San Diego, Balboa Park, La Jolla, Coronado, Carlsbad, Oceanside, Chula Vista, Encinitas, Del Mar, and surrounding areas.
-      </p>
+      <h2>San Diego, Balboa Park, La Jolla, Coronado, Carlsbad, Oceanside, Chula Vista, Encinitas, and Del Mar.</h2>
     </section>
 
-    <!-- =====================================================
-         FINAL CALL-TO-ACTION SECTION
-         Encourages visitors to book after viewing the page.
-    ====================================================== -->
-    <section id="contact" class="contact">
+    <section class="final-cta">
       <p class="eyebrow">Ready to Book?</p>
 
-      <h2>Let’s create something beautiful</h2>
+      <h2>Let’s create something beautiful.</h2>
 
-      <a href="https://brigregoryphotos.com/main/booking/" class="button">
-        Book a Session
-      </a>
+      <a href="/main/booking/" class="button">Book a Session</a>
     </section>
   </main>
 
-  <!-- =====================================================
-       FOOTER
-       Includes contact links, social link, and copyright.
-  ====================================================== -->
   <footer class="site-footer">
-    <nav class="footer-nav">
-      <div class="footer-links">
-        <a href="mailto:booking@brigregoryphotos.com">
-          booking@brigregoryphotos.com
-        </a>
-        <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener noreferrer">
-          Instagram
-        </a>
-      </div>
-    </nav>
+    <a href="mailto:booking@brigregoryphotos.com">booking@brigregoryphotos.com</a>
+    <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener noreferrer">
+      Instagram
+    </a>
 
-    <div class="footer-bottom">
-      <p>© 2026 Brianna Gregory Photography</p>
-    </div>
+    <p>© 2026 Brianna Gregory Photography</p>
   </footer>
 </body>
 </html>
