@@ -36,14 +36,15 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 18px 36px;
-  background: rgba(0, 0, 0, 0.78);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
+  background: rgba(248, 246, 242, 0.88);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
 }
 
 .site-logo,
 .site-nav a {
-  color: #fff;
+  color: #111;
   text-transform: uppercase;
   letter-spacing: 0.28em;
   font-size: 10px;
@@ -56,7 +57,7 @@ a {
 
 .site-nav a:hover,
 .side-menu a:hover {
-  opacity: 0.6;
+  opacity: 0.55;
 }
 
 /* ---------------- MOBILE MENU ---------------- */
@@ -82,6 +83,7 @@ a {
   background: #f8f6f2;
   padding: 96px 34px;
   transition: left 0.35s ease;
+  box-shadow: 24px 0 60px rgba(0, 0, 0, 0.08);
 }
 
 .side-menu a {
@@ -99,80 +101,75 @@ a {
 
 /* ---------------- HERO ---------------- */
 
-.hero {
-  position: relative;
-  height: 300px;
-  padding: 0;
-  overflow: hidden;
-  background: #000;
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 720px;
+  padding-top: 68px;
+  background: #f8f6f2;
 }
 
-.hero-media,
-.hero-media picture,
-.hero-media img {
-  position: absolute;
-  inset: 0;
+.hero-split .hero-media,
+.hero-split .hero-media picture,
+.hero-split .hero-media img {
+  position: relative;
   width: 100%;
   height: 100%;
 }
 
-.hero-media picture {
+.hero-split .hero-media {
+  overflow: hidden;
+}
+
+.hero-split .hero-media picture {
   display: block;
 }
 
-.hero-media img {
+.hero-split .hero-media img {
   object-fit: cover;
-  object-position: center 24%;
+  object-position: center;
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.32);
-  z-index: 1;
-}
-
-.hero-content {
-  position: absolute;
-  left: 7%;
-  bottom: 38px;
-  z-index: 2;
+.hero-split .hero-content {
+  position: relative;
   max-width: 560px;
-  color: white;
+  color: #111;
+  align-self: center;
+  padding: 8vw;
 }
 
 .eyebrow {
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   text-transform: uppercase;
   letter-spacing: 0.34em;
   font-size: 8px;
   font-style: italic;
 }
 
-.hero h1 {
+.hero-split h1 {
   margin: 0;
-  font-size: clamp(38px, 5vw, 62px);
+  font-size: clamp(48px, 6vw, 86px);
   font-weight: 400;
   line-height: 0.9;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.055em;
 }
 
-.hero h1 span {
+.hero-split h1 span {
   display: block;
   font-style: italic;
-  font-size: 0.68em;
+  font-size: 0.62em;
 }
 
 .hero-text {
-  margin-top: 18px;
-  max-width: 380px;
-  font-size: 11px;
-  line-height: 1.65;
+  margin-top: 24px;
+  max-width: 390px;
+  font-size: 13px;
+  line-height: 1.8;
 }
 
 .button {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 24px;
   padding-bottom: 6px;
   border-bottom: 1px solid currentColor;
   text-transform: uppercase;
@@ -183,15 +180,15 @@ a {
 /* ---------------- SECTIONS ---------------- */
 
 section:not(.hero) {
-  padding: 46px 7%;
+  padding: 56px 7%;
 }
 
 .intro {
   text-align: center;
   max-width: 760px;
   margin: 0 auto;
-  padding-top: 48px;
-  padding-bottom: 34px;
+  padding-top: 64px;
+  padding-bottom: 44px;
 }
 
 .intro h2,
@@ -199,7 +196,7 @@ section:not(.hero) {
 .locations h2,
 .final-cta h2 {
   margin: 0;
-  font-size: clamp(20px, 3vw, 34px);
+  font-size: clamp(22px, 3vw, 38px);
   font-weight: 300;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -214,35 +211,35 @@ section:not(.hero) {
 
 .intro p:not(.eyebrow) {
   max-width: 520px;
-  margin: 18px auto 0;
-  font-size: 11px;
-  line-height: 1.75;
+  margin: 20px auto 0;
+  font-size: 12px;
+  line-height: 1.8;
 }
 
 /* ---------------- SERVICES ---------------- */
 
 .services-preview {
-  padding-top: 36px;
+  padding-top: 42px;
 }
 
 .section-heading {
-  margin-bottom: 26px;
+  margin-bottom: 28px;
 }
 
 .service-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-top: 26px;
+  gap: 34px;
+  margin-top: 30px;
 }
 
 .service-list article {
-  border-top: 1px solid rgba(17, 17, 17, 0.45);
-  padding-top: 18px;
+  border-top: 1px solid rgba(17, 17, 17, 0.42);
+  padding-top: 20px;
 }
 
 .service-list h3 {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   text-transform: uppercase;
   letter-spacing: 0.3em;
   font-size: 10px;
@@ -251,16 +248,16 @@ section:not(.hero) {
 
 .service-list p {
   margin: 0;
-  font-size: 11px;
-  line-height: 1.65;
+  font-size: 12px;
+  line-height: 1.7;
 }
 
 /* ---------------- LOCATION ---------------- */
 
 .locations {
   background: #ebe6dd;
-  padding-top: 52px;
-  padding-bottom: 52px;
+  padding-top: 64px;
+  padding-bottom: 64px;
 }
 
 .locations h2 {
@@ -271,8 +268,8 @@ section:not(.hero) {
 
 .final-cta {
   text-align: center;
-  padding-top: 54px;
-  padding-bottom: 58px;
+  padding-top: 64px;
+  padding-bottom: 68px;
 }
 
 .final-cta .button {
@@ -309,7 +306,7 @@ section:not(.hero) {
     display: block;
     width: 26px;
     cursor: pointer;
-    color: #fff;
+    color: #111;
   }
 
   .hamburger span {
@@ -319,29 +316,29 @@ section:not(.hero) {
     background: currentColor;
   }
 
-  .hero {
-    height: 340px;
+  .hero-split {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: 58px;
   }
 
-  .hero-media img {
-    object-position: center 18%;
+  .hero-split .hero-media {
+    height: 440px;
   }
 
-  .hero-content {
-    left: 24px;
-    right: 24px;
-    bottom: 32px;
-    max-width: 330px;
+  .hero-split .hero-content {
+    max-width: none;
+    padding: 44px 24px 36px;
   }
 
-  .hero h1 {
-    font-size: 38px;
+  .hero-split h1 {
+    font-size: 44px;
   }
 
   .hero-text {
-    max-width: 300px;
+    max-width: 320px;
     font-size: 11px;
-    line-height: 1.65;
+    line-height: 1.7;
   }
 
   section:not(.hero) {
@@ -415,12 +412,12 @@ section:not(.hero) {
     padding: 90px 28px;
   }
 
-  .hero {
-    height: 330px;
+  .hero-split .hero-media {
+    height: 380px;
   }
 
-  .hero-content {
-    bottom: 30px;
+  .hero-split .hero-content {
+    padding: 38px 22px 34px;
   }
 
   .eyebrow {
@@ -428,8 +425,8 @@ section:not(.hero) {
     letter-spacing: 0.32em;
   }
 
-  .hero h1 {
-    font-size: 34px;
+  .hero-split h1 {
+    font-size: 38px;
   }
 
   .hero-text {
