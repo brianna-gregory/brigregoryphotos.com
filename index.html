@@ -76,15 +76,39 @@
   </aside>
 
   <main>
-    <!-- Hero section. Image sizing/crop should be controlled only in CSS. -->
-    <section class="hero" aria-label="Brianna Gregory Photography hero">
-      <picture class="hero-media">
-        <source srcset="DSCF1898_web.webp" type="image/webp" />
-        <img
-          src="DSCF1898_web.jpg"
-          alt="Editorial portrait and lifestyle photography by Brianna Gregory in San Diego"
-        />
-      </picture>
+   <!-- Hero section -->
+<section class="hero" aria-label="Brianna Gregory Photography hero">
+
+  <div class="hero-media">
+    <picture>
+      <source srcset="DSCF1898_web.webp" type="image/webp">
+      <img
+        src="DSCF1898_web.jpg"
+        alt="Editorial portrait and lifestyle photography by Brianna Gregory in San Diego">
+    </picture>
+  </div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <p class="eyebrow">San Diego Photographer</p>
+
+    <h1>
+      Brianna Gregory
+      <span>Photography</span>
+    </h1>
+
+    <p class="hero-text">
+      Refined portrait, lifestyle, and occasion photography for honest, artful,
+      <em>beautifully kept</em> moments.
+    </p>
+
+    <a href="/main/booking/" class="button">
+      Book a Session
+    </a>
+  </div>
+
+</section>
 
       <!-- Overlay styling is controlled in CSS -->
       <div class="hero-overlay" aria-hidden="true"></div>
