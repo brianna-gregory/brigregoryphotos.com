@@ -90,89 +90,45 @@ a {
 
 /* Hero */
 
+/* Hero */
+
 .hero {
   position: relative;
-  height: 92vh;
-  min-height: 680px;
-  max-height: 920px;
+  height: auto;
+  min-height: 0;
   overflow: hidden;
   background: #111;
 }
 
 .hero-media {
-  position: absolute;
-  inset: 0;
-  height: 100%;
-  width: 100%;
+  position: relative;
+  display: block;
+  height: 82vh;
+  min-height: 560px;
+  max-height: 820px;
 }
 
 .hero-media img {
-  height: 100%;
   width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center 28%;
+  object-position: center top;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,0.16), rgba(0,0,0,0.34)),
-    radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.24));
+  background: linear-gradient(to bottom, rgba(0,0,0,0.12), rgba(0,0,0,0.36));
 }
 
 .hero-content {
-  position: relative;
+  position: absolute;
   z-index: 2;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  max-width: 760px;
-  padding: 0 8% 72px;
+  left: 8%;
+  bottom: 70px;
+  max-width: 680px;
+  padding: 0;
   color: #fff;
-}
-
-.eyebrow {
-  margin: 0 0 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.38em;
-  font-size: 8px;
-  font-style: italic;
-}
-
-.hero h1 {
-  margin: 0;
-  font-size: clamp(42px, 6.6vw, 92px);
-  font-weight: 400;
-  line-height: 0.94;
-  letter-spacing: -0.04em;
-}
-
-.hero h1 span {
-  display: block;
-  font-style: italic;
-  font-size: 0.64em;
-  letter-spacing: -0.03em;
-}
-
-.hero-text {
-  max-width: 410px;
-  margin: 24px 0 0;
-  font-size: 13px;
-  line-height: 1.8;
-  letter-spacing: 0.035em;
-}
-
-.button {
-  display: inline-block;
-  width: fit-content;
-  margin-top: 28px;
-  padding-bottom: 7px;
-  border-bottom: 1px solid currentColor;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 8px;
 }
 
 /* Sections */
@@ -465,5 +421,4 @@ body {
     font-size: 8px;
     letter-spacing: 0.2em;
   }
-}
 }
