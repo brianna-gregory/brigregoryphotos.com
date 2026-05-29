@@ -197,7 +197,7 @@ section:not(.hero) {
 .locations h2,
 .final-cta h2 {
   margin: 0;
-  font-size: clamp(28px, 1vw, 24px);
+  font-size: 13px;
   font-weight: 300;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -325,7 +325,7 @@ section:not(.hero) {
   }
 
   .hero h1 {
-    font-size: 52px;
+    font-size: 18px;
   }
 
   .hero-text {
@@ -341,7 +341,7 @@ section:not(.hero) {
   .section-heading h2,
   .locations h2,
   .final-cta h2 {
-    font-size: 32px;
+    font-size: 24px;
   }
 
   .service-list {
