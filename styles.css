@@ -37,12 +37,12 @@ a {
   align-items: center;
   padding: 20px 36px;
   background: rgba(0, 0, 0, 0.85);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
 .site-logo,
-.site-nav a,
-.side-menu a {
+.site-nav a {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 0.28em;
@@ -61,7 +61,12 @@ a {
 
 /* ---------------- MOBILE MENU ---------------- */
 
-.menu-toggle,
+.menu-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .hamburger {
   display: none;
 }
@@ -76,13 +81,16 @@ a {
   z-index: 200;
   background: #f8f6f2;
   padding: 110px 36px;
-  transition: 0.35s ease;
+  transition: left 0.35s ease;
 }
 
 .side-menu a {
   display: block;
   margin-bottom: 24px;
   color: #111;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 10px;
 }
 
 .menu-toggle:checked ~ .side-menu {
