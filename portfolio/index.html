@@ -6,7 +6,259 @@
 
   <title>Portfolio | Brianna Gregory Photography</title>
 
-  <link rel="stylesheet" href="/main/booking/styles.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Times New Roman", Times, serif;
+      color: #111;
+      background: #f7f3ee;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      background: #f7f3ee;
+      border-bottom: 1px solid #ded8d1;
+    }
+
+    .site-nav {
+      min-height: 105px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 72px;
+    }
+
+    .site-nav a {
+      font-size: 11px;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+    }
+
+    .menu-toggle,
+    .hamburger,
+    .side-menu {
+      display: none;
+    }
+
+    .portfolio-page {
+      padding: 95px 5.5% 140px;
+      background: #f7f3ee;
+    }
+
+    .portfolio-hero {
+      max-width: 900px;
+      margin: 0 auto 95px;
+      text-align: center;
+    }
+
+    .portfolio-eyebrow {
+      margin: 0 0 34px;
+      font-size: 11px;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+    }
+
+    .portfolio-hero h1 {
+      margin: 0 0 30px;
+      font-size: clamp(82px, 10vw, 145px);
+      font-weight: 400;
+      line-height: 0.88;
+      letter-spacing: -0.065em;
+    }
+
+    .portfolio-hero p:not(.portfolio-eyebrow) {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.9;
+      font-style: italic;
+      color: #4b433d;
+    }
+
+    .portfolio-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 34px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      aspect-ratio: 3 / 4;
+      background: #e6ded6;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.8s ease, filter 0.8s ease;
+      filter: saturate(0.88) contrast(0.96);
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.035);
+      filter: saturate(0.8) contrast(0.94);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 22px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    .portfolio-overlay-box {
+      padding: 16px 22px;
+      background: rgba(247, 243, 238, 0.78);
+      backdrop-filter: blur(14px);
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.65);
+    }
+
+    .portfolio-overlay h2 {
+      margin: 0 0 6px;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+    }
+
+    .portfolio-overlay p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.6;
+      font-style: italic;
+      color: #4b433d;
+    }
+
+    .booking-footer {
+      text-align: center;
+      padding: 55px 20px;
+      background: #f7f3ee;
+      border-top: 1px solid #ded8d1;
+    }
+
+    .booking-footer a {
+      font-size: 14px;
+      font-style: italic;
+      border-bottom: 1px solid #111;
+    }
+
+    .booking-footer p {
+      margin-top: 20px;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      .site-header {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+        position: fixed;
+        top: 28px;
+        left: 24px;
+        z-index: 1001;
+        width: 32px;
+        cursor: pointer;
+      }
+
+      .hamburger span {
+        display: block;
+        height: 1px;
+        background: #111;
+        margin: 8px 0;
+      }
+
+      .side-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: -310px;
+        width: 300px;
+        height: 100%;
+        background: #f7f3ee;
+        padding: 95px 34px;
+        z-index: 1000;
+        transition: left 0.35s ease;
+        border-right: 1px solid #ded8d1;
+      }
+
+      .menu-toggle:checked ~ .side-menu {
+        left: 0;
+      }
+
+      .close-menu {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        font-size: 34px;
+        cursor: pointer;
+      }
+
+      .side-menu a {
+        display: block;
+        margin-bottom: 28px;
+        font-size: 12px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      .portfolio-page {
+        padding: 95px 20px 90px;
+      }
+
+      .portfolio-hero {
+        margin-bottom: 60px;
+      }
+
+      .portfolio-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.3em;
+      }
+
+      .portfolio-hero h1 {
+        font-size: 64px;
+      }
+
+      .portfolio-hero p:not(.portfolio-eyebrow) {
+        font-size: 16px;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .portfolio-overlay {
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -43,9 +295,7 @@
     <section class="portfolio-hero">
       <p class="portfolio-eyebrow">Brianna Gregory Photography</p>
       <h1>Portfolio</h1>
-      <p>
-        A curated collection of portraits, travel, architecture, and atmospheric storytelling.
-      </p>
+      <p>A curated collection of portraits, travel, architecture, and atmospheric storytelling.</p>
     </section>
 
     <section class="portfolio-grid">
@@ -60,31 +310,31 @@
         </div>
       </article>
 
-       <article class="portfolio-item">
-      <img src="/photos/alyssa-1-2.jpg" alt="Renaissance Festival Portrait">
-      <div class="portfolio-overlay">
-        <div class="portfolio-overlay-box">
-          <h2>Renaissance Festival Portrait</h2>
-          <p>Black and white character-focused portraiture.</p>
+      <article class="portfolio-item">
+        <img src="/photos/alyssa-1-2.jpg" alt="Renaissance Festival Portrait">
+        <div class="portfolio-overlay">
+          <div class="portfolio-overlay-box">
+            <h2>Renaissance Festival</h2>
+            <p>Black and white character-focused portraiture.</p>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
 
-       <article class="portfolio-item">
-      <img src="/photos/parker-marissa.jpg" alt="Parker and Marissa Portrait">
-      <div class="portfolio-overlay">
-        <div class="portfolio-overlay-box">
-          <h2>Couples portrait</h2>
-          <p>Natural couples portrait captured lakeside.</p>
+      <article class="portfolio-item">
+        <img src="/photos/parker-marissa.jpg" alt="Parker and Marissa Portrait">
+        <div class="portfolio-overlay">
+          <div class="portfolio-overlay-box">
+            <h2>Couples Portrait</h2>
+            <p>Natural couples portrait captured lakeside.</p>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
 
       <article class="portfolio-item">
         <img src="/photos/warm-natural-light-portrait-profile.jpg" alt="Natural Light Portrait">
         <div class="portfolio-overlay">
           <div class="portfolio-overlay-box">
-            <h2>Natural Light Portrait</h2>
+            <h2>Natural Light</h2>
             <p>Warm, relaxed profile portrait.</p>
           </div>
         </div>
@@ -94,7 +344,7 @@
         <img src="/photos/balboa-park-archway-blue-hour.webp" alt="Balboa Park Archway">
         <div class="portfolio-overlay">
           <div class="portfolio-overlay-box">
-            <h2>Balboa Park Archway</h2>
+            <h2>Balboa Park</h2>
             <p>Architectural detail during blue hour.</p>
           </div>
         </div>
@@ -114,7 +364,7 @@
         <img src="/photos/tokyo-city-street-japan-travel.jpg" alt="Tokyo Street Scene">
         <div class="portfolio-overlay">
           <div class="portfolio-overlay-box">
-            <h2>Tokyo Street Scene</h2>
+            <h2>Tokyo Street</h2>
             <p>Urban travel photography from Japan.</p>
           </div>
         </div>
@@ -134,7 +384,7 @@
         <img src="/photos/san-diego-palm-street-dusk.webp" alt="San Diego Palm Street">
         <div class="portfolio-overlay">
           <div class="portfolio-overlay-box">
-            <h2>San Diego Palm Street</h2>
+            <h2>San Diego</h2>
             <p>Coastal city atmosphere at dusk.</p>
           </div>
         </div>
@@ -154,7 +404,7 @@
         <img src="/photos/la-lowrider-street-documentary.jpg" alt="San Diego Lowrider Cruise">
         <div class="portfolio-overlay">
           <div class="portfolio-overlay-box">
-            <h2>San Diego Lowrider Cruise</h2>
+            <h2>Lowrider Cruise</h2>
             <p>Street documentary and cultural atmosphere.</p>
           </div>
         </div>
@@ -171,7 +421,6 @@
       </article>
 
     </section>
-
   </main>
 
   <footer class="booking-footer">
