@@ -186,3 +186,42 @@
   }
 
 }
+
+
+
+/* FORCE LUXURY PORTFOLIO UPDATE */
+body {
+  background: #f6f1eb !important;
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+.site-header {
+  background: #f6f1eb !important;
+  border-bottom: 1px solid #ded6ce !important;
+}
+
+.portfolio-page {
+  background: #f6f1eb !important;
+  padding: 120px 6% 150px !important;
+}
+
+.portfolio-hero h1 {
+  font-size: 120px !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.07em !important;
+}
+
+.portfolio-hero p {
+  font-size: 18px !important;
+  font-style: italic !important;
+  color: #5c524a !important;
+}
+
+.portfolio-grid {
+  gap: 38px !important;
+}
+
+.portfolio-item {
+  aspect-ratio: 3 / 4 !important;
+}
