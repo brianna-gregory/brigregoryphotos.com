@@ -1,82 +1,53 @@
-/* LABELS */
-label,
-.form-row label {
-  display: block;
-  margin-bottom: 12px;
+/* MAKE IT LESS LUXURY / MORE MODERN SOFT */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f4f1;
+  color: #1f1f1f;
+}
 
+.site-nav {
+  min-height: 88px;
+  gap: 44px;
+}
+
+.site-nav a {
   font-size: 11px;
-  font-style: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-
-  color: #222;
-}
-
-/* INPUTS */
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 18px;
-  border: 1px solid #cfcfcf;
-
-  font-family: "Times New Roman", serif;
-  font-size: 15px;
-
-  background: #fff;
-}
-
-/* HERO DESCRIPTION */
-.booking-intro,
-.booking-page p,
-.booking-section p {
-  font-size: 18px;
-  line-height: 1.8;
-
-  font-style: italic;
+  letter-spacing: 0.18em;
   font-weight: 400;
-
-  color: #555;
-
-  max-width: 620px;
-  margin: 0 auto 60px;
 }
 
-/* EYEBROW TEXT */
-.booking-eyebrow,
-.booking-label,
-.eyebrow {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.32em;
-  color: #777;
+.portfolio-page {
+  background: #f7f4f1;
+  padding: 70px 6% 100px;
 }
 
-/* FORM HELP TEXT */
-.booking-note,
-.form-note {
+.portfolio-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: #6f6a65;
+}
+
+.portfolio-hero h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+
+.portfolio-hero p {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 13px;
   font-style: italic;
-  color: #777;
   line-height: 1.8;
+  color: #5d5752;
 }
 
-/* DROPDOWN OPTIONS */
-select {
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-size: 12px;
+.portfolio-grid {
+  gap: 18px;
 }
 
-/* BUTTON */
-button,
-input[type="submit"] {
-  font-size: 11px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-
-  background: #111;
-  color: #fff;
-
-  padding: 20px;
+.portfolio-item {
+  border-radius: 2px;
 }
