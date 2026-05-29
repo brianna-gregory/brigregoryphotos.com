@@ -1,7 +1,3 @@
-/* =====================================================
-   GLOBAL RESET / BASE STYLES
-====================================================== */
-
 * {
   box-sizing: border-box;
 }
@@ -12,500 +8,342 @@ html {
 
 body {
   margin: 0;
-  font-family: "Times New Roman", serif;
-  background: #fff;
+  font-family: "Times New Roman", Georgia, serif;
+  background: #f8f6f2;
   color: #111;
-  font-size: 16px;
 }
 
 img {
   display: block;
-  max-width: 100%;
+  width: 100%;
 }
 
-/* =====================================================
-   HEADER / DESKTOP NAVIGATION
-====================================================== */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Header */
 
 .site-header {
-  display: block;
-  border-bottom: 1px solid #ddd;
-  background: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 48px;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+
+.site-logo,
+.site-nav a,
+.side-menu a {
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 12px;
 }
 
 .site-nav {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 70px;
-  min-height: 120px;
-  padding: 0 40px;
-}
-
-.site-nav a,
-.footer-nav a {
-  text-decoration: none;
-  color: #111;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 14px;
+  gap: 42px;
 }
 
 .site-nav a:hover,
-.footer-nav a:hover,
-.footer-links a:hover,
-.side-menu a:hover {
-  opacity: 0.6;
+.side-menu a:hover,
+.site-footer a:hover {
+  opacity: 0.55;
 }
 
-/* =====================================================
-   MOBILE NAVIGATION DEFAULT STATE
-====================================================== */
+/* Mobile Menu */
 
-.menu-toggle,
-.hamburger,
-.side-menu {
+.menu-toggle {
   display: none;
 }
 
-/* =====================================================
-   HERO SECTION
-====================================================== */
+.hamburger {
+  display: none;
+}
+
+.side-menu {
+  position: fixed;
+  inset: 0 auto 0 -100%;
+  width: 82%;
+  max-width: 360px;
+  z-index: 30;
+  padding: 110px 38px;
+  background: #f8f6f2;
+  transition: 0.4s ease;
+}
+
+.side-menu a {
+  display: block;
+  margin-bottom: 28px;
+}
+
+.menu-toggle:checked ~ .side-menu {
+  left: 0;
+}
+
+/* Hero */
 
 .hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  padding: 60px 8%;
-  align-items: center;
-}
-
-.hero-image {
-  max-width: 560px;
-  height: 600px;
-  border: 1px solid #111;
+  position: relative;
+  min-height: 100vh;
   overflow: hidden;
+  background: #111;
 }
 
-.hero-image img,
-.about-image img,
-.photo-card img {
-  width: 100%;
-  height: 100%;
+.hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-media img {
+  height: 100vh;
   object-fit: cover;
+  object-position: center;
 }
 
-.hero-content h1 {
-  font-size: 72px;
-  font-weight: normal;
-  line-height: 0.95;
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.28), rgba(0,0,0,0.48)),
+    radial-gradient(circle at center, rgba(255,255,255,0.08), rgba(0,0,0,0.38));
 }
 
-.hero-text {
-  font-size: 18px;
-  line-height: 1.6;
-  max-width: 500px;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  max-width: 860px;
+  padding: 0 8% 90px;
+  color: #fff;
 }
 
 .eyebrow {
+  margin: 0 0 22px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.32em;
   font-size: 11px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(58px, 9vw, 140px);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+}
+
+.hero h1 span {
+  display: block;
+  font-style: italic;
+  font-size: 0.68em;
+  letter-spacing: -0.03em;
+}
+
+.hero-text {
+  max-width: 520px;
+  margin: 34px 0 0;
+  font-size: 18px;
+  line-height: 1.7;
 }
 
 .button {
   display: inline-block;
-  margin-top: 20px;
-  text-decoration: none;
-  color: #111;
-  border-bottom: 1px solid #111;
-  font-size: 15px;
+  width: fit-content;
+  margin-top: 32px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid currentColor;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 11px;
 }
 
-/* =====================================================
-   MAIN CONTENT SECTIONS
-====================================================== */
+/* Sections */
 
-.about,
-.gallery,
-.pricing,
-.locations,
-.contact {
-  padding: 80px 8%;
+section {
+  padding: 120px 8%;
 }
 
-/* =====================================================
-   ABOUT SECTION
-====================================================== */
-
-.about {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 50px;
+.intro {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.about-image {
-  max-width: 420px;
-  height: 520px;
-  border: 1px solid #111;
-  overflow: hidden;
+.intro h2,
+.section-heading h2,
+.locations h2,
+.final-cta h2 {
+  margin: 0;
+  font-size: clamp(38px, 6vw, 82px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
 }
 
-.about-copy p,
-.pricing-item p,
-.locations p,
-.contact p {
-  font-size: 15px;
-  line-height: 1.6;
+.intro p:not(.eyebrow) {
+  max-width: 620px;
+  margin: 32px auto 0;
+  font-size: 18px;
+  line-height: 1.7;
 }
 
-/* =====================================================
-   GALLERY
-====================================================== */
+/* Gallery */
+
+.featured-work {
+  background: #111;
+  color: #f8f6f2;
+}
+
+.section-heading {
+  margin-bottom: 54px;
+}
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 18px;
 }
 
-.photo-card {
-  height: 360px;
-  border: 1px solid #111;
+.gallery-grid picture {
+  aspect-ratio: 3 / 4;
   overflow: hidden;
 }
 
-/* =====================================================
-   SERVICES / PRICING
-====================================================== */
-
-.pricing-item {
-  padding: 20px 0;
-  border-top: 1px solid #111;
+.gallery-grid img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
 }
 
-/* =====================================================
-   CONTACT CTA
-====================================================== */
+.gallery-grid picture:hover img {
+  transform: scale(1.04);
+}
 
-.contact {
+/* Services */
+
+.services-preview {
+  background: #f8f6f2;
+}
+
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 42px;
+  margin-top: 60px;
+}
+
+.service-list article {
+  border-top: 1px solid #111;
+  padding-top: 26px;
+}
+
+.service-list h3 {
+  margin: 0 0 18px;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.service-list p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Locations + CTA */
+
+.locations {
+  background: #ebe6dd;
+}
+
+.locations h2 {
+  max-width: 1050px;
+}
+
+.final-cta {
   text-align: center;
 }
 
-/* =====================================================
-   FOOTER
-====================================================== */
+.final-cta .button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Footer */
 
 .site-footer {
-  margin-top: 40px;
-  background: #fff;
-  border-top: 1px solid #ddd;
-}
-
-.footer-nav {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 70px;
-  min-height: 120px;
-  padding: 0 40px;
-  border-bottom: 1px solid #ddd;
-}
-
-.footer-content {
-  padding: 90px 8% 75px;
-  text-align: center;
-}
-
-.footer-eyebrow {
-  margin: 0 0 35px;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 36px 8%;
+  border-top: 1px solid rgba(0,0,0,0.18);
   text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 13px;
-}
-
-.footer-content h2 {
-  margin: 0;
-  font-size: 64px;
-  font-weight: normal;
-  line-height: 0.95;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 42px;
-  flex-wrap: wrap;
-  margin-top: 45px;
-}
-
-.footer-links a {
-  text-decoration: none;
-  color: #111;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 12px;
-}
-
-.footer-bottom {
-  border-top: 1px solid #ddd;
-  text-align: center;
-  padding: 28px 8%;
-}
-
-.footer-bottom p {
-  margin: 0;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-/* =====================================================
-   BOOKING PAGE
-====================================================== */
-
-.booking-page {
-  padding: 80px 8%;
-  background: #fafafa;
-}
-
-.booking-hero {
-  max-width: 800px;
-  margin: 0 auto 60px;
-  text-align: center;
-}
-
-.booking-hero h1 {
-  font-size: 64px;
-  font-weight: normal;
-  line-height: 1;
-  margin: 20px 0;
-}
-
-.booking-intro {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-/* =====================================================
-   BOOKING FORM
-====================================================== */
-
-.booking-form-section {
-  max-width: 780px;
-  margin: 0 auto;
-}
-
-.booking-form {
-  background: white;
-  border: 1px solid #111;
-  padding: 48px;
-}
-
-.form-row {
-  margin-bottom: 28px;
-}
-
-.form-row label {
-  display: block;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   font-size: 11px;
 }
 
-.form-row input,
-.form-row select,
-.form-row textarea {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #111;
-  background: white;
-  color: #111;
-  font-family: "Times New Roman", serif;
-  font-size: 16px;
-}
-
-.form-row input:focus,
-.form-row select:focus,
-.form-row textarea:focus {
-  outline: none;
-  border: 2px solid #111;
-}
-
-.form-row textarea {
-  min-height: 180px;
-  resize: vertical;
-}
-
-.form-submit {
-  width: 100%;
-  padding: 18px;
-  border: 1px solid #111;
-  background: #111;
-  color: white;
-  font-family: "Times New Roman", serif;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.form-submit:hover {
-  background: white;
-  color: #111;
-}
-
-.booking-note,
-.form-message {
-  margin-top: 22px;
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.form-message {
-  font-style: italic;
-}
-
-.booking-footer {
-  padding: 40px 30px;
-  text-align: center;
-  border-top: 1px solid #111;
-  background: white;
-}
-
-.booking-footer a {
-  color: #111;
-  text-decoration: none;
-  border-bottom: 1px solid #111;
-}
-
-/* =====================================================
-   MOBILE RESPONSIVE STYLES
-====================================================== */
+/* Mobile */
 
 @media (max-width: 900px) {
   .site-header {
+    padding: 26px 24px;
+  }
+
+  .site-logo {
+    font-size: 11px;
+  }
+
+  .site-nav {
     display: none;
   }
 
   .hamburger {
     display: block;
-    position: fixed;
-    top: 30px;
-    left: 24px;
-    z-index: 1001;
-    width: 32px;
+    width: 30px;
     cursor: pointer;
   }
 
   .hamburger span {
     display: block;
-    height: 2px;
-    background: #111;
+    height: 1px;
     margin: 8px 0;
-    transition: 0.3s ease;
+    background: currentColor;
   }
 
-  .side-menu {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: -320px;
-    width: 300px;
-    height: 100%;
-    background: white;
-    padding: 100px 40px;
-    z-index: 1000;
-    transition: 0.3s ease;
-    border-right: 1px solid #111;
+  .hero-content {
+    padding: 0 7% 70px;
   }
 
-  .menu-toggle:checked ~ .side-menu {
-    left: 0;
+  .hero h1 {
+    font-size: 58px;
   }
 
-  .close-menu {
-    display: none;
+  section {
+    padding: 86px 7%;
   }
 
-  .side-menu a {
-    display: block;
-    margin-bottom: 30px;
-    text-decoration: none;
-    color: #111;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: 13px;
+  .gallery-grid,
+  .service-list {
+    grid-template-columns: 1fr;
   }
 
-  .hero,
-  .about,
-  .gallery-grid {
-    display: block;
+  .gallery-grid picture {
+    aspect-ratio: 4 / 5;
   }
 
-  .hero {
-    padding-top: 100px;
-  }
-
-  /* FIXED MOBILE IMAGE STYLING */
-  .hero-image,
-  .about-image,
-  .photo-card {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    margin-bottom: 24px;
-    border: none;
-    overflow: hidden;
-  }
-
-  .hero-image img,
-  .about-image img,
-  .photo-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-
-  .hero-content h1,
-  .booking-hero h1 {
-    font-size: 42px;
-  }
-
-  .hero-text,
-  .booking-intro {
-    font-size: 17px;
-  }
-
-  .booking-page {
-    padding: 90px 6% 60px;
-  }
-
-  .booking-form {
-    padding: 28px;
-  }
-
-  .footer-nav {
+  .site-footer {
     display: grid;
-    gap: 24px;
-    min-height: auto;
-    padding: 42px 24px;
-  }
-
-  .footer-content {
-    padding: 65px 6% 55px;
-  }
-
-  .footer-content h2 {
-    font-size: 42px;
-  }
-
-  .footer-links {
-    display: grid;
-    gap: 22px;
+    gap: 18px;
+    text-align: center;
   }
 }
