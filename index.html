@@ -1,343 +1,185 @@
-* {
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic page setup -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-html {
-  scroll-behavior: smooth;
-}
+  <!-- SEO title -->
+  <title>San Diego Photographer | Brianna Gregory Photography</title>
 
-body {
-  margin: 0;
-  overflow-x: hidden;
-  background: #f8f6f2;
-  color: #111;
-  font-family: "Times New Roman", Georgia, serif;
-}
+  <!-- SEO description -->
+  <meta
+    name="description"
+    content="Refined portrait, lifestyle, event, and special occasion photography throughout San Diego County."
+  />
 
-img {
-  display: block;
-  width: 100%;
-}
+  <!-- SEO keywords -->
+  <meta
+    name="keywords"
+    content="San Diego photographer, portrait photographer San Diego, lifestyle photographer San Diego, Balboa Park photographer, event photographer, portrait photography, Chula Vista photographer, San Diego County photographer"
+  />
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Brianna Gregory Photography" />
 
-/* ---------------- HEADER ---------------- */
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://brigregoryphotos.com/" />
 
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 36px;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
-}
+  <!-- Social sharing preview -->
+  <meta property="og:title" content="Brianna Gregory Photography | San Diego Photographer" />
+  <meta property="og:description" content="Refined portrait and lifestyle photography throughout San Diego County." />
+  <meta property="og:image" content="https://brigregoryphotos.com/DSCF1898_web.jpg" />
+  <meta property="og:url" content="https://brigregoryphotos.com/" />
+  <meta property="og:type" content="website" />
 
-.site-logo,
-.site-nav a,
-.side-menu a {
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 10px;
-}
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-.site-nav {
-  display: flex;
-  gap: 34px;
-}
+<body>
+  <!-- Mobile menu toggle. Styling and behavior are handled in CSS. -->
+  <input type="checkbox" id="menu-toggle" class="menu-toggle" />
 
-.site-nav a:hover,
-.side-menu a:hover {
-  opacity: 0.6;
-}
+  <!-- Site header -->
+  <header class="site-header">
+    <a href="/" class="site-logo" aria-label="Brianna Gregory Photography home">
+      Brianna Gregory
+    </a>
 
-/* ---------------- MOBILE MENU ---------------- */
+    <!-- Mobile hamburger button -->
+    <label for="menu-toggle" class="hamburger" aria-label="Open mobile menu">
+      <span></span>
+      <span></span>
+    </label>
 
-.menu-toggle,
-.hamburger {
-  display: none;
-}
+    <!-- Desktop navigation -->
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/services/">Services</a>
+      <a href="/about/">About</a>
+      <a href="/main/booking/">Book</a>
+      <a href="/privacy-policy/">Privacy</a>
+    </nav>
+  </header>
 
-.side-menu {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 82%;
-  max-width: 340px;
-  height: 100%;
-  z-index: 200;
-  background: #f8f6f2;
-  padding: 110px 36px;
-  transition: 0.35s ease;
-}
+  <!-- Mobile slide-out menu -->
+  <aside class="side-menu" aria-label="Mobile navigation">
+    <a href="/portfolio/">Portfolio</a>
+    <a href="/services/">Services</a>
+    <a href="/about/">About</a>
+    <a href="/main/booking/">Book</a>
+    <a href="/privacy-policy/">Privacy</a>
+    <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener noreferrer">
+      Instagram
+    </a>
+  </aside>
 
-.side-menu a {
-  display: block;
-  margin-bottom: 24px;
-  color: #111;
-}
+  <main>
+    <!-- Hero section. Image sizing/crop should be controlled only in CSS. -->
+    <section class="hero" aria-label="Brianna Gregory Photography hero">
+      <picture class="hero-media">
+        <source srcset="DSCF1898_web.webp" type="image/webp" />
+        <img
+          src="DSCF1898_web.jpg"
+          alt="Editorial portrait and lifestyle photography by Brianna Gregory in San Diego"
+        />
+      </picture>
 
-.menu-toggle:checked ~ .side-menu {
-  left: 0;
-}
+      <!-- Overlay styling is controlled in CSS -->
+      <div class="hero-overlay" aria-hidden="true"></div>
 
-/* ---------------- HERO ---------------- */
+      <div class="hero-content">
+        <p class="eyebrow">San Diego Photographer</p>
 
-.hero {
-  position: relative;
-  height: clamp(300px, 42vw, 520px);
-  overflow: hidden;
-  background: transparent;
-}
+        <h1>
+          Brianna Gregory
+          <span>Photography</span>
+        </h1>
 
-.hero-media {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
+        <p class="hero-text">
+          Refined portrait, lifestyle, and occasion photography for honest, artful,
+          <em>beautifully kept</em> moments.
+        </p>
 
-.hero-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 22%;
-}
+        <a href="/main/booking/" class="button">Book a Session</a>
+      </div>
+    </section>
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.18);
-  z-index: 1;
-}
+    <!-- Intro section -->
+    <section class="intro">
+      <p class="eyebrow">Portraits · Lifestyle · Occasions</p>
 
-.hero-content {
-  position: absolute;
-  left: 8%;
-  bottom: 54px;
-  z-index: 2;
-  max-width: 600px;
-  color: white;
-}
+      <h2>
+        Classic imagery with a <em>soft editorial</em> feel.
+      </h2>
 
-.eyebrow {
-  margin: 0 0 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.34em;
-  font-size: 8px;
-  font-style: italic;
-}
+      <p>
+        Photography inspired by natural light, thoughtful composition, and the quiet beauty of real connection.
+      </p>
+    </section>
 
-.hero h1 {
-  margin: 0;
-  font-size: clamp(44px, 7vw, 82px);
-  font-weight: 400;
-  line-height: 0.92;
-  letter-spacing: -0.04em;
-}
+    <!-- Services preview -->
+    <section class="services-preview">
+      <div class="section-heading">
+        <p class="eyebrow">Services</p>
 
-.hero h1 span {
-  display: block;
-  font-style: italic;
-  font-size: 0.65em;
-}
+        <h2>
+          Photography for <em>meaningful moments</em>.
+        </h2>
+      </div>
 
-.hero-text {
-  margin-top: 22px;
-  max-width: 400px;
-  font-size: 13px;
-  line-height: 1.8;
-}
+      <div class="service-list">
+        <article>
+          <h3>Portraits</h3>
+          <p>Individuals, couples, graduates, creatives, and personal milestones.</p>
+        </article>
 
-.button {
-  display: inline-block;
-  margin-top: 24px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid currentColor;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 8px;
-}
+        <article>
+          <h3>Lifestyle</h3>
+          <p>Natural, editorial storytelling with a relaxed and intentional feel.</p>
+        </article>
 
-/* ---------------- SECTIONS ---------------- */
+        <article>
+          <h3>Occasions</h3>
+          <p>Intimate events, celebrations, gatherings, and details worth remembering.</p>
+        </article>
+      </div>
+    </section>
 
-section {
-  padding: 84px 8%;
-}
+    <!-- Locations section -->
+    <section class="locations">
+      <p class="eyebrow">Serving San Diego County</p>
 
-.intro {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto;
-}
+      <h2>
+        From North County to South Bay, creating images with a
+        <em>timeless</em> point of view.
+      </h2>
+    </section>
 
-.intro h2,
-.section-heading h2,
-.locations h2,
-.final-cta h2 {
-  margin: 0;
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 400;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-}
+    <!-- Final booking section -->
+    <section class="final-cta">
+      <p class="eyebrow">Ready to Book?</p>
 
-.intro h2 em,
-.section-heading h2 em,
-.locations h2 em,
-.final-cta h2 em {
-  font-style: italic;
-}
+      <h2>
+        Let’s create something <em>beautiful</em>.
+      </h2>
 
-.intro p:not(.eyebrow) {
-  max-width: 520px;
-  margin: 24px auto 0;
-  font-size: 13px;
-  line-height: 1.9;
-}
+      <a href="/main/booking/" class="button">Book a Session</a>
+    </section>
+  </main>
 
-/* ---------------- SERVICES ---------------- */
+  <!-- Footer -->
+  <footer class="site-footer">
+    <a href="mailto:booking@brigregoryphotos.com">
+      booking@brigregoryphotos.com
+    </a>
 
-.section-heading {
-  margin-bottom: 42px;
-}
+    <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener noreferrer">
+      Instagram
+    </a>
 
-.service-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 36px;
-  margin-top: 42px;
-}
-
-.service-list article {
-  border-top: 1px solid rgba(17, 17, 17, 0.45);
-  padding-top: 20px;
-}
-
-.service-list h3 {
-  margin: 0 0 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-size: 10px;
-  font-weight: 400;
-}
-
-.service-list p {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-/* ---------------- LOCATION ---------------- */
-
-.locations {
-  background: #ebe6dd;
-}
-
-.locations h2 {
-  max-width: 780px;
-}
-
-/* ---------------- CTA ---------------- */
-
-.final-cta {
-  text-align: center;
-}
-
-.final-cta .button {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ---------------- FOOTER ---------------- */
-
-.site-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 30px 8%;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
-  font-size: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-}
-
-/* ---------------- MOBILE ---------------- */
-
-@media (max-width: 900px) {
-  .site-header {
-    padding: 18px 20px;
-  }
-
-  .site-nav {
-    display: none;
-  }
-
-  .hamburger {
-    display: block;
-    width: 26px;
-    cursor: pointer;
-    color: #fff;
-  }
-
-  .hamburger span {
-    display: block;
-    height: 1px;
-    margin: 7px 0;
-    background: currentColor;
-  }
-
-  .hero {
-    height: 360px;
-  }
-
-  .hero-media img {
-    object-position: center 18%;
-  }
-
-  .hero-content {
-    left: 24px;
-    right: 24px;
-    bottom: 34px;
-    max-width: 320px;
-  }
-
-  .hero h1 {
-    font-size: 52px;
-  }
-
-  .hero-text {
-    max-width: 300px;
-    font-size: 12px;
-  }
-
-  section {
-    padding: 64px 24px;
-  }
-
-  .intro h2,
-  .section-heading h2,
-  .locations h2,
-  .final-cta h2 {
-    font-size: 32px;
-  }
-
-  .service-list {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .site-footer {
-    display: grid;
-    text-align: center;
-    gap: 14px;
-  }
-}
+    <p>© 2026 Brianna Gregory Photography</p>
+  </footer>
+</body>
+</html>
