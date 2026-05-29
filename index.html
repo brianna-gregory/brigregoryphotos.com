@@ -27,31 +27,42 @@
   <meta property="og:url" content="https://brigregoryphotos.com/" />
   <meta property="og:type" content="website" />
 
+  <!-- Main stylesheet.
+       Keep ?v=3 so the page continues referencing CSS version 3. -->
   <link rel="stylesheet" href="./styles.css?v=3" />
 </head>
 
 <body>
+  <!-- Mobile menu toggle.
+       This controls the slide-out menu on smaller screens. -->
   <input type="checkbox" id="menu-toggle" class="menu-toggle" />
 
+  <!-- Site header.
+       Kept clean and minimal for a more luxury editorial feel. -->
   <header class="site-header">
     <a href="/" class="site-logo" aria-label="Brianna Gregory Photography home">
       Brianna Gregory
     </a>
 
+    <!-- Mobile hamburger icon.
+         This appears on mobile when controlled by CSS. -->
     <label for="menu-toggle" class="hamburger" aria-label="Open mobile menu">
       <span></span>
       <span></span>
     </label>
 
+    <!-- Main desktop navigation.
+         Privacy is kept available in the footer instead of crowding the header. -->
     <nav class="site-nav" aria-label="Main navigation">
       <a href="/portfolio/">Portfolio</a>
       <a href="/services/">Services</a>
       <a href="/about/">About</a>
       <a href="/main/booking/">Book</a>
-      <a href="/privacy-policy/">Privacy</a>
     </nav>
   </header>
 
+  <!-- Mobile navigation menu.
+       Opens when the hamburger menu is selected. -->
   <aside class="side-menu" aria-label="Mobile navigation">
     <a href="/portfolio/">Portfolio</a>
     <a href="/services/">Services</a>
@@ -64,7 +75,12 @@
   </aside>
 
   <main>
-    <section class="hero" aria-label="Brianna Gregory Photography hero">
+    <!-- Hero section.
+         Luxury split layout:
+         - Main image on the left
+         - Intro copy on the right
+         - No overlay, so the layout feels cleaner and more editorial. -->
+    <section class="hero hero-split" aria-label="Brianna Gregory Photography hero">
       <div class="hero-media">
         <picture>
           <source srcset="DSCF1898_web.webp" type="image/webp" />
@@ -75,8 +91,6 @@
         </picture>
       </div>
 
-      <div class="hero-overlay" aria-hidden="true"></div>
-
       <div class="hero-content">
         <p class="eyebrow">San Diego Photographer</p>
 
@@ -86,14 +100,16 @@
         </h1>
 
         <p class="hero-text">
-          Refined portrait, lifestyle, and occasion photography for honest, artful,
-          <em>beautifully kept</em> moments.
+          Refined portrait, lifestyle, and occasion photography for honest,
+          artful, <em>beautifully kept</em> moments.
         </p>
 
         <a href="/main/booking/" class="button">Book a Session</a>
       </div>
     </section>
 
+    <!-- Intro section.
+         This begins the body of the homepage below the hero. -->
     <section class="intro">
       <p class="eyebrow">Portraits · Lifestyle · Occasions</p>
 
@@ -102,10 +118,13 @@
       </h2>
 
       <p>
-        Photography inspired by natural light, thoughtful composition, and the quiet beauty of real connection.
+        Photography inspired by natural light, thoughtful composition,
+        and the quiet beauty of real connection.
       </p>
     </section>
 
+    <!-- Services preview.
+         Gives visitors a quick overview before they click deeper. -->
     <section class="services-preview">
       <div class="section-heading">
         <p class="eyebrow">Services</p>
@@ -133,6 +152,8 @@
       </div>
     </section>
 
+    <!-- Location section.
+         Helps reinforce San Diego County SEO and local service area. -->
     <section class="locations">
       <p class="eyebrow">Serving San Diego County</p>
 
@@ -142,6 +163,8 @@
       </h2>
     </section>
 
+    <!-- Final booking call-to-action.
+         Gives visitors another easy place to book after reading the page. -->
     <section class="final-cta">
       <p class="eyebrow">Ready to Book?</p>
 
@@ -153,6 +176,8 @@
     </section>
   </main>
 
+  <!-- Footer.
+       Privacy is placed here to keep the header elegant and uncluttered. -->
   <footer class="site-footer">
     <a href="mailto:booking@brigregoryphotos.com">
       booking@brigregoryphotos.com
@@ -160,6 +185,10 @@
 
     <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener noreferrer">
       Instagram
+    </a>
+
+    <a href="/privacy-policy/">
+      Privacy Policy
     </a>
 
     <p>© 2026 Brianna Gregory Photography</p>
