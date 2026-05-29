@@ -10,7 +10,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   background: #f8f6f2;
-  color: #111;
+  color: #212121;
   font-family: "Times New Roman", Georgia, serif;
 }
 
@@ -44,7 +44,7 @@ a {
 
 .site-logo,
 .site-nav a {
-  color: #111;
+  color: #212121;
   text-transform: uppercase;
   letter-spacing: 0.28em;
   font-size: 10px;
@@ -89,7 +89,7 @@ a {
 .side-menu a {
   display: block;
   margin-bottom: 22px;
-  color: #111;
+  color: #212121;
   text-transform: uppercase;
   letter-spacing: 0.28em;
   font-size: 10px;
@@ -133,7 +133,7 @@ a {
 .hero-split .hero-content {
   position: relative;
   max-width: 560px;
-  color: #111;
+  color: #212121;
   align-self: center;
   padding: 8vw;
 }
@@ -255,7 +255,7 @@ section:not(.hero) {
 /* ---------------- LOCATION ---------------- */
 
 .locations {
-  background: #ebe6dd;
+  background: #f8f6f2;
   padding-top: 64px;
   padding-bottom: 64px;
 }
@@ -306,7 +306,7 @@ section:not(.hero) {
     display: block;
     width: 26px;
     cursor: pointer;
-    color: #111;
+    color: #212121;
   }
 
   .hamburger span {
