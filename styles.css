@@ -151,7 +151,7 @@ a {
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(44px, 7vw, 82px);
+  font-size: clamp(22px, 3.5vw, 41px);
   font-weight: 400;
   line-height: 0.92;
   letter-spacing: -0.04em;
@@ -166,7 +166,7 @@ a {
 .hero-text {
   margin-top: 22px;
   max-width: 400px;
-  font-size: 13px;
+  font-size: 6.5px;
   line-height: 1.8;
 }
 
@@ -197,7 +197,7 @@ section:not(.hero) {
 .locations h2,
 .final-cta h2 {
   margin: 0;
-  font-size: 13px;
+  font-size: 6.5px;
   font-weight: 300;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -213,7 +213,7 @@ section:not(.hero) {
 .intro p:not(.eyebrow) {
   max-width: 520px;
   margin: 24px auto 0;
-  font-size: 13px;
+  font-size: 6.5px;
   line-height: 1.9;
 }
 
@@ -245,7 +245,7 @@ section:not(.hero) {
 
 .service-list p {
   margin: 0;
-  font-size: 13px;
+  font-size: 6.5px;
   line-height: 1.8;
 }
 
@@ -325,12 +325,12 @@ section:not(.hero) {
   }
 
   .hero h1 {
-    font-size: 18px;
+    font-size: 9px;
   }
 
   .hero-text {
     max-width: 300px;
-    font-size: 12px;
+    font-size: 6px;
   }
 
   section:not(.hero) {
@@ -341,7 +341,7 @@ section:not(.hero) {
   .section-heading h2,
   .locations h2,
   .final-cta h2 {
-    font-size: 24px;
+    font-size: 12px;
   }
 
   .service-list {
