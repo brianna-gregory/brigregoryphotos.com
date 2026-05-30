@@ -82,15 +82,13 @@
          - No overlay, so the layout feels cleaner and more editorial. -->
     <section class="hero hero-split" aria-label="Brianna Gregory Photography hero">
       <div class="hero-media">
-        <picture>
-          <source srcset="/photos/balboapark-hero.webp" type="image/webp" />
-          <img
-            src="/photos/balboapark-hero.jpg"
-            alt="Botanical Building at dusk in Balboa Park"
-          />
-        </picture>
-      </div>
-
+      <img
+        src="/photos/balboapark-hero.jpg"
+        alt="Botanical Building at dusk in Balboa Park"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
       <div class="hero-content">
         <p class="eyebrow">San Diego Photographer</p>
 
