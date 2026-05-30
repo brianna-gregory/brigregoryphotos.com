@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,126 +10,127 @@
 
   <style>
     .services-page {
-      padding: 70px 24px;
-      max-width: 1100px;
-      margin: 0 auto;
+      background: #f7f4ef;
+      color: #1f1f1f;
+      padding: 70px 30px 90px;
     }
 
-    .services-hero {
+    .services-intro {
       text-align: center;
       max-width: 760px;
-      margin: 0 auto 70px;
+      margin: 0 auto 95px;
     }
 
-    .services-eyebrow {
+    .eyebrow {
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 12px;
+      letter-spacing: 0.55em;
+      font-size: 10px;
       margin-bottom: 20px;
     }
 
-    .services-hero h1 {
-      font-size: clamp(42px, 6vw, 78px);
+    .services-intro h1,
+    .services-heading,
+    .location-heading {
+      font-family: Georgia, "Times New Roman", serif;
       font-weight: 400;
-      line-height: 1.1;
-      margin-bottom: 24px;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
     }
 
-    .services-hero p {
-      font-size: 18px;
+    .services-intro h1 {
+      font-size: clamp(34px, 4vw, 54px);
+      margin-bottom: 26px;
+    }
+
+    .services-intro p {
+      max-width: 620px;
+      margin: 0 auto;
       line-height: 1.8;
-      margin-bottom: 28px;
     }
 
-    .services-button {
-      display: inline-block;
-      padding: 14px 30px;
-      border: 1px solid #222;
-      text-decoration: none;
-      color: inherit;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 12px;
-      transition: 0.25s ease;
+    .services-section,
+    .booking-section,
+    .location-section {
+      max-width: 1200px;
+      margin: 0 auto 95px;
     }
 
-    .services-button:hover {
-      background: #222;
-      color: white;
+    .services-heading {
+      font-size: clamp(36px, 5vw, 62px);
+      margin: 12px 0 30px;
+      max-width: 760px;
     }
 
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-bottom: 70px;
+      gap: 44px;
     }
 
     .service-card {
-      border: 1px solid #ddd;
-      padding: 34px 28px;
-      background: #fff;
+      border-top: 1px solid #c8c1b8;
+      padding-top: 22px;
     }
 
-    .service-card h2 {
-      font-size: 24px;
-      font-weight: 400;
-      margin-bottom: 16px;
+    .service-card h3 {
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.45em;
+      font-size: 11px;
+      font-weight: 400;
+      margin-bottom: 18px;
     }
 
-    .service-card p {
-      font-size: 16px;
+    .service-card p,
+    .booking-section p {
       line-height: 1.8;
       margin-bottom: 18px;
     }
 
-    .service-card ul {
-      padding-left: 18px;
-      line-height: 1.8;
-      font-size: 15px;
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      border-top: 1px solid #c8c1b8;
+      padding-top: 30px;
     }
 
-    .details-section {
-      max-width: 850px;
-      margin: 0 auto;
-      text-align: center;
-      border-top: 1px solid #ddd;
-      padding-top: 60px;
+    .location-heading {
+      max-width: 820px;
+      font-size: clamp(38px, 5vw, 64px);
+      margin-top: 14px;
     }
 
-    .details-section h2 {
-      font-size: clamp(30px, 4vw, 48px);
-      font-weight: 400;
-      margin-bottom: 22px;
+    .services-button {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 28px;
+      border: 1px solid #222;
+      color: inherit;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 11px;
+      transition: 0.25s ease;
     }
 
-    .details-section p {
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 22px;
-    }
-
-    .process-list {
-      text-align: left;
-      max-width: 720px;
-      margin: 36px auto;
-      line-height: 1.9;
-      font-size: 16px;
-    }
-
-    .process-list strong {
-      font-weight: 600;
+    .services-button:hover {
+      background: #222;
+      color: #fff;
     }
 
     @media (max-width: 850px) {
-      .services-grid {
-        grid-template-columns: 1fr;
+      .services-page {
+        padding: 55px 22px 75px;
       }
 
-      .services-page {
-        padding: 55px 22px;
+      .services-grid,
+      .booking-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .eyebrow {
+        letter-spacing: 0.35em;
       }
     }
   </style>
@@ -167,107 +167,107 @@
 
   <main class="services-page">
 
-    <section class="services-hero">
-      <p class="services-eyebrow">Brianna Gregory Photography</p>
+    <section class="services-intro">
+      <p class="eyebrow">Portraits · Lifestyle · Occasions</p>
 
-      <h1>Photography Services</h1>
-
-      <p>
-        Thoughtful, professional photography for life’s meaningful moments — from personal portraits
-        and graduations to maternity sessions, special events, and celebrations worth remembering.
-      </p>
+      <h1>Classic imagery with a <em>soft editorial</em> feel.</h1>
 
       <p>
-        To begin, please submit an online inquiry with the details of what you’re looking for.
-        I’ll get back to you shortly after your inquiry is submitted, and I may reach out to ask
-        for additional information so I can better understand your vision, location, timing, and needs.
+        Photography inspired by natural light, thoughtful composition, and the quiet beauty
+        of real connection.
       </p>
-
-      <a href="https://brigregoryphotos.com/main/booking/" class="services-button">
-        Submit an Inquiry
-      </a>
     </section>
 
-    <section class="services-grid">
+    <section class="services-section">
+      <p class="eyebrow">Services</p>
 
-      <article class="service-card">
-        <h2>Portraits</h2>
-        <p>
-          Portrait sessions are perfect for individuals, couples, creatives, graduates, and anyone
-          wanting intentional images that feel personal, polished, and true to them.
-        </p>
-        <ul>
-          <li>Individual portraits</li>
-          <li>Couples sessions</li>
-          <li>Graduation photos</li>
-          <li>Creative branding portraits</li>
-          <li>Personal milestones</li>
-        </ul>
-      </article>
+      <h2 class="services-heading">
+        Photography for <em>meaningful moments.</em>
+      </h2>
 
-      <article class="service-card">
-        <h2>Lifestyle</h2>
-        <p>
-          Lifestyle photography focuses on natural, editorial storytelling with a relaxed and
-          intentional feel. These sessions are designed to capture connection, personality, and
-          real moments in a beautiful way.
-        </p>
-        <ul>
-          <li>Maternity sessions</li>
-          <li>Family moments</li>
-          <li>At-home or outdoor sessions</li>
-          <li>Editorial-style portraits</li>
-          <li>Everyday storytelling</li>
-        </ul>
-      </article>
+      <div class="services-grid">
+        <article class="service-card">
+          <h3>Portraits</h3>
+          <p>
+            Individuals, couples, graduates, creatives, and personal milestones captured
+            with intention, ease, and a polished editorial touch.
+          </p>
+          <p>
+            This includes graduation photos, individual portraits, couples sessions,
+            creative branding, and personal milestone sessions.
+          </p>
+        </article>
 
-      <article class="service-card">
-        <h2>Occasions</h2>
-        <p>
-          Occasion and event coverage is available for intimate celebrations, special gatherings,
-          and important details you want documented with care.
-        </p>
-        <ul>
-          <li>Special events</li>
-          <li>Celebrations and gatherings</li>
-          <li>Birthdays</li>
-          <li>Showers and small ceremonies</li>
-          <li>Details, candid moments, and portraits</li>
-        </ul>
-      </article>
+        <article class="service-card">
+          <h3>Lifestyle</h3>
+          <p>
+            Natural, editorial storytelling with a relaxed and intentional feel.
+          </p>
+          <p>
+            Perfect for maternity sessions, family moments, outdoor portraits,
+            at-home sessions, and everyday moments you want to remember beautifully.
+          </p>
+        </article>
 
-    </section>
-
-    <section class="details-section">
-      <h2>What’s Included</h2>
-
-      <p>
-        All services include professional editing and access to a digital gallery where you can
-        download your final images. Each session is handled with care, attention to detail, and
-        an editing style that keeps your photos clean, timeless, and true to the moment.
-      </p>
-
-      <div class="process-list">
-        <p><strong>1. Submit your inquiry:</strong> Share the type of session or event you’re interested in, your preferred date, location, and any important details.</p>
-
-        <p><strong>2. I’ll follow up shortly:</strong> After your inquiry is submitted online, I’ll review your request and get back to you. I may ask for more information to make sure your session is planned properly.</p>
-
-        <p><strong>3. Deposit required:</strong> A deposit will be required to secure your booking date. Your date is not officially reserved until the deposit has been received.</p>
-
-        <p><strong>4. Professional editing:</strong> Your selected images will be professionally edited to create a polished, cohesive final gallery.</p>
-
-        <p><strong>5. Digital delivery:</strong> Once complete, your final images will be delivered through an online gallery with access to digitally download your images.</p>
+        <article class="service-card">
+          <h3>Occasions</h3>
+          <p>
+            Intimate events, celebrations, gatherings, and details worth remembering.
+          </p>
+          <p>
+            Available for special events, birthdays, showers, small ceremonies,
+            celebrations, and meaningful gatherings.
+          </p>
+        </article>
       </div>
+    </section>
 
-      <p>
-        Services include, but are not limited to, graduation photos, maternity sessions, portraits,
-        lifestyle sessions, and special events. If you have something specific in mind, submit an
-        inquiry and I’ll be happy to review the details.
-      </p>
+    <section class="booking-section">
+      <p class="eyebrow">Booking Details</p>
 
-      <a href="https://brigregoryphotos.com/main/booking/" class="services-button">
-        Start Your Inquiry
-      </a>
+      <div class="booking-grid">
+        <div>
+          <h2 class="location-heading">
+            Submit an inquiry, then I’ll take it from there.
+          </h2>
+        </div>
+
+        <div>
+          <p>
+            To begin, please submit an online inquiry with the type of session or event
+            you’re interested in, your preferred date, location, and any important details.
+          </p>
+
+          <p>
+            I’ll get back to you shortly after your inquiry is submitted. I may reach out
+            to ask for more information so I can better understand your vision and make sure
+            your session or event is planned with care.
+          </p>
+
+          <p>
+            A deposit is required to secure your booking date. Your date is not officially
+            reserved until the deposit has been received.
+          </p>
+
+          <p>
+            All services include professional editing and access to a digital gallery where
+            you can download your final images.
+          </p>
+
+          <a href="https://brigregoryphotos.com/main/booking/" class="services-button">
+            Submit Inquiry
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="location-section">
+      <p class="eyebrow">Serving San Diego County</p>
+
+      <h2 class="location-heading">
+        From North County to South Bay, creating images with a
+        <em>timeless</em> point of view.
+      </h2>
     </section>
 
   </main>
@@ -279,4 +279,3 @@
 
 </body>
 </html>
-```
