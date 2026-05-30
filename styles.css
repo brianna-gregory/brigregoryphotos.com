@@ -180,15 +180,15 @@ a {
 /* ---------------- SECTIONS ---------------- */
 
 section:not(.hero) {
-  padding: 56px 7%;
+  padding: 46px 7%;
 }
 
 .intro {
   text-align: center;
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
-  padding-top: 64px;
-  padding-bottom: 44px;
+  padding-top: 54px;
+  padding-bottom: 34px;
 }
 
 .intro h2,
@@ -196,7 +196,7 @@ section:not(.hero) {
 .locations h2,
 .final-cta h2 {
   margin: 0;
-  font-size: clamp(22px, 3vw, 38px);
+  font-size: clamp(22px, 2.55vw, 34px);
   font-weight: 300;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -219,23 +219,24 @@ section:not(.hero) {
 /* ---------------- SERVICES ---------------- */
 
 .services-preview {
-  padding-top: 42px;
+  padding-top: 28px;
+  padding-bottom: 42px;
 }
 
 .section-heading {
-  margin-bottom: 28px;
+  margin-bottom: 18px;
 }
 
 .service-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 34px;
-  margin-top: 30px;
+  margin-top: 22px;
 }
 
 .service-list article {
-  border-top: 1px solid rgba(17, 17, 17, 0.42);
-  padding-top: 20px;
+  border-top: 1px solid rgba(17, 17, 17, 0.26);
+  padding-top: 18px;
 }
 
 .service-list h3 {
@@ -256,20 +257,21 @@ section:not(.hero) {
 
 .locations {
   background: #f8f6f2;
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: 38px;
+  padding-bottom: 38px;
 }
 
 .locations h2 {
-  max-width: 760px;
+  max-width: 620px;
+  font-size: clamp(24px, 3vw, 40px);
 }
 
 /* ---------------- CTA ---------------- */
 
 .final-cta {
   text-align: center;
-  padding-top: 64px;
-  padding-bottom: 68px;
+  padding-top: 46px;
+  padding-bottom: 58px;
 }
 
 .final-cta .button {
@@ -342,19 +344,19 @@ section:not(.hero) {
   }
 
   section:not(.hero) {
-    padding: 42px 24px;
+    padding: 36px 24px;
   }
 
   .intro {
-    padding-top: 44px;
-    padding-bottom: 30px;
+    padding-top: 38px;
+    padding-bottom: 24px;
   }
 
   .intro h2,
   .section-heading h2,
   .locations h2,
   .final-cta h2 {
-    font-size: 26px;
+    font-size: 24px;
     line-height: 1.08;
   }
 
@@ -365,17 +367,18 @@ section:not(.hero) {
   }
 
   .services-preview {
-    padding-top: 32px;
+    padding-top: 24px;
+    padding-bottom: 34px;
   }
 
   .section-heading {
-    margin-bottom: 22px;
+    margin-bottom: 16px;
   }
 
   .service-list {
     grid-template-columns: 1fr;
-    gap: 26px;
-    margin-top: 24px;
+    gap: 22px;
+    margin-top: 20px;
   }
 
   .service-list article {
@@ -383,13 +386,13 @@ section:not(.hero) {
   }
 
   .locations {
-    padding-top: 44px;
-    padding-bottom: 44px;
+    padding-top: 34px;
+    padding-bottom: 34px;
   }
 
   .final-cta {
-    padding-top: 46px;
-    padding-bottom: 50px;
+    padding-top: 38px;
+    padding-bottom: 46px;
   }
 
   .site-footer {
@@ -438,14 +441,14 @@ section:not(.hero) {
   }
 
   section:not(.hero) {
-    padding: 38px 22px;
+    padding: 34px 22px;
   }
 
   .intro h2,
   .section-heading h2,
   .locations h2,
   .final-cta h2 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .intro p:not(.eyebrow),
