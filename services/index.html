@@ -1,51 +1,48 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Change this title for each new page -->
-  <title>Coming Soon | Brianna Gregory Photography</title>
+  <title>Services | Brianna Gregory Photography</title>
 
-  <!-- Your shared stylesheet -->
   <link rel="stylesheet" href="/main/booking/styles.css" />
 
   <style>
-    .coming-soon-page {
-      min-height: calc(100vh - 180px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 24px;
+    .services-page {
+      padding: 70px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .services-hero {
       text-align: center;
+      max-width: 760px;
+      margin: 0 auto 70px;
     }
 
-    .coming-soon-content {
-      max-width: 700px;
-    }
-
-    .coming-soon-eyebrow {
+    .services-eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.18em;
       font-size: 12px;
       margin-bottom: 20px;
     }
 
-    .coming-soon-content h1 {
-      font-size: clamp(42px, 6vw, 80px);
+    .services-hero h1 {
+      font-size: clamp(42px, 6vw, 78px);
       font-weight: 400;
       line-height: 1.1;
       margin-bottom: 24px;
     }
 
-    .coming-soon-content p {
+    .services-hero p {
       font-size: 18px;
       line-height: 1.8;
-      max-width: 560px;
-      margin: 0 auto 30px;
+      margin-bottom: 28px;
     }
 
-    .coming-soon-button {
+    .services-button {
       display: inline-block;
       padding: 14px 30px;
       border: 1px solid #222;
@@ -57,25 +54,97 @@
       transition: 0.25s ease;
     }
 
-    .coming-soon-button:hover {
+    .services-button:hover {
       background: #222;
       color: white;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 70px;
+    }
+
+    .service-card {
+      border: 1px solid #ddd;
+      padding: 34px 28px;
+      background: #fff;
+    }
+
+    .service-card h2 {
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .service-card p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .service-card ul {
+      padding-left: 18px;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .details-section {
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      padding-top: 60px;
+    }
+
+    .details-section h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 400;
+      margin-bottom: 22px;
+    }
+
+    .details-section p {
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 22px;
+    }
+
+    .process-list {
+      text-align: left;
+      max-width: 720px;
+      margin: 36px auto;
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .process-list strong {
+      font-weight: 600;
+    }
+
+    @media (max-width: 850px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-page {
+        padding: 55px 22px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Mobile Menu Toggle -->
   <input type="checkbox" id="menu-toggle" class="menu-toggle" />
 
-  <!-- Mobile Hamburger Button -->
   <label for="menu-toggle" class="hamburger" aria-label="Open mobile menu">
     <span></span>
     <span></span>
   </label>
 
-  <!-- Mobile Side Menu -->
   <aside class="side-menu">
     <label for="menu-toggle" class="close-menu">×</label>
     <a href="https://brigregoryphotos.com/">Home</a>
@@ -86,7 +155,6 @@
     <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener">Instagram</a>
   </aside>
 
-  <!-- Desktop Header -->
   <header class="site-header">
     <nav class="site-nav">
       <a href="https://brigregoryphotos.com/">Home</a>
@@ -97,24 +165,113 @@
     </nav>
   </header>
 
-  <!-- PAGE PLACEHOLDER CONTENT -->
-  <main class="coming-soon-page">
-    <section class="coming-soon-content">
-      <p class="coming-soon-eyebrow">Brianna Gregory Photography</p>
+  <main class="services-page">
 
-      <h1>Coming Soon...</h1>
+    <section class="services-hero">
+      <p class="services-eyebrow">Brianna Gregory Photography</p>
+
+      <h1>Photography Services</h1>
 
       <p>
-        This page is currently being created. Please check back soon for new content.
+        Thoughtful, professional photography for life’s meaningful moments — from personal portraits
+        and graduations to maternity sessions, special events, and celebrations worth remembering.
       </p>
 
-      <a href="https://brigregoryphotos.com" class="coming-soon-button">
-        Back to Home
+      <p>
+        To begin, please submit an online inquiry with the details of what you’re looking for.
+        I’ll get back to you shortly after your inquiry is submitted, and I may reach out to ask
+        for additional information so I can better understand your vision, location, timing, and needs.
+      </p>
+
+      <a href="https://brigregoryphotos.com/main/booking/" class="services-button">
+        Submit an Inquiry
       </a>
     </section>
+
+    <section class="services-grid">
+
+      <article class="service-card">
+        <h2>Portraits</h2>
+        <p>
+          Portrait sessions are perfect for individuals, couples, creatives, graduates, and anyone
+          wanting intentional images that feel personal, polished, and true to them.
+        </p>
+        <ul>
+          <li>Individual portraits</li>
+          <li>Couples sessions</li>
+          <li>Graduation photos</li>
+          <li>Creative branding portraits</li>
+          <li>Personal milestones</li>
+        </ul>
+      </article>
+
+      <article class="service-card">
+        <h2>Lifestyle</h2>
+        <p>
+          Lifestyle photography focuses on natural, editorial storytelling with a relaxed and
+          intentional feel. These sessions are designed to capture connection, personality, and
+          real moments in a beautiful way.
+        </p>
+        <ul>
+          <li>Maternity sessions</li>
+          <li>Family moments</li>
+          <li>At-home or outdoor sessions</li>
+          <li>Editorial-style portraits</li>
+          <li>Everyday storytelling</li>
+        </ul>
+      </article>
+
+      <article class="service-card">
+        <h2>Occasions</h2>
+        <p>
+          Occasion and event coverage is available for intimate celebrations, special gatherings,
+          and important details you want documented with care.
+        </p>
+        <ul>
+          <li>Special events</li>
+          <li>Celebrations and gatherings</li>
+          <li>Birthdays</li>
+          <li>Showers and small ceremonies</li>
+          <li>Details, candid moments, and portraits</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <section class="details-section">
+      <h2>What’s Included</h2>
+
+      <p>
+        All services include professional editing and access to a digital gallery where you can
+        download your final images. Each session is handled with care, attention to detail, and
+        an editing style that keeps your photos clean, timeless, and true to the moment.
+      </p>
+
+      <div class="process-list">
+        <p><strong>1. Submit your inquiry:</strong> Share the type of session or event you’re interested in, your preferred date, location, and any important details.</p>
+
+        <p><strong>2. I’ll follow up shortly:</strong> After your inquiry is submitted online, I’ll review your request and get back to you. I may ask for more information to make sure your session is planned properly.</p>
+
+        <p><strong>3. Deposit required:</strong> A deposit will be required to secure your booking date. Your date is not officially reserved until the deposit has been received.</p>
+
+        <p><strong>4. Professional editing:</strong> Your selected images will be professionally edited to create a polished, cohesive final gallery.</p>
+
+        <p><strong>5. Digital delivery:</strong> Once complete, your final images will be delivered through an online gallery with access to digitally download your images.</p>
+      </div>
+
+      <p>
+        Services include, but are not limited to, graduation photos, maternity sessions, portraits,
+        lifestyle sessions, and special events. If you have something specific in mind, submit an
+        inquiry and I’ll be happy to review the details.
+      </p>
+
+      <a href="https://brigregoryphotos.com/main/booking/" class="services-button">
+        Start Your Inquiry
+      </a>
+    </section>
+
   </main>
 
-  <!-- Footer -->
   <footer class="booking-footer">
     <a href="mailto:booking@brigregoryphotos.com">booking@brigregoryphotos.com</a>
     <p>© 2026 Brianna Gregory Photography</p>
@@ -122,3 +279,4 @@
 
 </body>
 </html>
+```
