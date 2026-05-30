@@ -1,87 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Change this title for each new page -->
+  <title>Coming Soon | Brianna Gregory Photography</title>
+
+  <!-- Your shared stylesheet -->
+  <link rel="stylesheet" href="/main/booking/styles.css" />
+
+  <style>
+    .coming-soon-page {
+      min-height: calc(100vh - 180px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .coming-soon-content {
+      max-width: 700px;
+    }
+
+    .coming-soon-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .coming-soon-content h1 {
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .coming-soon-content p {
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 560px;
+      margin: 0 auto 30px;
+    }
+
+    .coming-soon-button {
+      display: inline-block;
+      padding: 14px 30px;
+      border: 1px solid #222;
+      text-decoration: none;
+      color: inherit;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      transition: 0.25s ease;
+    }
+
+    .coming-soon-button:hover {
+      background: #222;
+      color: white;
+    }
+  </style>
+</head>
+
 <body>
 
-<div class="services-page">
+  <!-- Mobile Menu Toggle -->
+  <input type="checkbox" id="menu-toggle" class="menu-toggle" />
 
-<input type="checkbox" id="menu-toggle" class="menu-toggle">
+  <!-- Mobile Hamburger Button -->
+  <label for="menu-toggle" class="hamburger" aria-label="Open mobile menu">
+    <span></span>
+    <span></span>
+  </label>
 
-<label for="menu-toggle" class="hamburger">
-  <span></span>
-  <span></span>
-</label>
+  <!-- Mobile Side Menu -->
+  <aside class="side-menu">
+    <label for="menu-toggle" class="close-menu">×</label>
+    <a href="https://brigregoryphotos.com/">Home</a>
+    <a href="https://brigregoryphotos.com/portfolio">Portfolio</a>
+    <a href="https://brigregoryphotos.com/about/">About</a>
+    <a href="https://brigregoryphotos.com/main/booking/">Book</a>
+    <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a>
+    <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener">Instagram</a>
+  </aside>
 
-<aside class="side-menu">
-  <label for="menu-toggle" class="close-menu">×</label>
+  <!-- Desktop Header -->
+  <header class="site-header">
+    <nav class="site-nav">
+      <a href="https://brigregoryphotos.com/">Home</a>
+      <a href="https://brigregoryphotos.com/portfolio">Portfolio</a>
+      <a href="https://brigregoryphotos.com/about/">About</a>
+      <a href="https://brigregoryphotos.com/main/booking/">Book</a>
+      <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </header>
 
-  <a href="/">Home</a>
-  <a href="/portfolio">Portfolio</a>
-  <a href="/services">Services</a>
-  <a href="/main/booking/">Book</a>
-  <a href="/privacy-policy/">Privacy Policy</a>
-</aside>
+  <!-- PAGE PLACEHOLDER CONTENT -->
+  <main class="coming-soon-page">
+    <section class="coming-soon-content">
+      <p class="coming-soon-eyebrow">Brianna Gregory Photography</p>
 
-<header class="site-header">
-  <nav class="site-nav">
-    <a href="/">Home</a>
-    <a href="/portfolio">Portfolio</a>
-    <a href="/services">Services</a>
-    <a href="/main/booking/">Book</a>
-    <a href="/privacy-policy/">Privacy Policy</a>
-  </nav>
-</header>
+      <h1>Coming Soon...</h1>
 
-<main>
+      <p>
+        This page is currently being created. Please check back soon for new content.
+      </p>
 
-<section class="hero">
-  <p class="eyebrow">Services</p>
+      <a href="https://brigregoryphotos.com" class="coming-soon-button">
+        Back to Home
+      </a>
+    </section>
+  </main>
 
-  <h1>Photography for meaningful moments.</h1>
-
-  <p class="hero-copy">
-    Portraits, lifestyle sessions, and intimate occasions
-    documented with a timeless editorial perspective.
-  </p>
-
-  <a href="/main/booking/" class="button">Submit an Inquiry</a>
-
-  <p class="note">You will hear from me shortly.</p>
-</section>
-
-<section class="service-block">
-  <p class="eyebrow">Portraits</p>
-  <h2>Individuals, couples, graduates, creatives, and personal milestones.</h2>
-  <p>Elegant portrait sessions designed to feel natural, relaxed, and refined.</p>
-</section>
-
-<section class="service-block">
-  <p class="eyebrow">Lifestyle</p>
-  <h2>Natural, editorial storytelling with a relaxed and intentional feel.</h2>
-  <p>Authentic imagery that captures connection, movement, and everyday beauty.</p>
-</section>
-
-<section class="service-block">
-  <p class="eyebrow">Occasions</p>
-  <h2>Intimate events, celebrations, gatherings, and details worth remembering.</h2>
-  <p>Beautiful documentation of meaningful moments, both big and small.</p>
-</section>
-
-<section class="location">
-  <p class="eyebrow">Serving San Diego County</p>
-  <h2>From North County to South Bay.</h2>
-  <p>Creating images with a timeless point of view.</p>
-</section>
-
-<section class="cta">
-  <h2>Ready to book your session?</h2>
-  <a href="/main/booking/" class="button">Book Now</a>
-</section>
-
-</main>
-
-<footer class="booking-footer">
-  <a href="mailto:booking@brigregoryphotos.com">booking@brigregoryphotos.com</a>
-  <p>© 2026 Brianna Gregory Photography</p>
-</footer>
-
-</div>
+  <!-- Footer -->
+  <footer class="booking-footer">
+    <a href="mailto:booking@brigregoryphotos.com">booking@brigregoryphotos.com</a>
+    <p>© 2026 Brianna Gregory Photography</p>
+  </footer>
 
 </body>
+</html>
