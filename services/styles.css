@@ -1,22 +1,22 @@
-* {
+.services-page,
+.services-page * {
   box-sizing: border-box;
 }
 
-body {
+.services-page {
   margin: 0;
+  min-height: 100vh;
   font-family: "Times New Roman", serif;
   color: #111;
   background: #faf8f5;
 }
 
-/* NAVIGATION */
-
-.site-header {
+.services-page .site-header {
   border-bottom: 1px solid #ddd;
   background: white;
 }
 
-.site-nav {
+.services-page .site-nav {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,53 +24,55 @@ body {
   min-height: 120px;
 }
 
-.site-nav a {
+.services-page .site-nav a,
+.services-page .side-menu a {
   text-decoration: none;
   color: #111;
   text-transform: uppercase;
+}
+
+.services-page .site-nav a {
   letter-spacing: 0.28em;
   font-size: 14px;
 }
 
-.site-nav a:hover,
-.side-menu a:hover {
+.services-page .site-nav a:hover,
+.services-page .side-menu a:hover {
   opacity: 0.6;
 }
 
-.menu-toggle,
-.hamburger,
-.side-menu {
+.services-page .menu-toggle,
+.services-page .hamburger,
+.services-page .side-menu {
   display: none;
 }
 
-/* HERO */
-
-.hero {
+.services-page .hero {
   text-align: center;
   padding: 140px 8% 120px;
   max-width: 900px;
   margin: auto;
 }
 
-.eyebrow {
+.services-page .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 11px;
 }
 
-.hero h1 {
+.services-page .hero h1 {
   font-size: clamp(52px, 8vw, 92px);
   font-weight: 400;
   line-height: 1.05;
   margin: 24px 0;
 }
 
-.hero-copy {
+.services-page .hero-copy {
   font-size: 22px;
   line-height: 1.8;
 }
 
-.button {
+.services-page .button {
   display: inline-block;
   margin-top: 30px;
   border: 1px solid #111;
@@ -82,91 +84,81 @@ body {
   font-size: 12px;
 }
 
-.button:hover {
+.services-page .button:hover {
   background: #111;
   color: white;
 }
 
-.note {
+.services-page .note {
   margin-top: 18px;
   font-size: 12px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
-/* SERVICES */
-
-.service-block {
+.services-page .service-block {
   max-width: 1000px;
   margin: auto;
   padding: 70px 8%;
   border-top: 1px solid #ddd;
 }
 
-.service-block h2 {
+.services-page .service-block h2 {
   font-size: clamp(34px, 5vw, 62px);
   font-weight: 400;
   line-height: 1.1;
   max-width: 900px;
 }
 
-.service-block p:last-child {
+.services-page .service-block p:last-child {
   font-size: 18px;
   line-height: 1.8;
   max-width: 700px;
 }
 
-/* LOCATION */
-
-.location {
+.services-page .location {
   text-align: center;
   padding: 120px 8%;
   background: #f2ede7;
 }
 
-.location h2 {
+.services-page .location h2 {
   font-size: clamp(40px, 6vw, 74px);
   font-weight: 400;
   margin: 20px 0;
 }
 
-/* CTA */
-
-.cta {
+.services-page .cta {
   text-align: center;
   padding: 120px 8%;
 }
 
-/* FOOTER */
-
-.booking-footer {
+.services-page .booking-footer {
   text-align: center;
   padding: 50px 20px;
   border-top: 1px solid #ddd;
   background: white;
 }
 
-.booking-footer a {
+.services-page .booking-footer a {
   color: #111;
   text-decoration: none;
 }
 
-.booking-footer p {
+.services-page .booking-footer p {
   margin-top: 20px;
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-/* MOBILE */
-
 @media (max-width: 900px) {
 
-  .site-header {
+  .services-page .site-header {
     display: none;
   }
 
-  .hamburger {
+  .services-page .hamburger {
     display: block;
     position: fixed;
     top: 30px;
@@ -176,14 +168,14 @@ body {
     cursor: pointer;
   }
 
-  .hamburger span {
+  .services-page .hamburger span {
     display: block;
     height: 2px;
     background: #111;
     margin: 8px 0;
   }
 
-  .side-menu {
+  .services-page .side-menu {
     display: block;
     position: fixed;
     top: 0;
@@ -197,11 +189,11 @@ body {
     border-right: 1px solid #111;
   }
 
-  .menu-toggle:checked ~ .side-menu {
+  .services-page .menu-toggle:checked ~ .side-menu {
     left: 0;
   }
 
-  .close-menu {
+  .services-page .close-menu {
     position: absolute;
     top: 24px;
     left: 24px;
@@ -209,22 +201,19 @@ body {
     cursor: pointer;
   }
 
-  .side-menu a {
+  .services-page .side-menu a {
     display: block;
     margin-bottom: 30px;
-    text-decoration: none;
-    color: #111;
-    text-transform: uppercase;
     letter-spacing: 0.2em;
     font-size: 13px;
   }
 
-  .hero {
+  .services-page .hero {
     padding-top: 110px;
   }
 
-  .hero-copy,
-  .service-block p:last-child {
+  .services-page .hero-copy,
+  .services-page .service-block p:last-child {
     font-size: 17px;
   }
 
