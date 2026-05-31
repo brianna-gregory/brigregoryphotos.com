@@ -4,508 +4,245 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bri Gregory Photo Booth</title>
-
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: #000;
-      color: #fff;
-      font-family: Helvetica, Arial, sans-serif;
-      overflow: hidden;
-    }
-
-    .hidden { display: none !important; }
-
-    .screen {
-      width: 100vw;
-      height: 100vh;
-      background: #000;
-    }
-
-    .center {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-
-    .card {
-      width: min(520px, 92vw);
-      border: 1px solid #fff;
-      padding: 42px;
-      text-align: center;
-      background: #000;
-    }
-
-    h1 {
-      font-family: Georgia, serif;
-      font-size: 52px;
-      margin: 0 0 16px;
-      letter-spacing: -1px;
-    }
-
-    p {
-      font-size: 17px;
-      line-height: 1.5;
-      color: #ddd;
-    }
-
-    input, select, button {
-      width: 100%;
-      margin-top: 14px;
-      padding: 16px;
-      border: 1px solid #fff;
-      border-radius: 0;
-      background: #000;
-      color: #fff;
-      font-size: 16px;
-    }
-
-    input::placeholder { color: #aaa; }
-
-    button {
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: bold;
-      background: #fff;
-      color: #000;
-    }
-
-    button:hover {
-      background: #ddd;
-    }
-
-    label {
-      display: block;
-      margin-top: 22px;
-      text-align: left;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1.6px;
-      color: #ccc;
-    }
-
-    #passcodeError {
-      color: #fff;
-      border-top: 1px solid #fff;
-      margin-top: 18px;
-      padding-top: 14px;
-    }
-
-    #setupScreen {
-      overflow-y: auto;
-      padding: 40px 20px;
-    }
-
-    .setup-wrap {
-      width: min(760px, 94vw);
-      margin: auto;
-    }
-
-    .brand {
-      text-align: center;
-      margin-bottom: 36px;
-    }
-
-    .brand small {
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: #aaa;
-    }
-
-    .setup-card {
-      border: 1px solid #fff;
-      padding: 34px;
-      background: #000;
-    }
-
-    #boothScreen {
-      position: relative;
-    }
-
-    video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      transform: none;
-      background: #000;
-    }
-
-    #overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-    }
-
-    #message {
-      position: absolute;
-      top: 34px;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 1px solid #fff;
-      background: rgba(0,0,0,0.7);
-      padding: 14px 24px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 13px;
-      text-align: center;
-      max-width: 90vw;
-    }
-
-    #countdown {
-      font-family: Georgia, serif;
-      font-size: 26vw;
-      font-weight: bold;
-      text-shadow: 0 10px 40px #000;
-    }
-
-    #boothControls {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 12px;
-      width: min(560px, 92vw);
-    }
-
-    #boothControls button {
-      flex: 1;
-    }
-
-    #canvas { display: none; }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 40px; }
-      .card, .setup-card { padding: 28px; }
-      #boothControls { flex-direction: column; }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-  <div id="lockScreen" class="screen center">
-    <div class="card">
-      <h1>Event Mode</h1>
-      <p>Enter the passcode to start Bri Gregory Photo Booth.</p>
-      <input id="passcodeInput" type="password" placeholder="Passcode" />
-      <button id="unlockBtn">Enter Booth</button>
-      <p id="passcodeError"></p>
-    </div>
-  </div>
 
-  <div id="setupScreen" class="screen hidden">
-    <div class="setup-wrap">
-      <div class="brand">
-        <small>Bri Gregory Photos</small>
-        <h1>Photo Booth Setup</h1>
-        <p>Choose your camera, layout, frame, and event name.</p>
+  <!-- ══════════════════════════
+       LOCK SCREEN
+  ══════════════════════════ -->
+  <div id="lockScreen" class="screen lock-screen is-active">
+    <span class="brand-mark">Bri Gregory Photos</span>
+
+    <div class="lock-card">
+      <p class="eyebrow">Event Mode</p>
+      <h1>Photo<br>Booth</h1>
+      <span class="gold-rule"></span>
+      <p class="subcopy">Enter your passcode to begin the experience.</p>
+
+      <div class="pin-row" id="pinRow">
+        <span></span><span></span><span></span><span></span>
       </div>
 
-      <div class="setup-card">
-        <label>Camera</label>
-        <select id="cameraSelect"></select>
+      <input
+        id="passcodeInput"
+        class="input"
+        type="password"
+        placeholder="Passcode"
+        maxlength="20"
+        autocomplete="off"
+      />
 
-        <label>Photo Layout</label>
-        <select id="layoutSelect">
+      <button id="unlockBtn" class="button button-primary button-large" style="margin-top:18px">
+        Enter Booth
+      </button>
+
+      <p class="error" id="passcodeError"></p>
+    </div>
+
+    <p class="page-footer">brigregoryphotos.com</p>
+  </div>
+
+  <!-- ══════════════════════════
+       SETUP SCREEN
+  ══════════════════════════ -->
+  <div id="setupScreen" class="screen setup-screen">
+    <div class="topbar">
+      <div>
+        <p class="eyebrow">Bri Gregory Photos</p>
+        <h1>Booth<br>Setup</h1>
+      </div>
+      <div style="display:flex;gap:10px;flex-shrink:0">
+        <button id="previewBoothBtn" class="button button-ghost">Preview</button>
+        <button id="startBoothBtn"   class="button button-primary">Start Event</button>
+      </div>
+    </div>
+
+    <div class="setup-grid">
+
+      <!-- Camera -->
+      <div class="panel glass-card">
+        <p class="eyebrow">Camera</p>
+        <h2>Input</h2>
+        <span class="gold-rule" style="margin:10px 0 16px"></span>
+
+        <label class="field-label">Select Camera</label>
+        <select id="cameraSelect" class="input"></select>
+
+        <button id="refreshCamerasBtn" class="button button-soft" style="margin-top:14px">
+          Refresh Cameras
+        </button>
+
+        <label class="field-label" style="margin-top:22px">Live Preview</label>
+        <video
+          id="video"
+          autoplay
+          playsinline
+          muted
+          style="width:100%;border-radius:14px;object-fit:cover;aspect-ratio:16/9;background:#0d0a08;border:1px solid rgba(201,168,76,0.2)"
+        ></video>
+      </div>
+
+      <!-- Layout -->
+      <div class="panel glass-card">
+        <p class="eyebrow">Layout</p>
+        <h2>Format</h2>
+        <span class="gold-rule" style="margin:10px 0 16px"></span>
+
+        <label class="field-label">Photo Layout</label>
+        <select id="layoutSelect" class="input">
           <option value="single">1 Photo</option>
           <option value="triple">3 Photos in One Frame</option>
         </select>
 
-        <label>Upload Frame Overlay</label>
-        <input id="frameUpload" type="file" accept="image/png,image/jpeg" />
+        <label class="field-label">Upload Frame Overlay</label>
+        <input id="frameUpload" class="input file-input" type="file" accept="image/png,image/jpeg" />
+        <p class="tiny">Transparent PNG recommended for best results.</p>
 
-        <label>Upload Logo</label>
-        <input id="logoUpload" type="file" accept="image/png,image/jpeg" />
-
-        <label>Event Name</label>
-        <input id="eventName" type="text" placeholder="Example: Bri’s Birthday Booth" />
-
-        <button id="startBoothBtn">Start Event Mode</button>
+        <label class="field-label">Upload Logo</label>
+        <input id="logoUpload" class="input file-input" type="file" accept="image/png,image/jpeg" />
+        <p class="tiny">Centered at the top of each printed photo.</p>
       </div>
+
+      <!-- Event -->
+      <div class="panel glass-card">
+        <p class="eyebrow">Event</p>
+        <h2>Details</h2>
+        <span class="gold-rule" style="margin:10px 0 16px"></span>
+
+        <label class="field-label">Event Name</label>
+        <input
+          id="eventName"
+          class="input"
+          type="text"
+          placeholder="e.g. Sara & Jake's Wedding"
+        />
+        <p class="tiny">Printed at the bottom of each photo strip.</p>
+      </div>
+
+      <!-- Start -->
+      <div class="panel start-panel">
+        <p class="eyebrow">Ready?</p>
+        <h2>Start the<br>Experience</h2>
+        <span class="gold-rule" style="margin:12px 0 16px"></span>
+        <p class="subcopy" style="color:rgba(253,246,238,0.48);font-size:0.9rem;margin-bottom:24px">
+          Make sure your camera is selected and frame is uploaded before going live.
+        </p>
+        <button id="startBoothBtn2" class="button button-primary button-large">
+          Start Event Mode
+        </button>
+        <button id="previewBoothBtn2" class="button button-soft">
+          Preview Only
+        </button>
+      </div>
+
     </div>
   </div>
 
-  <div id="boothScreen" class="screen hidden">
-    <video id="video" autoplay playsinline></video>
+  <!-- ══════════════════════════
+       BOOTH SCREEN
+  ══════════════════════════ -->
+  <div id="boothScreen" class="screen booth-screen">
+    <video id="videoFeed" autoplay playsinline muted style="width:100vw;height:100vh;object-fit:cover;background:#000;display:block;"></video>
 
-    <div id="overlay">
-      <div id="message">Tap or press space to take photo</div>
-      <div id="countdown"></div>
+    <div class="booth-shade"></div>
+    <div class="booth-brand">Bri Gregory Photos</div>
+
+    <!-- Hidden admin button — kept in DOM but invisible; exit via 4 taps -->
+    <button id="adminBtn" class="admin-button" aria-hidden="true" tabindex="-1">Setup</button>
+
+    <div class="booth-center">
+      <div id="countdown" class="countdown"></div>
     </div>
 
-    <div id="boothControls">
-      <button id="takePhotoBtn">Take Photo</button>
-      <button id="backToSetupBtn">Setup</button>
+    <div id="message" class="booth-message">Tap to take a photo</div>
+
+    <div class="booth-bottom">
+      <button id="takePhotoBtn" class="shutter-button">
+        Take Photo
+      </button>
     </div>
 
-    <canvas id="canvas"></canvas>
+    <canvas id="canvas" style="display:none"></canvas>
   </div>
+
+  <!-- ══════════════════════════
+       ALL DONE SCREEN
+  ══════════════════════════ -->
+  <div id="alldoneScreen" class="screen alldone-screen">
+    <div class="alldone-inner">
+      <div class="alldone-checkmark">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+
+      <h1 class="alldone-title">All Done!</h1>
+      <p class="alldone-subtitle">Your photo is downloading now.</p>
+
+      <button id="alldoneReadyBtn" class="alldone-cta">
+        <span class="alldone-cta-dot"></span>
+        I'm Ready — Next Guest
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       REVIEW SCREEN
+  ══════════════════════════ -->
+  <div id="reviewScreen" class="screen review-screen">
+    <div class="review-shell">
+      <div class="review-copy">
+        <p class="eyebrow">Your Photo</p>
+        <h2>Looking<br>great!</h2>
+        <span class="gold-rule" style="margin:12px 0 16px"></span>
+        <p class="subcopy">Your photo has been saved. Take another or head back to setup.</p>
+        <div class="review-actions">
+          <button id="takeAnotherBtn" class="button button-primary">Take Another</button>
+          <button id="reviewSetupBtn" class="button button-ghost">Setup</button>
+        </div>
+      </div>
+      <img id="reviewImage" class="review-image" src="" alt="Your photo" />
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 
   <script>
-    const PASSCODE = "1111";
+    // Wire up the duplicate start buttons in the start panel
+    document.getElementById("startBoothBtn2")?.addEventListener("click", () => {
+      document.getElementById("startBoothBtn").click();
+    });
+    document.getElementById("previewBoothBtn2")?.addEventListener("click", () => {
+      document.getElementById("previewBoothBtn").click();
+    });
 
-    const lockScreen = document.getElementById("lockScreen");
-    const setupScreen = document.getElementById("setupScreen");
-    const boothScreen = document.getElementById("boothScreen");
-
+    // Pin dot feedback on lock screen
     const passcodeInput = document.getElementById("passcodeInput");
-    const unlockBtn = document.getElementById("unlockBtn");
-    const passcodeError = document.getElementById("passcodeError");
-
-    const cameraSelect = document.getElementById("cameraSelect");
-    const layoutSelect = document.getElementById("layoutSelect");
-    const frameUpload = document.getElementById("frameUpload");
-    const logoUpload = document.getElementById("logoUpload");
-    const eventNameInput = document.getElementById("eventName");
-
-    const startBoothBtn = document.getElementById("startBoothBtn");
-    const backToSetupBtn = document.getElementById("backToSetupBtn");
-    const takePhotoBtn = document.getElementById("takePhotoBtn");
-
-    const video = document.getElementById("video");
-    const canvas = document.getElementById("canvas");
-    const message = document.getElementById("message");
-    const countdown = document.getElementById("countdown");
-
-    let currentStream = null;
-    let frameImage = null;
-    let logoImage = null;
-    let isTakingPhotos = false;
-
-    unlockBtn.addEventListener("click", unlock);
-    passcodeInput.addEventListener("keydown", e => {
-      if (e.key === "Enter") unlock();
+    const pinDots = document.querySelectorAll("#pinRow span");
+    passcodeInput.addEventListener("input", () => {
+      const len = Math.min(passcodeInput.value.length, 4);
+      pinDots.forEach((dot, i) => {
+        dot.classList.toggle("filled", i < len);
+      });
     });
 
-    function unlock() {
-      if (passcodeInput.value === PASSCODE) {
-        lockScreen.classList.add("hidden");
-        setupScreen.classList.remove("hidden");
-        initCamera();
-      } else {
-        passcodeError.textContent = "Wrong passcode. Try again.";
-      }
-    }
-
-    async function initCamera(deviceId) {
-      try {
-        if (currentStream) {
-          currentStream.getTracks().forEach(track => track.stop());
+    // Booth screen uses a separate <video> element id'd as "videoFeed"
+    // but app.js targets "video" — patch that here
+    const videoFeed = document.getElementById("videoFeed");
+    const videoEl   = document.getElementById("video");
+    // Keep both in sync (app.js sets srcObject on #video, mirror to #videoFeed)
+    const origDescriptor = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'srcObject');
+    if (videoEl && videoFeed) {
+      Object.defineProperty(videoEl, 'srcObject', {
+        get() { return origDescriptor.get.call(this); },
+        set(val) {
+          origDescriptor.set.call(this, val);
+          origDescriptor.set.call(videoFeed, val);
         }
-
-        currentStream = await navigator.mediaDevices.getUserMedia({
-          video: {
-            deviceId: deviceId ? { exact: deviceId } : undefined,
-            width: { ideal: 1920 },
-            height: { ideal: 1080 }
-          },
-          audio: false
-        });
-
-        video.srcObject = currentStream;
-        await loadCameras();
-      } catch (error) {
-        alert("Camera access failed. Make sure your browser has permission to use the camera.");
-      }
-    }
-
-    async function loadCameras() {
-      const devices = await navigator.mediaDevices.enumerateDevices();
-      const cameras = devices.filter(device => device.kind === "videoinput");
-
-      cameraSelect.innerHTML = "";
-
-      cameras.forEach((camera, index) => {
-        const option = document.createElement("option");
-        option.value = camera.deviceId;
-        option.textContent = camera.label || `Camera ${index + 1}`;
-        cameraSelect.appendChild(option);
       });
-    }
-
-    cameraSelect.addEventListener("change", () => {
-      initCamera(cameraSelect.value);
-    });
-
-    frameUpload.addEventListener("change", async e => {
-      frameImage = await loadImageFromFile(e.target.files[0]);
-    });
-
-    logoUpload.addEventListener("change", async e => {
-      logoImage = await loadImageFromFile(e.target.files[0]);
-    });
-
-    function loadImageFromFile(file) {
-      return new Promise(resolve => {
-        if (!file) return resolve(null);
-        const img = new Image();
-        img.onload = () => resolve(img);
-        img.src = URL.createObjectURL(file);
-      });
-    }
-
-    startBoothBtn.addEventListener("click", () => {
-      setupScreen.classList.add("hidden");
-      boothScreen.classList.remove("hidden");
-      message.textContent = "Tap or press space to take photo";
-    });
-
-    backToSetupBtn.addEventListener("click", () => {
-      boothScreen.classList.add("hidden");
-      setupScreen.classList.remove("hidden");
-    });
-
-    takePhotoBtn.addEventListener("click", startPhotoSequence);
-
-    document.addEventListener("keydown", e => {
-      if (e.code === "Space" && !boothScreen.classList.contains("hidden")) {
-        e.preventDefault();
-        startPhotoSequence();
-      }
-    });
-
-    async function startPhotoSequence() {
-      if (isTakingPhotos) return;
-
-      isTakingPhotos = true;
-      takePhotoBtn.disabled = true;
-
-      const layout = layoutSelect.value;
-      const photos = [];
-
-      if (layout === "single") {
-        message.textContent = "Ready";
-        await countdownFromThree();
-        photos.push(capturePhoto());
-      }
-
-      if (layout === "triple") {
-        message.textContent = "Ready";
-        await countdownFromThree();
-        photos.push(capturePhoto());
-
-        message.textContent = "Okay, get ready for the next photo";
-        await wait(1400);
-        await countdownFromThree();
-        photos.push(capturePhoto());
-
-        message.textContent = "Last one";
-        await wait(1400);
-        await countdownFromThree();
-        photos.push(capturePhoto());
-      }
-
-      message.textContent = "Creating your photo";
-      const finalImage = createFinalImage(photos, layout);
-      downloadImage(finalImage);
-
-      message.textContent = "Done. Tap or press space for another photo.";
-      takePhotoBtn.disabled = false;
-      isTakingPhotos = false;
-    }
-
-    async function countdownFromThree() {
-      for (let i = 3; i > 0; i--) {
-        countdown.textContent = i;
-        await wait(900);
-      }
-
-      countdown.textContent = "PHOTO";
-      await wait(300);
-      countdown.textContent = "";
-    }
-
-    function capturePhoto() {
-      const tempCanvas = document.createElement("canvas");
-      const ctx = tempCanvas.getContext("2d");
-
-      tempCanvas.width = video.videoWidth;
-      tempCanvas.height = video.videoHeight;
-
-      ctx.drawImage(video, 0, 0, tempCanvas.width, tempCanvas.height);
-      return tempCanvas;
-    }
-
-    function createFinalImage(photos, layout) {
-      const ctx = canvas.getContext("2d");
-
-      canvas.width = 1200;
-      canvas.height = 1800;
-
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      if (layout === "single") {
-        drawCroppedImage(ctx, photos[0], 80, 180, 1040, 1200);
-      }
-
-      if (layout === "triple") {
-        drawCroppedImage(ctx, photos[0], 90, 130, 1020, 460);
-        drawCroppedImage(ctx, photos[1], 90, 670, 1020, 460);
-        drawCroppedImage(ctx, photos[2], 90, 1210, 1020, 460);
-      }
-
-      if (frameImage) {
-        ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
-      }
-
-      if (logoImage) {
-        ctx.drawImage(logoImage, 450, 40, 300, 120);
-      }
-
-      const eventName = eventNameInput.value.trim();
-      if (eventName) {
-        ctx.fillStyle = "#000";
-        ctx.font = "bold 44px Helvetica, Arial";
-        ctx.textAlign = "center";
-        ctx.fillText(eventName, canvas.width / 2, 1740);
-      }
-
-      return canvas.toDataURL("image/png");
-    }
-
-    function drawCroppedImage(ctx, img, x, y, w, h) {
-      const sourceRatio = img.width / img.height;
-      const targetRatio = w / h;
-
-      let sx, sy, sw, sh;
-
-      if (sourceRatio > targetRatio) {
-        sh = img.height;
-        sw = sh * targetRatio;
-        sx = (img.width - sw) / 2;
-        sy = 0;
-      } else {
-        sw = img.width;
-        sh = sw / targetRatio;
-        sx = 0;
-        sy = (img.height - sh) / 2;
-      }
-
-      ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
-    }
-
-    function downloadImage(imageData) {
-      const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-      const link = document.createElement("a");
-
-      link.href = imageData;
-      link.download = `BriGregory-PhotoBooth-${timestamp}.png`;
-
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-
-    function wait(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
     }
   </script>
 </body>
