@@ -95,6 +95,35 @@
     .start-panel .btn-soft { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); margin-top: 10px; }
     .start-panel .btn-soft:hover { background: rgba(255,255,255,0.18); }
 
+    /* ══ TEMPLATE CHOOSER ══ */
+    .template-cards { display: flex; gap: 14px; margin-top: 8px; }
+    .template-card { flex: 1; border: 2px solid var(--border); border-radius: 14px; padding: 14px 10px 10px; cursor: pointer; transition: border-color var(--trans), background var(--trans); background: var(--white); text-align: center; }
+    .template-card:hover { border-color: var(--muted); }
+    .template-card.selected { border-color: var(--ink); background: var(--off); }
+    .template-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 10px; display: block; }
+    .template-card.selected .template-card-label { color: var(--ink); }
+
+    /* 6×4 single frame preview */
+    .tpl-single { width: 100%; aspect-ratio: 6/4; background: var(--white); border: 1px solid var(--border); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 6px; box-sizing: border-box; }
+    .tpl-single-img { flex: 1; width: 100%; background: #d8d5d0; border-radius: 4px; margin: 4px 0; }
+    .tpl-single-brand { font-size: 0.45rem; color: var(--muted); letter-spacing: 0.1em; white-space: nowrap; }
+
+    /* Strip preview */
+    .tpl-strip { width: 52%; margin: 0 auto; background: var(--white); border: 1px solid var(--border); border-radius: 6px; display: flex; flex-direction: column; align-items: center; padding: 6px 6px 5px; gap: 4px; }
+    .tpl-strip-img { width: 100%; background: #d8d5d0; border-radius: 3px; aspect-ratio: 1.8/1.4; }
+    .tpl-strip-brand { font-size: 0.42rem; color: var(--muted); letter-spacing: 0.1em; margin-top: 1px; }
+
+    /* ══ PREVIEW SCREEN ══ */
+    .preview-screen { background: var(--off); display: none; place-items: center; }
+    .preview-screen.is-active { display: grid; }
+    .preview-inner { text-align: center; padding: 32px 24px; width: min(700px, 96vw); }
+    .preview-inner .eyebrow { margin-bottom: 6px; }
+    .preview-inner h1 { font-size: clamp(2.2rem, 4vw, 3.5rem); margin-bottom: 4px; }
+    .preview-inner .subcopy { margin: 8px auto 24px; max-width: 320px; }
+    .preview-frame { display: inline-block; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: var(--white); margin-bottom: 28px; }
+    .preview-frame img { display: block; max-height: 55vh; max-width: min(640px, 90vw); width: auto; height: auto; object-fit: contain; }
+    .preview-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
     /* ══ BOOTH SCREEN ══ */
     .booth-screen { position: relative; background: #000; }
     .booth-screen.is-active { display: block; }
@@ -241,14 +270,35 @@
       <!-- Layout -->
       <div class="panel">
         <p class="eyebrow">Layout</p>
-        <h2>Format</h2>
+        <h2>Template</h2>
         <span class="divider"></span>
-        <label class="field-label">Photo Layout</label>
-        <select id="layoutSelect" class="input">
-          <option value="single">1 Photo</option>
-          <option value="triple">3 Photos in One Frame</option>
-        </select>
-        <label class="field-label">Frame Overlay</label>
+        <label class="field-label">Choose a Layout</label>
+
+        <div class="template-cards">
+          <!-- 6×4 single -->
+          <div class="template-card selected" data-layout="single" id="tplSingle">
+            <div class="tpl-single">
+              <div class="tpl-single-brand">Brianna Gregory Photography</div>
+              <div class="tpl-single-img"></div>
+              <div class="tpl-single-brand">Event Name</div>
+            </div>
+            <span class="template-card-label">6 × 4 Single</span>
+          </div>
+
+          <!-- Photo strip -->
+          <div class="template-card" data-layout="triple" id="tplStrip">
+            <div class="tpl-strip">
+              <div class="tpl-strip-brand">Brianna Gregory Photography</div>
+              <div class="tpl-strip-img"></div>
+              <div class="tpl-strip-img"></div>
+              <div class="tpl-strip-img"></div>
+              <div class="tpl-strip-brand">Event Name</div>
+            </div>
+            <span class="template-card-label">Photo Strip × 3</span>
+          </div>
+        </div>
+
+        <label class="field-label" style="margin-top:22px">Frame Overlay</label>
         <input id="frameUpload" class="input file-input" type="file" accept="image/png,image/jpeg" />
         <p class="tiny">Transparent PNG recommended.</p>
         <label class="field-label">Logo</label>
@@ -303,6 +353,22 @@
       <button id="takePhotoBtn" class="shutter-button">Take Photo</button>
     </div>
     <canvas id="canvas" style="display:none"></canvas>
+  </div>
+
+  <!-- PREVIEW SCREEN -->
+  <div id="previewScreen" class="screen preview-screen">
+    <div class="preview-inner">
+      <p class="eyebrow">Brianna Gregory Photography</p>
+      <h1>Looking<br>great!</h1>
+      <span class="divider" style="margin:12px auto 20px"></span>
+      <div class="preview-frame">
+        <img id="previewImg" src="" alt="Your photo preview" />
+      </div>
+      <div class="preview-actions">
+        <button id="previewApproveBtn" class="btn btn-primary btn-lg">Love it — Keep Going</button>
+        <button id="previewRetakeBtn" class="btn btn-ghost">Retake</button>
+      </div>
+    </div>
   </div>
 
   <!-- PHONE SCREEN -->
@@ -388,6 +454,7 @@
       lock:    document.getElementById("lockScreen"),
       setup:   document.getElementById("setupScreen"),
       booth:   document.getElementById("boothScreen"),
+      preview: document.getElementById("previewScreen"),
       phone:   document.getElementById("phoneScreen"),
       alldone: document.getElementById("alldoneScreen"),
       review:  document.getElementById("reviewScreen")
@@ -429,6 +496,18 @@
     let lastPhotoDataURL    = null;
     let holdTimer           = null;
     let holdIndicator       = null;
+    let selectedLayout      = "single"; // "single" | "triple"
+
+    // ── Template card selection ──
+    document.querySelectorAll(".template-card").forEach(card => {
+      card.addEventListener("click", () => {
+        document.querySelectorAll(".template-card").forEach(c => c.classList.remove("selected"));
+        card.classList.add("selected");
+        selectedLayout = card.dataset.layout;
+      });
+    });
+
+    function getLayout() { return selectedLayout; }
 
     function getDeliveryMode() {
       return document.querySelector('input[name="delivery"]:checked')?.value || "download";
@@ -567,6 +646,27 @@
     takeAnotherBtn?.addEventListener("click", enterBooth);
     alldoneReadyBtn?.addEventListener("click", enterBooth);
     document.getElementById("alldoneScreen")?.addEventListener("click", enterBooth);
+
+    // ── Preview screen ──
+    document.getElementById("previewApproveBtn").addEventListener("click", () => {
+      downloadImage(lastPhotoDataURL);
+      if (getDeliveryMode() === "text") {
+        document.getElementById("photoThumb").src = lastPhotoDataURL;
+        sendStatus.textContent = "";
+        sendStatus.className   = "send-status";
+        sendPhotoBtn.disabled  = dialedDigits.length < 10;
+        sendPhotoBtn.innerHTML = "Text this to me";
+        isTakingPhotos = false;
+        showScreen("phone");
+      } else {
+        alldoneSubtitle.textContent = "Your photo is downloading now.";
+        showScreen("alldone");
+      }
+    });
+
+    document.getElementById("previewRetakeBtn").addEventListener("click", () => {
+      enterBooth();
+    });
 
     // ── Numpad logic ──
     let dialedDigits = "";
@@ -717,7 +817,7 @@
       if (takePhotoBtn) takePhotoBtn.disabled = true;
 
       const photos = [];
-      const layout = layoutSelect.value;
+      const layout = getLayout();
 
       try {
         if (layout === "single") {
@@ -745,21 +845,12 @@
 
         const final = createFinalImage(photos, layout);
         lastPhotoDataURL = final;
-        downloadImage(final);
-        reviewImage.src = final;
+        reviewImage.src  = final;
 
-        if (getDeliveryMode() === "text") {
-          document.getElementById("photoThumb").src = final;
-          sendStatus.textContent = "";
-          sendStatus.className   = "send-status";
-          sendPhotoBtn.disabled  = dialedDigits.length < 10;
-          sendPhotoBtn.innerHTML = "Text this to me";
-          isTakingPhotos = false; // reset here so exit hold works on return
-          showScreen("phone");
-        } else {
-          alldoneSubtitle.textContent = "Your photo is downloading now.";
-          showScreen("alldone");
-        }
+        // Show preview before download/send
+        document.getElementById("previewImg").src = final;
+        isTakingPhotos = false;
+        showScreen("preview");
 
       } catch (err) {
         alert(`Photo failed: ${err.message}`);
@@ -788,43 +879,82 @@
     // ── Compose final image ──
     function createFinalImage(photos, layout) {
       const ctx = canvas.getContext("2d");
-      canvas.width = 1200; canvas.height = 1800;
-
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.strokeStyle = "#dedad3"; ctx.lineWidth = 1;
-      roundRect(ctx, 30, 30, 1140, 1740, 40); ctx.stroke();
+      const name = eventNameInput.value.trim();
 
       if (layout === "single") {
-        drawCropped(ctx, photos[0], 72, 220, 1056, 1280, 28);
+        // 6×4 inches @ 300 DPI = 1800×1200 px (landscape)
+        canvas.width  = 1800;
+        canvas.height = 1200;
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Thin border
+        ctx.strokeStyle = "#dedad3"; ctx.lineWidth = 1.5;
+        roundRect(ctx, 20, 20, 1760, 1160, 24); ctx.stroke();
+
+        // Branding top
+        const brandY = 72;
+        drawBrandingLine(ctx, brandY, 40);
+
+        // Photo area — full width minus padding, below branding
+        drawCropped(ctx, photos[0], 50, 96, 1700, 1010, 16);
+
+        // Event name bottom
+        if (name) {
+          ctx.fillStyle = "#8a8480";
+          ctx.font = "400 28px 'DM Sans', Arial, sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText(name, canvas.width / 2, 1170);
+        }
+
       } else {
-        drawCropped(ctx, photos[0], 72, 185, 1056, 440, 22);
-        drawCropped(ctx, photos[1], 72, 700, 1056, 440, 22);
-        drawCropped(ctx, photos[2], 72, 1215, 1056, 440, 22);
+        // Strip: 1.8×5.6 inches @ 600 DPI = 1080×3360 px
+        // Each frame: 1.8"×1.4" = 1080×840 px
+        const FW = 1080, FH = 840;
+        const PAD = 48, GAP = 32, TOP = 90, BOT = 80;
+        canvas.width  = FW;
+        canvas.height = TOP + FH * 3 + GAP * 2 + BOT;
+
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Branding top
+        drawBrandingLine(ctx, TOP - 16, 28);
+
+        // Three frames
+        const y0 = TOP, y1 = TOP + FH + GAP, y2 = TOP + (FH + GAP) * 2;
+        drawCropped(ctx, photos[0], 0, y0, FW, FH, 0);
+        drawCropped(ctx, photos[1], 0, y1, FW, FH, 0);
+        drawCropped(ctx, photos[2], 0, y2, FW, FH, 0);
+
+        // Thin separators
+        ctx.strokeStyle = "#ffffff"; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(0, y1); ctx.lineTo(FW, y1); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0, y2); ctx.lineTo(FW, y2); ctx.stroke();
+
+        // Event name bottom
+        if (name) {
+          ctx.fillStyle = "#8a8480";
+          ctx.font = "400 26px 'DM Sans', Arial, sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText(name, FW / 2, canvas.height - 22);
+        }
       }
 
       if (frameImage) ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
-      drawBranding(ctx, layout);
       return canvas.toDataURL("image/png", 1);
     }
 
-    function drawBranding(ctx, layout) {
-      const name = eventNameInput.value.trim();
-      const topY = layout === "single" ? 160 : 130;
+    function drawBrandingLine(ctx, y, fontSize) {
       if (logoImage) {
-        const lw = 280, lh = (logoImage.height / logoImage.width) * 280;
-        ctx.drawImage(logoImage, (canvas.width - lw) / 2, topY - lh / 2 - 8, lw, lh);
+        const lw = Math.min(canvas.width * 0.3, 260);
+        const lh = (logoImage.height / logoImage.width) * lw;
+        ctx.drawImage(logoImage, (canvas.width - lw) / 2, y - lh / 2, lw, lh);
       } else {
         ctx.fillStyle = "#1a1814";
-        ctx.font = "300 36px 'Cormorant Garamond', Georgia, serif";
+        ctx.font = `300 ${fontSize}px 'Cormorant Garamond', Georgia, serif`;
         ctx.textAlign = "center";
-        ctx.fillText("Brianna Gregory Photography", canvas.width / 2, topY);
-      }
-      if (name) {
-        ctx.fillStyle = "#8a8480";
-        ctx.font = "400 32px 'DM Sans', Arial, sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText(name, canvas.width / 2, 1718);
+        ctx.fillText("Brianna Gregory Photography", canvas.width / 2, y);
       }
     }
 
