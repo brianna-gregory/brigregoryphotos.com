@@ -477,25 +477,64 @@
       await loadCameras(deviceId);
     }
 
+    // Keywords that identify built-in / virtual cameras — external cameras won't match these
+    const BUILTIN_PATTERN = /facetime|built.?in|internal|iphone|continuity|obs|virtual|snap|mmhmm/i;
+
+    function pickBestCamera(cams, preferredId) {
+      if (preferredId) {
+        const match = cams.find(c => c.deviceId === preferredId);
+        if (match) return match.deviceId;
+      }
+      // Prefer any camera whose label doesn't look built-in
+      const external = cams.find(c => c.label && !BUILTIN_PATTERN.test(c.label));
+      return (external || cams[0])?.deviceId;
+    }
+
     async function loadCameras(selectedId) {
       const devices = await navigator.mediaDevices.enumerateDevices();
-      const cams = devices.filter(d => d.kind === "videoinput");
+      const cams    = devices.filter(d => d.kind === "videoinput");
+      const best    = pickBestCamera(cams, selectedId);
+
       cameraSelect.innerHTML = "";
       cams.forEach((cam, i) => {
-        const opt = document.createElement("option");
-        opt.value = cam.deviceId;
-        opt.textContent = cam.label || `Camera ${i + 1}`;
-        opt.selected = selectedId ? cam.deviceId === selectedId : i === 0;
+        const opt      = document.createElement("option");
+        opt.value      = cam.deviceId;
+        const isExt    = cam.label && !BUILTIN_PATTERN.test(cam.label);
+        opt.textContent = (cam.label || `Camera ${i + 1}`) + (isExt ? " ★" : "");
+        opt.selected   = cam.deviceId === best;
         cameraSelect.appendChild(opt);
       });
+
+      return best;
     }
 
     function showCameraError(err) {
-      alert(`${err.message}\n\nMake sure this page is on HTTPS or localhost and camera permission is allowed.`);
+      alert(`${err.message}\n\nMake sure camera permission is allowed.`);
     }
 
     cameraSelect.addEventListener("change", () => startCamera(cameraSelect.value).catch(showCameraError));
     refreshCamerasBtn?.addEventListener("click", () => loadCameras(cameraSelect.value).catch(showCameraError));
+
+    // Auto-detect when a camera is plugged or unplugged
+    navigator.mediaDevices.addEventListener("devicechange", async () => {
+      const devices  = await navigator.mediaDevices.enumerateDevices();
+      const cams     = devices.filter(d => d.kind === "videoinput");
+      const current  = cameraSelect.value;
+      const best     = pickBestCamera(cams, current);
+
+      await loadCameras(best);
+
+      // Switch to the newly detected camera if it's different
+      if (best && best !== current) {
+        startCamera(best).catch(showCameraError);
+        // Brief banner to let you know
+        const banner = document.createElement("div");
+        banner.textContent = "External camera detected — switched automatically";
+        banner.style.cssText = "position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--white);padding:12px 24px;border-radius:999px;font-size:0.78rem;font-weight:500;letter-spacing:0.08em;z-index:9999;pointer-events:none;animation:fadeUp 0.3s ease";
+        document.body.appendChild(banner);
+        setTimeout(() => banner.remove(), 3500);
+      }
+    });
 
     // ── File uploads ──
     frameUpload.addEventListener("change", async e => { frameImage = await loadImg(e.target.files[0]); });
