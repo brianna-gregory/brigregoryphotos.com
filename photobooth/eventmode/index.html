@@ -113,17 +113,16 @@
     /* ══ PHONE SCREEN ══ */
     .phone-screen { background: var(--white); display: none; place-items: center; }
     .phone-screen.is-active { display: grid; }
-    .phone-card { width: min(460px, 90vw); text-align: center; }
+    .phone-card { width: min(460px, 92vw); text-align: center; }
     .phone-card h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); margin-bottom: 6px; }
-    .phone-card .subcopy { margin: 10px auto 28px; max-width: 300px; }
+    .phone-card .subcopy { margin: 10px auto 24px; max-width: 300px; }
 
-    .phone-input-wrap { position: relative; margin-bottom: 14px; }
-    .phone-prefix { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 0.95rem; color: var(--muted); pointer-events: none; }
-    #phoneInput { padding-left: 38px; font-size: 1.1rem; height: 56px; border-radius: 14px; letter-spacing: 0.03em; }
+    .photo-thumb-wrap { margin: 0 auto 24px; width: min(220px, 60vw); position: relative; }
+    .photo-thumb { width: 100%; border-radius: 14px; border: 1px solid var(--border); display: block; object-fit: cover; }
+    .photo-thumb-label { font-size: 0.72rem; color: var(--muted); margin-top: 8px; letter-spacing: 0.08em; }
 
     .phone-actions { display: flex; flex-direction: column; gap: 10px; }
 
-    /* Spinner inside button */
     .btn-spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.35); border-top-color: #fff; border-radius: 50%; animation: spin 0.75s linear infinite; flex-shrink: 0; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -288,15 +287,15 @@
       <p class="eyebrow">Brianna Gregory Photography</p>
       <h1>Get your<br>photo</h1>
       <span class="divider" style="margin:14px auto"></span>
-      <p class="subcopy">Enter your number and we'll text you the photo right away.</p>
+      <p class="subcopy">Tap the button below — your photo will open in Messages so you can send it to yourself.</p>
 
-      <div class="phone-input-wrap">
-        <span class="phone-prefix">+1</span>
-        <input id="phoneInput" class="input" type="tel" placeholder="(555) 000-0000" maxlength="14" inputmode="numeric" />
+      <div class="photo-thumb-wrap">
+        <img id="photoThumb" class="photo-thumb" src="" alt="Your photo" />
+        <p class="photo-thumb-label">Your photo — ready to share</p>
       </div>
 
       <div class="phone-actions">
-        <button id="sendPhotoBtn" class="btn btn-primary btn-full btn-lg">Send My Photo</button>
+        <button id="sendPhotoBtn" class="btn btn-primary btn-full btn-lg">Share to Messages</button>
         <button id="skipTextBtn" class="btn btn-ghost btn-full">Skip — Download Only</button>
       </div>
 
@@ -390,15 +389,6 @@
     function getDeliveryMode() {
       return document.querySelector('input[name="delivery"]:checked')?.value || "download";
     }
-
-    // ── Phone number auto-format ──
-    phoneInput.addEventListener("input", () => {
-      let v = phoneInput.value.replace(/\D/g, "").slice(0, 10);
-      if (v.length >= 7)      v = `(${v.slice(0,3)}) ${v.slice(3,6)}-${v.slice(6)}`;
-      else if (v.length >= 4) v = `(${v.slice(0,3)}) ${v.slice(3)}`;
-      else if (v.length > 0)  v = `(${v}`;
-      phoneInput.value = v;
-    });
 
     function showScreen(name) {
       Object.values(screens).forEach(s => s.classList.remove("is-active"));
@@ -495,45 +485,38 @@
     alldoneReadyBtn?.addEventListener("click", enterBooth);
     document.getElementById("alldoneScreen")?.addEventListener("click", enterBooth);
 
-    // ── Send photo via local Messages server ──
+    // ── Share photo via native iOS share sheet (Web Share API) ──
     sendPhotoBtn.addEventListener("click", async () => {
-      const rawPhone = phoneInput.value.replace(/\D/g, "");
-      if (rawPhone.length !== 10) {
-        sendStatus.textContent = "Please enter a valid 10-digit US number.";
-        sendStatus.className = "send-status err";
-        return;
-      }
-
-      // Update button to show sending state
-      sendPhotoBtn.disabled = true;
-      skipTextBtn.disabled  = true;
-      sendPhotoBtn.innerHTML = '<span class="btn-spinner"></span> Sending…';
       sendStatus.textContent = "";
       sendStatus.className   = "send-status";
 
-      try {
-        const res  = await fetch(SERVER_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ phone: `+1${rawPhone}`, image: lastPhotoDataURL })
-        });
-        const json = await res.json();
+      // Convert data URL → Blob → File
+      const res   = await fetch(lastPhotoDataURL);
+      const blob  = await res.blob();
+      const file  = new File([blob], "BriannaGregory-Photo.png", { type: "image/png" });
 
-        if (json.success) {
-          alldoneSubtitle.textContent = "Photo sent to your phone!";
+      // Check if browser supports file sharing (iOS Safari does)
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({
+            files: [file],
+            title: "Your Photo — Brianna Gregory Photography"
+          });
+          // User completed share (or dismissed) — go to all done
+          alldoneSubtitle.textContent = "Enjoy your photo!";
           showScreen("alldone");
-        } else {
-          throw new Error(json.error || "Something went wrong. Make sure the server is running.");
+        } catch (err) {
+          if (err.name !== "AbortError") {
+            sendStatus.textContent = "Share failed. Try downloading instead.";
+            sendStatus.className   = "send-status err";
+          }
+          // AbortError = user dismissed sheet, stay on screen
         }
-      } catch (err) {
-        sendStatus.textContent = err.message.includes("fetch")
-          ? "Can't reach the server. Make sure \"Start Booth Server\" is running."
-          : err.message;
-        sendStatus.className = "send-status err";
-      } finally {
-        sendPhotoBtn.disabled = false;
-        skipTextBtn.disabled  = false;
-        sendPhotoBtn.innerHTML = "Send My Photo";
+      } else {
+        // Fallback for non-iOS or desktop: just download
+        downloadImage(lastPhotoDataURL);
+        alldoneSubtitle.textContent = "Your photo is downloading now.";
+        showScreen("alldone");
       }
     });
 
@@ -632,12 +615,13 @@
         reviewImage.src = final;
 
         if (getDeliveryMode() === "text") {
-          phoneInput.value       = "";
+          // Show thumbnail of photo on phone screen
+          document.getElementById("photoThumb").src = final;
           sendStatus.textContent = "";
           sendStatus.className   = "send-status";
           sendPhotoBtn.disabled  = false;
           skipTextBtn.disabled   = false;
-          sendPhotoBtn.innerHTML = "Send My Photo";
+          sendPhotoBtn.innerHTML = "Share to Messages";
           showScreen("phone");
         } else {
           alldoneSubtitle.textContent = "Your photo is downloading now.";
