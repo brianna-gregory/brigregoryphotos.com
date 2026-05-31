@@ -44,7 +44,7 @@
     .file-input { height: auto; padding: 12px 14px; font-size: 0.85rem; color: var(--muted); }
     .tiny { font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
 
-    .btn { display: inline-flex; align-items: center; justify-content: center; height: 48px; border-radius: 999px; padding: 0 28px; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; transition: transform var(--trans), background var(--trans), color var(--trans), border-color var(--trans); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 48px; border-radius: 999px; padding: 0 28px; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; transition: transform var(--trans), background var(--trans), color var(--trans), border-color var(--trans); }
     .btn:hover  { transform: translateY(-1px); }
     .btn:active { transform: translateY(0); }
     .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
@@ -80,15 +80,10 @@
     .panel { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: clamp(20px, 2vw, 28px); overflow: auto; }
     .panel h2 { font-size: clamp(1.2rem, 1.8vw, 1.8rem); margin-bottom: 4px; }
 
-    /* Delivery toggle */
-    .delivery-toggle { display: flex; gap: 0; margin-top: 8px; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; }
+    .delivery-toggle { display: flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; margin-top: 8px; }
     .delivery-toggle input[type="radio"] { display: none; }
     .delivery-toggle label { flex: 1; text-align: center; padding: 10px 8px; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); cursor: pointer; transition: background var(--trans), color var(--trans); }
     .delivery-toggle input[type="radio"]:checked + label { background: var(--ink); color: var(--white); }
-
-    .api-fields { margin-top: 4px; }
-    .api-field-hint { font-size: 0.72rem; color: var(--muted); margin-top: 5px; line-height: 1.5; }
-    .api-field-hint a { color: var(--ink); }
 
     .start-panel { display: flex; flex-direction: column; justify-content: center; background: var(--ink); border-color: var(--ink); }
     .start-panel .eyebrow { color: rgba(255,255,255,0.45); }
@@ -106,32 +101,33 @@
     #videoFeed { width: 100vw; height: 100vh; object-fit: cover; background: #000; display: block; }
     .booth-shade { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 18%, transparent 62%, rgba(0,0,0,0.65) 100%); pointer-events: none; }
     .booth-brand { position: absolute; top: 26px; left: 32px; font-family: var(--serif); font-size: 1rem; color: rgba(255,255,255,0.85); }
-    .admin-button { position: absolute; top: 20px; right: 24px; opacity: 0; pointer-events: none; font-size: 0.7rem; }
+    .admin-button { position: absolute; top: 20px; right: 24px; opacity: 0; pointer-events: none; }
     .booth-center { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
     .countdown { font-family: var(--serif); font-size: clamp(10rem, 26vw, 22rem); font-weight: 300; color: var(--white); line-height: 1; letter-spacing: -0.04em; text-shadow: 0 4px 40px rgba(0,0,0,0.5); }
     .booth-message { position: absolute; top: 80px; left: 50%; transform: translateX(-50%); white-space: nowrap; color: var(--white); background: rgba(0,0,0,0.45); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 14px 28px; font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 2.2rem); font-weight: 300; font-style: italic; }
     .booth-bottom { position: absolute; left: 0; right: 0; bottom: 36px; display: flex; justify-content: center; }
     .shutter-button { width: min(380px, 82vw); height: 72px; border-radius: 999px; background: var(--white); color: var(--ink); font-size: clamp(0.8rem, 1.6vw, 1rem); font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; transition: transform var(--trans), opacity var(--trans); }
     .shutter-button:hover { transform: translateY(-2px); }
-    .shutter-button:active { transform: translateY(0); }
     .shutter-button:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 
     /* ══ PHONE SCREEN ══ */
-    .phone-screen { background: var(--white); display: none; place-items: center; position: relative; }
+    .phone-screen { background: var(--white); display: none; place-items: center; }
     .phone-screen.is-active { display: grid; }
-    .phone-card { width: min(480px, 90vw); text-align: center; }
+    .phone-card { width: min(460px, 90vw); text-align: center; }
     .phone-card h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); margin-bottom: 6px; }
-    .phone-card .subcopy { margin: 10px auto 32px; max-width: 300px; }
+    .phone-card .subcopy { margin: 10px auto 28px; max-width: 300px; }
 
-    .phone-input-wrap { position: relative; margin-bottom: 16px; }
+    .phone-input-wrap { position: relative; margin-bottom: 14px; }
     .phone-prefix { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); font-size: 0.95rem; color: var(--muted); pointer-events: none; }
-    #phoneInput { padding-left: 38px; font-size: 1.1rem; letter-spacing: 0.04em; height: 56px; border-radius: 14px; }
+    #phoneInput { padding-left: 38px; font-size: 1.1rem; height: 56px; border-radius: 14px; letter-spacing: 0.03em; }
 
     .phone-actions { display: flex; flex-direction: column; gap: 10px; }
-    .sending-state { display: none; align-items: center; justify-content: center; gap: 12px; padding: 16px; color: var(--muted); font-size: 0.9rem; }
-    .spinner { width: 20px; height: 20px; border: 2px solid var(--border); border-top-color: var(--ink); border-radius: 50%; animation: spin 0.8s linear infinite; }
+
+    /* Spinner inside button */
+    .btn-spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.35); border-top-color: #fff; border-radius: 50%; animation: spin 0.75s linear infinite; flex-shrink: 0; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .send-status { font-size: 0.85rem; min-height: 22px; margin-top: 8px; text-align: center; }
+
+    .send-status { font-size: 0.84rem; min-height: 22px; margin-top: 12px; }
     .send-status.ok  { color: #2e7d32; }
     .send-status.err { color: #c0392b; }
 
@@ -149,7 +145,6 @@
     .alldone-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--white); opacity: 0.6; animation: blink 1.4s ease-in-out infinite; }
     @keyframes blink { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.2; } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes scaleInSpin { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
 
     /* ══ REVIEW SCREEN ══ */
     .review-screen { background: var(--off); padding: clamp(20px, 3vw, 42px); display: none; }
@@ -157,14 +152,13 @@
     .review-shell { width: min(1100px, 94vw); height: min(720px, 90vh); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
     .review-copy { padding: 20px; }
     .review-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
-    .review-image { max-height: 85vh; width: 100%; object-fit: contain; border-radius: 20px; border: 1px solid var(--border); background: var(--white); }
+    .review-image { max-height: 85vh; width: 100%; object-fit: contain; border-radius: 20px; border: 1px solid var(--border); }
 
     #canvas { display: none; }
 
     @media (max-width: 1000px) {
       .setup-grid { grid-template-columns: 1fr 1fr; height: auto; }
       .review-shell { grid-template-columns: 1fr; height: auto; }
-      .review-image { max-height: 50vh; }
     }
     @media (max-width: 680px) {
       body { overflow: auto; }
@@ -218,7 +212,7 @@
         <select id="cameraSelect" class="input"></select>
         <button id="refreshCamerasBtn" class="btn btn-soft btn-full" style="margin-top:14px">Refresh Cameras</button>
         <label class="field-label">Live Preview</label>
-        <video id="video" autoplay playsinline muted style="width:100%;border-radius:10px;object-fit:cover;aspect-ratio:16/9;background:#1a1814;border:1px solid var(--border)"></video>
+        <video id="video" autoplay playsinline muted style="width:100%;border-radius:10px;object-fit:cover;aspect-ratio:16/9;background:#111;border:1px solid var(--border)"></video>
       </div>
 
       <!-- Layout -->
@@ -256,16 +250,7 @@
           <input type="radio" name="delivery" id="deliveryText" value="text" />
           <label for="deliveryText">Download + Text</label>
         </div>
-
-        <div class="api-fields" id="apiFields" style="display:none">
-          <label class="field-label">ImgBB API Key</label>
-          <input id="imgbbKey" class="input" type="text" placeholder="Paste your key here" autocomplete="off" />
-          <p class="api-field-hint">Free at <a href="https://api.imgbb.com" target="_blank">api.imgbb.com</a> — needed to host the photo so it can be texted.</p>
-
-          <label class="field-label">TextBelt API Key</label>
-          <input id="textbeltKey" class="input" type="text" placeholder="Paste your key here" autocomplete="off" />
-          <p class="api-field-hint">Get a key at <a href="https://textbelt.com" target="_blank">textbelt.com</a>. Use <strong>textbelt</strong> for 1 free test text/day.</p>
-        </div>
+        <p class="tiny" style="margin-top:10px">Text mode uses the Messages app on this Mac to send from your iPhone number. Keep the server running.</p>
       </div>
 
       <!-- Start -->
@@ -315,11 +300,6 @@
         <button id="skipTextBtn" class="btn btn-ghost btn-full">Skip — Download Only</button>
       </div>
 
-      <div class="sending-state" id="sendingState">
-        <div class="spinner"></div>
-        <span>Sending your photo…</span>
-      </div>
-
       <p class="send-status" id="sendStatus"></p>
     </div>
   </div>
@@ -331,7 +311,7 @@
         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
       <h1 class="alldone-title">All Done!</h1>
-      <p class="alldone-subtitle" id="alldoneSubtitle">Your photo is downloading now.</p>
+      <p class="alldone-subtitle" id="alldoneSubtitle">Your photo is on its way.</p>
       <button id="alldoneReadyBtn" class="alldone-cta">
         <span class="alldone-dot"></span>
         I'm Ready — Next Guest
@@ -357,8 +337,9 @@
   </div>
 
   <script>
-    const PASSCODE    = "1111";
+    const PASSCODE     = "1111";
     const HOLD_EXIT_MS = 4000;
+    const SERVER_URL   = "http://localhost:3001/send";
 
     const screens = {
       lock:    document.getElementById("lockScreen"),
@@ -369,35 +350,33 @@
       review:  document.getElementById("reviewScreen")
     };
 
-    const passcodeInput    = document.getElementById("passcodeInput");
-    const unlockBtn        = document.getElementById("unlockBtn");
-    const passcodeError    = document.getElementById("passcodeError");
-    const cameraSelect     = document.getElementById("cameraSelect");
-    const refreshCamerasBtn= document.getElementById("refreshCamerasBtn");
-    const layoutSelect     = document.getElementById("layoutSelect");
-    const frameUpload      = document.getElementById("frameUpload");
-    const logoUpload       = document.getElementById("logoUpload");
-    const eventNameInput   = document.getElementById("eventName");
-    const startBoothBtn    = document.getElementById("startBoothBtn");
-    const previewBoothBtn  = document.getElementById("previewBoothBtn");
-    const adminBtn         = document.getElementById("adminBtn");
-    const takePhotoBtn     = document.getElementById("takePhotoBtn");
-    const takeAnotherBtn   = document.getElementById("takeAnotherBtn");
-    const reviewSetupBtn   = document.getElementById("reviewSetupBtn");
-    const alldoneReadyBtn  = document.getElementById("alldoneReadyBtn");
-    const alldoneSubtitle  = document.getElementById("alldoneSubtitle");
-    const video            = document.getElementById("video");
-    const videoFeed        = document.getElementById("videoFeed");
-    const canvas           = document.getElementById("canvas");
-    const message          = document.getElementById("message");
-    const countdown        = document.getElementById("countdown");
-    const reviewImage      = document.getElementById("reviewImage");
-    const apiFields        = document.getElementById("apiFields");
-    const phoneInput       = document.getElementById("phoneInput");
-    const sendPhotoBtn     = document.getElementById("sendPhotoBtn");
-    const skipTextBtn      = document.getElementById("skipTextBtn");
-    const sendingState     = document.getElementById("sendingState");
-    const sendStatus       = document.getElementById("sendStatus");
+    const passcodeInput   = document.getElementById("passcodeInput");
+    const unlockBtn       = document.getElementById("unlockBtn");
+    const passcodeError   = document.getElementById("passcodeError");
+    const cameraSelect    = document.getElementById("cameraSelect");
+    const refreshCamerasBtn = document.getElementById("refreshCamerasBtn");
+    const layoutSelect    = document.getElementById("layoutSelect");
+    const frameUpload     = document.getElementById("frameUpload");
+    const logoUpload      = document.getElementById("logoUpload");
+    const eventNameInput  = document.getElementById("eventName");
+    const startBoothBtn   = document.getElementById("startBoothBtn");
+    const previewBoothBtn = document.getElementById("previewBoothBtn");
+    const adminBtn        = document.getElementById("adminBtn");
+    const takePhotoBtn    = document.getElementById("takePhotoBtn");
+    const takeAnotherBtn  = document.getElementById("takeAnotherBtn");
+    const reviewSetupBtn  = document.getElementById("reviewSetupBtn");
+    const alldoneReadyBtn = document.getElementById("alldoneReadyBtn");
+    const alldoneSubtitle = document.getElementById("alldoneSubtitle");
+    const video           = document.getElementById("video");
+    const videoFeed       = document.getElementById("videoFeed");
+    const canvas          = document.getElementById("canvas");
+    const message         = document.getElementById("message");
+    const countdown       = document.getElementById("countdown");
+    const reviewImage     = document.getElementById("reviewImage");
+    const phoneInput      = document.getElementById("phoneInput");
+    const sendPhotoBtn    = document.getElementById("sendPhotoBtn");
+    const skipTextBtn     = document.getElementById("skipTextBtn");
+    const sendStatus      = document.getElementById("sendStatus");
 
     let currentStream       = null;
     let frameImage          = null;
@@ -408,26 +387,16 @@
     let holdTimer           = null;
     let holdIndicator       = null;
 
-    // ── Delivery mode toggle ──
-    document.querySelectorAll('input[name="delivery"]').forEach(r => {
-      r.addEventListener("change", () => {
-        apiFields.style.display = r.value === "text" && r.checked ? "block" : "none";
-        document.querySelectorAll('input[name="delivery"]').forEach(x => {
-          if (x.checked) apiFields.style.display = x.value === "text" ? "block" : "none";
-        });
-      });
-    });
-
     function getDeliveryMode() {
       return document.querySelector('input[name="delivery"]:checked')?.value || "download";
     }
 
-    // ── Phone number formatting ──
+    // ── Phone number auto-format ──
     phoneInput.addEventListener("input", () => {
       let v = phoneInput.value.replace(/\D/g, "").slice(0, 10);
-      if (v.length >= 7) v = `(${v.slice(0,3)}) ${v.slice(3,6)}-${v.slice(6)}`;
+      if (v.length >= 7)      v = `(${v.slice(0,3)}) ${v.slice(3,6)}-${v.slice(6)}`;
       else if (v.length >= 4) v = `(${v.slice(0,3)}) ${v.slice(3)}`;
-      else if (v.length > 0) v = `(${v}`;
+      else if (v.length > 0)  v = `(${v}`;
       phoneInput.value = v;
     });
 
@@ -488,7 +457,7 @@
     }
 
     function showCameraError(err) {
-      alert(`${err.message}\n\nMake sure this page is on HTTPS and camera permission is allowed.`);
+      alert(`${err.message}\n\nMake sure this page is on HTTPS or localhost and camera permission is allowed.`);
     }
 
     cameraSelect.addEventListener("change", () => startCamera(cameraSelect.value).catch(showCameraError));
@@ -526,7 +495,7 @@
     alldoneReadyBtn?.addEventListener("click", enterBooth);
     document.getElementById("alldoneScreen")?.addEventListener("click", enterBooth);
 
-    // ── Phone screen ──
+    // ── Send photo via local Messages server ──
     sendPhotoBtn.addEventListener("click", async () => {
       const rawPhone = phoneInput.value.replace(/\D/g, "");
       if (rawPhone.length !== 10) {
@@ -535,55 +504,36 @@
         return;
       }
 
-      sendStatus.textContent = "";
+      // Update button to show sending state
       sendPhotoBtn.disabled = true;
-      skipTextBtn.disabled = true;
-      sendingState.style.display = "flex";
+      skipTextBtn.disabled  = true;
+      sendPhotoBtn.innerHTML = '<span class="btn-spinner"></span> Sending…';
+      sendStatus.textContent = "";
+      sendStatus.className   = "send-status";
 
       try {
-        const imgbbKey    = document.getElementById("imgbbKey").value.trim();
-        const textbeltKey = document.getElementById("textbeltKey").value.trim() || "textbelt";
-
-        // 1. Upload photo to ImgBB
-        const base64 = lastPhotoDataURL.split(",")[1];
-        const formData = new FormData();
-        formData.append("image", base64);
-
-        const uploadRes = await fetch(`https://api.imgbb.com/1/upload?key=${imgbbKey}`, {
-          method: "POST",
-          body: formData
-        });
-        const uploadJson = await uploadRes.json();
-
-        if (!uploadJson.success) throw new Error("Image upload failed. Check your ImgBB key.");
-
-        const photoUrl = uploadJson.data.url;
-
-        // 2. Send SMS via TextBelt
-        const smsRes = await fetch("https://textbelt.com/text", {
+        const res  = await fetch(SERVER_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            phone: `+1${rawPhone}`,
-            message: `Here's your photo from Brianna Gregory Photography! 📷\n\n${photoUrl}`,
-            key: textbeltKey
-          })
+          body: JSON.stringify({ phone: `+1${rawPhone}`, image: lastPhotoDataURL })
         });
-        const smsJson = await smsRes.json();
+        const json = await res.json();
 
-        if (!smsJson.success) throw new Error(smsJson.error || "Text failed to send.");
-
-        // Success
-        alldoneSubtitle.textContent = "Photo sent to your phone!";
-        showScreen("alldone");
-
+        if (json.success) {
+          alldoneSubtitle.textContent = "Photo sent to your phone!";
+          showScreen("alldone");
+        } else {
+          throw new Error(json.error || "Something went wrong. Make sure the server is running.");
+        }
       } catch (err) {
-        sendStatus.textContent = err.message;
+        sendStatus.textContent = err.message.includes("fetch")
+          ? "Can't reach the server. Make sure \"Start Booth Server\" is running."
+          : err.message;
         sendStatus.className = "send-status err";
       } finally {
-        sendingState.style.display = "none";
         sendPhotoBtn.disabled = false;
-        skipTextBtn.disabled = false;
+        skipTextBtn.disabled  = false;
+        sendPhotoBtn.innerHTML = "Send My Photo";
       }
     });
 
@@ -592,7 +542,7 @@
       showScreen("alldone");
     });
 
-    // ── Long-press exit (4 seconds) ──
+    // ── Long-press exit (4 seconds hold anywhere on booth screen) ──
     function cancelHold() {
       clearTimeout(holdTimer);
       holdTimer = null;
@@ -603,10 +553,10 @@
       if (!screens.booth.classList.contains("is-active")) return;
       cancelHold();
       holdIndicator = document.createElement("div");
-      holdIndicator.style.cssText = `position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:90px;height:90px;border-radius:50%;border:3px solid rgba(255,255,255,0.15);border-top-color:rgba(255,255,255,0.85);animation:holdSpin ${HOLD_EXIT_MS}ms linear forwards;pointer-events:none;z-index:9999;`;
-      if (!document.getElementById("holdSpinStyle")) {
+      holdIndicator.style.cssText = `position:fixed;top:50%;left:50%;width:90px;height:90px;border-radius:50%;border:3px solid rgba(255,255,255,0.2);border-top-color:#fff;animation:holdSpin ${HOLD_EXIT_MS}ms linear forwards;pointer-events:none;z-index:9999;transform:translate(-50%,-50%)`;
+      if (!document.getElementById("holdStyle")) {
         const s = document.createElement("style");
-        s.id = "holdSpinStyle";
+        s.id = "holdStyle";
         s.textContent = `@keyframes holdSpin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}`;
         document.head.appendChild(s);
       }
@@ -618,14 +568,13 @@
       }, HOLD_EXIT_MS);
     }
 
-    screens.booth.addEventListener("pointerdown", startHold);
-    screens.booth.addEventListener("pointerup",     cancelHold);
-    screens.booth.addEventListener("pointercancel", cancelHold);
-    screens.booth.addEventListener("pointermove",   cancelHold);
+    screens.booth.addEventListener("pointerdown",  startHold);
+    screens.booth.addEventListener("pointerup",    cancelHold);
+    screens.booth.addEventListener("pointercancel",cancelHold);
+    screens.booth.addEventListener("pointermove",  cancelHold);
 
     screens.booth.addEventListener("click", () => {
-      if (!screens.booth.classList.contains("is-active")) return;
-      startPhotoSequence();
+      if (screens.booth.classList.contains("is-active")) startPhotoSequence();
     });
     screens.booth.addEventListener("touchend", e => { e.preventDefault(); }, { passive: false });
 
@@ -642,9 +591,7 @@
         escTimer = setTimeout(() => { escTimer = null; isTakingPhotos = false; showScreen("setup"); }, 1000);
       }
     });
-    window.addEventListener("keyup", e => {
-      if (e.key === "Escape") { clearTimeout(escTimer); escTimer = null; }
-    });
+    window.addEventListener("keyup", e => { if (e.key === "Escape") { clearTimeout(escTimer); escTimer = null; } });
 
     // ── Photo sequence ──
     async function startPhotoSequence() {
@@ -685,13 +632,12 @@
         reviewImage.src = final;
 
         if (getDeliveryMode() === "text") {
-          // Reset phone screen state
-          phoneInput.value = "";
+          phoneInput.value       = "";
           sendStatus.textContent = "";
-          sendStatus.className = "send-status";
-          sendingState.style.display = "none";
-          sendPhotoBtn.disabled = false;
-          skipTextBtn.disabled = false;
+          sendStatus.className   = "send-status";
+          sendPhotoBtn.disabled  = false;
+          skipTextBtn.disabled   = false;
+          sendPhotoBtn.innerHTML = "Send My Photo";
           showScreen("phone");
         } else {
           alldoneSubtitle.textContent = "Your photo is downloading now.";
@@ -708,10 +654,7 @@
     }
 
     async function countdownFrom3() {
-      for (let n = 3; n > 0; n--) {
-        countdown.textContent = n;
-        await wait(850);
-      }
+      for (let n = 3; n > 0; n--) { countdown.textContent = n; await wait(850); }
       countdown.textContent = "✦";
       await wait(260);
       countdown.textContent = "";
@@ -720,8 +663,7 @@
     function capturePhoto() {
       if (!video.videoWidth || !video.videoHeight) throw new Error("Camera not ready. Try again.");
       const c = document.createElement("canvas");
-      c.width = video.videoWidth;
-      c.height = video.videoHeight;
+      c.width = video.videoWidth; c.height = video.videoHeight;
       c.getContext("2d").drawImage(video, 0, 0);
       return c;
     }
@@ -729,23 +671,19 @@
     // ── Compose final image ──
     function createFinalImage(photos, layout) {
       const ctx = canvas.getContext("2d");
-      canvas.width  = 1200;
-      canvas.height = 1800;
+      canvas.width = 1200; canvas.height = 1800;
 
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.strokeStyle = "#dedad3";
-      ctx.lineWidth = 1;
-      roundRect(ctx, 30, 30, 1140, 1740, 40);
-      ctx.stroke();
+      ctx.strokeStyle = "#dedad3"; ctx.lineWidth = 1;
+      roundRect(ctx, 30, 30, 1140, 1740, 40); ctx.stroke();
 
       if (layout === "single") {
-        drawCroppedImage(ctx, photos[0], 72, 220, 1056, 1280, 28);
+        drawCropped(ctx, photos[0], 72, 220, 1056, 1280, 28);
       } else {
-        drawCroppedImage(ctx, photos[0], 72, 185, 1056, 440, 22);
-        drawCroppedImage(ctx, photos[1], 72, 700, 1056, 440, 22);
-        drawCroppedImage(ctx, photos[2], 72, 1215, 1056, 440, 22);
+        drawCropped(ctx, photos[0], 72, 185, 1056, 440, 22);
+        drawCropped(ctx, photos[1], 72, 700, 1056, 440, 22);
+        drawCropped(ctx, photos[2], 72, 1215, 1056, 440, 22);
       }
 
       if (frameImage) ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
@@ -754,33 +692,29 @@
     }
 
     function drawBranding(ctx, layout) {
-      const eventName = eventNameInput.value.trim();
+      const name = eventNameInput.value.trim();
       const topY = layout === "single" ? 160 : 130;
-
       if (logoImage) {
-        const logoW = 280;
-        const logoH = (logoImage.height / logoImage.width) * logoW;
-        ctx.drawImage(logoImage, (canvas.width - logoW) / 2, topY - logoH / 2 - 8, logoW, logoH);
+        const lw = 280, lh = (logoImage.height / logoImage.width) * 280;
+        ctx.drawImage(logoImage, (canvas.width - lw) / 2, topY - lh / 2 - 8, lw, lh);
       } else {
         ctx.fillStyle = "#1a1814";
         ctx.font = "300 36px 'Cormorant Garamond', Georgia, serif";
         ctx.textAlign = "center";
         ctx.fillText("Brianna Gregory Photography", canvas.width / 2, topY);
       }
-
-      if (eventName) {
+      if (name) {
         ctx.fillStyle = "#8a8480";
         ctx.font = "400 32px 'DM Sans', Arial, sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText(eventName, canvas.width / 2, 1718);
+        ctx.fillText(name, canvas.width / 2, 1718);
       }
     }
 
-    function drawCroppedImage(ctx, img, x, y, w, h, radius = 0) {
+    function drawCropped(ctx, img, x, y, w, h, r = 0) {
       ctx.save();
-      if (radius) { roundRect(ctx, x, y, w, h, radius); ctx.clip(); }
-      const sr = img.width / img.height;
-      const tr = w / h;
+      if (r) { roundRect(ctx, x, y, w, h, r); ctx.clip(); }
+      const sr = img.width / img.height, tr = w / h;
       let sx, sy, sw, sh;
       if (sr > tr) { sh = img.height; sw = sh * tr; sx = (img.width - sw) / 2; sy = 0; }
       else         { sw = img.width; sh = sw / tr; sx = 0; sy = (img.height - sh) / 2; }
@@ -801,11 +735,8 @@
     function downloadImage(data) {
       const ts = new Date().toISOString().replace(/[:.]/g, "-");
       const a = document.createElement("a");
-      a.href = data;
-      a.download = `BriannaGregory-PhotoBooth-${ts}.png`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      a.href = data; a.download = `BriannaGregory-PhotoBooth-${ts}.png`;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
     }
 
     function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
