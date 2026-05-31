@@ -249,7 +249,7 @@
           <input type="radio" name="delivery" id="deliveryText" value="text" />
           <label for="deliveryText">Download + Text</label>
         </div>
-        <p class="tiny" style="margin-top:10px">Text mode uses the Messages app on this Mac to send from your iPhone number. Keep the server running.</p>
+        <p class="tiny" style="margin-top:10px">Photo downloads to the guest's device and Messages opens pre-filled with their number. iPhone only.</p>
       </div>
 
       <!-- Start -->
@@ -287,15 +287,19 @@
       <p class="eyebrow">Brianna Gregory Photography</p>
       <h1>Get your<br>photo</h1>
       <span class="divider" style="margin:14px auto"></span>
-      <p class="subcopy">Tap the button below — your photo will open in Messages so you can send it to yourself.</p>
+      <p class="subcopy">Enter your number — Messages will open ready to send.</p>
 
       <div class="photo-thumb-wrap">
         <img id="photoThumb" class="photo-thumb" src="" alt="Your photo" />
-        <p class="photo-thumb-label">Your photo — ready to share</p>
+      </div>
+
+      <div class="phone-input-wrap" style="position:relative;margin-bottom:14px">
+        <span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:0.95rem;color:var(--muted);pointer-events:none">+1</span>
+        <input id="phoneInput" class="input" style="padding-left:38px;font-size:1.05rem;height:52px;border-radius:14px" type="tel" placeholder="(555) 000-0000" maxlength="14" inputmode="numeric" />
       </div>
 
       <div class="phone-actions">
-        <button id="sendPhotoBtn" class="btn btn-primary btn-full btn-lg">Share to Messages</button>
+        <button id="sendPhotoBtn" class="btn btn-primary btn-full btn-lg">Text this to me (iPhones only)</button>
         <button id="skipTextBtn" class="btn btn-ghost btn-full">Skip — Download Only</button>
       </div>
 
@@ -485,39 +489,43 @@
     alldoneReadyBtn?.addEventListener("click", enterBooth);
     document.getElementById("alldoneScreen")?.addEventListener("click", enterBooth);
 
-    // ── Share photo via native iOS share sheet (Web Share API) ──
-    sendPhotoBtn.addEventListener("click", async () => {
+    // ── Phone number auto-format ──
+    document.getElementById("phoneInput").addEventListener("input", () => {
+      const el = document.getElementById("phoneInput");
+      let v = el.value.replace(/\D/g, "").slice(0, 10);
+      if (v.length >= 7)      v = `(${v.slice(0,3)}) ${v.slice(3,6)}-${v.slice(6)}`;
+      else if (v.length >= 4) v = `(${v.slice(0,3)}) ${v.slice(3)}`;
+      else if (v.length > 0)  v = `(${v}`;
+      el.value = v;
+    });
+
+    // ── Text this to me — download photo then open Messages pre-filled ──
+    sendPhotoBtn.addEventListener("click", () => {
+      const el       = document.getElementById("phoneInput");
+      const rawPhone = el.value.replace(/\D/g, "");
+
+      if (rawPhone.length !== 10) {
+        sendStatus.textContent = "Please enter a valid 10-digit number.";
+        sendStatus.className   = "send-status err";
+        return;
+      }
+
       sendStatus.textContent = "";
       sendStatus.className   = "send-status";
 
-      // Convert data URL → Blob → File
-      const res   = await fetch(lastPhotoDataURL);
-      const blob  = await res.blob();
-      const file  = new File([blob], "BriannaGregory-Photo.png", { type: "image/png" });
+      // 1. Download the photo to their device
+      downloadImage(lastPhotoDataURL);
 
-      // Check if browser supports file sharing (iOS Safari does)
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        try {
-          await navigator.share({
-            files: [file],
-            title: "Your Photo — Brianna Gregory Photography"
-          });
-          // User completed share (or dismissed) — go to all done
-          alldoneSubtitle.textContent = "Enjoy your photo!";
-          showScreen("alldone");
-        } catch (err) {
-          if (err.name !== "AbortError") {
-            sendStatus.textContent = "Share failed. Try downloading instead.";
-            sendStatus.className   = "send-status err";
-          }
-          // AbortError = user dismissed sheet, stay on screen
-        }
-      } else {
-        // Fallback for non-iOS or desktop: just download
-        downloadImage(lastPhotoDataURL);
-        alldoneSubtitle.textContent = "Your photo is downloading now.";
+      // 2. Open Messages with their number pre-filled
+      //    Body tells them to check their downloads / camera roll
+      const body = encodeURIComponent("📷 Your photo from Brianna Gregory Photography is saved to your device!");
+      window.location.href = `sms:+1${rawPhone}&body=${body}`;
+
+      // 3. After a short delay, move to All Done
+      setTimeout(() => {
+        alldoneSubtitle.textContent = "Check your downloads for the photo!";
         showScreen("alldone");
-      }
+      }, 800);
     });
 
     skipTextBtn.addEventListener("click", () => {
