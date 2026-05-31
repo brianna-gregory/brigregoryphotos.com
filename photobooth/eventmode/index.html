@@ -4,13 +4,196 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bri Gregory Photo Booth</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: Helvetica, Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .hidden { display: none !important; }
+
+    .screen {
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+    }
+
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: min(520px, 92vw);
+      border: 1px solid #fff;
+      padding: 42px;
+      text-align: center;
+      background: #000;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 52px;
+      margin: 0 0 16px;
+      letter-spacing: -1px;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #ddd;
+    }
+
+    input, select, button {
+      width: 100%;
+      margin-top: 14px;
+      padding: 16px;
+      border: 1px solid #fff;
+      border-radius: 0;
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    input::placeholder { color: #aaa; }
+
+    button {
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+      background: #fff;
+      color: #000;
+    }
+
+    button:hover {
+      background: #ddd;
+    }
+
+    label {
+      display: block;
+      margin-top: 22px;
+      text-align: left;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: #ccc;
+    }
+
+    #passcodeError {
+      color: #fff;
+      border-top: 1px solid #fff;
+      margin-top: 18px;
+      padding-top: 14px;
+    }
+
+    #setupScreen {
+      overflow-y: auto;
+      padding: 40px 20px;
+    }
+
+    .setup-wrap {
+      width: min(760px, 94vw);
+      margin: auto;
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .brand small {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #aaa;
+    }
+
+    .setup-card {
+      border: 1px solid #fff;
+      padding: 34px;
+      background: #000;
+    }
+
+    #boothScreen {
+      position: relative;
+    }
+
+    video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      transform: none;
+      background: #000;
+    }
+
+    #overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    #message {
+      position: absolute;
+      top: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 1px solid #fff;
+      background: rgba(0,0,0,0.7);
+      padding: 14px 24px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      text-align: center;
+      max-width: 90vw;
+    }
+
+    #countdown {
+      font-family: Georgia, serif;
+      font-size: 26vw;
+      font-weight: bold;
+      text-shadow: 0 10px 40px #000;
+    }
+
+    #boothControls {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      width: min(560px, 92vw);
+    }
+
+    #boothControls button {
+      flex: 1;
+    }
+
+    #canvas { display: none; }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 40px; }
+      .card, .setup-card { padding: 28px; }
+      #boothControls { flex-direction: column; }
+    }
+  </style>
 </head>
+
 <body>
   <div id="lockScreen" class="screen center">
     <div class="card">
       <h1>Event Mode</h1>
-      <p>Enter passcode to start the photo booth.</p>
+      <p>Enter the passcode to start Bri Gregory Photo Booth.</p>
       <input id="passcodeInput" type="password" placeholder="Passcode" />
       <button id="unlockBtn">Enter Booth</button>
       <p id="passcodeError"></p>
@@ -18,28 +201,34 @@
   </div>
 
   <div id="setupScreen" class="screen hidden">
-    <div class="setup-card">
-      <h1>Photo Booth Setup</h1>
+    <div class="setup-wrap">
+      <div class="brand">
+        <small>Bri Gregory Photos</small>
+        <h1>Photo Booth Setup</h1>
+        <p>Choose your camera, layout, frame, and event name.</p>
+      </div>
 
-      <label>Camera</label>
-      <select id="cameraSelect"></select>
+      <div class="setup-card">
+        <label>Camera</label>
+        <select id="cameraSelect"></select>
 
-      <label>Photo Layout</label>
-      <select id="layoutSelect">
-        <option value="single">1 Photo</option>
-        <option value="triple">3 Photos in One Frame</option>
-      </select>
+        <label>Photo Layout</label>
+        <select id="layoutSelect">
+          <option value="single">1 Photo</option>
+          <option value="triple">3 Photos in One Frame</option>
+        </select>
 
-      <label>Upload Frame Overlay PNG</label>
-      <input id="frameUpload" type="file" accept="image/png,image/jpeg" />
+        <label>Upload Frame Overlay</label>
+        <input id="frameUpload" type="file" accept="image/png,image/jpeg" />
 
-      <label>Upload Logo PNG/JPG</label>
-      <input id="logoUpload" type="file" accept="image/png,image/jpeg" />
+        <label>Upload Logo</label>
+        <input id="logoUpload" type="file" accept="image/png,image/jpeg" />
 
-      <label>Event Name</label>
-      <input id="eventName" type="text" placeholder="Example: Bri’s Birthday Booth" />
+        <label>Event Name</label>
+        <input id="eventName" type="text" placeholder="Example: Bri’s Birthday Booth" />
 
-      <button id="startBoothBtn">Start Event Mode</button>
+        <button id="startBoothBtn">Start Event Mode</button>
+      </div>
     </div>
   </div>
 
@@ -59,6 +248,265 @@
     <canvas id="canvas"></canvas>
   </div>
 
-  <script src="app.js"></script>
+  <script>
+    const PASSCODE = "1111";
+
+    const lockScreen = document.getElementById("lockScreen");
+    const setupScreen = document.getElementById("setupScreen");
+    const boothScreen = document.getElementById("boothScreen");
+
+    const passcodeInput = document.getElementById("passcodeInput");
+    const unlockBtn = document.getElementById("unlockBtn");
+    const passcodeError = document.getElementById("passcodeError");
+
+    const cameraSelect = document.getElementById("cameraSelect");
+    const layoutSelect = document.getElementById("layoutSelect");
+    const frameUpload = document.getElementById("frameUpload");
+    const logoUpload = document.getElementById("logoUpload");
+    const eventNameInput = document.getElementById("eventName");
+
+    const startBoothBtn = document.getElementById("startBoothBtn");
+    const backToSetupBtn = document.getElementById("backToSetupBtn");
+    const takePhotoBtn = document.getElementById("takePhotoBtn");
+
+    const video = document.getElementById("video");
+    const canvas = document.getElementById("canvas");
+    const message = document.getElementById("message");
+    const countdown = document.getElementById("countdown");
+
+    let currentStream = null;
+    let frameImage = null;
+    let logoImage = null;
+    let isTakingPhotos = false;
+
+    unlockBtn.addEventListener("click", unlock);
+    passcodeInput.addEventListener("keydown", e => {
+      if (e.key === "Enter") unlock();
+    });
+
+    function unlock() {
+      if (passcodeInput.value === PASSCODE) {
+        lockScreen.classList.add("hidden");
+        setupScreen.classList.remove("hidden");
+        initCamera();
+      } else {
+        passcodeError.textContent = "Wrong passcode. Try again.";
+      }
+    }
+
+    async function initCamera(deviceId) {
+      try {
+        if (currentStream) {
+          currentStream.getTracks().forEach(track => track.stop());
+        }
+
+        currentStream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            deviceId: deviceId ? { exact: deviceId } : undefined,
+            width: { ideal: 1920 },
+            height: { ideal: 1080 }
+          },
+          audio: false
+        });
+
+        video.srcObject = currentStream;
+        await loadCameras();
+      } catch (error) {
+        alert("Camera access failed. Make sure your browser has permission to use the camera.");
+      }
+    }
+
+    async function loadCameras() {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const cameras = devices.filter(device => device.kind === "videoinput");
+
+      cameraSelect.innerHTML = "";
+
+      cameras.forEach((camera, index) => {
+        const option = document.createElement("option");
+        option.value = camera.deviceId;
+        option.textContent = camera.label || `Camera ${index + 1}`;
+        cameraSelect.appendChild(option);
+      });
+    }
+
+    cameraSelect.addEventListener("change", () => {
+      initCamera(cameraSelect.value);
+    });
+
+    frameUpload.addEventListener("change", async e => {
+      frameImage = await loadImageFromFile(e.target.files[0]);
+    });
+
+    logoUpload.addEventListener("change", async e => {
+      logoImage = await loadImageFromFile(e.target.files[0]);
+    });
+
+    function loadImageFromFile(file) {
+      return new Promise(resolve => {
+        if (!file) return resolve(null);
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.src = URL.createObjectURL(file);
+      });
+    }
+
+    startBoothBtn.addEventListener("click", () => {
+      setupScreen.classList.add("hidden");
+      boothScreen.classList.remove("hidden");
+      message.textContent = "Tap or press space to take photo";
+    });
+
+    backToSetupBtn.addEventListener("click", () => {
+      boothScreen.classList.add("hidden");
+      setupScreen.classList.remove("hidden");
+    });
+
+    takePhotoBtn.addEventListener("click", startPhotoSequence);
+
+    document.addEventListener("keydown", e => {
+      if (e.code === "Space" && !boothScreen.classList.contains("hidden")) {
+        e.preventDefault();
+        startPhotoSequence();
+      }
+    });
+
+    async function startPhotoSequence() {
+      if (isTakingPhotos) return;
+
+      isTakingPhotos = true;
+      takePhotoBtn.disabled = true;
+
+      const layout = layoutSelect.value;
+      const photos = [];
+
+      if (layout === "single") {
+        message.textContent = "Ready";
+        await countdownFromThree();
+        photos.push(capturePhoto());
+      }
+
+      if (layout === "triple") {
+        message.textContent = "Ready";
+        await countdownFromThree();
+        photos.push(capturePhoto());
+
+        message.textContent = "Okay, get ready for the next photo";
+        await wait(1400);
+        await countdownFromThree();
+        photos.push(capturePhoto());
+
+        message.textContent = "Last one";
+        await wait(1400);
+        await countdownFromThree();
+        photos.push(capturePhoto());
+      }
+
+      message.textContent = "Creating your photo";
+      const finalImage = createFinalImage(photos, layout);
+      downloadImage(finalImage);
+
+      message.textContent = "Done. Tap or press space for another photo.";
+      takePhotoBtn.disabled = false;
+      isTakingPhotos = false;
+    }
+
+    async function countdownFromThree() {
+      for (let i = 3; i > 0; i--) {
+        countdown.textContent = i;
+        await wait(900);
+      }
+
+      countdown.textContent = "PHOTO";
+      await wait(300);
+      countdown.textContent = "";
+    }
+
+    function capturePhoto() {
+      const tempCanvas = document.createElement("canvas");
+      const ctx = tempCanvas.getContext("2d");
+
+      tempCanvas.width = video.videoWidth;
+      tempCanvas.height = video.videoHeight;
+
+      ctx.drawImage(video, 0, 0, tempCanvas.width, tempCanvas.height);
+      return tempCanvas;
+    }
+
+    function createFinalImage(photos, layout) {
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = 1200;
+      canvas.height = 1800;
+
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      if (layout === "single") {
+        drawCroppedImage(ctx, photos[0], 80, 180, 1040, 1200);
+      }
+
+      if (layout === "triple") {
+        drawCroppedImage(ctx, photos[0], 90, 130, 1020, 460);
+        drawCroppedImage(ctx, photos[1], 90, 670, 1020, 460);
+        drawCroppedImage(ctx, photos[2], 90, 1210, 1020, 460);
+      }
+
+      if (frameImage) {
+        ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
+      }
+
+      if (logoImage) {
+        ctx.drawImage(logoImage, 450, 40, 300, 120);
+      }
+
+      const eventName = eventNameInput.value.trim();
+      if (eventName) {
+        ctx.fillStyle = "#000";
+        ctx.font = "bold 44px Helvetica, Arial";
+        ctx.textAlign = "center";
+        ctx.fillText(eventName, canvas.width / 2, 1740);
+      }
+
+      return canvas.toDataURL("image/png");
+    }
+
+    function drawCroppedImage(ctx, img, x, y, w, h) {
+      const sourceRatio = img.width / img.height;
+      const targetRatio = w / h;
+
+      let sx, sy, sw, sh;
+
+      if (sourceRatio > targetRatio) {
+        sh = img.height;
+        sw = sh * targetRatio;
+        sx = (img.width - sw) / 2;
+        sy = 0;
+      } else {
+        sw = img.width;
+        sh = sw / targetRatio;
+        sx = 0;
+        sy = (img.height - sh) / 2;
+      }
+
+      ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+    }
+
+    function downloadImage(imageData) {
+      const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+      const link = document.createElement("a");
+
+      link.href = imageData;
+      link.download = `BriGregory-PhotoBooth-${timestamp}.png`;
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function wait(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+  </script>
 </body>
 </html>
