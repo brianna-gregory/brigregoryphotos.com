@@ -103,15 +103,15 @@
     .template-card-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 10px; display: block; }
     .template-card.selected .template-card-label { color: var(--ink); }
 
-    /* 6×4 single frame preview */
-    .tpl-single { width: 100%; aspect-ratio: 6/4; background: var(--white); border: 1px solid var(--border); border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 6px; box-sizing: border-box; }
-    .tpl-single-img { flex: 1; width: 100%; background: #d8d5d0; border-radius: 4px; margin: 4px 0; }
-    .tpl-single-brand { font-size: 0.45rem; color: var(--muted); letter-spacing: 0.1em; white-space: nowrap; }
+    /* 6×4 single frame preview — no logo, just image */
+    .tpl-single { width: 100%; aspect-ratio: 6/4; background: #d8d5d0; border: 1px solid var(--border); border-radius: 6px; }
 
-    /* Strip preview */
-    .tpl-strip { width: 52%; margin: 0 auto; background: var(--white); border: 1px solid var(--border); border-radius: 6px; display: flex; flex-direction: column; align-items: center; padding: 6px 6px 5px; gap: 4px; }
-    .tpl-strip-img { width: 100%; background: #d8d5d0; border-radius: 3px; aspect-ratio: 1.8/1.4; }
-    .tpl-strip-brand { font-size: 0.42rem; color: var(--muted); letter-spacing: 0.1em; margin-top: 1px; }
+    /* 2×6 strip preview */
+    .tpl-strip { width: 42%; margin: 0 auto; background: var(--white); border: 1px solid var(--border); border-radius: 6px; display: flex; flex-direction: column; align-items: stretch; overflow: hidden; }
+    .tpl-strip-frames { display: flex; flex-direction: column; gap: 3px; background: #fff; }
+    .tpl-strip-img { width: 100%; background: #d8d5d0; aspect-ratio: 2/1.5; display: block; }
+    .tpl-strip-bottom { flex: 1; min-height: 28px; background: var(--white); display: flex; align-items: center; justify-content: center; }
+    .tpl-strip-hint { font-size: 0.38rem; color: var(--border); letter-spacing: 0.08em; text-transform: uppercase; }
 
     /* ══ PREVIEW SCREEN ══ */
     .preview-screen { background: var(--off); display: none; place-items: center; }
@@ -275,26 +275,25 @@
         <label class="field-label">Choose a Layout</label>
 
         <div class="template-cards">
-          <!-- 6×4 single -->
+          <!-- 6×4 single, no logo -->
           <div class="template-card selected" data-layout="single" id="tplSingle">
-            <div class="tpl-single">
-              <div class="tpl-single-brand">Brianna Gregory Photography</div>
-              <div class="tpl-single-img"></div>
-              <div class="tpl-single-brand">Event Name</div>
-            </div>
-            <span class="template-card-label">6 × 4 Single</span>
+            <div class="tpl-single"></div>
+            <span class="template-card-label">Single Frame, No Logo</span>
           </div>
 
-          <!-- Photo strip -->
+          <!-- 2×6 photo strip -->
           <div class="template-card" data-layout="triple" id="tplStrip">
             <div class="tpl-strip">
-              <div class="tpl-strip-brand">Brianna Gregory Photography</div>
-              <div class="tpl-strip-img"></div>
-              <div class="tpl-strip-img"></div>
-              <div class="tpl-strip-img"></div>
-              <div class="tpl-strip-brand">Event Name</div>
+              <div class="tpl-strip-frames">
+                <div class="tpl-strip-img"></div>
+                <div class="tpl-strip-img"></div>
+                <div class="tpl-strip-img"></div>
+              </div>
+              <div class="tpl-strip-bottom">
+                <span class="tpl-strip-hint">logo / text / blank</span>
+              </div>
             </div>
-            <span class="template-card-label">Photo Strip × 3</span>
+            <span class="template-card-label">2 × 6 Photo Strip</span>
           </div>
         </div>
 
@@ -878,84 +877,62 @@
 
     // ── Compose final image ──
     function createFinalImage(photos, layout) {
-      const ctx = canvas.getContext("2d");
+      const ctx  = canvas.getContext("2d");
       const name = eventNameInput.value.trim();
 
       if (layout === "single") {
-        // 6×4 inches @ 300 DPI = 1800×1200 px (landscape)
+        // 6×4 inches @ 300 DPI = 1800×1200 px landscape — NO logo/text
         canvas.width  = 1800;
         canvas.height = 1200;
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // Thin border
-        ctx.strokeStyle = "#dedad3"; ctx.lineWidth = 1.5;
-        roundRect(ctx, 20, 20, 1760, 1160, 24); ctx.stroke();
-
-        // Branding top
-        const brandY = 72;
-        drawBrandingLine(ctx, brandY, 40);
-
-        // Photo area — full width minus padding, below branding
-        drawCropped(ctx, photos[0], 50, 96, 1700, 1010, 16);
-
-        // Event name bottom
-        if (name) {
-          ctx.fillStyle = "#8a8480";
-          ctx.font = "400 28px 'DM Sans', Arial, sans-serif";
-          ctx.textAlign = "center";
-          ctx.fillText(name, canvas.width / 2, 1170);
-        }
+        // Photo fills the entire frame
+        drawCropped(ctx, photos[0], 0, 0, 1800, 1200, 0);
 
       } else {
-        // Strip: 1.8×5.6 inches @ 600 DPI = 1080×3360 px
-        // Each frame: 1.8"×1.4" = 1080×840 px
-        const FW = 1080, FH = 840;
-        const PAD = 48, GAP = 32, TOP = 90, BOT = 80;
-        canvas.width  = FW;
-        canvas.height = TOP + FH * 3 + GAP * 2 + BOT;
+        // 2×6 inch strip @ 600 DPI = 1200×3600 px portrait
+        // 3 photo frames stacked, bottom area for logo/text
+        const W       = 1200;
+        const TOTAL_H = 3600;
+        const FRAME_H = 900;   // each frame: 1200 × 900 (2" × 1.5" @ 600 DPI)
+        const FRAMES_H = FRAME_H * 3;   // 2700px
+        const BOTTOM_H = TOTAL_H - FRAMES_H; // 900px bottom area
+
+        canvas.width  = W;
+        canvas.height = TOTAL_H;
 
         ctx.fillStyle = "#ffffff";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, W, TOTAL_H);
 
-        // Branding top
-        drawBrandingLine(ctx, TOP - 16, 28);
+        // Three photo frames — no gaps, edge to edge
+        drawCropped(ctx, photos[0], 0, 0,           W, FRAME_H, 0);
+        drawCropped(ctx, photos[1], 0, FRAME_H,     W, FRAME_H, 0);
+        drawCropped(ctx, photos[2], 0, FRAME_H * 2, W, FRAME_H, 0);
 
-        // Three frames
-        const y0 = TOP, y1 = TOP + FH + GAP, y2 = TOP + (FH + GAP) * 2;
-        drawCropped(ctx, photos[0], 0, y0, FW, FH, 0);
-        drawCropped(ctx, photos[1], 0, y1, FW, FH, 0);
-        drawCropped(ctx, photos[2], 0, y2, FW, FH, 0);
-
-        // Thin separators
-        ctx.strokeStyle = "#ffffff"; ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.moveTo(0, y1); ctx.lineTo(FW, y1); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(0, y2); ctx.lineTo(FW, y2); ctx.stroke();
-
-        // Event name bottom
-        if (name) {
-          ctx.fillStyle = "#8a8480";
-          ctx.font = "400 26px 'DM Sans', Arial, sans-serif";
+        // Bottom area: logo image takes priority, then event name text, then blank
+        const bottomY = FRAMES_H;
+        if (logoImage) {
+          // Center logo in the bottom area
+          const maxW = W * 0.7;
+          const maxH = BOTTOM_H * 0.65;
+          const scale = Math.min(maxW / logoImage.width, maxH / logoImage.height);
+          const lw = logoImage.width  * scale;
+          const lh = logoImage.height * scale;
+          const lx = (W - lw) / 2;
+          const ly = bottomY + (BOTTOM_H - lh) / 2;
+          ctx.drawImage(logoImage, lx, ly, lw, lh);
+        } else if (name) {
+          // Event name text centered in bottom area
+          ctx.fillStyle = "#1a1814";
+          ctx.font = "300 72px 'Cormorant Garamond', Georgia, serif";
           ctx.textAlign = "center";
-          ctx.fillText(name, FW / 2, canvas.height - 22);
+          ctx.fillText(name, W / 2, bottomY + BOTTOM_H / 2 + 24);
         }
+        // else: bottom area stays blank
       }
 
       if (frameImage) ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
       return canvas.toDataURL("image/png", 1);
-    }
-
-    function drawBrandingLine(ctx, y, fontSize) {
-      if (logoImage) {
-        const lw = Math.min(canvas.width * 0.3, 260);
-        const lh = (logoImage.height / logoImage.width) * lw;
-        ctx.drawImage(logoImage, (canvas.width - lw) / 2, y - lh / 2, lw, lh);
-      } else {
-        ctx.fillStyle = "#1a1814";
-        ctx.font = `300 ${fontSize}px 'Cormorant Garamond', Georgia, serif`;
-        ctx.textAlign = "center";
-        ctx.fillText("Brianna Gregory Photography", canvas.width / 2, y);
-      }
     }
 
     function drawCropped(ctx, img, x, y, w, h, r = 0) {
