@@ -3,41 +3,486 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bri Gregory Photo Booth</title>
+  <title>Brianna Gregory Photography — Photo Booth</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --white:   #ffffff;
+      --off:     #fafaf8;
+      --light:   #f2f0ec;
+      --border:  #dedad3;
+      --muted:   #8a8480;
+      --ink:     #1a1814;
+      --serif:   'Cormorant Garamond', Georgia, serif;
+      --sans:    'DM Sans', system-ui, sans-serif;
+      --radius:  12px;
+      --trans:   200ms ease;
+    }
+
+    html, body { width: 100%; height: 100%; font-family: var(--sans); background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; }
+    body { overflow: hidden; }
+    button, input, select { font: inherit; cursor: pointer; border: none; outline: none; background: none; }
+
+    /* ── Screens ── */
+    .screen { display: none; width: 100vw; height: 100vh; overflow: hidden; }
+    .screen.is-active { display: block; }
+
+    /* ── Shared typography ── */
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    h1 { font-family: var(--serif); font-weight: 300; line-height: 0.92; letter-spacing: -0.01em; font-size: clamp(3rem, 7vw, 6rem); color: var(--ink); }
+    h2 { font-family: var(--serif); font-weight: 300; line-height: 0.94; font-size: clamp(1.6rem, 3vw, 2.6rem); color: var(--ink); }
+    .subcopy { font-size: 0.95rem; line-height: 1.65; color: var(--muted); font-weight: 300; }
+
+    .divider {
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--border);
+      margin: 14px 0;
+    }
+
+    /* ── Inputs ── */
+    .field-label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 20px 0 8px;
+    }
+    .input {
+      width: 100%;
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--white);
+      color: var(--ink);
+      padding: 0 14px;
+      font-size: 0.95rem;
+      transition: border-color var(--trans), box-shadow var(--trans);
+    }
+    .input::placeholder { color: var(--border); }
+    .input:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(26,24,20,0.07); }
+    .input option { background: var(--white); color: var(--ink); }
+    .file-input { height: auto; padding: 12px 14px; font-size: 0.85rem; color: var(--muted); cursor: pointer; }
+    .tiny { font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      border-radius: 999px;
+      padding: 0 28px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: transform var(--trans), background var(--trans), color var(--trans), border-color var(--trans);
+    }
+    .btn:hover  { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+    .btn-primary { background: var(--ink); color: var(--white); }
+    .btn-primary:hover { background: #2e2b25; }
+
+    .btn-ghost { background: var(--white); color: var(--ink); border: 1px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--ink); }
+
+    .btn-soft { background: var(--light); color: var(--ink); }
+    .btn-soft:hover { background: var(--border); }
+
+    .btn-full { width: 100%; }
+    .btn-lg   { height: 56px; font-size: 0.8rem; }
+
+    .error { font-size: 0.82rem; color: #c0392b; min-height: 22px; margin-top: 10px; font-weight: 400; }
+
+    /* ══════════════════════════
+       LOCK SCREEN
+    ══════════════════════════ */
+    .lock-screen {
+      background: var(--white);
+      display: none;
+      place-items: center;
+      position: relative;
+    }
+    .lock-screen.is-active { display: grid; }
+
+    .brand-mark {
+      position: absolute;
+      top: 28px;
+      left: 32px;
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .lock-card {
+      width: min(420px, 90vw);
+      text-align: center;
+      padding: clamp(32px, 5vw, 52px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--white);
+    }
+
+    .lock-card h1 { font-size: clamp(2.8rem, 6vw, 4.5rem); margin-bottom: 4px; }
+    .lock-card .subcopy { margin: 12px auto 28px; max-width: 280px; font-size: 0.9rem; }
+
+    .pin-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .pin-row span {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      border: 1px solid var(--border);
+      transition: background var(--trans);
+    }
+    .pin-row span.filled { background: var(--ink); border-color: var(--ink); }
+
+    .page-footer {
+      position: absolute;
+      bottom: 24px;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--border);
+      letter-spacing: 0.1em;
+    }
+
+    /* ══════════════════════════
+       SETUP SCREEN
+    ══════════════════════════ */
+    .setup-screen {
+      background: var(--off);
+      padding: clamp(20px, 3vw, 40px);
+      overflow: auto;
+      display: none;
+    }
+    .setup-screen.is-active { display: block; }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+    .topbar h1 { font-size: clamp(2rem, 4vw, 3.5rem); }
+    .topbar-actions { display: flex; gap: 10px; flex-shrink: 0; }
+
+    .setup-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      height: calc(100vh - 170px);
+      align-items: stretch;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: clamp(20px, 2vw, 28px);
+      overflow: auto;
+    }
+    .panel h2 { font-size: clamp(1.2rem, 1.8vw, 1.8rem); margin-bottom: 4px; }
+
+    .start-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--ink);
+      border-color: var(--ink);
+    }
+    .start-panel .eyebrow { color: rgba(255,255,255,0.45); }
+    .start-panel h2 { color: var(--white); }
+    .start-panel .subcopy { color: rgba(255,255,255,0.45); font-size: 0.85rem; margin-bottom: 20px; }
+    .start-panel .divider { background: rgba(255,255,255,0.15); margin: 12px 0 20px; }
+    .start-panel .btn-primary { background: var(--white); color: var(--ink); }
+    .start-panel .btn-primary:hover { background: var(--off); }
+    .start-panel .btn-soft { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); margin-top: 10px; }
+    .start-panel .btn-soft:hover { background: rgba(255,255,255,0.18); }
+
+    /* ══════════════════════════
+       BOOTH SCREEN
+    ══════════════════════════ */
+    .booth-screen { position: relative; background: #000; }
+    .booth-screen.is-active { display: block; }
+
+    #videoFeed {
+      width: 100vw; height: 100vh;
+      object-fit: cover;
+      background: #000;
+      display: block;
+    }
+
+    .booth-shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 18%, transparent 62%, rgba(0,0,0,0.65) 100%);
+      pointer-events: none;
+    }
+
+    .booth-brand {
+      position: absolute;
+      top: 26px;
+      left: 32px;
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.02em;
+    }
+
+    .admin-button {
+      position: absolute;
+      top: 20px; right: 24px;
+      opacity: 0;
+      pointer-events: none;
+      font-size: 0.7rem;
+    }
+
+    .booth-center {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+    }
+
+    .countdown {
+      font-family: var(--serif);
+      font-size: clamp(10rem, 26vw, 22rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+    }
+
+    .booth-message {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      color: var(--white);
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 14px 28px;
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .booth-bottom {
+      position: absolute;
+      left: 0; right: 0;
+      bottom: 36px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .shutter-button {
+      width: min(380px, 82vw);
+      height: 72px;
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--ink);
+      font-size: clamp(0.8rem, 1.6vw, 1rem);
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: transform var(--trans), opacity var(--trans);
+    }
+    .shutter-button:hover { transform: translateY(-2px); }
+    .shutter-button:active { transform: translateY(0); }
+    .shutter-button:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+    /* ══════════════════════════
+       ALL DONE SCREEN
+    ══════════════════════════ */
+    .alldone-screen {
+      background: var(--white);
+      display: none;
+      place-items: center;
+      cursor: pointer;
+    }
+    .alldone-screen.is-active { display: grid; }
+
+    .alldone-inner { text-align: center; padding: 40px; }
+
+    .alldone-check {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 32px;
+      animation: scaleIn 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    .alldone-check svg {
+      width: 32px; height: 32px;
+      stroke: var(--white);
+      stroke-width: 2.5;
+      fill: none;
+    }
+
+    .alldone-title {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 0.9;
+      margin-bottom: 10px;
+      animation: fadeUp 0.55s 0.1s ease both;
+    }
+
+    .alldone-subtitle {
+      font-family: var(--serif);
+      font-size: clamp(1rem, 2.2vw, 1.7rem);
+      color: var(--muted);
+      font-style: italic;
+      font-weight: 300;
+      margin-bottom: 44px;
+      animation: fadeUp 0.55s 0.2s ease both;
+    }
+
+    .alldone-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--ink);
+      color: var(--white);
+      border-radius: 999px;
+      padding: 18px 40px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      animation: fadeUp 0.55s 0.32s ease both;
+      transition: background var(--trans), transform var(--trans);
+    }
+    .alldone-cta:hover { background: #2e2b25; transform: translateY(-1px); }
+
+    .alldone-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--white);
+      opacity: 0.6;
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.2; } }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════════
+       REVIEW SCREEN
+    ══════════════════════════ */
+    .review-screen {
+      background: var(--off);
+      padding: clamp(20px, 3vw, 42px);
+      display: none;
+    }
+    .review-screen.is-active { display: grid; place-items: center; }
+
+    .review-shell {
+      width: min(1100px, 94vw);
+      height: min(720px, 90vh);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .review-copy { padding: 20px; }
+    .review-copy h2 { margin-bottom: 4px; }
+    .review-copy .subcopy { margin-top: 12px; }
+    .review-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+
+    .review-image {
+      max-height: 85vh;
+      width: 100%;
+      object-fit: contain;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    /* ── Canvas (hidden) ── */
+    #canvas { display: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1000px) {
+      .setup-grid { grid-template-columns: 1fr 1fr; height: auto; }
+      .review-shell { grid-template-columns: 1fr; height: auto; }
+      .review-image { max-height: 50vh; }
+    }
+    @media (max-width: 680px) {
+      body { overflow: auto; }
+      .screen { min-height: 100vh; height: auto; }
+      .setup-grid { grid-template-columns: 1fr; }
+      .topbar { flex-direction: column; align-items: flex-start; }
+      .booth-screen { height: 100vh; }
+      .booth-message { white-space: normal; text-align: center; border-radius: 20px; top: 70px; }
+    }
+  </style>
+</head>
 <body>
 
-  <!-- ══════════════════════════
-       LOCK SCREEN
-  ══════════════════════════ -->
+  <!-- LOCK SCREEN -->
   <div id="lockScreen" class="screen lock-screen is-active">
-    <span class="brand-mark">Bri Gregory Photos</span>
+    <span class="brand-mark">Brianna Gregory Photography</span>
 
     <div class="lock-card">
       <p class="eyebrow">Event Mode</p>
       <h1>Photo<br>Booth</h1>
-      <span class="gold-rule"></span>
+      <span class="divider" style="margin: 14px auto;"></span>
       <p class="subcopy">Enter your passcode to begin the experience.</p>
 
       <div class="pin-row" id="pinRow">
         <span></span><span></span><span></span><span></span>
       </div>
 
-      <input
-        id="passcodeInput"
-        class="input"
-        type="password"
-        placeholder="Passcode"
-        maxlength="20"
-        autocomplete="off"
-      />
+      <input id="passcodeInput" class="input" type="password" placeholder="Passcode" maxlength="20" autocomplete="off" />
 
-      <button id="unlockBtn" class="button button-primary button-large" style="margin-top:18px">
+      <button id="unlockBtn" class="btn btn-primary btn-full btn-lg" style="margin-top: 16px;">
         Enter Booth
       </button>
 
@@ -47,80 +492,60 @@
     <p class="page-footer">brigregoryphotos.com</p>
   </div>
 
-  <!-- ══════════════════════════
-       SETUP SCREEN
-  ══════════════════════════ -->
+  <!-- SETUP SCREEN -->
   <div id="setupScreen" class="screen setup-screen">
     <div class="topbar">
       <div>
-        <p class="eyebrow">Bri Gregory Photos</p>
-        <h1>Booth<br>Setup</h1>
+        <p class="eyebrow">Brianna Gregory Photography</p>
+        <h1>Booth Setup</h1>
       </div>
-      <div style="display:flex;gap:10px;flex-shrink:0">
-        <button id="previewBoothBtn" class="button button-ghost">Preview</button>
-        <button id="startBoothBtn"   class="button button-primary">Start Event</button>
+      <div class="topbar-actions">
+        <button id="previewBoothBtn" class="btn btn-ghost">Preview</button>
+        <button id="startBoothBtn" class="btn btn-primary">Start Event</button>
       </div>
     </div>
 
     <div class="setup-grid">
 
       <!-- Camera -->
-      <div class="panel glass-card">
+      <div class="panel">
         <p class="eyebrow">Camera</p>
         <h2>Input</h2>
-        <span class="gold-rule" style="margin:10px 0 16px"></span>
-
+        <span class="divider"></span>
         <label class="field-label">Select Camera</label>
         <select id="cameraSelect" class="input"></select>
-
-        <button id="refreshCamerasBtn" class="button button-soft" style="margin-top:14px">
-          Refresh Cameras
-        </button>
-
-        <label class="field-label" style="margin-top:22px">Live Preview</label>
-        <video
-          id="video"
-          autoplay
-          playsinline
-          muted
-          style="width:100%;border-radius:14px;object-fit:cover;aspect-ratio:16/9;background:#0d0a08;border:1px solid rgba(201,168,76,0.2)"
-        ></video>
+        <button id="refreshCamerasBtn" class="btn btn-soft btn-full" style="margin-top: 14px;">Refresh Cameras</button>
+        <label class="field-label">Live Preview</label>
+        <video id="video" autoplay playsinline muted
+          style="width:100%;border-radius:10px;object-fit:cover;aspect-ratio:16/9;background:#1a1814;border:1px solid var(--border)">
+        </video>
       </div>
 
       <!-- Layout -->
-      <div class="panel glass-card">
+      <div class="panel">
         <p class="eyebrow">Layout</p>
         <h2>Format</h2>
-        <span class="gold-rule" style="margin:10px 0 16px"></span>
-
+        <span class="divider"></span>
         <label class="field-label">Photo Layout</label>
         <select id="layoutSelect" class="input">
           <option value="single">1 Photo</option>
           <option value="triple">3 Photos in One Frame</option>
         </select>
-
-        <label class="field-label">Upload Frame Overlay</label>
+        <label class="field-label">Frame Overlay</label>
         <input id="frameUpload" class="input file-input" type="file" accept="image/png,image/jpeg" />
-        <p class="tiny">Transparent PNG recommended for best results.</p>
-
-        <label class="field-label">Upload Logo</label>
+        <p class="tiny">Transparent PNG recommended.</p>
+        <label class="field-label">Logo</label>
         <input id="logoUpload" class="input file-input" type="file" accept="image/png,image/jpeg" />
-        <p class="tiny">Centered at the top of each printed photo.</p>
+        <p class="tiny">Centered at the top of each photo.</p>
       </div>
 
       <!-- Event -->
-      <div class="panel glass-card">
+      <div class="panel">
         <p class="eyebrow">Event</p>
         <h2>Details</h2>
-        <span class="gold-rule" style="margin:10px 0 16px"></span>
-
+        <span class="divider"></span>
         <label class="field-label">Event Name</label>
-        <input
-          id="eventName"
-          class="input"
-          type="text"
-          placeholder="e.g. Sara & Jake's Wedding"
-        />
+        <input id="eventName" class="input" type="text" placeholder="e.g. Sara & Jake's Wedding" />
         <p class="tiny">Printed at the bottom of each photo strip.</p>
       </div>
 
@@ -128,31 +553,21 @@
       <div class="panel start-panel">
         <p class="eyebrow">Ready?</p>
         <h2>Start the<br>Experience</h2>
-        <span class="gold-rule" style="margin:12px 0 16px"></span>
-        <p class="subcopy" style="color:rgba(253,246,238,0.48);font-size:0.9rem;margin-bottom:24px">
-          Make sure your camera is selected and frame is uploaded before going live.
-        </p>
-        <button id="startBoothBtn2" class="button button-primary button-large">
-          Start Event Mode
-        </button>
-        <button id="previewBoothBtn2" class="button button-soft">
-          Preview Only
-        </button>
+        <span class="divider"></span>
+        <p class="subcopy">Make sure your camera is selected and frame is uploaded before going live.</p>
+        <button id="startBoothBtn2" class="btn btn-primary btn-full btn-lg">Start Event Mode</button>
+        <button id="previewBoothBtn2" class="btn btn-soft btn-full">Preview Only</button>
       </div>
 
     </div>
   </div>
 
-  <!-- ══════════════════════════
-       BOOTH SCREEN
-  ══════════════════════════ -->
+  <!-- BOOTH SCREEN -->
   <div id="boothScreen" class="screen booth-screen">
-    <video id="videoFeed" autoplay playsinline muted style="width:100vw;height:100vh;object-fit:cover;background:#000;display:block;"></video>
+    <video id="videoFeed" autoplay playsinline muted></video>
 
     <div class="booth-shade"></div>
-    <div class="booth-brand">Bri Gregory Photos</div>
-
-    <!-- Hidden admin button — kept in DOM but invisible; exit via 4 taps -->
+    <div class="booth-brand">Brianna Gregory Photography</div>
     <button id="adminBtn" class="admin-button" aria-hidden="true" tabindex="-1">Setup</button>
 
     <div class="booth-center">
@@ -162,88 +577,371 @@
     <div id="message" class="booth-message">Tap to take a photo</div>
 
     <div class="booth-bottom">
-      <button id="takePhotoBtn" class="shutter-button">
-        Take Photo
-      </button>
+      <button id="takePhotoBtn" class="shutter-button">Take Photo</button>
     </div>
 
     <canvas id="canvas" style="display:none"></canvas>
   </div>
 
-  <!-- ══════════════════════════
-       ALL DONE SCREEN
-  ══════════════════════════ -->
+  <!-- ALL DONE SCREEN -->
   <div id="alldoneScreen" class="screen alldone-screen">
     <div class="alldone-inner">
-      <div class="alldone-checkmark">
+      <div class="alldone-check">
         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-
       <h1 class="alldone-title">All Done!</h1>
       <p class="alldone-subtitle">Your photo is downloading now.</p>
-
       <button id="alldoneReadyBtn" class="alldone-cta">
-        <span class="alldone-cta-dot"></span>
+        <span class="alldone-dot"></span>
         I'm Ready — Next Guest
       </button>
     </div>
   </div>
 
-  <!-- ══════════════════════════
-       REVIEW SCREEN
-  ══════════════════════════ -->
+  <!-- REVIEW SCREEN -->
   <div id="reviewScreen" class="screen review-screen">
     <div class="review-shell">
       <div class="review-copy">
         <p class="eyebrow">Your Photo</p>
         <h2>Looking<br>great!</h2>
-        <span class="gold-rule" style="margin:12px 0 16px"></span>
+        <span class="divider"></span>
         <p class="subcopy">Your photo has been saved. Take another or head back to setup.</p>
         <div class="review-actions">
-          <button id="takeAnotherBtn" class="button button-primary">Take Another</button>
-          <button id="reviewSetupBtn" class="button button-ghost">Setup</button>
+          <button id="takeAnotherBtn" class="btn btn-primary">Take Another</button>
+          <button id="reviewSetupBtn" class="btn btn-ghost">Setup</button>
         </div>
       </div>
       <img id="reviewImage" class="review-image" src="" alt="Your photo" />
     </div>
   </div>
 
-  <script src="app.js"></script>
-
   <script>
-    // Wire up the duplicate start buttons in the start panel
-    document.getElementById("startBoothBtn2")?.addEventListener("click", () => {
-      document.getElementById("startBoothBtn").click();
-    });
-    document.getElementById("previewBoothBtn2")?.addEventListener("click", () => {
-      document.getElementById("previewBoothBtn").click();
-    });
+    const PASSCODE = "1111";
+    const EXIT_TAPS = 4;
 
-    // Pin dot feedback on lock screen
-    const passcodeInput = document.getElementById("passcodeInput");
-    const pinDots = document.querySelectorAll("#pinRow span");
-    passcodeInput.addEventListener("input", () => {
+    const screens = {
+      lock:    document.getElementById("lockScreen"),
+      setup:   document.getElementById("setupScreen"),
+      booth:   document.getElementById("boothScreen"),
+      alldone: document.getElementById("alldoneScreen"),
+      review:  document.getElementById("reviewScreen")
+    };
+
+    const passcodeInput   = document.getElementById("passcodeInput");
+    const unlockBtn       = document.getElementById("unlockBtn");
+    const passcodeError   = document.getElementById("passcodeError");
+    const cameraSelect    = document.getElementById("cameraSelect");
+    const refreshCamerasBtn = document.getElementById("refreshCamerasBtn");
+    const layoutSelect    = document.getElementById("layoutSelect");
+    const frameUpload     = document.getElementById("frameUpload");
+    const logoUpload      = document.getElementById("logoUpload");
+    const eventNameInput  = document.getElementById("eventName");
+    const startBoothBtn   = document.getElementById("startBoothBtn");
+    const previewBoothBtn = document.getElementById("previewBoothBtn");
+    const adminBtn        = document.getElementById("adminBtn");
+    const takePhotoBtn    = document.getElementById("takePhotoBtn");
+    const takeAnotherBtn  = document.getElementById("takeAnotherBtn");
+    const reviewSetupBtn  = document.getElementById("reviewSetupBtn");
+    const alldoneReadyBtn = document.getElementById("alldoneReadyBtn");
+    const video      = document.getElementById("video");
+    const videoFeed  = document.getElementById("videoFeed");
+    const canvas     = document.getElementById("canvas");
+    const message    = document.getElementById("message");
+    const countdown  = document.getElementById("countdown");
+    const reviewImage = document.getElementById("reviewImage");
+
+    let currentStream      = null;
+    let frameImage         = null;
+    let logoImage          = null;
+    let isTakingPhotos     = false;
+    let hasCameraPermission = false;
+    let exitTapCount = 0;
+    let exitTapTimer = null;
+
+    function showScreen(name) {
+      Object.values(screens).forEach(s => s.classList.remove("is-active"));
+      screens[name].classList.add("is-active");
+      exitTapCount = 0;
+      clearTimeout(exitTapTimer);
+    }
+
+    // ── Lock ──
+    unlockBtn.addEventListener("click", unlock);
+    passcodeInput.addEventListener("keydown", e => { if (e.key === "Enter") unlock(); });
+
+    function unlock() {
+      if (passcodeInput.value.trim() !== PASSCODE) {
+        passcodeError.textContent = "That passcode is not correct.";
+        passcodeInput.value = "";
+        updatePinDots();
+        return;
+      }
+      passcodeError.textContent = "";
+      showScreen("setup");
+      startCamera().catch(showCameraError);
+    }
+
+    // Pin dots
+    function updatePinDots() {
+      const dots = document.querySelectorAll("#pinRow span");
       const len = Math.min(passcodeInput.value.length, 4);
-      pinDots.forEach((dot, i) => {
-        dot.classList.toggle("filled", i < len);
-      });
-    });
+      dots.forEach((d, i) => d.classList.toggle("filled", i < len));
+    }
+    passcodeInput.addEventListener("input", updatePinDots);
 
-    // Booth screen uses a separate <video> element id'd as "videoFeed"
-    // but app.js targets "video" — patch that here
-    const videoFeed = document.getElementById("videoFeed");
-    const videoEl   = document.getElementById("video");
-    // Keep both in sync (app.js sets srcObject on #video, mirror to #videoFeed)
-    const origDescriptor = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'srcObject');
-    if (videoEl && videoFeed) {
-      Object.defineProperty(videoEl, 'srcObject', {
-        get() { return origDescriptor.get.call(this); },
-        set(val) {
-          origDescriptor.set.call(this, val);
-          origDescriptor.set.call(videoFeed, val);
-        }
+    // ── Camera ──
+    async function startCamera(deviceId) {
+      if (!navigator.mediaDevices?.getUserMedia) throw new Error("Camera not available in this browser.");
+      if (currentStream) currentStream.getTracks().forEach(t => t.stop());
+
+      currentStream = await navigator.mediaDevices.getUserMedia({
+        video: { deviceId: deviceId ? { exact: deviceId } : undefined, width: { ideal: 1920 }, height: { ideal: 1080 } },
+        audio: false
+      });
+
+      hasCameraPermission = true;
+      video.srcObject = currentStream;
+      videoFeed.srcObject = currentStream;
+      await loadCameras(deviceId);
+    }
+
+    async function loadCameras(selectedId) {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const cams = devices.filter(d => d.kind === "videoinput");
+      cameraSelect.innerHTML = "";
+      cams.forEach((cam, i) => {
+        const opt = document.createElement("option");
+        opt.value = cam.deviceId;
+        opt.textContent = cam.label || `Camera ${i + 1}`;
+        opt.selected = selectedId ? cam.deviceId === selectedId : i === 0;
+        cameraSelect.appendChild(opt);
       });
     }
+
+    function showCameraError(err) {
+      alert(`${err.message}\n\nMake sure this page is on HTTPS and camera permission is allowed.`);
+    }
+
+    cameraSelect.addEventListener("change", () => startCamera(cameraSelect.value).catch(showCameraError));
+    refreshCamerasBtn?.addEventListener("click", () => loadCameras(cameraSelect.value).catch(showCameraError));
+
+    // ── File uploads ──
+    frameUpload.addEventListener("change", async e => { frameImage = await loadImg(e.target.files[0]); });
+    logoUpload.addEventListener("change",  async e => { logoImage  = await loadImg(e.target.files[0]); });
+
+    function loadImg(file) {
+      return new Promise(resolve => {
+        if (!file) return resolve(null);
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.src = URL.createObjectURL(file);
+      });
+    }
+
+    // ── Enter booth ──
+    startBoothBtn.addEventListener("click", enterBooth);
+    previewBoothBtn?.addEventListener("click", enterBooth);
+    document.getElementById("startBoothBtn2")?.addEventListener("click", () => startBoothBtn.click());
+    document.getElementById("previewBoothBtn2")?.addEventListener("click", () => previewBoothBtn.click());
+
+    async function enterBooth() {
+      if (!hasCameraPermission) await startCamera(cameraSelect.value).catch(showCameraError);
+      showScreen("booth");
+      message.textContent = "Tap to take a photo";
+      countdown.textContent = "";
+    }
+
+    adminBtn?.addEventListener("click", () => showScreen("setup"));
+    reviewSetupBtn?.addEventListener("click", () => showScreen("setup"));
+    takeAnotherBtn?.addEventListener("click", () => showScreen("alldone"));
+    alldoneReadyBtn?.addEventListener("click", enterBooth);
+    document.getElementById("alldoneScreen")?.addEventListener("click", enterBooth);
+
+    // ── Secret exit — 4 taps ──
+    function handleBoothTap(e) {
+      if (!screens.booth.classList.contains("is-active")) return;
+      if (isTakingPhotos) return;
+
+      exitTapCount++;
+      clearTimeout(exitTapTimer);
+
+      if (exitTapCount >= EXIT_TAPS) {
+        exitTapCount = 0;
+        showScreen("setup");
+        return;
+      }
+
+      exitTapTimer = setTimeout(() => { exitTapCount = 0; }, 1800);
+
+      if (exitTapCount === 1) startPhotoSequence();
+    }
+
+    screens.booth.addEventListener("click", handleBoothTap);
+    screens.booth.addEventListener("touchend", e => { e.preventDefault(); handleBoothTap(e); }, { passive: false });
+
+    takePhotoBtn?.addEventListener("click", e => {
+      e.stopPropagation();
+      startPhotoSequence();
+    });
+
+    window.addEventListener("keydown", e => {
+      if (!screens.booth.classList.contains("is-active")) return;
+      if (e.code === "Space" || e.key === "Enter") { e.preventDefault(); startPhotoSequence(); }
+    });
+
+    // ── Photo sequence ──
+    async function startPhotoSequence() {
+      if (isTakingPhotos) return;
+      isTakingPhotos = true;
+      if (takePhotoBtn) takePhotoBtn.disabled = true;
+
+      const photos = [];
+      const layout = layoutSelect.value;
+
+      try {
+        if (layout === "single") {
+          message.textContent = "Ready…";
+          await countdownFrom3();
+          photos.push(capturePhoto());
+        } else {
+          message.textContent = "Ready…";
+          await countdownFrom3();
+          photos.push(capturePhoto());
+
+          message.textContent = "Get ready for the next one";
+          await wait(1300);
+          await countdownFrom3();
+          photos.push(capturePhoto());
+
+          message.textContent = "Last one!";
+          await wait(1300);
+          await countdownFrom3();
+          photos.push(capturePhoto());
+        }
+
+        message.textContent = "Creating your photo…";
+        await wait(350);
+
+        const final = createFinalImage(photos, layout);
+        downloadImage(final);
+        reviewImage.src = final;
+        showScreen("alldone");
+
+      } catch (err) {
+        alert(`Photo failed: ${err.message}`);
+      } finally {
+        if (takePhotoBtn) takePhotoBtn.disabled = false;
+        isTakingPhotos = false;
+        countdown.textContent = "";
+        exitTapCount = 0;
+      }
+    }
+
+    async function countdownFrom3() {
+      for (let n = 3; n > 0; n--) {
+        countdown.textContent = n;
+        await wait(850);
+      }
+      countdown.textContent = "✦";
+      await wait(260);
+      countdown.textContent = "";
+    }
+
+    function capturePhoto() {
+      if (!video.videoWidth || !video.videoHeight) throw new Error("Camera not ready. Try again.");
+      const c = document.createElement("canvas");
+      c.width = video.videoWidth;
+      c.height = video.videoHeight;
+      c.getContext("2d").drawImage(video, 0, 0);
+      return c;
+    }
+
+    // ── Compose image ──
+    function createFinalImage(photos, layout) {
+      const ctx = canvas.getContext("2d");
+      canvas.width  = 1200;
+      canvas.height = 1800;
+
+      // White background
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Subtle border
+      ctx.strokeStyle = "#dedad3";
+      ctx.lineWidth = 1;
+      roundRect(ctx, 30, 30, 1140, 1740, 40);
+      ctx.stroke();
+
+      if (layout === "single") {
+        drawCroppedImage(ctx, photos[0], 72, 220, 1056, 1280, 28);
+      } else {
+        drawCroppedImage(ctx, photos[0], 72, 185, 1056, 440, 22);
+        drawCroppedImage(ctx, photos[1], 72, 700, 1056, 440, 22);
+        drawCroppedImage(ctx, photos[2], 72, 1215, 1056, 440, 22);
+      }
+
+      if (frameImage) ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
+
+      drawBranding(ctx, layout);
+      return canvas.toDataURL("image/png", 1);
+    }
+
+    function drawBranding(ctx, layout) {
+      const eventName = eventNameInput.value.trim();
+      const topY = layout === "single" ? 160 : 130;
+
+      if (logoImage) {
+        const logoW = 280;
+        const logoH = (logoImage.height / logoImage.width) * logoW;
+        ctx.drawImage(logoImage, (canvas.width - logoW) / 2, topY - logoH / 2 - 8, logoW, logoH);
+      } else {
+        ctx.fillStyle = "#1a1814";
+        ctx.font = "300 36px 'Cormorant Garamond', Georgia, serif";
+        ctx.textAlign = "center";
+        ctx.fillText("Brianna Gregory Photography", canvas.width / 2, topY);
+      }
+
+      if (eventName) {
+        ctx.fillStyle = "#8a8480";
+        ctx.font = "400 32px 'DM Sans', Arial, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(eventName, canvas.width / 2, 1718);
+      }
+    }
+
+    function drawCroppedImage(ctx, img, x, y, w, h, radius = 0) {
+      ctx.save();
+      if (radius) { roundRect(ctx, x, y, w, h, radius); ctx.clip(); }
+      const sr = img.width / img.height;
+      const tr = w / h;
+      let sx, sy, sw, sh;
+      if (sr > tr) { sh = img.height; sw = sh * tr; sx = (img.width - sw) / 2; sy = 0; }
+      else         { sw = img.width; sh = sw / tr; sx = 0; sy = (img.height - sh) / 2; }
+      ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+      ctx.restore();
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    function downloadImage(data) {
+      const ts = new Date().toISOString().replace(/[:.]/g, "-");
+      const a = document.createElement("a");
+      a.href = data;
+      a.download = `BriannaGregory-PhotoBooth-${ts}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
   </script>
 </body>
 </html>
