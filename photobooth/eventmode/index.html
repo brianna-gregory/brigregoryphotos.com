@@ -617,7 +617,7 @@
 
   <script>
     const PASSCODE = "1111";
-    const EXIT_TAPS = 4;
+    const HOLD_EXIT_MS = 4000;
 
     const screens = {
       lock:    document.getElementById("lockScreen"),
@@ -655,14 +655,13 @@
     let logoImage          = null;
     let isTakingPhotos     = false;
     let hasCameraPermission = false;
-    let exitTapCount = 0;
-    let exitTapTimer = null;
+    let holdTimer          = null;
+    let holdIndicator      = null;
 
     function showScreen(name) {
       Object.values(screens).forEach(s => s.classList.remove("is-active"));
       screens[name].classList.add("is-active");
-      exitTapCount = 0;
-      clearTimeout(exitTapTimer);
+      cancelHold();
     }
 
     // ── Lock ──
@@ -757,36 +756,74 @@
     alldoneReadyBtn?.addEventListener("click", enterBooth);
     document.getElementById("alldoneScreen")?.addEventListener("click", enterBooth);
 
-    // ── Secret exit — 4 taps ──
-    function handleBoothTap(e) {
-      if (!screens.booth.classList.contains("is-active")) return;
-      if (isTakingPhotos) return;
-
-      exitTapCount++;
-      clearTimeout(exitTapTimer);
-
-      if (exitTapCount >= EXIT_TAPS) {
-        exitTapCount = 0;
-        showScreen("setup");
-        return;
-      }
-
-      exitTapTimer = setTimeout(() => { exitTapCount = 0; }, 1800);
-
-      if (exitTapCount === 1) startPhotoSequence();
+    // ── Long-press exit (4 seconds anywhere on booth screen) ──
+    function cancelHold() {
+      clearTimeout(holdTimer);
+      holdTimer = null;
+      if (holdIndicator) { holdIndicator.remove(); holdIndicator = null; }
     }
 
-    screens.booth.addEventListener("click", handleBoothTap);
-    screens.booth.addEventListener("touchend", e => { e.preventDefault(); handleBoothTap(e); }, { passive: false });
+    function startHold() {
+      if (!screens.booth.classList.contains("is-active")) return;
+      cancelHold();
+
+      // Show a subtle progress ring so the user knows it's working
+      holdIndicator = document.createElement("div");
+      holdIndicator.style.cssText = `
+        position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+        width:90px;height:90px;border-radius:50%;
+        border:3px solid rgba(255,255,255,0.15);
+        border-top-color:rgba(255,255,255,0.85);
+        animation:spin ${HOLD_EXIT_MS}ms linear forwards;
+        pointer-events:none;z-index:9999;
+      `;
+      if (!document.getElementById("spinStyle")) {
+        const s = document.createElement("style");
+        s.id = "spinStyle";
+        s.textContent = "@keyframes spin{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}";
+        document.head.appendChild(s);
+      }
+      document.body.appendChild(holdIndicator);
+
+      holdTimer = setTimeout(() => {
+        cancelHold();
+        isTakingPhotos = false;
+        showScreen("setup");
+      }, HOLD_EXIT_MS);
+    }
+
+    // Pointer events for hold (mouse + touch)
+    screens.booth.addEventListener("pointerdown", startHold);
+    screens.booth.addEventListener("pointerup",   cancelHold);
+    screens.booth.addEventListener("pointercancel", cancelHold);
+    screens.booth.addEventListener("pointermove", cancelHold);
+
+    // Regular tap → photo (only if not already shooting)
+    screens.booth.addEventListener("click", e => {
+      if (!screens.booth.classList.contains("is-active")) return;
+      startPhotoSequence();
+    });
+
+    screens.booth.addEventListener("touchend", e => {
+      e.preventDefault();
+    }, { passive: false });
 
     takePhotoBtn?.addEventListener("click", e => {
       e.stopPropagation();
       startPhotoSequence();
     });
 
+    // Keyboard: Space/Enter = photo, hold Escape 1s = exit
+    let escTimer = null;
     window.addEventListener("keydown", e => {
       if (!screens.booth.classList.contains("is-active")) return;
       if (e.code === "Space" || e.key === "Enter") { e.preventDefault(); startPhotoSequence(); }
+      if (e.key === "Escape" && !escTimer) {
+        escTimer = setTimeout(() => { escTimer = null; isTakingPhotos = false; showScreen("setup"); }, 1000);
+      }
+    });
+    window.addEventListener("keyup", e => {
+      if (e.key === "Escape") { clearTimeout(escTimer); escTimer = null; }
     });
 
     // ── Photo sequence ──
