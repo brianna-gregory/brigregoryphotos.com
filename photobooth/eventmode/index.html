@@ -904,13 +904,14 @@
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, W, TOTAL_H);
 
-        // Three photo frames — no gaps, edge to edge
-        drawCropped(ctx, photos[0], 0, 0,           W, FRAME_H, 0);
-        drawCropped(ctx, photos[1], 0, FRAME_H,     W, FRAME_H, 0);
-        drawCropped(ctx, photos[2], 0, FRAME_H * 2, W, FRAME_H, 0);
+        // Three photo frames with a small white gap between each
+        const GAP = 12; // px of white space between frames
+        drawCropped(ctx, photos[0], 0, 0,                   W, FRAME_H, 0);
+        drawCropped(ctx, photos[1], 0, FRAME_H + GAP,       W, FRAME_H, 0);
+        drawCropped(ctx, photos[2], 0, (FRAME_H + GAP) * 2, W, FRAME_H, 0);
 
-        // Bottom area: logo image takes priority, then event name text, then blank
-        const bottomY = FRAMES_H;
+        // Bottom area starts after the 3 frames + 2 gaps
+        const bottomY = FRAME_H * 3 + GAP * 2;
         if (logoImage) {
           // Center logo in the bottom area
           const maxW = W * 0.7;
