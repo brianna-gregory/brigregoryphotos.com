@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bri Gregory Photo Booth</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="lockScreen" class="screen center">
+    <div class="card">
+      <h1>Event Mode</h1>
+      <p>Enter passcode to start the photo booth.</p>
+      <input id="passcodeInput" type="password" placeholder="Passcode" />
+      <button id="unlockBtn">Enter Booth</button>
+      <p id="passcodeError"></p>
+    </div>
+  </div>
 
+  <div id="setupScreen" class="screen hidden">
+    <div class="setup-card">
+      <h1>Photo Booth Setup</h1>
+
+      <label>Camera</label>
+      <select id="cameraSelect"></select>
+
+      <label>Photo Layout</label>
+      <select id="layoutSelect">
+        <option value="single">1 Photo</option>
+        <option value="triple">3 Photos in One Frame</option>
+      </select>
+
+      <label>Upload Frame Overlay PNG</label>
+      <input id="frameUpload" type="file" accept="image/png,image/jpeg" />
+
+      <label>Upload Logo PNG/JPG</label>
+      <input id="logoUpload" type="file" accept="image/png,image/jpeg" />
+
+      <label>Event Name</label>
+      <input id="eventName" type="text" placeholder="Example: Bri’s Birthday Booth" />
+
+      <button id="startBoothBtn">Start Event Mode</button>
+    </div>
+  </div>
+
+  <div id="boothScreen" class="screen hidden">
+    <video id="video" autoplay playsinline></video>
+
+    <div id="overlay">
+      <div id="message">Tap or press space to take photo</div>
+      <div id="countdown"></div>
+    </div>
+
+    <div id="boothControls">
+      <button id="takePhotoBtn">Take Photo</button>
+      <button id="backToSetupBtn">Setup</button>
+    </div>
+
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
