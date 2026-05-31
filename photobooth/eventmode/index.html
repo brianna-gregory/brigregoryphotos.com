@@ -113,22 +113,46 @@
     /* ══ PHONE SCREEN ══ */
     .phone-screen { background: var(--white); display: none; place-items: center; }
     .phone-screen.is-active { display: grid; }
-    .phone-card { width: min(460px, 92vw); text-align: center; }
-    .phone-card h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); margin-bottom: 6px; }
-    .phone-card .subcopy { margin: 10px auto 24px; max-width: 300px; }
 
-    .photo-thumb-wrap { margin: 0 auto 24px; width: min(220px, 60vw); position: relative; }
-    .photo-thumb { width: 100%; border-radius: 14px; border: 1px solid var(--border); display: block; object-fit: cover; }
-    .photo-thumb-label { font-size: 0.72rem; color: var(--muted); margin-top: 8px; letter-spacing: 0.08em; }
+    .phone-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; width: min(900px, 96vw); padding: 24px; }
 
-    .phone-actions { display: flex; flex-direction: column; gap: 10px; }
+    .phone-left { text-align: left; }
+    .phone-left h1 { font-size: clamp(2.2rem, 4vw, 3.8rem); margin-bottom: 6px; }
+    .phone-left .subcopy { margin: 10px 0 20px; max-width: 280px; }
 
-    .btn-spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.35); border-top-color: #fff; border-radius: 50%; animation: spin 0.75s linear infinite; flex-shrink: 0; }
+    .photo-thumb { width: 100%; max-width: 280px; border-radius: 14px; border: 1px solid var(--border); display: block; object-fit: cover; }
+
+    /* Number display */
+    .number-display { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: 0.06em; color: var(--ink); min-height: 1.2em; margin-bottom: 16px; text-align: center; border-bottom: 2px solid var(--ink); padding-bottom: 8px; }
+    .number-display.placeholder { color: var(--border); }
+
+    /* Numpad */
+    .numpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+    .numpad-key { height: 72px; border-radius: 16px; background: var(--off); border: 1px solid var(--border); font-size: 1.5rem; font-weight: 400; color: var(--ink); transition: background var(--trans), transform 80ms ease; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; touch-action: manipulation; }
+    .numpad-key:active { background: var(--border); transform: scale(0.96); }
+    .numpad-key .sub { font-size: 0.55rem; letter-spacing: 0.15em; color: var(--muted); margin-top: 2px; }
+    .numpad-key.del { background: var(--white); font-size: 1.1rem; color: var(--muted); }
+    .numpad-key.del:active { background: var(--light); }
+
+    .numpad-send { width: 100%; height: 64px; border-radius: 999px; background: var(--ink); color: var(--white); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; transition: background var(--trans), transform var(--trans); margin-bottom: 10px; }
+    .numpad-send:hover { background: #2e2b25; }
+    .numpad-send:active { transform: scale(0.98); }
+    .numpad-send:disabled { opacity: 0.35; cursor: not-allowed; }
+    .numpad-skip { width: 100%; height: 48px; border-radius: 999px; background: transparent; color: var(--muted); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--border); transition: border-color var(--trans), color var(--trans); }
+    .numpad-skip:hover { border-color: var(--ink); color: var(--ink); }
+
+    .send-status { font-size: 0.82rem; min-height: 20px; margin-top: 8px; text-align: center; }
+    .send-status.err { color: #c0392b; }
+
+    .btn-spinner { width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.35); border-top-color: #fff; border-radius: 50%; animation: spin 0.75s linear infinite; flex-shrink: 0; display: inline-block; }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    .send-status { font-size: 0.84rem; min-height: 22px; margin-top: 12px; }
-    .send-status.ok  { color: #2e7d32; }
-    .send-status.err { color: #c0392b; }
+    @media (max-width: 680px) {
+      .phone-layout { grid-template-columns: 1fr; gap: 16px; }
+      .photo-thumb { max-width: 160px; margin: 0 auto; }
+      .phone-left { text-align: center; }
+      .phone-left .subcopy { margin: 10px auto 16px; }
+    }
 
     /* ══ ALL DONE SCREEN ══ */
     .alldone-screen { background: var(--white); display: none; place-items: center; cursor: pointer; }
@@ -283,27 +307,41 @@
 
   <!-- PHONE SCREEN -->
   <div id="phoneScreen" class="screen phone-screen">
-    <div class="phone-card">
-      <p class="eyebrow">Brianna Gregory Photography</p>
-      <h1>Get your<br>photo</h1>
-      <span class="divider" style="margin:14px auto"></span>
-      <p class="subcopy">Enter your number — Messages will open ready to send.</p>
+    <div class="phone-layout">
 
-      <div class="photo-thumb-wrap">
+      <!-- Left: branding + photo preview -->
+      <div class="phone-left">
+        <p class="eyebrow">Brianna Gregory Photography</p>
+        <h1>Get your<br>photo</h1>
+        <span class="divider"></span>
+        <p class="subcopy">Tap your number below — we'll open Messages with your photo ready to send.</p>
         <img id="photoThumb" class="photo-thumb" src="" alt="Your photo" />
       </div>
 
-      <div class="phone-input-wrap" style="position:relative;margin-bottom:14px">
-        <span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:0.95rem;color:var(--muted);pointer-events:none">+1</span>
-        <input id="phoneInput" class="input" style="padding-left:38px;font-size:1.05rem;height:52px;border-radius:14px" type="tel" placeholder="(555) 000-0000" maxlength="14" inputmode="numeric" />
+      <!-- Right: number pad -->
+      <div class="phone-right">
+        <div id="numberDisplay" class="number-display placeholder">+1 (___) ___-____</div>
+
+        <div class="numpad">
+          <button class="numpad-key" data-digit="1">1<span class="sub">&nbsp;</span></button>
+          <button class="numpad-key" data-digit="2">2<span class="sub">ABC</span></button>
+          <button class="numpad-key" data-digit="3">3<span class="sub">DEF</span></button>
+          <button class="numpad-key" data-digit="4">4<span class="sub">GHI</span></button>
+          <button class="numpad-key" data-digit="5">5<span class="sub">JKL</span></button>
+          <button class="numpad-key" data-digit="6">6<span class="sub">MNO</span></button>
+          <button class="numpad-key" data-digit="7">7<span class="sub">PQRS</span></button>
+          <button class="numpad-key" data-digit="8">8<span class="sub">TUV</span></button>
+          <button class="numpad-key" data-digit="9">9<span class="sub">WXYZ</span></button>
+          <button class="numpad-key" data-digit="*" style="visibility:hidden"></button>
+          <button class="numpad-key" data-digit="0">0</button>
+          <button class="numpad-key del" id="numpadDel">⌫</button>
+        </div>
+
+        <button id="sendPhotoBtn" class="numpad-send" disabled>Text this to me</button>
+        <button id="skipTextBtn" class="numpad-skip">Skip — Download Only</button>
+        <p class="send-status" id="sendStatus"></p>
       </div>
 
-      <div class="phone-actions">
-        <button id="sendPhotoBtn" class="btn btn-primary btn-full btn-lg">Text this to me (iPhones only)</button>
-        <button id="skipTextBtn" class="btn btn-ghost btn-full">Skip — Download Only</button>
-      </div>
-
-      <p class="send-status" id="sendStatus"></p>
     </div>
   </div>
 
@@ -315,10 +353,12 @@
       </div>
       <h1 class="alldone-title">All Done!</h1>
       <p class="alldone-subtitle" id="alldoneSubtitle">Your photo is on its way.</p>
-      <button id="alldoneReadyBtn" class="alldone-cta">
-        <span class="alldone-dot"></span>
-        I'm Ready — Next Guest
-      </button>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;animation:fadeUp 0.55s 0.32s ease both">
+        <button id="alldoneReadyBtn" class="alldone-cta">
+          <span class="alldone-dot"></span>
+          I'm Ready — Next Guest
+        </button>
+      </div>
     </div>
   </div>
 
@@ -489,42 +529,71 @@
     alldoneReadyBtn?.addEventListener("click", enterBooth);
     document.getElementById("alldoneScreen")?.addEventListener("click", enterBooth);
 
-    // ── Phone number auto-format ──
-    document.getElementById("phoneInput").addEventListener("input", () => {
-      const el = document.getElementById("phoneInput");
-      let v = el.value.replace(/\D/g, "").slice(0, 10);
-      if (v.length >= 7)      v = `(${v.slice(0,3)}) ${v.slice(3,6)}-${v.slice(6)}`;
-      else if (v.length >= 4) v = `(${v.slice(0,3)}) ${v.slice(3)}`;
-      else if (v.length > 0)  v = `(${v}`;
-      el.value = v;
+    // ── Numpad logic ──
+    let dialedDigits = "";
+
+    function updateDisplay() {
+      const d   = dialedDigits;
+      const display = document.getElementById("numberDisplay");
+      let formatted = "";
+      if (d.length === 0) {
+        display.textContent = "+1 (___) ___-____";
+        display.classList.add("placeholder");
+      } else {
+        if (d.length <= 3)       formatted = `+1 (${d}`;
+        else if (d.length <= 6)  formatted = `+1 (${d.slice(0,3)}) ${d.slice(3)}`;
+        else                     formatted = `+1 (${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6,10)}`;
+        display.textContent = formatted;
+        display.classList.remove("placeholder");
+      }
+      sendPhotoBtn.disabled = d.length < 10;
+    }
+
+    document.querySelectorAll(".numpad-key[data-digit]").forEach(btn => {
+      const digit = btn.dataset.digit;
+      if (digit === "*") return;
+      btn.addEventListener("click", () => {
+        if (dialedDigits.length >= 10) return;
+        dialedDigits += digit;
+        updateDisplay();
+      });
     });
 
-    // ── Text this to me — download photo then open Messages pre-filled ──
-    sendPhotoBtn.addEventListener("click", () => {
-      const el       = document.getElementById("phoneInput");
-      const rawPhone = el.value.replace(/\D/g, "");
+    document.getElementById("numpadDel").addEventListener("click", () => {
+      dialedDigits = dialedDigits.slice(0, -1);
+      updateDisplay();
+    });
 
-      if (rawPhone.length !== 10) {
-        sendStatus.textContent = "Please enter a valid 10-digit number.";
-        sendStatus.className   = "send-status err";
-        return;
-      }
+    // ── Send: copy image to clipboard + open Messages pre-filled ──
+    sendPhotoBtn.addEventListener("click", async () => {
+      if (dialedDigits.length !== 10) return;
 
       sendStatus.textContent = "";
-      sendStatus.className   = "send-status";
+      sendPhotoBtn.disabled  = true;
+      sendPhotoBtn.innerHTML = '<span class="btn-spinner"></span>';
 
-      // 1. Download the photo to their device
-      downloadImage(lastPhotoDataURL);
+      // 1. Copy image to clipboard (so guest can paste in Messages)
+      try {
+        const res  = await fetch(lastPhotoDataURL);
+        const blob = await res.blob();
+        await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+      } catch (e) {
+        // Clipboard blocked — fall back to download
+        downloadImage(lastPhotoDataURL);
+      }
 
-      // 2. Open Messages with their number pre-filled
-      //    Body tells them to check their downloads / camera roll
-      const body = encodeURIComponent("📷 Your photo from Brianna Gregory Photography is saved to your device!");
-      window.location.href = `sms:+1${rawPhone}&body=${body}`;
+      // 2. Open Messages pre-filled with their number
+      window.location.href = `sms:+1${dialedDigits}`;
 
-      // 3. After a short delay, move to All Done
+      sendPhotoBtn.disabled  = false;
+      sendPhotoBtn.innerHTML = "Text this to me";
+
+      // 3. All Done
       setTimeout(() => {
-        alldoneSubtitle.textContent = "Check your downloads for the photo!";
+        alldoneSubtitle.textContent = "Long-press in Messages and tap Paste to attach your photo!";
         showScreen("alldone");
+        dialedDigits = "";
+        updateDisplay();
       }, 800);
     });
 
