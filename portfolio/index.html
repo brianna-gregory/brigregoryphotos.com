@@ -15,7 +15,7 @@
       margin: 0;
       font-family: "Times New Roman", Times, serif;
       color: #111;
-      background: #f7f3ee;
+      background: #f6f1eb;
     }
 
     a {
@@ -23,23 +23,28 @@
       text-decoration: none;
     }
 
+    /* =========================
+       NAVIGATION
+    ========================= */
+
     .site-header {
-      background: #f7f3ee;
-      border-bottom: 1px solid #ded8d1;
+      background: #f6f1eb;
+      border-bottom: 1px solid #ded6ce;
     }
 
     .site-nav {
-      min-height: 105px;
+      min-height: 110px;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 72px;
+      gap: 80px;
     }
 
     .site-nav a {
       font-size: 11px;
-      letter-spacing: 0.34em;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
+      color: #111;
     }
 
     .menu-toggle,
@@ -48,47 +53,59 @@
       display: none;
     }
 
+    /* =========================
+       PORTFOLIO PAGE
+    ========================= */
+
     .portfolio-page {
-      padding: 95px 5.5% 140px;
-      background: #f7f3ee;
+      padding: 120px 6% 150px;
+      background: #f6f1eb;
     }
 
     .portfolio-hero {
-      max-width: 900px;
-      margin: 0 auto 95px;
+      max-width: 950px;
+      margin: 0 auto 110px;
       text-align: center;
     }
 
     .portfolio-eyebrow {
-      margin: 0 0 34px;
+      display: block;
+      margin: 0 0 32px;
       font-size: 11px;
-      letter-spacing: 0.42em;
+      letter-spacing: 0.45em;
       text-transform: uppercase;
+      color: #222;
     }
 
     .portfolio-hero h1 {
-      margin: 0 0 30px;
-      font-size: clamp(82px, 10vw, 145px);
+      margin: 0 0 32px;
+      font-size: 120px;
       font-weight: 400;
+      font-style: italic;
       line-height: 0.88;
-      letter-spacing: -0.065em;
+      letter-spacing: -0.07em;
+      color: #111;
     }
 
     .portfolio-hero p:not(.portfolio-eyebrow) {
-      max-width: 640px;
+      max-width: 650px;
       margin: 0 auto;
       font-size: 18px;
       line-height: 1.9;
       font-style: italic;
-      color: #4b433d;
+      color: #5c524a;
     }
 
+    /* =========================
+       GRID
+    ========================= */
+
     .portfolio-grid {
-      max-width: 1400px;
+      max-width: 1450px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 34px;
+      gap: 38px;
     }
 
     .portfolio-item {
@@ -96,7 +113,7 @@
       display: block;
       overflow: hidden;
       aspect-ratio: 3 / 4;
-      background: #e6ded6;
+      background: #ece6e0;
     }
 
     .portfolio-item img {
@@ -109,9 +126,13 @@
     }
 
     .portfolio-item:hover img {
-      transform: scale(1.035);
+      transform: scale(1.03);
       filter: saturate(0.8) contrast(0.94);
     }
+
+    /* =========================
+       OVERLAY
+    ========================= */
 
     .portfolio-overlay {
       position: absolute;
@@ -129,18 +150,18 @@
     }
 
     .portfolio-overlay-box {
-      padding: 16px 22px;
-      background: rgba(247, 243, 238, 0.78);
-      backdrop-filter: blur(14px);
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(12px);
       text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.5);
     }
 
     .portfolio-overlay h2 {
       margin: 0 0 6px;
       font-size: 10px;
       font-weight: 400;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
     }
 
@@ -152,11 +173,15 @@
       color: #4b433d;
     }
 
+    /* =========================
+       FOOTER
+    ========================= */
+
     .booking-footer {
       text-align: center;
       padding: 55px 20px;
-      background: #f7f3ee;
-      border-top: 1px solid #ded8d1;
+      background: #f6f1eb;
+      border-top: 1px solid #ded6ce;
     }
 
     .booking-footer a {
@@ -171,6 +196,10 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
     }
+
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 900px) {
       .site-header {
@@ -201,11 +230,11 @@
         left: -310px;
         width: 300px;
         height: 100%;
-        background: #f7f3ee;
+        background: #f6f1eb;
         padding: 95px 34px;
         z-index: 1000;
         transition: left 0.35s ease;
-        border-right: 1px solid #ded8d1;
+        border-right: 1px solid #ded6ce;
       }
 
       .menu-toggle:checked ~ .side-menu {
@@ -229,7 +258,7 @@
       }
 
       .portfolio-page {
-        padding: 95px 20px 90px;
+        padding: 90px 20px 90px;
       }
 
       .portfolio-hero {
@@ -243,6 +272,7 @@
 
       .portfolio-hero h1 {
         font-size: 64px;
+        line-height: 0.95;
       }
 
       .portfolio-hero p:not(.portfolio-eyebrow) {
@@ -251,7 +281,7 @@
 
       .portfolio-grid {
         grid-template-columns: 1fr;
-        gap: 22px;
+        gap: 20px;
       }
 
       .portfolio-overlay {
@@ -379,13 +409,23 @@
           </div>
         </div>
       </article>
-    
+
       <article class="portfolio-item">
-        <img src="/photos/ibpier_optimized.jpg">
+        <img src="/photos/ibpier_optimized.jpg" alt="Imperial Beach Pier">
         <div class="portfolio-overlay">
           <div class="portfolio-overlay-box">
             <h2>Imperial Beach Pier</h2>
             <p>A quiet coastal scene capturing the pier, ocean, and California shoreline.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="portfolio-item">
+        <img src="/photos/hillcrest_web.jpg" alt="Hillcrest">
+        <div class="portfolio-overlay">
+          <div class="portfolio-overlay-box">
+            <h2>Hillcrest</h2>
+            <p>Street atmosphere and twilight mood in San Diego.</p>
           </div>
         </div>
       </article>
@@ -409,7 +449,6 @@
           </div>
         </div>
       </article>
-
 
     </section>
   </main>
