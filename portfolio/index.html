@@ -3,35 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Portfolio | Brianna Gregory Photography</title>
-
   <style>
     * {
       box-sizing: border-box;
     }
-
     body {
       margin: 0;
       font-family: "Times New Roman", Times, serif;
       color: #111;
       background: #f6f1eb;
     }
-
     a {
       color: inherit;
       text-decoration: none;
     }
-
     /* =========================
        NAVIGATION
     ========================= */
-
     .site-header {
       background: #f6f1eb;
       border-bottom: 1px solid #ded6ce;
     }
-
     .site-nav {
       min-height: 110px;
       display: flex;
@@ -39,35 +32,29 @@
       align-items: center;
       gap: 80px;
     }
-
     .site-nav a {
       font-size: 11px;
       letter-spacing: 0.35em;
       text-transform: uppercase;
       color: #111;
     }
-
     .menu-toggle,
     .hamburger,
     .side-menu {
       display: none;
     }
-
     /* =========================
        PORTFOLIO PAGE
     ========================= */
-
     .portfolio-page {
       padding: 120px 6% 150px;
       background: #f6f1eb;
     }
-
     .portfolio-hero {
       max-width: 950px;
       margin: 0 auto 110px;
       text-align: center;
     }
-
     .portfolio-eyebrow {
       display: block;
       margin: 0 0 32px;
@@ -76,7 +63,6 @@
       text-transform: uppercase;
       color: #222;
     }
-
     .portfolio-hero h1 {
       margin: 0 0 32px;
       font-size: 120px;
@@ -86,7 +72,6 @@
       letter-spacing: -0.07em;
       color: #111;
     }
-
     .portfolio-hero p:not(.portfolio-eyebrow) {
       max-width: 650px;
       margin: 0 auto;
@@ -95,11 +80,9 @@
       font-style: italic;
       color: #5c524a;
     }
-
     /* =========================
        GRID
     ========================= */
-
     .portfolio-grid {
       max-width: 1450px;
       margin: 0 auto;
@@ -107,7 +90,6 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 38px;
     }
-
     .portfolio-item {
       position: relative;
       display: block;
@@ -115,7 +97,6 @@
       aspect-ratio: 3 / 4;
       background: #ece6e0;
     }
-
     .portfolio-item img {
       width: 100%;
       height: 100%;
@@ -124,16 +105,13 @@
       transition: transform 0.8s ease, filter 0.8s ease;
       filter: saturate(0.88) contrast(0.96);
     }
-
     .portfolio-item:hover img {
       transform: scale(1.03);
       filter: saturate(0.8) contrast(0.94);
     }
-
     /* =========================
        OVERLAY
     ========================= */
-
     .portfolio-overlay {
       position: absolute;
       inset: 0;
@@ -144,11 +122,9 @@
       opacity: 0;
       transition: opacity 0.35s ease;
     }
-
     .portfolio-item:hover .portfolio-overlay {
       opacity: 1;
     }
-
     .portfolio-overlay-box {
       padding: 14px 18px;
       background: rgba(255, 255, 255, 0.72);
@@ -156,7 +132,6 @@
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.5);
     }
-
     .portfolio-overlay h2 {
       margin: 0 0 6px;
       font-size: 10px;
@@ -164,7 +139,6 @@
       letter-spacing: 0.35em;
       text-transform: uppercase;
     }
-
     .portfolio-overlay p {
       margin: 0;
       font-size: 13px;
@@ -172,39 +146,32 @@
       font-style: italic;
       color: #4b433d;
     }
-
     /* =========================
        FOOTER
     ========================= */
-
     .booking-footer {
       text-align: center;
       padding: 55px 20px;
       background: #f6f1eb;
       border-top: 1px solid #ded6ce;
     }
-
     .booking-footer a {
       font-size: 14px;
       font-style: italic;
       border-bottom: 1px solid #111;
     }
-
     .booking-footer p {
       margin-top: 20px;
       font-size: 11px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
     }
-
     /* =========================
        MOBILE
     ========================= */
-
     /* =========================
        LIGHTBOX
     ========================= */
-
     .lightbox {
       display: none;
       position: fixed;
@@ -215,11 +182,9 @@
       justify-content: center;
       cursor: zoom-out;
     }
-
     .lightbox.active {
       display: flex;
     }
-
     .lightbox img {
       max-width: 90vw;
       max-height: 90vh;
@@ -227,7 +192,6 @@
       cursor: default;
       box-shadow: 0 8px 60px rgba(0, 0, 0, 0.5);
     }
-
     .lightbox-close {
       position: fixed;
       top: 22px;
@@ -242,20 +206,16 @@
       transition: opacity 0.2s;
       user-select: none;
     }
-
     .lightbox-close:hover {
       opacity: 1;
     }
-
     .portfolio-item {
       cursor: zoom-in;
     }
-
     @media (max-width: 900px) {
       .site-header {
         display: none;
       }
-
       .hamburger {
         display: block;
         position: fixed;
@@ -265,14 +225,12 @@
         width: 32px;
         cursor: pointer;
       }
-
       .hamburger span {
         display: block;
         height: 1px;
         background: #111;
         margin: 8px 0;
       }
-
       .side-menu {
         display: block;
         position: fixed;
@@ -286,11 +244,9 @@
         transition: left 0.35s ease;
         border-right: 1px solid #ded6ce;
       }
-
       .menu-toggle:checked ~ .side-menu {
         left: 0;
       }
-
       .close-menu {
         position: absolute;
         top: 24px;
@@ -298,7 +254,6 @@
         font-size: 34px;
         cursor: pointer;
       }
-
       .side-menu a {
         display: block;
         margin-bottom: 28px;
@@ -306,50 +261,39 @@
         letter-spacing: 0.24em;
         text-transform: uppercase;
       }
-
       .portfolio-page {
         padding: 90px 20px 90px;
       }
-
       .portfolio-hero {
         margin-bottom: 60px;
       }
-
       .portfolio-eyebrow {
         font-size: 10px;
         letter-spacing: 0.3em;
       }
-
       .portfolio-hero h1 {
         font-size: 64px;
         line-height: 0.95;
       }
-
       .portfolio-hero p:not(.portfolio-eyebrow) {
         font-size: 16px;
       }
-
       .portfolio-grid {
         grid-template-columns: 1fr;
         gap: 20px;
       }
-
       .portfolio-overlay {
         opacity: 1;
       }
     }
   </style>
 </head>
-
 <body>
-
   <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-
   <label for="menu-toggle" class="hamburger" aria-label="Open mobile menu">
     <span></span>
     <span></span>
   </label>
-
   <aside class="side-menu">
     <label for="menu-toggle" class="close-menu">×</label>
     <a href="https://brigregoryphotos.com/">Home</a>
@@ -359,7 +303,6 @@
     <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a>
     <a href="https://instagram.com/photo.britheg" target="_blank" rel="noopener">Instagram</a>
   </aside>
-
   <header class="site-header">
     <nav class="site-nav">
       <a href="https://brigregoryphotos.com/">Home</a>
@@ -369,17 +312,13 @@
       <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a>
     </nav>
   </header>
-
   <main class="portfolio-page">
-
     <section class="portfolio-hero">
       <p class="portfolio-eyebrow">Brianna Gregory Photography</p>
       <h1>Portfolio</h1>
       <p>A curated collection of portraits, travel, architecture, and atmospheric storytelling.</p>
     </section>
-
     <section class="portfolio-grid">
-
       <article class="portfolio-item">
         <img src="/photos/cass1.jpg" alt="Motherhood portrait">
         <div class="portfolio-overlay">
@@ -389,7 +328,6 @@
           </div>
         </div>
       </article>
-
       <article class="portfolio-item">
         <img src="/photos/alyssa-1-2.jpg" alt="Renaissance Festival Portrait">
         <div class="portfolio-overlay">
@@ -399,7 +337,6 @@
           </div>
         </div>
       </article>
-
       <article class="portfolio-item">
         <img src="/photos/parker-marissa.jpg" alt="Parker and Marissa Portrait">
         <div class="portfolio-overlay">
@@ -409,7 +346,6 @@
           </div>
         </div>
       </article>
-
       <article class="portfolio-item">
         <img src="/photos/balboa-park-archway-blue-hour.webp" alt="Balboa Park Archway">
         <div class="portfolio-overlay">
@@ -419,7 +355,6 @@
           </div>
         </div>
       </article>
-
       <article class="portfolio-item">
         <img src="/photos/balboa-park-spanish-architecture-facade.webp" alt="Spanish Architecture">
         <div class="portfolio-overlay">
@@ -429,7 +364,6 @@
           </div>
         </div>
       </article>
-
       <article class="portfolio-item">
         <img src="/photos/tokyo-city-street-japan-travel.jpg" alt="Tokyo Street Scene">
         <div class="portfolio-overlay">
@@ -439,7 +373,6 @@
           </div>
         </div>
       </article>
-
       <article class="portfolio-item">
         <img src="/photos/historic-boutique-hotel-architecture.jpg" alt="Historic Architecture">
         <div class="portfolio-overlay">
@@ -449,7 +382,6 @@
           </div>
         </div>
       </article>
-
       <article class="portfolio-item">
         <img src="/photos/san-diego-palm-street-dusk.webp" alt="San Diego Palm Street">
         <div class="portfolio-overlay">
@@ -459,7 +391,6 @@
           </div>
         </div>
       </article>
-
       <article class="portfolio-item">
         <img src="/photos/ibpier_optimized.jpg" alt="Imperial Beach Pier">
         <div class="portfolio-overlay">
@@ -469,7 +400,6 @@
           </div>
         </div>
       </article>
-
       <article class="portfolio-item">
         <img src="/photos/hillcrest_web.jpg" alt="Hillcrest">
         <div class="portfolio-overlay">
@@ -479,7 +409,6 @@
           </div>
         </div>
       </article>
-
       <article class="portfolio-item">
         <img src="/photos/california-palm-trees-coastal-landscape.jpg" alt="California Palms">
         <div class="portfolio-overlay">
@@ -489,7 +418,6 @@
           </div>
         </div>
       </article>
-
       <article class="portfolio-item">
         <img src="/photos/la-lowrider-street-documentary.jpg" alt="San Diego Lowrider Cruise">
         <div class="portfolio-overlay">
@@ -499,26 +427,30 @@
           </div>
         </div>
       </article>
-
+      <article class="portfolio-item">
+        <img src="/photos/pumpkin-patch.jpg" alt="Pumpkin Patch">
+        <div class="portfolio-overlay">
+          <div class="portfolio-overlay-box">
+            <h2>Pumpkin Patch</h2>
+            <p>Warm autumn atmosphere and seasonal storytelling.</p>
+          </div>
+        </div>
+      </article>
     </section>
   </main>
-
   <footer class="booking-footer">
     <a href="mailto:booking@brigregoryphotos.com">booking@brigregoryphotos.com</a>
     <p>© 2026 Brianna Gregory Photography</p>
   </footer>
-
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" id="lightbox-close">&#x2715;</span>
     <img id="lightbox-img" src="" alt="" />
   </div>
-
   <script>
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxClose = document.getElementById('lightbox-close');
-
     document.querySelectorAll('.portfolio-item').forEach(item => {
       item.addEventListener('click', () => {
         const img = item.querySelector('img');
@@ -528,22 +460,17 @@
         document.body.style.overflow = 'hidden';
       });
     });
-
     function closeLightbox() {
       lightbox.classList.remove('active');
       document.body.style.overflow = '';
     }
-
     lightboxClose.addEventListener('click', closeLightbox);
-
     lightbox.addEventListener('click', e => {
       if (e.target === lightbox) closeLightbox();
     });
-
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeLightbox();
     });
   </script>
-
 </body>
 </html>
