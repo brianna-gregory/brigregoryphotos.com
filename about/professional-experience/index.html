@@ -1,1 +1,915 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professional Experience | Brianna Gregory, MBA</title>
+  <meta name="description" content="Brianna Gregory — Product Manager specializing in payments, financial systems, and technical product delivery. Open to government and mission-driven opportunities." />
+  <meta name="robots" content="noindex, follow" />
+
+  <!-- Google Fonts — matching the site's editorial aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:       #ffffff;
+      --off-white:   #faf9f7;
+      --light-gray:  #f2f0ed;
+      --mid-gray:    #c8c4be;
+      --text-muted:  #888480;
+      --text-body:   #3a3835;
+      --text-dark:   #1c1a18;
+      --accent:      #7a6e5f;
+      --accent-light:#e8e2d9;
+      --serif:       'Cormorant Garamond', Georgia, serif;
+      --sans:        'Inter', system-ui, sans-serif;
+      --max-w:       860px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-body);
+      background: var(--white);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── Navigation ───────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--light-gray);
+      padding: 0 2rem;
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--text-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-dark);
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { gap: 1.1rem; }
+      .nav-links a { font-size: 0.7rem; }
+      .nav-logo { font-size: 0.88rem; }
+    }
+
+    /* ─── Page Header / Hero ───────────────────────────────── */
+    .page-header {
+      background: var(--off-white);
+      border-bottom: 1px solid var(--light-gray);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .page-header .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-dark);
+      letter-spacing: -0.01em;
+    }
+
+    .page-header h1 em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .page-header .subtitle {
+      margin-top: 0.75rem;
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .contact-line {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    .contact-line a:hover { color: var(--text-dark); }
+
+    /* Photo block */
+    .photo-block {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--accent-light);
+      background: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-placeholder {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    /* ─── Layout Wrapper ───────────────────────────────────── */
+    .content-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ─── Section Styles ───────────────────────────────────── */
+    .section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text-dark);
+      margin-bottom: 1.75rem;
+    }
+
+    .section-title em { font-style: italic; font-weight: 300; }
+
+    .section-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--mid-gray);
+      margin-bottom: 1.75rem;
+    }
+
+    /* ─── Cover Letter ─────────────────────────────────────── */
+    .cover-letter p {
+      font-size: 0.97rem;
+      line-height: 1.85;
+      color: var(--text-body);
+      margin-bottom: 1.1rem;
+      max-width: 720px;
+    }
+
+    .cover-letter .sign-off {
+      margin-top: 1.5rem;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ─── Professional Summary ─────────────────────────────── */
+    .summary-text {
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--text-body);
+      max-width: 720px;
+    }
+
+    /* ─── Experience Entries ───────────────────────────────── */
+    .exp-entry {
+      margin-bottom: 2.5rem;
+    }
+
+    .exp-entry:last-child { margin-bottom: 0; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .exp-company {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .exp-dates {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .exp-title {
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    .exp-body {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--text-body);
+      margin-bottom: 0.6rem;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0;
+    }
+
+    .exp-bullets li {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--text-body);
+      padding-left: 1.1rem;
+      position: relative;
+      margin-bottom: 0.35rem;
+    }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--mid-gray);
+      font-size: 0.8rem;
+    }
+
+    /* ─── Skills Grid ──────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-category {
+      background: var(--off-white);
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 1.25rem 1.4rem;
+    }
+
+    .skill-category h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .skill-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.03em;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 2px;
+      padding: 0.2rem 0.5rem;
+    }
+
+    /* ─── Education ────────────────────────────────────────── */
+    .edu-entry {
+      margin-bottom: 1.5rem;
+    }
+
+    .edu-degree {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .edu-school {
+      font-size: 0.88rem;
+      color: var(--accent);
+      font-style: italic;
+      margin-bottom: 0.15rem;
+    }
+
+    .edu-date {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ─── References ───────────────────────────────────────── */
+    .references-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .ref-card {
+      border: 1px solid var(--light-gray);
+      border-radius: 4px;
+      padding: 1.25rem 1.4rem;
+      background: var(--white);
+      transition: border-color 0.2s;
+    }
+
+    .ref-card:hover { border-color: var(--mid-gray); }
+
+    .ref-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 0.15rem;
+    }
+
+    .ref-title {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--accent);
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+
+    .ref-context {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.65rem;
+      line-height: 1.5;
+    }
+
+    .ref-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .ref-link {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .ref-link svg {
+      flex-shrink: 0;
+      opacity: 0.5;
+    }
+
+    .ref-link a {
+      color: var(--accent);
+    }
+
+    .ref-link a:hover { text-decoration: underline; }
+
+    /* ─── About This Page ──────────────────────────────────── */
+    .site-credit {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    /* ─── Footer ───────────────────────────────────────────── */
+    .site-footer {
+      background: var(--white);
+      border-top: 1px solid var(--light-gray);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.5rem;
+      list-style: none;
+    }
+
+    .footer-nav a {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .footer-nav a:hover { color: var(--text-dark); text-decoration: none; }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--mid-gray);
+    }
+
+    /* ─── Print styles ─────────────────────────────────────── */
+    @media print {
+      .site-nav, .site-footer, .site-credit { display: none; }
+      .section { break-inside: avoid; }
+    }
+
+    /* ─── Mobile ───────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .page-header { padding: 3rem 1.25rem 2.5rem; }
+      .content-wrap { padding: 0 1.25rem; }
+      .exp-header { flex-direction: column; }
+      .skills-grid, .references-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="site-nav" aria-label="Site navigation">
+    <div class="nav-inner">
+      <a class="nav-logo" href="https://brigregoryphotos.com/">Brianna Gregory Photography</a>
+      <ul class="nav-links">
+        <li><a href="https://brigregoryphotos.com/portfolio/">Portfolio</a></li>
+        <li><a href="https://brigregoryphotos.com/services/">Services</a></li>
+        <li><a href="https://brigregoryphotos.com/about/">About</a></li>
+        <li><a href="https://brigregoryphotos.com/main/booking/">Book</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Page Header ── -->
+  <header class="page-header">
+    <p class="eyebrow">Professional Profile</p>
+    <h1>Brianna Gregory, <em>MBA</em></h1>
+    <p class="subtitle">Product Manager · Payments &amp; Financial Systems · Technical Product</p>
+
+    <div class="contact-line">
+      <span>San Diego, CA</span>
+      <a href="tel:6197878910">(619) 787-8910</a>
+      <a href="mailto:gregorybri@outlook.com">gregorybri@outlook.com</a>
+      <a href="https://brigregoryphotos.com/" target="_blank" rel="noopener">brigregoryphotos.com</a>
+    </div>
+
+    <!-- ── Photo ── Replace src below with your actual photo path ── -->
+    <div class="photo-block">
+      <div class="photo-circle">
+        <!--
+          TO ADD YOUR PHOTO:
+          Upload your headshot to your GitHub repo (e.g., /photos/headshot.jpg)
+          then replace the comment below with:
+          <img src="/photos/headshot.jpg" alt="Brianna Gregory" />
+        -->
+        <p class="photo-placeholder">Add your<br/>headshot here</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main Content ── -->
+  <main>
+    <div class="content-wrap">
+
+      <!-- ── Cover Letter / Letter of Interest ── -->
+      <section class="section cover-letter" id="letter">
+        <p class="section-label">Letter of Interest</p>
+        <h2 class="section-title">Seeking <em>meaningful, mission-driven work.</em></h2>
+        <div class="section-divider"></div>
+
+        <p>
+          I am a product manager with deep experience in enterprise payment systems, financial operations, and technical product delivery — and I am actively seeking roles in government and public-sector organizations where that experience can drive meaningful, lasting impact.
+        </p>
+        <p>
+          My background spans high-volume transaction systems, cross-agency stakeholder alignment, financial data integrity, and end-to-end product delivery at scale. At Albertsons Companies, I led payment and systems initiatives touching thousands of retail locations, external banking partners, and multi-million-dollar financial reconciliation workflows — the kind of work that demands precision, accountability, and a clear understanding of how technical decisions ripple into financial outcomes.
+        </p>
+        <p>
+          What draws me to government work is exactly that: consequence. I want to work on systems that people rely on — payment platforms, financial infrastructure, digital services — and to bring the same rigor and cross-functional discipline I've developed in enterprise environments to work that genuinely serves the public. I believe my combination of technical product skills, financial systems experience, and comfort working across complex organizations makes me well suited for modernization efforts, digital service delivery, and operational improvement initiatives in the public sector.
+        </p>
+        <p>
+          I am a collaborative, reliable builder — someone who reads documentation carefully, asks the right questions early, and delivers. I'd welcome the opportunity to bring that to your team.
+        </p>
+        <p class="sign-off">— Brianna Gregory</p>
+      </section>
+
+      <!-- ── Professional Summary ── -->
+      <section class="section" id="about">
+        <p class="section-label">Professional Summary</p>
+        <h2 class="section-title">Product &amp; <em>systems thinking</em> at enterprise scale.</h2>
+        <div class="section-divider"></div>
+        <p class="summary-text">
+          Product Manager with experience leading enterprise payment systems, backend integrations, and digital product initiatives across retail and e-commerce environments. Skilled in translating business, technical, and financial requirements into scalable solutions through cross-functional execution. Experienced partnering with Engineering, Finance, Accounting, Operations, and external vendors to deliver reliable systems, improve operational efficiency, and support customer-focused digital experiences.
+        </p>
+      </section>
+
+      <!-- ── Professional Experience ── -->
+      <section class="section" id="experience">
+        <p class="section-label">Professional Experience</p>
+        <h2 class="section-title">Where I've <em>built things.</em></h2>
+        <div class="section-divider"></div>
+
+        <!-- Albertsons -->
+        <div class="exp-entry">
+          <div class="exp-header">
+            <span class="exp-company">Albertsons Companies</span>
+            <span class="exp-dates">March 2022 – May 2026</span>
+          </div>
+          <p class="exp-title">Product Manager, Payments</p>
+          <p class="exp-body">
+            Led product execution for enterprise payment and transaction systems supporting high-volume retail and e-commerce environments, partnering with cross-functional teams to deliver scalable digital payment solutions.
+          </p>
+          <ul class="exp-bullets">
+            <li>Owned product delivery for an internal QR-code payment initiative designed to reduce third-party credit card processing costs from marketplace partners (Instacart, DoorDash, Uber), contributing to more than <strong>$35 million in annual cost savings</strong> through payment optimization, invoicing automation, and workflow improvements.</li>
+            <li>Led product strategy and execution for e-commerce payment integrations including PayPal, Apple Pay, and SNAP/EBT — reducing payment failures, cutting processing costs, and improving customer payment experiences.</li>
+            <li>Partnered with Finance, Accounting, Banking, and Accounts Receivable teams to define billing, settlement, reconciliation, invoicing, and financial reporting requirements for new payment programs, vendor partnerships, and transaction processing initiatives.</li>
+            <li>Analyzed transaction, settlement, and payment data to identify discrepancies, validate revenue and payment accuracy, and ensure compliance with contractual pricing, fee structures, and payment terms.</li>
+            <li>Managed external payment and reporting integrations through APIs and SFTP workflows, overseeing data mapping, system connectivity, reporting accuracy, and reliable transaction processing across distributed payment ecosystems.</li>
+            <li>Directed enterprise-scale production deployments across <strong>2,500+ retail locations</strong>, partnering with more than 20 engineering, operations, finance, and business teams to drive technical implementation and successful production launches.</li>
+            <li>Owned end-to-end product lifecycle for complex payment systems — defining business requirements, technical scope, workflows, dependencies, testing strategies, and deployment plans from discovery through release.</li>
+            <li>Created comprehensive product documentation including BRDs, process flows, financial reporting requirements, Jira stories, release plans, and operational procedures aligning stakeholders across Product, Engineering, Finance, Legal, and Privacy teams.</li>
+          </ul>
+        </div>
+
+        <!-- CamelBak -->
+        <div class="exp-entry">
+          <div class="exp-header">
+            <span class="exp-company">CamelBak Products, LLC <span style="font-weight:300;font-size:0.9em;">(a Vista Outdoor Company)</span></span>
+            <span class="exp-dates">June 2016 – March 2022</span>
+          </div>
+          <p class="exp-title">Product Operations &amp; Customer Operations Leader (Sept 2020 – Mar 2022) · Account Services Specialist &amp; Customization Supervisor (Jun 2016 – Sept 2020)</p>
+          <p class="exp-body">
+            Progressed from leading the customization department into broader operations and enterprise account leadership, overseeing systems, customer experience, and cross-functional execution across B2B, e-commerce, and direct-to-consumer channels.
+          </p>
+          <ul class="exp-bullets">
+            <li><strong>Supervised CamelBak's customization department</strong> from day one, leading a team of artists and account representatives responsible for custom product order intake, artwork management, logo licensing, and production coordination across multiple outsourced printing and fulfillment warehouses.</li>
+            <li><strong>Product managed CamelBak's first online customization platform</strong> (<a href="https://www.camelbak.com/customize.html" target="_blank" rel="noopener" style="color:var(--accent);">camelbak.com/customize</a>), launching a B2B and e-commerce experience that allowed customers to design and order custom bottles — coordinating across distributed warehouse partners and production vendors to fulfill orders at scale.</li>
+            <li>Designed and scaled end-to-end customization workflows including digital file intake, print-ready artwork preparation, vendor routing, and order fulfillment across warehouses — building the operational infrastructure the program ran on.</li>
+            <li>Managed domestic warehouse operations including international and domestic logistics, order fulfillment, and coordination across inventory, production, and shipping functions.</li>
+            <li><strong>Served as direct account manager for Peloton</strong> and other large enterprise partners — managing the full SMU (special make-up) process from bottle design through factory production, including direct collaboration with CamelBak's manufacturing facilities in China on custom bottle specs, packaging, and production timelines.</li>
+            <li>Coordinated international shipping logistics for Peloton and other key accounts, routing custom product from overseas factories to races and events worldwide.</li>
+            <li>Partnered with Salesforce to optimize CRM workflows, improving case management, automation, and response times; worked within Oracle ERP and SFTP systems for order processing and backend operations.</li>
+          </ul>
+        </div>
+
+        <!-- Photography / Technical Project -->
+        <div class="exp-entry">
+          <div class="exp-header">
+            <span class="exp-company">BriGregoryPhotos.com</span>
+            <span class="exp-dates">2025 – Present</span>
+          </div>
+          <p class="exp-title">Founder &amp; Developer — Photography Business &amp; Website</p>
+          <p class="exp-body">
+            Built and launched a custom production website and digital infrastructure supporting photography services and online customer acquisition — applying product management principles to a self-directed technical project.
+          </p>
+          <ul class="exp-bullets">
+            <li>Designed, developed, and deployed a production website using GitHub, Cloudflare, DNS configuration, and API integrations.</li>
+            <li>Managed full digital product lifecycle from concept, UX design, and technical implementation through deployment and iteration.</li>
+            <li>Configured domain routing, hosting/CDN optimization, SSL/security settings, and deployment workflows.</li>
+            <li>Leveraged AI-assisted development tools (Claude) for coding support — demonstrating adaptability with emerging developer tooling.</li>
+          </ul>
+        </div>
+
+        <!-- Prior Experience -->
+        <div class="exp-entry">
+          <div class="exp-header">
+            <span class="exp-company">Prior Experience</span>
+            <span class="exp-dates"></span>
+          </div>
+          <p class="exp-title">Sonoma State Alumni Association — Social Media Student Assistant &nbsp;|&nbsp; Pacific Maritime Group — HR Administrative Assistant (Seasonal)</p>
+          <p class="exp-body">
+            Supported social media content creation, brand communications, digital engagement, HR administration, employee documentation, and onboarding coordination.
+          </p>
+        </div>
+
+      </section>
+
+      <!-- ── Skills ── -->
+      <section class="section" id="skills">
+        <p class="section-label">Core Competencies</p>
+        <h2 class="section-title">What I <em>bring to the table.</em></h2>
+        <div class="section-divider"></div>
+
+        <div class="skills-grid">
+
+          <div class="skill-category">
+            <h4>Business Analysis &amp; Financial Operations</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Financial Analysis</span>
+              <span class="skill-tag">Financial Reporting</span>
+              <span class="skill-tag">Data Analysis</span>
+              <span class="skill-tag">Transactional Analytics</span>
+              <span class="skill-tag">Revenue Validation</span>
+              <span class="skill-tag">Data Reconciliation</span>
+              <span class="skill-tag">Accounts Receivable</span>
+              <span class="skill-tag">Payment Operations</span>
+              <span class="skill-tag">ACH Processing</span>
+              <span class="skill-tag">Settlement Workflows</span>
+              <span class="skill-tag">Root Cause Analysis</span>
+              <span class="skill-tag">Process Improvement</span>
+              <span class="skill-tag">Fee Analysis</span>
+              <span class="skill-tag">State Tax Compliance</span>
+              <span class="skill-tag">Escheatment</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Product Management &amp; Strategy</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Product Strategy</span>
+              <span class="skill-tag">Product Roadmapping</span>
+              <span class="skill-tag">Business Case Development</span>
+              <span class="skill-tag">AOP Planning</span>
+              <span class="skill-tag">Budget Prioritization</span>
+              <span class="skill-tag">Stakeholder Management</span>
+              <span class="skill-tag">Cross-Functional Leadership</span>
+              <span class="skill-tag">Requirements Gathering</span>
+              <span class="skill-tag">Process Design</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Product Delivery &amp; Agile</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Agile Product Management</span>
+              <span class="skill-tag">Sprint Planning</span>
+              <span class="skill-tag">Backlog Prioritization</span>
+              <span class="skill-tag">Jira</span>
+              <span class="skill-tag">Confluence</span>
+              <span class="skill-tag">User Stories</span>
+              <span class="skill-tag">Release Planning</span>
+              <span class="skill-tag">QA / UAT</span>
+              <span class="skill-tag">Workflow Design</span>
+              <span class="skill-tag">Change Management</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Technical &amp; Data Skills</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Microsoft Excel (Expert)</span>
+              <span class="skill-tag">Financial Modeling</span>
+              <span class="skill-tag">Power BI</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">HTML / CSS</span>
+              <span class="skill-tag">JavaScript (Basic)</span>
+              <span class="skill-tag">API Integrations</span>
+              <span class="skill-tag">Data Mapping</span>
+              <span class="skill-tag">Webhooks</span>
+              <span class="skill-tag">SFTP</span>
+              <span class="skill-tag">GitHub</span>
+              <span class="skill-tag">Cloudflare</span>
+              <span class="skill-tag">DNS Management</span>
+              <span class="skill-tag">Azure</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Enterprise Platforms</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Oracle ERP (Super User)</span>
+              <span class="skill-tag">Salesforce CRM</span>
+              <span class="skill-tag">Payment Platforms</span>
+              <span class="skill-tag">Banking &amp; Payment Systems</span>
+              <span class="skill-tag">Fraud Prevention</span>
+              <span class="skill-tag">Fraud Detection &amp; Risk</span>
+              <span class="skill-tag">Transaction Processing</span>
+              <span class="skill-tag">Reconciliation Platforms</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Education ── -->
+      <section class="section" id="education">
+        <p class="section-label">Education</p>
+        <h2 class="section-title">Academic <em>foundation.</em></h2>
+        <div class="section-divider"></div>
+
+        <div class="edu-entry">
+          <p class="edu-degree">Master of Business Administration</p>
+          <p class="edu-school">California State University, Monterey Bay</p>
+          <p class="edu-date">Graduated May 2019</p>
+        </div>
+
+        <div class="edu-entry">
+          <p class="edu-degree">Bachelor of Science in Business Administration</p>
+          <p class="edu-school">Sonoma State University</p>
+          <p class="edu-date">Graduated May 2017</p>
+        </div>
+      </section>
+
+      <!-- ── References ── -->
+      <section class="section" id="references">
+        <p class="section-label">Professional References</p>
+        <h2 class="section-title">People who can <em>speak to my work.</em></h2>
+        <div class="section-divider"></div>
+
+        <div class="references-grid">
+
+          <!-- Lynn Abayan -->
+          <div class="ref-card">
+            <p class="ref-name">Lynn Abayan</p>
+            <p class="ref-title">Program Director, Payment Portfolio — Albertsons Companies</p>
+            <p class="ref-context">Direct manager, 2024–2026</p>
+            <div class="ref-links">
+              <span class="ref-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/></svg>
+                <a href="https://www.linkedin.com/in/lynn-abayan-bb19304/" target="_blank" rel="noopener">linkedin.com/in/lynn-abayan-bb19304</a>
+              </span>
+              <span class="ref-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+                <span>925-580-4780</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Sony Gregory -->
+          <div class="ref-card">
+            <p class="ref-name">Sony Gregory</p>
+            <p class="ref-title">Senior Product Manager — Albertsons Companies</p>
+            <p class="ref-context">Direct manager, January 2026 – May 2026</p>
+            <div class="ref-links">
+              <span class="ref-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/></svg>
+                <a href="https://www.linkedin.com/in/sonygregory/" target="_blank" rel="noopener">linkedin.com/in/sonygregory</a>
+              </span>
+            </div>
+          </div>
+
+          <!-- Kothai Senthil -->
+          <div class="ref-card">
+            <p class="ref-name">Kothai Senthil</p>
+            <p class="ref-title">Payments, Risk &amp; Fraud GM/VP — ex-Uber, Capital One, McKinsey, Goldman</p>
+            <p class="ref-context">Director who hired me; oversaw my work March 2022 – October 2025</p>
+            <div class="ref-links">
+              <span class="ref-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/></svg>
+                <a href="https://www.linkedin.com/in/kothai-senthil-8b79521/" target="_blank" rel="noopener">linkedin.com/in/kothai-senthil-8b79521</a>
+              </span>
+              <span class="ref-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+                <span>973-818-6038</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Stephen Menaquale -->
+          <div class="ref-card">
+            <p class="ref-name">Stephen Menaquale</p>
+            <p class="ref-title">SVP, Commercial Enablement &amp; Omnichannel Growth — Albertsons Companies</p>
+            <p class="ref-context">Senior leader I collaborated with directly on partnership and payment projects since 2023</p>
+            <div class="ref-links">
+              <span class="ref-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/></svg>
+                <a href="https://www.linkedin.com/in/smenaquale" target="_blank" rel="noopener">linkedin.com/in/smenaquale</a>
+              </span>
+            </div>
+          </div>
+
+          <!-- Matt Nyiri -->
+          <div class="ref-card">
+            <p class="ref-name">Matt Nyiri</p>
+            <p class="ref-title">S&amp;OP and Demand Planning Manager — CamelBak Products</p>
+            <p class="ref-context">Direct manager, 2016–2020</p>
+            <div class="ref-links">
+              <span class="ref-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/></svg>
+                <a href="https://www.linkedin.com/in/matt-nyiri-4b30647/" target="_blank" rel="noopener">linkedin.com/in/matt-nyiri-4b30647</a>
+              </span>
+              <span class="ref-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+                <span>707-364-7240</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Dean Diaz -->
+          <div class="ref-card">
+            <p class="ref-name">Dean Diaz</p>
+            <p class="ref-title">Strategy, Growth, Partnerships &amp; Innovation — ex-Amazon</p>
+            <p class="ref-context">Close colleague at CamelBak; worked together daily</p>
+            <div class="ref-links">
+              <span class="ref-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/></svg>
+                <a href="https://www.linkedin.com/in/dean-diaz-6142461/" target="_blank" rel="noopener">linkedin.com/in/dean-diaz-6142461</a>
+              </span>
+              <span class="ref-link">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <a href="mailto:dean.diaz@gmail.com">dean.diaz@gmail.com</a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- /.content-wrap -->
+  </main>
+
+  <!-- ── Site Credit ── -->
+  <div class="site-credit">
+    This page was built using GitHub, Cloudflare, and Claude (AI-assisted development) — the same tools used across this site.
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <ul class="footer-nav">
+        <li><a href="https://brigregoryphotos.com/">Home</a></li>
+        <li><a href="https://brigregoryphotos.com/portfolio/">Portfolio</a></li>
+        <li><a href="https://brigregoryphotos.com/services/">Services</a></li>
+        <li><a href="https://brigregoryphotos.com/about/">About</a></li>
+        <li><a href="https://brigregoryphotos.com/main/booking/">Book</a></li>
+        <li><a href="https://brigregoryphotos.com/privacy-policy/">Privacy</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 Brianna Gregory Photography &nbsp;·&nbsp; <a href="mailto:gregorybri@outlook.com">gregorybri@outlook.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
