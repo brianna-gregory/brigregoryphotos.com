@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --black: #1a1a1a;
       --off-white: #f7f5f2;
@@ -19,9 +18,7 @@
       --serif: 'Cormorant Garamond', Georgia, serif;
       --sans: 'Jost', sans-serif;
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--off-white);
       color: var(--black);
@@ -30,7 +27,6 @@
       line-height: 1.7;
       min-height: 100vh;
     }
-
     /* ── NAV ── */
     nav {
       display: flex;
@@ -43,7 +39,6 @@
       top: 0;
       z-index: 100;
     }
-
     .nav-logo {
       font-family: var(--serif);
       font-size: 1.05rem;
@@ -53,13 +48,11 @@
       text-decoration: none;
       font-weight: 400;
     }
-
     .nav-links {
       display: flex;
       gap: 2.2rem;
       list-style: none;
     }
-
     .nav-links a {
       font-size: 0.72rem;
       letter-spacing: 0.14em;
@@ -69,16 +62,13 @@
       font-weight: 400;
       transition: color 0.2s;
     }
-
     .nav-links a:hover { color: var(--mid-gray); }
-
     /* ── HERO HEADER ── */
     .quote-hero {
       text-align: center;
       padding: 5rem 2rem 3.5rem;
       border-bottom: 1px solid var(--warm-gray);
     }
-
     .quote-hero .eyebrow {
       font-family: var(--sans);
       font-size: 0.68rem;
@@ -87,7 +77,6 @@
       color: var(--mid-gray);
       margin-bottom: 1.2rem;
     }
-
     .quote-hero h1 {
       font-family: var(--serif);
       font-size: clamp(2.8rem, 6vw, 4.5rem);
@@ -96,12 +85,10 @@
       letter-spacing: 0.01em;
       margin-bottom: 1rem;
     }
-
     .quote-hero h1 em {
       font-style: italic;
       font-weight: 300;
     }
-
     .quote-hero .sub {
       font-size: 0.85rem;
       color: var(--mid-gray);
@@ -109,14 +96,12 @@
       max-width: 480px;
       margin: 0 auto;
     }
-
     /* ── MAIN LAYOUT ── */
     .page-wrap {
       max-width: 1080px;
       margin: 0 auto;
       padding: 0 2rem 6rem;
     }
-
     /* ── INTRO SECTION ── */
     .intro-block {
       display: grid;
@@ -125,7 +110,6 @@
       padding: 4rem 0 3rem;
       border-bottom: 1px solid var(--warm-gray);
     }
-
     .intro-block .greeting h2 {
       font-family: var(--serif);
       font-size: 2rem;
@@ -133,19 +117,16 @@
       line-height: 1.3;
       margin-bottom: 1rem;
     }
-
     .intro-block .greeting p {
       font-size: 0.88rem;
       color: #555;
       line-height: 1.85;
     }
-
     .intro-block .details-card {
       background: white;
       border: 1px solid var(--warm-gray);
       padding: 2rem 2.2rem;
     }
-
     .details-card .card-label {
       font-size: 0.62rem;
       letter-spacing: 0.2em;
@@ -153,7 +134,6 @@
       color: var(--mid-gray);
       margin-bottom: 1.4rem;
     }
-
     .detail-row {
       display: flex;
       justify-content: space-between;
@@ -162,9 +142,7 @@
       border-bottom: 1px solid var(--warm-gray);
       gap: 1rem;
     }
-
     .detail-row:last-child { border-bottom: none; }
-
     .detail-row .dl {
       font-size: 0.65rem;
       letter-spacing: 0.14em;
@@ -172,19 +150,59 @@
       color: var(--mid-gray);
       white-space: nowrap;
     }
-
     .detail-row .dv {
       font-size: 0.82rem;
       text-align: right;
       color: var(--black);
     }
-
+    /* ── SCOPE + EQUIPMENT ── */
+    .scope-section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--warm-gray);
+    }
+    .scope-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .scope-block {
+      background: white;
+      border: 1px solid var(--warm-gray);
+      padding: 2rem 2.2rem;
+    }
+    .scope-block h4 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .scope-block ul {
+      list-style: none;
+      padding: 0;
+    }
+    .scope-block ul li {
+      font-size: 0.83rem;
+      color: #555;
+      line-height: 1.75;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--warm-gray);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+    }
+    .scope-block ul li:last-child { border-bottom: none; }
+    .scope-block ul li::before {
+      content: '—';
+      color: var(--mid-gray);
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
     /* ── PDF VIEWER ── */
     .pdf-section {
       padding: 3.5rem 0;
       border-bottom: 1px solid var(--warm-gray);
     }
-
     .section-label {
       font-size: 0.65rem;
       letter-spacing: 0.2em;
@@ -192,14 +210,12 @@
       color: var(--mid-gray);
       margin-bottom: 1.5rem;
     }
-
     .pdf-wrapper {
       background: white;
       border: 1px solid var(--warm-gray);
       box-shadow: 0 4px 32px rgba(0,0,0,0.06);
       overflow: hidden;
     }
-
     .pdf-toolbar {
       display: flex;
       align-items: center;
@@ -208,14 +224,12 @@
       border-bottom: 1px solid var(--warm-gray);
       background: var(--off-white);
     }
-
     .pdf-toolbar span {
       font-size: 0.7rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--mid-gray);
     }
-
     .pdf-download {
       font-size: 0.68rem;
       letter-spacing: 0.12em;
@@ -226,44 +240,37 @@
       padding: 0.4rem 1rem;
       transition: all 0.2s;
     }
-
     .pdf-download:hover {
       background: var(--black);
       color: white;
     }
-
     .pdf-embed-wrap {
       width: 100%;
       height: 780px;
       position: relative;
     }
-
     .pdf-embed-wrap iframe {
       width: 100%;
       height: 100%;
       border: none;
       display: block;
     }
-
     /* ── PAYMENT SECTION ── */
     .payment-section {
       padding: 3.5rem 0;
       border-bottom: 1px solid var(--warm-gray);
     }
-
     .payment-section h3 {
       font-family: var(--serif);
       font-size: 1.7rem;
       font-weight: 400;
       margin-bottom: 0.4rem;
     }
-
     .payment-section .payment-sub {
       font-size: 0.83rem;
       color: var(--mid-gray);
       margin-bottom: 2.5rem;
     }
-
     .retainer-callout {
       background: var(--black);
       color: white;
@@ -274,7 +281,6 @@
       justify-content: space-between;
       gap: 2rem;
     }
-
     .retainer-callout .rc-label {
       font-size: 0.65rem;
       letter-spacing: 0.2em;
@@ -282,27 +288,23 @@
       color: rgba(255,255,255,0.5);
       margin-bottom: 0.3rem;
     }
-
     .retainer-callout .rc-amount {
       font-family: var(--serif);
       font-size: 2.4rem;
       font-weight: 300;
       letter-spacing: 0.02em;
     }
-
     .retainer-callout .rc-note {
       font-size: 0.78rem;
       color: rgba(255,255,255,0.65);
-      max-width: 320px;
+      max-width: 360px;
       line-height: 1.6;
     }
-
     .payment-methods {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.2rem;
     }
-
     .payment-card {
       background: white;
       border: 1px solid var(--warm-gray);
@@ -310,12 +312,10 @@
       text-align: center;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-
     .payment-card:hover {
       border-color: var(--black);
       box-shadow: 0 2px 16px rgba(0,0,0,0.06);
     }
-
     .payment-card .pm-logo {
       height: 36px;
       display: flex;
@@ -323,7 +323,6 @@
       justify-content: center;
       margin-bottom: 1rem;
     }
-
     /* Zelle logo */
     .zelle-logo {
       font-size: 1.5rem;
@@ -332,7 +331,6 @@
       letter-spacing: -0.02em;
       font-family: var(--sans);
     }
-
     /* Apple Pay logo */
     .apple-pay-logo {
       font-size: 1.1rem;
@@ -341,7 +339,6 @@
       letter-spacing: -0.01em;
       font-family: -apple-system, 'SF Pro Display', sans-serif;
     }
-
     /* Venmo logo */
     .venmo-logo {
       font-size: 1.2rem;
@@ -350,7 +347,6 @@
       letter-spacing: -0.01em;
       font-family: var(--sans);
     }
-
     .payment-card .pm-name {
       font-size: 0.65rem;
       letter-spacing: 0.16em;
@@ -358,32 +354,27 @@
       color: var(--mid-gray);
       margin-bottom: 0.5rem;
     }
-
     .payment-card .pm-handle {
       font-size: 0.85rem;
       color: var(--black);
       font-weight: 400;
     }
-
     /* ── TERMS ── */
     .terms-section {
       padding: 3.5rem 0;
       border-bottom: 1px solid var(--warm-gray);
     }
-
     .terms-section h3 {
       font-family: var(--serif);
       font-size: 1.7rem;
       font-weight: 400;
       margin-bottom: 0.4rem;
     }
-
     .terms-section .terms-sub {
       font-size: 0.83rem;
       color: var(--mid-gray);
       margin-bottom: 2.5rem;
     }
-
     .terms-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -391,12 +382,10 @@
       background: var(--warm-gray);
       border: 1px solid var(--warm-gray);
     }
-
     .term-item {
       background: white;
       padding: 1.8rem 2rem;
     }
-
     .term-item .ti-num {
       font-family: var(--serif);
       font-size: 2rem;
@@ -405,7 +394,6 @@
       line-height: 1;
       margin-bottom: 0.8rem;
     }
-
     .term-item .ti-title {
       font-size: 0.65rem;
       letter-spacing: 0.18em;
@@ -414,40 +402,34 @@
       margin-bottom: 0.6rem;
       font-weight: 500;
     }
-
     .term-item .ti-body {
       font-size: 0.83rem;
       color: #555;
       line-height: 1.75;
     }
-
     /* ── INSURANCE ── */
     .insurance-section {
       padding: 3.5rem 0;
       border-bottom: 1px solid var(--warm-gray);
     }
-
     .insurance-inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
       align-items: center;
     }
-
     .insurance-inner h3 {
       font-family: var(--serif);
       font-size: 1.7rem;
       font-weight: 400;
       margin-bottom: 0.8rem;
     }
-
     .insurance-inner p {
       font-size: 0.85rem;
       color: #555;
       line-height: 1.8;
       margin-bottom: 1rem;
     }
-
     .policy-badge {
       display: inline-flex;
       align-items: center;
@@ -458,7 +440,6 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
-
     .policy-badge .badge-dot {
       width: 6px;
       height: 6px;
@@ -466,13 +447,11 @@
       border-radius: 50%;
       display: inline-block;
     }
-
     .insurance-card {
       background: white;
       border: 1px solid var(--warm-gray);
       padding: 2rem;
     }
-
     .insurance-card .ic-row {
       display: flex;
       justify-content: space-between;
@@ -480,42 +459,34 @@
       border-bottom: 1px solid var(--warm-gray);
       font-size: 0.82rem;
     }
-
     .insurance-card .ic-row:last-child { border-bottom: none; }
-
     .insurance-card .ic-label {
       color: var(--mid-gray);
       font-size: 0.7rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
-
     .insurance-card .ic-val {
       font-weight: 400;
       text-align: right;
     }
-
     /* ── CTA ── */
     .cta-section {
       padding: 4rem 0 0;
       text-align: center;
     }
-
     .cta-section h3 {
       font-family: var(--serif);
       font-size: 2.2rem;
       font-weight: 300;
       margin-bottom: 0.6rem;
     }
-
     .cta-section h3 em { font-style: italic; }
-
     .cta-section p {
       font-size: 0.85rem;
       color: var(--mid-gray);
       margin-bottom: 2rem;
     }
-
     .cta-btn {
       display: inline-block;
       background: var(--black);
@@ -527,9 +498,7 @@
       text-transform: uppercase;
       transition: opacity 0.2s;
     }
-
     .cta-btn:hover { opacity: 0.75; }
-
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--warm-gray);
@@ -542,16 +511,15 @@
       letter-spacing: 0.08em;
       margin-top: 4rem;
     }
-
     footer a { color: var(--mid-gray); text-decoration: none; }
     footer a:hover { color: var(--black); }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 1.2rem 1.5rem; }
       .nav-links { display: none; }
       .page-wrap { padding: 0 1.2rem 4rem; }
       .intro-block { grid-template-columns: 1fr; gap: 2rem; }
+      .scope-grid { grid-template-columns: 1fr; }
       .payment-methods { grid-template-columns: 1fr; }
       .terms-grid { grid-template-columns: 1fr; }
       .insurance-inner { grid-template-columns: 1fr; }
@@ -562,7 +530,6 @@
   </style>
 </head>
 <body>
-
   <!-- NAV -->
   <nav>
     <a href="https://brigregoryphotos.com" class="nav-logo">Brianna Gregory Photography</a>
@@ -577,48 +544,80 @@
   <!-- HERO -->
   <section class="quote-hero">
     <p class="eyebrow">Prepared exclusively for you</p>
-    <h1>Here's your <em>quote,</em><br>Jay.</h1>
+    <h1>Here's your <em>quote,</em><br>Pusong UPSE.</h1>
     <p class="sub">Thank you for reaching out. Please review your personalized quote below and don't hesitate to reach out with any questions.</p>
   </section>
 
   <div class="page-wrap">
-
     <!-- INTRO -->
     <div class="intro-block">
       <div class="greeting">
         <h2>It would be an honor to document your <em>special evening.</em></h2>
-        <p>I'm so excited about the possibility of photographing the University of the Philippines Reunion at the Westgate Hotel this September. I've put together this quote to outline everything you need to know — coverage, pricing, and next steps to lock in your date.</p>
+        <p>I'm so excited about the opportunity to photographing the Pusong UPSE Reunion 2026 at the Westgate Hotel in San Diego this September. I've put together this quote to outline everything you need to know — coverage, scope of work, equipment, pricing, and next steps to lock in your date.</p>
         <p style="margin-top:1rem;">To reserve your date, a <strong>$50 non-refundable retainer</strong> is all that's needed. The remaining balance is due on or before the event date.</p>
       </div>
       <div class="details-card">
         <p class="card-label">Event Summary</p>
         <div class="detail-row">
           <span class="dl">Client</span>
-          <span class="dv">Jay Ortega</span>
+          <span class="dv">Pusong UPSE<br><span style="font-size:0.75rem;color:var(--mid-gray);">c/o Liza Mayo</span></span>
         </div>
         <div class="detail-row">
           <span class="dl">Event</span>
-          <span class="dv">University of the Philippines Reunion</span>
+          <span class="dv">Pusong UPSE Reunion 2026</span>
         </div>
         <div class="detail-row">
           <span class="dl">Date</span>
-          <span class="dv">September 13, 2026</span>
+          <span class="dv">Sunday, September 13, 2026</span>
         </div>
         <div class="detail-row">
           <span class="dl">Venue</span>
           <span class="dv">The Westgate Hotel, San Diego</span>
         </div>
         <div class="detail-row">
-          <span class="dl">Coverage</span>
-          <span class="dv">5 Hours — 5:30 PM</span>
+          <span class="dl">Start Time</span>
+          <span class="dv">5:30 PM <span style="font-size:0.75rem;color:var(--mid-gray);">(tentative)</span></span>
         </div>
         <div class="detail-row" style="background:#f7f5f2;">
-          <span class="dl" style="color:#9e9790;">Note</span>
-          <span class="dv" style="color:#9e9790;font-size:0.78rem;font-style:italic;">Quoted at 5 hrs / $100 per hour. Exact start time to be confirmed as we get closer to the date.</span>
+          <span class="dl" style="color:#9e9790;">Time Note</span>
+          <span class="dv" style="color:#9e9790;font-size:0.78rem;font-style:italic;">Start time pending Westgate Hotel approval of stairway location. If not approved, coverage begins at 6:00 PM when the ballroom officially opens.</span>
+        </div>
+        <div class="detail-row">
+          <span class="dl">Coverage</span>
+          <span class="dv">5 Hours — $100/hr</span>
+        </div>
+        <div class="detail-row">
+          <span class="dl">Parking</span>
+          <span class="dv" style="font-size:0.78rem;">Covered by Pusong UPSE<br><span style="color:var(--mid-gray);font-size:0.73rem;">(not included in package fee)</span></span>
         </div>
         <div class="detail-row">
           <span class="dl">Package Total</span>
           <span class="dv"><strong>$500.00</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCOPE OF WORK & EQUIPMENT -->
+    <div class="scope-section">
+      <p class="section-label">What's Included</p>
+      <div class="scope-grid">
+        <div class="scope-block">
+          <h4>Scope of Work</h4>
+          <ul>
+            <li>Large group photos — full reunion group of approximately 70–80 people</li>
+            <li>Small group photos — subgroups, families, and friends</li>
+            <li>Candid &amp; action photos throughout the evening to capture event highlights</li>
+            <li>Special photo requests as coordinated with the event organizers</li>
+          </ul>
+        </div>
+        <div class="scope-block">
+          <h4>Equipment</h4>
+          <ul>
+            <li><strong style="font-weight:500;color:var(--black);">Fujifilm X-E5</strong> — 40.2MP high-resolution camera with AI-powered autofocus, 5-axis in-body image stabilization, and a dedicated external flash unit. Exceptional detail and low-light performance.</li>
+            <li><strong style="font-weight:500;color:var(--black);">Nikon D3500 DSLR</strong> — 24.2MP camera with built-in flash and ISO range up to 25,600, ideal for capturing large groups and candid moments in varying ballroom light conditions.</li>
+            <li><strong style="font-weight:500;color:var(--black);">Professional standing light</strong> — I have a large studio-style light I'm happy to bring if your group would like it. Just let me know and I'll plan accordingly.</li>
+            <li><strong style="font-weight:500;color:var(--black);">Flash as primary indoor lighting</strong> — Both cameras are equipped with flash units that are fully capable of compensating for dark ballroom lighting, ensuring clean, well-exposed images throughout the event.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -628,12 +627,12 @@
       <p class="section-label">Your Quote Document</p>
       <div class="pdf-wrapper">
         <div class="pdf-toolbar">
-          <span>Quote_JayOrtega_UPReunion_09132026.pdf</span>
-          <a class="pdf-download" href="/events/quotes/event-jayortega-09132026/Quote_JayOrtega_UPReunion_09132026v1.pdf" download>↓ Download</a>
+          <span>Quote_PusongUPSE_Reunion_09132026.pdf</span>
+          <a class="pdf-download" href="/events/quotes/event-pusong-upse-09132026/Quote_PusongUPSE_Reunion_09132026v2.pdf" download>↓ Download</a>
         </div>
         <div class="pdf-embed-wrap">
           <iframe
-            src="/events/quotes/event-jayortega-09132026/Quote_JayOrtega_UPReunion_09132026v1.pdf"
+            src="/events/quotes/event-pusong-upse-09132026/Quote_PusongUPSE_Reunion_09132026v2.pdf"
             title="Quote Document"
             allowfullscreen
           ></iframe>
@@ -646,15 +645,13 @@
       <p class="section-label">Secure Your Date</p>
       <h3>Payment</h3>
       <p class="payment-sub">A retainer reserves your date. The remaining balance is due on or before the event.</p>
-
       <div class="retainer-callout">
         <div>
           <p class="rc-label">Retainer Due Today</p>
           <p class="rc-amount">$50</p>
         </div>
-        <p class="rc-note">This non-refundable retainer secures September 13, 2026 exclusively for you. The remaining balance of $450 is due on the event date and may be paid in cash. See full quote document for complete details.</p>
+        <p class="rc-note">This non-refundable retainer secures September 13, 2026 exclusively for you. The $50 deposit will be received from Liza Mayo, and the remaining balance of $450 is due from Liza following the event. Parking at the Westgate Hotel is covered by Pusong UPSE and is not included in the $500 package fee.</p>
       </div>
-
       <div class="payment-methods">
         <div class="payment-card">
           <div class="pm-logo">
@@ -689,17 +686,16 @@
       <p class="section-label">Terms &amp; Conditions</p>
       <h3>What to Expect</h3>
       <p class="terms-sub">By sending your retainer, you acknowledge and agree to the following terms.</p>
-
       <div class="terms-grid">
         <div class="term-item">
           <p class="ti-num">01</p>
           <p class="ti-title">Arrival &amp; Coverage</p>
-          <p class="ti-body">Photographer will arrive approximately 30 minutes prior to the scheduled event start time for setup and preparation. Coverage begins at the agreed start time and concludes at the end of the booked period.</p>
+          <p class="ti-body">Photographer will arrive approximately 30 minutes prior to the scheduled event start time for setup and preparation. Coverage begins at the agreed start time (5:30 PM pending venue approval, or 6:00 PM when the ballroom opens) and concludes at the end of the booked period.</p>
         </div>
         <div class="term-item">
           <p class="ti-num">02</p>
           <p class="ti-title">Retainer &amp; Payment</p>
-          <p class="ti-body">A non-refundable $50 retainer is required to reserve your event date. The remaining balance is due in full on or before the event date. Retainer accepted via Zelle, Apple Cash (619-787-8910), or Venmo (@brigregory). Remaining balance may also be paid in cash on the event date.</p>
+          <p class="ti-body">A non-refundable $50 retainer is required to reserve your event date. The $50 deposit will be received from Liza Mayo (c/o Pusong UPSE), and the remaining balance of $450 is due from Liza following the event. Retainer accepted via Zelle, Apple Cash (619-787-8910), or Venmo (@brigregory). Remaining balance may also be paid in cash.</p>
         </div>
         <div class="term-item">
           <p class="ti-num">03</p>
@@ -765,7 +761,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <!-- FOOTER -->
@@ -773,6 +768,5 @@
     <span>© 2026 Brianna Gregory Photography</span>
     <span><a href="https://brigregoryphotos.com">brigregoryphotos.com</a> &nbsp;·&nbsp; <a href="https://instagram.com/photo.britheg">@photo.britheg</a> &nbsp;·&nbsp; <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a></span>
   </footer>
-
 </body>
 </html>
