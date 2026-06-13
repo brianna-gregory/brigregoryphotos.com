@@ -3,148 +3,431 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Services | Brianna Gregory Photography</title>
-
-  <link rel="stylesheet" href="/main/booking/styles.css" />
-
   <style>
-    .services-page {
-      background: #fff;
+    /* ─── RESET & BASE ─── */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Georgia", "Times New Roman", serif;
       color: #111;
-      padding: 70px 30px 90px;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .services-intro {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 95px;
+    em { font-style: italic; }
+
+    /* ─── MOBILE MENU ─── */
+    .menu-toggle { display: none; }
+    .hamburger, .side-menu { display: none; }
+
+    /* ─── DESKTOP NAV ─── */
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    .eyebrow {
+    .site-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      min-height: 100px;
+    }
+
+    .site-nav a {
+      text-decoration: none;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.32em;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 11px;
+      transition: color 0.2s ease;
+    }
+
+    .site-nav a:hover { color: #888; }
+
+    /* ─── SHARED LAYOUT ─── */
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .section-label {
+      font-family: "Helvetica Neue", Arial, sans-serif;
       text-transform: uppercase;
       letter-spacing: 0.55em;
-      font-size: 10px;
-      margin-bottom: 20px;
+      font-size: 9px;
+      color: #aaa;
+      margin-bottom: 16px;
+      display: block;
     }
 
-    .services-intro h1,
-    .services-heading,
-    .location-heading {
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 400;
-      letter-spacing: -0.05em;
-      line-height: 0.95;
+    /* ─── HERO ─── */
+    .hero {
+      background: #fff;
+      padding: 100px 48px 104px;
+      border-bottom: 1px solid #e8e8e8;
     }
 
-    .services-intro h1 {
-      font-size: clamp(34px, 4vw, 54px);
-      margin-bottom: 26px;
-    }
-
-    .services-intro p {
-      max-width: 620px;
-      margin: 0 auto;
-      line-height: 1.8;
-    }
-
-    .services-section,
-    .booking-section,
-    .location-section {
+    .hero-inner {
       max-width: 1200px;
-      margin: 0 auto 95px;
+      margin: 0 auto;
     }
 
-    .services-heading {
-      font-size: clamp(36px, 5vw, 62px);
-      margin: 12px 0 30px;
-      max-width: 760px;
+    .hero h1 {
+      font-size: clamp(46px, 6.5vw, 88px);
+      font-weight: 400;
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      max-width: 820px;
+      margin-bottom: 36px;
+    }
+
+    .hero-rule {
+      width: 36px;
+      height: 1px;
+      background: #ccc;
+      margin-bottom: 28px;
+    }
+
+    .hero p {
+      font-size: clamp(14px, 1.4vw, 17px);
+      line-height: 1.9;
+      color: #666;
+      max-width: 520px;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-weight: 300;
+    }
+
+    /* ─── SERVICES SECTION ─── */
+    .services-section {
+      padding: 96px 0 100px;
+      background: #fff;
+    }
+
+    .services-title {
+      font-size: clamp(36px, 4.5vw, 60px);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 60px;
+      max-width: 660px;
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 44px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
     }
 
     .service-card {
-      border-top: 1px solid #fff;
-      padding-top: 22px;
+      padding: 32px 36px 32px 0;
+      border-top: 1px solid #ddd;
+    }
+
+    .service-card + .service-card {
+      border-left: 1px solid #ddd;
+      padding-left: 36px;
     }
 
     .service-card h3 {
+      font-family: "Helvetica Neue", Arial, sans-serif;
       text-transform: uppercase;
-      letter-spacing: 0.45em;
-      font-size: 11px;
+      letter-spacing: 0.4em;
+      font-size: 10px;
       font-weight: 400;
+      color: #999;
       margin-bottom: 18px;
     }
 
-    .service-card p,
-    .booking-section p {
-      line-height: 1.8;
-      margin-bottom: 18px;
+    .service-card p {
+      font-size: 14px;
+      line-height: 1.9;
+      color: #444;
+      margin-bottom: 14px;
+    }
+
+    /* ─── LIGHTING SECTION ─── */
+    .lighting-section {
+      padding: 96px 0 100px;
+      background: #f7f6f3;
+    }
+
+    .lighting-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .lighting-title {
+      font-size: clamp(34px, 4vw, 54px);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      margin-top: 10px;
+      color: #111;
+    }
+
+    .lighting-right p {
+      font-size: 14px;
+      line-height: 1.95;
+      color: #555;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .capabilities-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 36px;
+    }
+
+    .capabilities-list li {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      padding: 13px 0;
+      border-bottom: 1px solid #ddd;
+      color: #777;
+    }
+
+    .capabilities-list li:first-child {
+      border-top: 1px solid #ddd;
+    }
+
+    /* ─── PROCESS ─── */
+    .process-section {
+      padding: 96px 0 100px;
+      background: #fff;
+    }
+
+    .process-title {
+      font-size: clamp(36px, 4.5vw, 60px);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 68px;
+      max-width: 640px;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .process-step {
+      padding: 30px 34px 30px 0;
+      border-top: 1px solid #ddd;
+    }
+
+    .process-step + .process-step {
+      border-left: 1px solid #ddd;
+      padding-left: 34px;
+    }
+
+    .step-number {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.45em;
+      color: #c0c0c0;
+      margin-bottom: 14px;
+    }
+
+    .step-title {
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 14px;
+      color: #111;
+    }
+
+    .process-step p {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1.9;
+      color: #777;
+      font-weight: 300;
+    }
+
+    /* ─── BOOKING SECTION ─── */
+    .booking-section {
+      padding: 96px 0 100px;
+      background: #f7f6f3;
     }
 
     .booking-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      border-top: 1px solid #fff;
-      padding-top: 30px;
+      gap: 80px;
+      border-top: 1px solid #ddd;
+      padding-top: 34px;
     }
 
-    .location-heading {
-      max-width: 820px;
-      font-size: clamp(38px, 5vw, 64px);
-      margin-top: 14px;
+    .booking-title {
+      font-size: clamp(34px, 4vw, 54px);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: #111;
+      margin-top: 8px;
     }
 
-    .services-button {
+    .booking-right p {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.95;
+      color: #555;
+      font-weight: 300;
+      margin-bottom: 18px;
+    }
+
+    /* ─── BUTTON ─── */
+    .btn-outline {
       display: inline-block;
       margin-top: 24px;
-      padding: 14px 28px;
+      padding: 14px 30px;
       border: 1px solid #111;
-      color: inherit;
+      color: #111;
       text-decoration: none;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-size: 11px;
-      transition: 0.25s ease;
+      letter-spacing: 0.25em;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 10px;
+      transition: all 0.25s ease;
     }
 
-    .services-button:hover {
+    .btn-outline:hover {
       background: #111;
       color: #fff;
     }
 
-    @media (max-width: 850px) {
-      .services-page {
-        padding: 55px 22px 75px;
+    /* ─── FOOTER ─── */
+    .site-footer {
+      background: #fff;
+      border-top: 1px solid #e8e8e8;
+      color: #aaa;
+      text-align: center;
+      padding: 52px 20px;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+    }
+
+    .site-footer a {
+      color: #888;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      transition: color 0.2s ease;
+    }
+
+    .site-footer a:hover { color: #111; }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      .site-header { display: none; }
+
+      .hamburger {
+        display: block;
+        position: fixed;
+        top: 28px;
+        left: 22px;
+        z-index: 1001;
+        width: 28px;
+        cursor: pointer;
       }
+
+      .hamburger span {
+        display: block;
+        height: 1px;
+        background: #111;
+        margin: 7px 0;
+      }
+
+      .side-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 280px;
+        height: 100%;
+        background: #fff;
+        border-right: 1px solid #e8e8e8;
+        padding: 90px 30px;
+        transition: 0.3s ease;
+        z-index: 1000;
+      }
+
+      #menu-toggle:checked ~ .side-menu { left: 0; }
+
+      .close-menu {
+        position: absolute;
+        top: 22px;
+        left: 20px;
+        font-size: 28px;
+        cursor: pointer;
+        color: #999;
+      }
+
+      .side-menu a {
+        display: block;
+        margin-bottom: 24px;
+        text-decoration: none;
+        color: #111;
+        text-transform: uppercase;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.2em;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .section-wrap { padding: 0 24px; }
+      .hero { padding: 72px 24px 80px; }
 
       .services-grid,
+      .lighting-inner,
+      .process-steps,
       .booking-grid {
         grid-template-columns: 1fr;
-        gap: 34px;
       }
 
-      .eyebrow {
-        letter-spacing: 0.35em;
+      .service-card + .service-card,
+      .process-step + .process-step {
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .service-card,
+      .process-step {
+        padding-right: 0;
       }
     }
   </style>
 </head>
-
 <body>
 
   <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-
   <label for="menu-toggle" class="hamburger" aria-label="Open mobile menu">
     <span></span>
     <span></span>
   </label>
-
   <aside class="side-menu">
     <label for="menu-toggle" class="close-menu">×</label>
     <a href="https://brigregoryphotos.com/">Home</a>
@@ -165,94 +448,181 @@
     </nav>
   </header>
 
-  <main class="services-page">
-    </section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="section-label">Brianna Gregory Photography</span>
+      <h1>Photography for <em>meaningful moments.</em></h1>
+      <div class="hero-rule"></div>
+      <p>Portraits, lifestyle, occasions, and events — captured with intention, care, and a polished editorial touch.</p>
+    </div>
+  </section>
 
-    <section class="services-section">
-      <p class="eyebrow">Services</p>
-
-      <h2 class="services-heading">
-        Photography for <em>meaningful moments.</em>
-      </h2>
-
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="section-wrap">
+      <span class="section-label">Services</span>
+      <h2 class="services-title">Every session, <em>thoughtfully approached.</em></h2>
       <div class="services-grid">
         <article class="service-card">
           <h3>Portraits</h3>
           <p>
-            Individuals, couples, graduates, creatives, and personal milestones captured
-            with intention, ease, and a polished editorial touch.
+            Individuals, couples, graduates, creatives, and personal milestones —
+            captured with intention, ease, and a polished editorial touch.
           </p>
           <p>
-            This includes graduation photos, individual portraits, couples sessions,
+            Graduation photos, individual portraits, couples sessions,
             creative branding, and personal milestone sessions.
           </p>
         </article>
-
         <article class="service-card">
           <h3>Lifestyle</h3>
           <p>
             Natural, editorial storytelling with a relaxed and intentional feel.
           </p>
           <p>
-            Perfect for maternity sessions, family moments, outdoor portraits,
+            Maternity sessions, family moments, outdoor portraits,
             at-home sessions, and everyday moments you want to remember beautifully.
           </p>
         </article>
-
         <article class="service-card">
           <h3>Occasions</h3>
           <p>
-            Intimate events, celebrations, gatherings, and details worth remembering.
+            Intimate celebrations, gatherings, and details worth remembering.
           </p>
           <p>
-            Available for special events, birthdays, showers, small ceremonies,
-            celebrations, and meaningful gatherings.
+            Birthdays, showers, small ceremonies, and meaningful moments
+            shared with the people who matter most.
+          </p>
+        </article>
+        <article class="service-card">
+          <h3>Events</h3>
+          <p>
+            Group coverage, organizational gatherings, and larger celebrations —
+            photographed with care and consistency from start to finish.
+          </p>
+          <p>
+            Galas, reunions, conferences, award nights, and community events
+            of all sizes.
           </p>
         </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="booking-section">
-      <p class="eyebrow">Booking Details</p>
-
-      <div class="booking-grid">
-        <div>
-          <h2 class="location-heading">
-            Submit an inquiry, then I’ll take it from there.
-          </h2>
+  <!-- LIGHTING -->
+  <section class="lighting-section">
+    <div class="section-wrap">
+      <div class="lighting-inner">
+        <div class="lighting-left">
+          <span class="section-label">Professional Lighting</span>
+          <h2 class="lighting-title">The right light, <em>wherever we are.</em></h2>
         </div>
-
-        <div>
+        <div class="lighting-right">
           <p>
-            To begin, please submit an online inquiry with the type of session or event
-            you’re interested in, your preferred date, location, and any important details.
+            Whether we're shooting portraits in a dim indoor space, documenting a family
+            gathering at dusk, or covering a large event in a low-light ballroom, I bring
+            professional lighting to every session. Good light isn't something I hope for —
+            it's something I create.
           </p>
-
           <p>
-            I’ll get back to you shortly after your inquiry is submitted. I may reach out
-            to ask for more information so I can better understand your vision and make sure
-            your session or event is planned with care.
+            My setup includes a dedicated round-head flash for flattering on-camera light,
+            a powerful off-camera strobe for large groups and wider spaces, and a compact
+            secondary flash for flexible coverage wherever the moment takes us. Every image
+            comes out clean, consistent, and true to color — regardless of the environment.
           </p>
+          <ul class="capabilities-list">
+            <li>Indoor & low-light portrait sessions</li>
+            <li>Family gatherings & lifestyle sessions indoors</li>
+            <li>Evening occasions & celebrations</li>
+            <li>Large group photos of any size</li>
+            <li>Event coverage in any venue</li>
+            <li>Consistent results in any lighting condition</li>
+          </ul>
+          <a href="https://brigregoryphotos.com/main/booking/" class="btn-outline">Book a Session</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- HOW IT WORKS -->
+  <section class="process-section">
+    <div class="section-wrap">
+      <span class="section-label">How It Works</span>
+      <h2 class="process-title">Simple, clear, and <em>personal from the start.</em></h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <p class="step-number">01</p>
+          <p class="step-title">Submit Your Inquiry</p>
+          <p>
+            Click <strong>Book</strong> at the top of the page and fill out the
+            online inquiry form. Share your session type, preferred date,
+            location, and any details that matter to you.
+          </p>
+        </div>
+        <div class="process-step">
+          <p class="step-number">02</p>
+          <p class="step-title">Hear Back in 1–2 Business Days</p>
+          <p>
+            I'll follow up with a personalized quote or proposal. I may reach
+            out with a few questions first so I can put together something
+            accurate and tailored to your needs.
+          </p>
+        </div>
+        <div class="process-step">
+          <p class="step-number">03</p>
+          <p class="step-title">Review Your Quote</p>
+          <p>
+            You'll receive a formal quote with your coverage, scope, and
+            pricing — everything laid out clearly before you commit to
+            anything.
+          </p>
+        </div>
+        <div class="process-step">
+          <p class="step-number">04</p>
+          <p class="step-title">Secure Your Date</p>
+          <p>
+            If your date is available, a small deposit is required to hold it.
+            Your date is not officially reserved until the deposit has been
+            received.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="booking-section">
+    <div class="section-wrap">
+      <div class="booking-grid">
+        <div class="booking-left">
+          <span class="section-label">Booking Details</span>
+          <h2 class="booking-title">Submit an inquiry, then I'll take it <em>from there.</em></h2>
+        </div>
+        <div class="booking-right">
+          <p>
+            To begin, submit an online inquiry with the type of session or event
+            you have in mind, your preferred date, location, and any important details.
+          </p>
+          <p>
+            I'll be in touch shortly. I may follow up with a few questions to make sure
+            your session or event is planned with care and your vision is understood.
+          </p>
           <p>
             A deposit is required to secure your booking date. Your date is not officially
             reserved until the deposit has been received.
           </p>
-
           <p>
-            All services include professional editing and access to a digital gallery where
-            you can download your final images.
+            All services include professional editing and access to a digital gallery
+            for downloading your final images.
           </p>
-
-          <a href="https://brigregoryphotos.com/main/booking/" class="services-button">
-            Submit Inquiry
-          </a>
+          <a href="https://brigregoryphotos.com/main/booking/" class="btn-outline">Submit Inquiry</a>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <footer class="booking-footer">
+  <footer class="site-footer">
     <a href="mailto:booking@brigregoryphotos.com">booking@brigregoryphotos.com</a>
     <p>© 2026 Brianna Gregory Photography</p>
   </footer>
