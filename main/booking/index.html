@@ -1,37 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Sets the character encoding so text displays correctly -->
   <meta charset="UTF-8" />
-
-  <!-- Makes the page responsive on phones, tablets, and desktops -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Browser tab title -->
   <title>Book a Session | Brianna Gregory Photography</title>
-
-  <!-- Connects this HTML page to the booking page CSS file -->
-  <link rel="stylesheet" href="/main/booking/styles.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: "Times New Roman", serif;
+      color: #111;
+      background: white;
+    }
+    /* HIDE MOBILE MENU DEFAULT */
+    .menu-toggle {
+      display: none;
+    }
+    .hamburger,
+    .side-menu {
+      display: none;
+    }
+    /* DESKTOP NAV */
+    .site-header {
+      background: white;
+      border-bottom: 1px solid #e5e5e5;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .site-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 70px;
+      min-height: 120px;
+    }
+    .site-nav a {
+      text-decoration: none;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 14px;
+    }
+    /* PAGE */
+    .booking-page {
+      padding: 80px 8%;
+      background: #fafafa;
+    }
+    .booking-hero {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      text-align: center;
+    }
+    .eyebrow {
+      letter-spacing: 0.25em;
+      font-size: 12px;
+      color: #666;
+    }
+    .booking-hero h1 {
+      font-size: 72px;
+      font-weight: normal;
+      margin: 20px 0;
+    }
+    .booking-intro {
+      font-size: 20px;
+      line-height: 1.6;
+    }
+    .booking-form-section {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .booking-form {
+      background: white;
+      padding: 50px;
+      border: 1px solid #ddd;
+    }
+    .form-row {
+      margin-bottom: 28px;
+    }
+    .form-row label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 16px;
+    }
+    .field-note {
+      font-size: 13px;
+      color: #666;
+      margin: -4px 0 10px;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .form-submit {
+      width: 100%;
+      padding: 18px;
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .booking-footer {
+      text-align: center;
+      padding: 50px 20px;
+      border-top: 1px solid #e5e5e5;
+    }
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .site-header {
+        display: none;
+      }
+      .hamburger {
+        display: block;
+        position: fixed;
+        top: 30px;
+        left: 24px;
+        z-index: 1001;
+        width: 30px;
+        cursor: pointer;
+      }
+      .hamburger span {
+        display: block;
+        height: 2px;
+        background: black;
+        margin: 7px 0;
+      }
+      .side-menu {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 280px;
+        height: 100%;
+        background: white;
+        padding: 90px 30px;
+        transition: 0.3s ease;
+        z-index: 1000;
+      }
+      #menu-toggle:checked ~ .side-menu {
+        left: 0;
+      }
+      .close-menu {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 32px;
+        cursor: pointer;
+      }
+      .side-menu a {
+        display: block;
+        margin-bottom: 24px;
+        text-decoration: none;
+        color: black;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 0.15em;
+      }
+      .booking-hero h1 {
+        font-size: 44px;
+      }
+      .booking-form {
+        padding: 28px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <!-- 
-    Mobile menu toggle:
-    This hidden checkbox controls whether the side menu opens or closes.
-    CSS can detect when this checkbox is checked.
-  -->
   <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-
-  <!-- Hamburger menu button -->
   <label for="menu-toggle" class="hamburger" aria-label="Open mobile menu">
     <span></span>
     <span></span>
   </label>
-
-  <!-- Mobile side menu -->
   <aside class="side-menu">
     <label for="menu-toggle" class="close-menu">×</label>
-
     <a href="https://brigregoryphotos.com/">Home</a>
     <a href="https://brigregoryphotos.com/portfolio">Portfolio</a>
     <a href="https://brigregoryphotos.com/services">Services</a>
@@ -39,8 +193,6 @@
     <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a>
     <a href="https://instagram.com/photo.britheg" target="_blank">Instagram</a>
   </aside>
-
-  <!-- Header -->
   <header class="site-header">
     <nav class="site-nav">
       <a href="https://brigregoryphotos.com/">Home</a>
@@ -50,19 +202,14 @@
       <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a>
     </nav>
   </header>
-
-  <!-- Main Content -->
   <main class="booking-page">
     <section class="booking-hero">
       <p class="eyebrow">BOOKING INQUIRY</p>
-
       <h1>Reserve Your Photo Session</h1>
-
       <p class="booking-intro">
-        Tell me a little about your vision and I’ll personally follow up with availability, pricing, and next steps.
+        Tell me a little about your vision and I'll personally follow up with availability, pricing, and next steps.
       </p>
     </section>
-
     <section class="booking-form-section">
       <form
         class="booking-form"
@@ -79,17 +226,14 @@
           <label for="name">Full Name *</label>
           <input id="name" name="Full Name" type="text" required />
         </div>
-
         <div class="form-row">
           <label for="email">Email Address *</label>
           <input id="email" name="Email Address" type="email" required />
         </div>
-
         <div class="form-row">
           <label for="phone">Phone Number</label>
           <input id="phone" name="Phone Number" type="tel" />
         </div>
-
         <div class="form-row">
           <label for="session">Session Type *</label>
           <select id="session" name="Session Type" required>
@@ -103,33 +247,57 @@
             <option value="Other">Other</option>
           </select>
         </div>
-
+        <div class="form-row">
+          <label for="people">About How Many People Will Be in the Photos? *</label>
+          <p class="field-note">This helps me determine the right equipment and lighting setup for your session.</p>
+          <select id="people" name="Number of People" required>
+            <option value="">Select group size</option>
+            <option value="Just Me (1 person)">Just Me (1 person)</option>
+            <option value="2–10 People">2–10 People</option>
+            <option value="11–30 People">11–30 People</option>
+            <option value="31–50 People">31–50 People</option>
+            <option value="51–100 People">51–100 People</option>
+            <option value="100–200 People">100–200 People</option>
+            <option value="200+ People">200+ People</option>
+          </select>
+        </div>
         <div class="form-row">
           <label for="date">Preferred Date *</label>
           <input id="date" name="Preferred Date" type="date" required />
         </div>
-
         <div class="form-row">
           <label for="location">Preferred Location</label>
           <input id="location" name="Preferred Location" type="text" />
         </div>
-
         <div class="form-row">
           <label for="budget">Estimated Budget</label>
           <select id="budget" name="Estimated Budget">
             <option value="">Select budget range</option>
-            <option value="$200-$400">$200-$400</option>
-            <option value="$400-$700">$400-$700</option>
-            <option value="$700-$1200">$700-$1200</option>
-            <option value="$1200+">$1200+</option>
+            <option value="$200-$400">$200–$400</option>
+            <option value="$400-$700">$400–$700</option>
+            <option value="$700-$1200">$700–$1,200</option>
+            <option value="$1200+">$1,200+</option>
           </select>
         </div>
-
+        <div class="form-row">
+          <label for="referral">How Did You Hear About Us?</label>
+          <select id="referral" name="How Did You Hear About Us">
+            <option value="">Select an option</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Facebook">Facebook</option>
+            <option value="TikTok">TikTok</option>
+            <option value="Pinterest">Pinterest</option>
+            <option value="Google Search">Google Search</option>
+            <option value="Word of Mouth / Referral">Word of Mouth / Referral</option>
+            <option value="A Friend or Family Member">A Friend or Family Member</option>
+            <option value="Returning Client">Returning Client</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
         <div class="form-row">
           <label for="message">Tell Me About Your Vision *</label>
           <textarea id="message" name="Vision / Message" rows="8" required></textarea>
         </div>
-
         <button type="submit" class="form-submit">
           Submit Inquiry
         </button>
@@ -179,13 +347,10 @@
       >
         ×
       </button>
-
       <h2 style="margin-bottom:15px;">Thank You 💛</h2>
-
       <p style="margin-bottom:28px; line-height:1.6;">
-        Your inquiry has been submitted successfully. I’ll personally review your message and follow up soon with availability, pricing, and next steps.
+        Your inquiry has been submitted successfully. I'll personally review your message and follow up soon with availability, pricing, and next steps.
       </p>
-
       <a
         href="https://brigregoryphotos.com"
         style="
@@ -203,31 +368,34 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="booking-footer">
     <a href="mailto:booking@brigregoryphotos.com">booking@brigregoryphotos.com</a>
     <p>© 2026 Brianna Gregory Photography</p>
   </footer>
 
-  <script src="/main/booking/booking.js"></script>
-
-  <!-- THANK YOU POPUP SCRIPT -->
   <script>
+    // Dynamic subject line
+    const form = document.getElementById("bookingForm");
+    if (form) {
+      form.addEventListener("submit", function () {
+        const name = document.getElementById("name").value;
+        const session = document.getElementById("session").value;
+        document.getElementById("dynamicSubject").value =
+          "New Booking Inquiry: " + name + " — " + session;
+      });
+    }
+
+    // Thank you popup
     const params = new URLSearchParams(window.location.search);
     const modal = document.getElementById("thankYouModal");
     const closeBtn = document.getElementById("closeModal");
-
     if (params.get("success") === "true") {
       modal.style.display = "flex";
-
-      // Clean URL so refresh doesn't reopen popup
       window.history.replaceState({}, document.title, window.location.pathname);
     }
-
     closeBtn.addEventListener("click", () => {
       modal.style.display = "none";
     });
-
     modal.addEventListener("click", (e) => {
       if (e.target === modal) {
         modal.style.display = "none";
