@@ -326,6 +326,50 @@
       color: var(--black);
     }
 
+    /* ── SCOPE + EQUIPMENT ── */
+    .scope-section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--warm-gray);
+    }
+    .scope-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .scope-block {
+      background: white;
+      border: 1px solid var(--warm-gray);
+      padding: 2rem 2.2rem;
+    }
+    .scope-block h4 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .scope-block ul {
+      list-style: none;
+      padding: 0;
+    }
+    .scope-block ul li {
+      font-size: 0.83rem;
+      color: #555;
+      line-height: 1.75;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--warm-gray);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+    }
+    .scope-block ul li:last-child { border-bottom: none; }
+    .scope-block ul li::before {
+      content: '—';
+      color: var(--mid-gray);
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
     /* ── NEXT STEPS ── */
     .next-section {
       padding: 3.5rem 0;
@@ -492,6 +536,7 @@
       .receipt-grid { grid-template-columns: 1fr; }
       .event-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
+      .scope-grid { grid-template-columns: 1fr; }
       .pdf-embed-wrap { height: 520px; }
       .pdf-placeholder { height: 520px; }
       .paid-strip { flex-direction: column; align-items: flex-start; }
@@ -652,6 +697,29 @@
       </div>
     </div>
 
+    <!-- WHAT'S INCLUDED -->
+    <div class="scope-section">
+      <p class="section-label">What's Included</p>
+      <div class="scope-grid">
+        <div class="scope-block">
+          <h4>Scope of Work</h4>
+          <ul>
+            <li>Large group photos — full reunion group of approximately 70–80 people</li>
+            <li>Small group photos — subgroups, families, and friends</li>
+            <li>Candid &amp; action photos throughout the evening to capture event highlights</li>
+            <li>Special photo requests as coordinated with the event organizers</li>
+          </ul>
+        </div>
+        <div class="scope-block">
+          <h4>Equipment</h4>
+          <ul>
+            <li><strong style="font-weight:500;color:var(--black);">Two professional camera bodies</strong> with dedicated flash units — both shooting at 24MP+ resolution for sharp, detailed images of large groups and individual portraits.</li>
+            <li><strong style="font-weight:500;color:var(--black);">Indoor flash lighting</strong> — Both cameras are equipped with dedicated flash units built for low-light ballroom conditions, delivering clean, well-lit images of large groups and individuals throughout the entire event.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <!-- NEXT STEPS -->
     <div class="next-section">
       <p class="section-label">What Happens Next</p>
@@ -687,17 +755,14 @@
       <div class="pdf-wrapper">
         <div class="pdf-toolbar">
           <span>BookingConfirmed_PusongUPSE_Reunion_09132026.pdf</span>
-          <a class="pdf-download" href="/events/quotes/event-PusongUPSE-09132026/BookingConfirmed_PusongUPSE_Reunion_09132026.pdf" download>↓ Download</a>
+          <a class="pdf-download" href="/events/confirmed-booking/Confirmed_PusongUPSE_Reunion_09132026/BookingConfirmed_PusongUPSE_Reunion_09132026.pdf" download>↓ Download</a>
         </div>
-        <!-- Replace the placeholder below with your iframe once the PDF is ready:
-             <div class="pdf-embed-wrap">
-               <iframe src="/events/quotes/event-PusongUPSE-09132026/BookingConfirmed_PusongUPSE_Reunion_09132026.pdf" title="Booking Confirmation Document" allowfullscreen></iframe>
-             </div>
-        -->
-        <div class="pdf-placeholder">
-          <span class="ph-icon">📄</span>
-          <span class="ph-label">PDF Coming Soon</span>
-          <span class="ph-note">Replace this block with your iframe once the PDF is uploaded.</span>
+        <div class="pdf-embed-wrap">
+          <iframe
+            src="/events/confirmed-booking/Confirmed_PusongUPSE_Reunion_09132026/BookingConfirmed_PusongUPSE_Reunion_09132026.pdf"
+            title="Booking Confirmation — Pusong UPSE Reunion"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
     </div>
@@ -707,12 +772,12 @@
       <p class="section-label">Certificate of Liability Insurance</p>
       <div class="pdf-wrapper">
         <div class="pdf-toolbar">
-          <span>COI_BriannaGregoryPhotography_Policy-NXT7FWJ74Y-00-GL_2026-2027.pdf</span>
-          <a class="pdf-download" href="/events/quotes/event-PusongUPSE-09132026/COI_BriannaGregoryPhotography_Policy-NXT7FWJ74Y-00-GL_2026-2027.pdf" download>↓ Download</a>
+          <span>COI Pusong UPSE — Brianna Gregory Photography.pdf</span>
+          <a class="pdf-download" href="/events/confirmed-booking/Confirmed_PusongUPSE_Reunion_09132026/COI%20Pusong%20UPSE%20-%20Brianna%20Gregory%20Photography.pdf" download>↓ Download</a>
         </div>
         <div class="pdf-embed-wrap">
           <iframe
-            src="/events/quotes/event-PusongUPSE-09132026/COI_BriannaGregoryPhotography_Policy-NXT7FWJ74Y-00-GL_2026-2027.pdf"
+            src="/events/confirmed-booking/Confirmed_PusongUPSE_Reunion_09132026/COI%20Pusong%20UPSE%20-%20Brianna%20Gregory%20Photography.pdf"
             title="Certificate of Liability Insurance — Brianna Gregory Photography"
             allowfullscreen
           ></iframe>
