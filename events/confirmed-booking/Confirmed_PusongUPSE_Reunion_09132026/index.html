@@ -375,6 +375,83 @@
       line-height: 1.75;
     }
 
+    /* ── PDF VIEWER ── */
+    .pdf-section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--warm-gray);
+    }
+    .pdf-wrapper {
+      background: white;
+      border: 1px solid var(--warm-gray);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    .pdf-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.4rem;
+      border-bottom: 1px solid var(--warm-gray);
+      background: var(--off-white);
+    }
+    .pdf-toolbar span {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+    }
+    .pdf-download {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      border: 1px solid var(--black);
+      padding: 0.4rem 1rem;
+      transition: all 0.2s;
+    }
+    .pdf-download:hover {
+      background: var(--black);
+      color: white;
+    }
+    .pdf-embed-wrap {
+      width: 100%;
+      height: 780px;
+      position: relative;
+    }
+    .pdf-embed-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .pdf-placeholder {
+      width: 100%;
+      height: 780px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background: #fafaf8;
+      border-top: 1px dashed var(--warm-gray);
+      color: var(--mid-gray);
+    }
+    .pdf-placeholder .ph-icon {
+      font-size: 2.5rem;
+      opacity: 0.3;
+    }
+    .pdf-placeholder .ph-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .pdf-placeholder .ph-note {
+      font-size: 0.78rem;
+      color: #c8c4be;
+      font-style: italic;
+    }
+
     /* ── CTA ── */
     .cta-section {
       padding: 4rem 0 0;
@@ -390,20 +467,7 @@
     .cta-section p {
       font-size: 0.85rem;
       color: var(--mid-gray);
-      margin-bottom: 2rem;
     }
-    .cta-btn {
-      display: inline-block;
-      background: var(--black);
-      color: white;
-      text-decoration: none;
-      padding: 0.9rem 2.8rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      transition: opacity 0.2s;
-    }
-    .cta-btn:hover { opacity: 0.75; }
 
     /* ── FOOTER ── */
     footer {
@@ -428,6 +492,8 @@
       .receipt-grid { grid-template-columns: 1fr; }
       .event-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
+      .pdf-embed-wrap { height: 520px; }
+      .pdf-placeholder { height: 520px; }
       .paid-strip { flex-direction: column; align-items: flex-start; }
       .balance-callout { flex-direction: column; align-items: flex-start; }
       footer { flex-direction: column; gap: 0.8rem; text-align: center; }
@@ -604,8 +670,52 @@
         </div>
         <div class="step-item">
           <p class="si-num">03</p>
+          <p class="si-title">Pre-Event Check-in</p>
+          <p class="si-body">About a week before September 13, I'll reach out to connect on any final details or changes — including start time, group photo list, and anything else that may have come up. Some details like the exact start time may not be confirmed until closer to the date, and that's completely okay.</p>
+        </div>
+        <div class="step-item">
+          <p class="si-num">04</p>
           <p class="si-title">Image Delivery</p>
           <p class="si-body">Your final edited gallery will be delivered within 2 business days of the event via a private online gallery with full downloadable access.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PDF VIEWER -->
+    <div class="pdf-section">
+      <p class="section-label">Booking Confirmation Document</p>
+      <div class="pdf-wrapper">
+        <div class="pdf-toolbar">
+          <span>BookingConfirmed_PusongUPSE_Reunion_09132026.pdf</span>
+          <a class="pdf-download" href="/events/quotes/event-PusongUPSE-09132026/BookingConfirmed_PusongUPSE_Reunion_09132026.pdf" download>↓ Download</a>
+        </div>
+        <!-- Replace the placeholder below with your iframe once the PDF is ready:
+             <div class="pdf-embed-wrap">
+               <iframe src="/events/quotes/event-PusongUPSE-09132026/BookingConfirmed_PusongUPSE_Reunion_09132026.pdf" title="Booking Confirmation Document" allowfullscreen></iframe>
+             </div>
+        -->
+        <div class="pdf-placeholder">
+          <span class="ph-icon">📄</span>
+          <span class="ph-label">PDF Coming Soon</span>
+          <span class="ph-note">Replace this block with your iframe once the PDF is uploaded.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COI PDF VIEWER -->
+    <div class="pdf-section">
+      <p class="section-label">Certificate of Liability Insurance</p>
+      <div class="pdf-wrapper">
+        <div class="pdf-toolbar">
+          <span>COI_BriannaGregoryPhotography_Policy-NXT7FWJ74Y-00-GL_2026-2027.pdf</span>
+          <a class="pdf-download" href="/events/quotes/event-PusongUPSE-09132026/COI_BriannaGregoryPhotography_Policy-NXT7FWJ74Y-00-GL_2026-2027.pdf" download>↓ Download</a>
+        </div>
+        <div class="pdf-embed-wrap">
+          <iframe
+            src="/events/quotes/event-PusongUPSE-09132026/COI_BriannaGregoryPhotography_Policy-NXT7FWJ74Y-00-GL_2026-2027.pdf"
+            title="Certificate of Liability Insurance — Brianna Gregory Photography"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
     </div>
@@ -614,7 +724,6 @@
     <div class="cta-section">
       <h3>Questions? <em>Just reach out.</em></h3>
       <p>Don't hesitate to get in touch at any point leading up to your event.</p>
-      <a href="mailto:brianna@brigregoryphotos.com" class="cta-btn">Contact Brianna</a>
     </div>
 
   </div>
