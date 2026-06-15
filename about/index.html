@@ -3,151 +3,421 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>About | Brianna Gregory Photography</title>
-
-  <meta
-    name="description"
-    content="Brianna Gregory Photography — San Diego portrait, lifestyle, and special occasion photographer."
-  />
-
-  <link rel="stylesheet" href="./styles.css" />
-
+  <meta name="description" content="Brianna Gregory — San Diego portrait, lifestyle, and special occasion photographer. Born and raised in San Diego, based in the Bay Area, shooting everywhere in between." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
   <style>
-    .about-hero,
-    .about-split {
+    /* ─── RESET & BASE ─── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      overflow-x: hidden;
+      font-family: 'Cormorant Garant', 'Times New Roman', serif;
+      background: #f7f3ee;
+      color: #1a1614;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    em { font-style: italic; }
+    img { display: block; width: 100%; }
+
+    /* ─── MOBILE MENU ─── */
+    .menu-toggle {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .hamburger { display: none; }
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 82%;
+      max-width: 320px;
+      height: 100%;
+      z-index: 200;
+      background: #f7f3ee;
+      border-right: 1px solid #ddd5ca;
+      padding: 90px 30px;
+      transition: left 0.32s ease;
+    }
+    .side-menu .close-menu {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      font-weight: 300;
+      color: #6b5f58;
+    }
+    .side-menu a {
+      display: block;
+      margin-bottom: 26px;
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: #6b5f58;
+    }
+    .side-menu a:hover { color: #1a1614; }
+    .menu-toggle:checked ~ .side-menu { left: 0; }
+
+    /* ─── HEADER ─── */
+    .site-header {
+      background: #f7f3ee;
+      border-bottom: 1px solid #ddd5ca;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-nav {
+      height: 88px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 6%;
+    }
+    .nav-logo {
+      font-size: 12px;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: #1a1614;
+    }
+    .nav-links { display: flex; gap: 50px; }
+    .nav-links a {
+      font-size: 10.5px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #6b5f58;
+      font-weight: 300;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: #1a1614; }
+
+    /* ─── SECTION LABEL ─── */
+    .section-label {
+      display: block;
+      font-size: 10.5px;
+      letter-spacing: 0.52em;
+      text-transform: uppercase;
+      color: #9a8f86;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    /* ─── BUTTON ─── */
+    .btn-outline {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 14px 32px;
+      border: 1px solid #1a1614;
+      color: #1a1614;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 10.5px;
+      font-weight: 300;
+      transition: all 0.25s ease;
+    }
+    .btn-outline:hover {
+      background: #1a1614;
+      color: #f7f3ee;
+    }
+
+    /* ─── HERO ─── */
+    .about-hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 90px;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 90px 40px;
+      min-height: 680px;
     }
-
-    .about-photo {
-      width: 100%;
-      aspect-ratio: 4 / 5;
+    .hero-photo {
       overflow: hidden;
-      border-radius: 4px;
-      background: #f2f2f2;
+      background: #e8e2db;
     }
-
-    .about-photo img {
+    .hero-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center center;
-      display: block;
+      object-position: center;
+      filter: saturate(0.88) contrast(0.97);
     }
-
-    .about-intro,
-    .split-copy {
-      max-width: 620px;
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 8%;
     }
-
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 12px;
-      margin-bottom: 24px;
+    .hero-copy h1 {
+      font-size: clamp(52px, 6vw, 90px);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      margin-bottom: 32px;
     }
-
-    .about-intro h1,
-    .split-copy h2,
-    .capture-section h2,
-    .contact-section h2 {
-      font-weight: 400;
-      line-height: 1.2;
+    .hero-copy h1 em { font-style: italic; }
+    .hero-rule {
+      width: 38px;
+      height: 1px;
+      background: #c4b9b0;
       margin-bottom: 28px;
     }
-
-    .about-intro h1 {
-      font-size: clamp(42px, 6vw, 76px);
+    .hero-copy p {
+      font-size: 18px;
+      line-height: 1.9;
+      color: #6b5f58;
+      font-weight: 300;
+      max-width: 440px;
+      margin-bottom: 16px;
     }
 
-    .split-copy h2,
-    .capture-section h2,
-    .contact-section h2 {
-      font-size: clamp(32px, 4vw, 52px);
+    /* ─── ORIGIN STORY ─── */
+    .origin-section {
+      background: #fff;
+      padding: 100px 6%;
     }
-
-    .intro-copy p,
-    .split-copy p,
-    .capture-item p,
-    .contact-section p {
-      line-height: 1.8;
-    }
-
-    .section-line {
-      width: 90px;
-      height: 1px;
-      background: #222;
-      margin: 0 0 42px;
-    }
-
-    .capture-section,
-    .contact-section {
-      max-width: 1100px;
+    .origin-inner {
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 90px 40px;
-      text-align: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
     }
+    .origin-left h2 {
+      font-size: clamp(36px, 4vw, 58px);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 0;
+    }
+    .origin-left h2 em { font-style: italic; }
+    .origin-right p {
+      font-size: 17px;
+      line-height: 1.95;
+      color: #6b5f58;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .origin-right p:last-child { margin-bottom: 0; }
 
-    .capture-grid {
+    /* ─── TRAVEL / JAPAN ─── */
+    .travel-section {
+      background: #fff;
+      padding: 100px 6%;
+    }
+    .travel-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .travel-photo {
+      overflow: hidden;
+      background: #e8e2db;
+      aspect-ratio: 4 / 5;
+    }
+    .travel-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(0.88) contrast(0.97);
+    }
+    .travel-copy h2 {
+      font-size: clamp(34px, 3.8vw, 56px);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+    .travel-copy h2 em { font-style: italic; }
+    .travel-copy p {
+      font-size: 17px;
+      line-height: 1.95;
+      color: #6b5f58;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    .travel-copy p:last-of-type { margin-bottom: 0; }
+
+    /* ─── WHAT I LOVE ─── */
+    .loves-section {
+      background: #f7f3ee;
+      padding: 100px 6%;
+    }
+    .loves-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .loves-title {
+      font-size: clamp(32px, 3.5vw, 50px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 56px;
+      max-width: 580px;
+    }
+    .loves-title em { font-style: italic; }
+    .loves-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
-      margin-top: 50px;
-      text-align: left;
+      gap: 0;
     }
-
-    .capture-item {
-      border-top: 1px solid #ddd;
-      padding-top: 24px;
+    .loves-item {
+      padding: 32px 36px 32px 0;
+      border-top: 1px solid #ddd5ca;
     }
-
-    .capture-item h3 {
-      font-weight: 400;
-      margin-bottom: 12px;
+    .loves-item + .loves-item {
+      border-left: 1px solid #ddd5ca;
+      padding-left: 36px;
     }
-
-    .button {
-      display: inline-block;
-      margin-top: 28px;
-      padding: 14px 28px;
-      border: 1px solid #222;
-      text-decoration: none;
-      color: inherit;
+    .loves-item h3 {
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 12px;
+      letter-spacing: 0.4em;
+      font-weight: 300;
+      color: #9a8f86;
+      margin-bottom: 14px;
+    }
+    .loves-item p {
+      font-size: 16px;
+      line-height: 1.9;
+      color: #6b5f58;
+      font-weight: 300;
     }
 
-    @media (max-width: 850px) {
-      .about-hero,
-      .about-split {
+    /* ─── APPROACH ─── */
+    .approach-section {
+      background: #e8e2db;
+      padding: 100px 6%;
+      text-align: center;
+    }
+    .approach-section h2 {
+      max-width: 800px;
+      margin: 0 auto 28px;
+      font-size: clamp(34px, 4vw, 58px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: #1a1614;
+    }
+    .approach-section p {
+      max-width: 580px;
+      margin: 0 auto;
+      font-size: 17px;
+      line-height: 1.95;
+      color: #6b5f58;
+      font-weight: 300;
+    }
+
+    /* ─── CTA ─── */
+    .contact-section {
+      padding: 96px 6%;
+      background: #fff;
+    }
+    .contact-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid #ddd5ca;
+      padding-top: 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-inner h2 {
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .contact-inner h2 em { font-style: italic; }
+    .contact-right p {
+      font-size: 17px;
+      line-height: 1.9;
+      color: #6b5f58;
+      font-weight: 300;
+    }
+
+    /* ─── FOOTER ─── */
+    .site-footer {
+      background: #f7f3ee;
+      border-top: 1px solid #ddd5ca;
+      text-align: center;
+      padding: 52px 20px;
+    }
+    .site-footer a {
+      display: inline-block;
+      font-size: 15px;
+      font-style: italic;
+      font-weight: 300;
+      color: #9a8f86;
+      border-bottom: 1px solid #9a8f86;
+      padding-bottom: 2px;
+      margin-bottom: 20px;
+      transition: color 0.25s;
+    }
+    .site-footer a:hover { color: #1a1614; }
+    .site-footer p {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #b0a69c;
+      font-weight: 300;
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 860px) {
+      .site-header { display: none; }
+      .hamburger {
+        display: block;
+        position: fixed;
+        top: 24px;
+        left: 20px;
+        z-index: 1001;
+        width: 28px;
+        cursor: pointer;
+      }
+      .hamburger span {
+        display: block;
+        height: 1px;
+        margin: 8px 0;
+        background: #1a1614;
+      }
+      .about-hero {
         grid-template-columns: 1fr;
-        gap: 45px;
-        padding: 60px 24px;
+        min-height: auto;
+        padding-top: 58px;
       }
-
-      .about-photo {
-        min-height: 380px;
-      }
-
-      .capture-grid {
+      .hero-photo { height: 420px; }
+      .hero-copy { padding: 48px 6% 56px; }
+      .origin-inner,
+      .travel-inner,
+      .contact-inner {
         grid-template-columns: 1fr;
+        gap: 40px;
       }
-
-      .capture-section,
-      .contact-section {
-        padding: 60px 24px;
+      .origin-section,
+      .travel-section,
+      .loves-section,
+      .approach-section,
+      .contact-section { padding: 64px 6%; }
+      .loves-grid { grid-template-columns: 1fr; }
+      .loves-item + .loves-item {
+        border-left: none;
+        padding-left: 0;
       }
+      .loves-item { padding-right: 0; }
+      .travel-photo { aspect-ratio: 4 / 3; }
+      .about-hero { padding-top: 0; }
     }
   </style>
 </head>
-
 <body>
 
   <input type="checkbox" id="menu-toggle" class="menu-toggle" />
@@ -159,7 +429,6 @@
 
   <aside class="side-menu">
     <label for="menu-toggle" class="close-menu">×</label>
-
     <a href="https://brigregoryphotos.com/">Home</a>
     <a href="https://brigregoryphotos.com/portfolio">Portfolio</a>
     <a href="https://brigregoryphotos.com/services">Services</a>
@@ -170,127 +439,160 @@
 
   <header class="site-header">
     <nav class="site-nav">
-      <a href="https://brigregoryphotos.com/">Home</a>
-      <a href="https://brigregoryphotos.com/portfolio">Portfolio</a>
-      <a href="https://brigregoryphotos.com/services">Services</a>
-      <a href="https://brigregoryphotos.com/main/booking/">Book</a>
-      <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a>
+      <span class="nav-logo">Brianna Gregory</span>
+      <div class="nav-links">
+        <a href="https://brigregoryphotos.com/">Home</a>
+        <a href="https://brigregoryphotos.com/portfolio">Portfolio</a>
+        <a href="https://brigregoryphotos.com/services">Services</a>
+        <a href="https://brigregoryphotos.com/main/booking/">Book</a>
+      </div>
     </nav>
   </header>
 
   <main>
 
+    <!-- HERO -->
     <section class="about-hero">
-      <div class="about-photo">
+      <div class="hero-photo">
         <img
           src="/photos/japan2"
-          alt="Brianna Gregory Photography portrait"
+          alt="Brianna Gregory — San Diego photographer"
+          loading="eager"
+          fetchpriority="high"
         />
       </div>
+      <div class="hero-copy">
+        <span class="section-label">San Diego Photographer</span>
+        <h1>Hi, I'm<br /><em>Brianna.</em></h1>
+        <div class="hero-rule"></div>
+        <p>
+          Born and raised in San Diego. Always at the beach. Always taking
+          pictures of someone.
+        </p>
+      </div>
+    </section>
 
-      <div class="about-intro">
-        <p class="eyebrow">San Diego Photographer</p>
-
-        <h1>
-          Brianna Gregory<br />
-          Photography
-        </h1>
-
-        <div class="intro-copy">
+    <!-- ORIGIN STORY -->
+    <section class="origin-section">
+      <div class="origin-inner">
+        <div class="origin-left">
+          <span class="section-label">Where It Started</span>
+          <h2>It started at family <em>parties and events.</em></h2>
+        </div>
+        <div class="origin-right">
           <p>
-            Affordable, refined portrait, lifestyle, and special occasion
-            photography across San Diego County.
+            Growing up, I was always the one making my family and friends pose
+            for portraits — at Christmas, baby showers, milestone birthdays.
+            I'd gather everyone together, get them lined up, and try to make
+            something worth holding onto.
           </p>
-
           <p>
-            I create imagery that feels elegant, personal, and timeless —
-            capturing real people and meaningful moments with intention.
+            What started as a way to hold onto my own family's memories slowly
+            became something I couldn't put down — and eventually something I
+            wanted to bring to other people's lives too.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="about-split">
-      <div class="about-photo">
-        <img
-          src="/photos/japan1"
-          alt="Brianna Gregory Photography lifestyle image"
-        />
-      </div>
-
-      <div class="split-copy">
-        <p class="eyebrow">About Brianna</p>
-
-        <div class="section-line"></div>
-
-        <h2>
-          Calm, timeless photography with an editorial touch.
-        </h2>
-
-        <p>
-          Born and raised in San Diego, I’ve always been drawn to beauty,
-          storytelling, and the emotion a single image can hold.
-        </p>
-
-        <p>
-          Photography began as a creative outlet and became something much
-          more meaningful — a way to preserve connection, milestones,
-          celebrations, and everyday beauty.
-        </p>
-
-        <p>
-          My sessions are designed to feel natural, relaxed, and elevated,
-          creating images that feel both timeless and deeply personal.
-        </p>
-      </div>
-    </section>
-
-    <section class="capture-section">
-      <p class="eyebrow">What I Capture</p>
-
-      <h2>
-        Portraits, families, friendships, and unforgettable moments.
-      </h2>
-
-      <div class="capture-grid">
-        <div class="capture-item">
-          <h3>Portraits</h3>
-          <p>Elegant portraits that feel authentic and effortless.</p>
+    <!-- TRAVEL / JAPAN -->
+    <section class="travel-section">
+      <div class="travel-inner">
+        <div class="travel-photo">
+          <img
+            src="/photos/japan1"
+            alt="Photography from Japan travel"
+          />
         </div>
-
-        <div class="capture-item">
-          <h3>Families</h3>
-          <p>Warm, timeless images of the people who matter most.</p>
-        </div>
-
-        <div class="capture-item">
-          <h3>Friends</h3>
-          <p>Fun, natural sessions that preserve genuine connection.</p>
-        </div>
-
-        <div class="capture-item">
-          <h3>Special Events</h3>
-          <p>Beautifully captured celebrations and milestone moments.</p>
+        <div class="travel-copy">
+          <span class="section-label">Life Beyond San Diego</span>
+          <h2>A decade in the Bay — and a trip to <em>Japan</em> that changed everything.</h2>
+          <p>
+            I spent over a decade living in the Bay Area, exploring San Francisco
+            from end to end. The fog, the architecture, the neighborhoods that feel
+            like different worlds — it showed me how differently light can fall
+            depending on where you are, what time it is, what the city is doing around you.
+          </p>
+          <p>
+            San Francisco made me pay attention. San Diego made me love golden hour.
+            And Japan — Japan made me slow down completely.
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="contact-section">
-      <p class="eyebrow">Let’s Create Together</p>
+    <!-- WHAT I LOVE TO CAPTURE -->
+    <section class="loves-section">
+      <div class="loves-inner">
+        <span class="section-label">What I Love to Capture</span>
+        <h2 class="loves-title">Smiles, sunsets, milestones — and the <em>quiet moments in between.</em></h2>
+        <div class="loves-grid">
+          <div class="loves-item">
+            <h3>People</h3>
+            <p>
+              Genuine smiles. Real laughs. The look someone gives the person
+              they love when they think nobody's watching.
+            </p>
+          </div>
+          <div class="loves-item">
+            <h3>Celebrations</h3>
+            <p>
+              Birthdays, graduations, milestones, holidays — the moments
+              you'll want to remember exactly as they happened.
+            </p>
+          </div>
+          <div class="loves-item">
+            <h3>Nature & Light</h3>
+            <p>
+              A San Diego sunset never gets old. I'm always chasing that
+              last hour of light — the kind that makes everything glow.
+            </p>
+          </div>
+          <div class="loves-item">
+            <h3>Everyday Beauty</h3>
+            <p>
+              The beach at 7am. A quiet street. The details that make
+              a place or a day feel like it matters.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <h2>Ready to book your session?</h2>
-
+    <!-- APPROACH -->
+    <section class="approach-section">
+      <span class="section-label">My Approach</span>
+      <h2>I want you to actually <em>have fun.</em></h2>
       <p>
-        Whether you're celebrating something special or simply want timeless
-        portraits, I’d love to work together.
+        Photo sessions can feel awkward — I know that. My whole job is making
+        sure yours doesn't. I'll keep it moving, keep it light, and keep you
+        laughing. The goal is a photo you'd genuinely want on your wall, in
+        your phone, on your desk at work — something that looks like you
+        on a really good day.
       </p>
+    </section>
 
-      <a href="/main/booking/" class="button">Book a Session</a>
+    <!-- CTA -->
+    <section class="contact-section">
+      <div class="contact-inner">
+        <div class="contact-left">
+          <span class="section-label">Let's Work Together</span>
+          <h2>Ready to make something <em>worth keeping?</em></h2>
+        </div>
+        <div class="contact-right">
+          <p>
+            Whether it's a portrait session, a family gathering, a birthday,
+            or just a beautiful evening at the beach — I'd love to be there
+            for it. Reach out and let's figure out what we can create.
+          </p>
+          <a href="/main/booking/" class="btn-outline">Book a Session</a>
+        </div>
+      </div>
     </section>
 
   </main>
 
-  <footer class="booking-footer">
+  <footer class="site-footer">
     <a href="mailto:booking@brigregoryphotos.com">booking@brigregoryphotos.com</a>
     <p>© 2026 Brianna Gregory Photography</p>
   </footer>
