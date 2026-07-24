@@ -29,7 +29,6 @@
       line-height: 1.7;
       min-height: 100vh;
     }
-
     /* ── NAV ── */
     nav {
       display: flex;
@@ -66,7 +65,6 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--mid-gray); }
-
     /* ── HERO ── */
     .confirm-hero {
       text-align: center;
@@ -127,14 +125,12 @@
       max-width: 520px;
       margin: 0 auto;
     }
-
     /* ── PAGE WRAP ── */
     .page-wrap {
       max-width: 1080px;
       margin: 0 auto;
       padding: 0 2rem 6rem;
     }
-
     /* ── SECTION LABELS ── */
     .section-label {
       font-size: 0.65rem;
@@ -143,7 +139,6 @@
       color: var(--mid-gray);
       margin-bottom: 1.5rem;
     }
-
     /* ── PAYMENT RECEIPT ── */
     .receipt-section {
       padding: 4rem 0;
@@ -168,7 +163,6 @@
       line-height: 1.85;
       margin-bottom: 1rem;
     }
-
     /* green "Paid" strip */
     .paid-strip {
       background: var(--green);
@@ -202,7 +196,6 @@
       color: white;
       padding: 0.35rem 0.9rem;
     }
-
     /* receipt card */
     .receipt-card {
       background: white;
@@ -250,7 +243,6 @@
       color: var(--black);
     }
     .receipt-row .rv.green { color: var(--green); font-weight: 500; }
-
     /* ── BALANCE CALLOUT ── */
     .balance-callout {
       background: var(--black);
@@ -281,7 +273,6 @@
       max-width: 380px;
       line-height: 1.65;
     }
-
     /* ── EVENT SUMMARY ── */
     .event-section {
       padding: 3.5rem 0;
@@ -325,7 +316,6 @@
       text-align: right;
       color: var(--black);
     }
-
     /* ── SCOPE + EQUIPMENT ── */
     .scope-section {
       padding: 3.5rem 0;
@@ -369,7 +359,66 @@
       flex-shrink: 0;
       margin-top: 0.05rem;
     }
-
+    .provided-note {
+      background: var(--green-light);
+      border: 1px solid rgba(58,107,71,0.2);
+      padding: 1.2rem 1.4rem;
+      margin-top: 1.4rem;
+      font-size: 0.8rem;
+      color: #3f5c47;
+      line-height: 1.7;
+    }
+    .provided-note strong {
+      color: var(--green);
+      font-weight: 500;
+    }
+    .shot-list-block {
+      background: white;
+      border: 1px solid var(--warm-gray);
+      padding: 2rem 2.2rem;
+      margin-top: 2rem;
+    }
+    .shot-list-block h4 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+    .shot-list-block .sl-sub {
+      font-size: 0.8rem;
+      color: var(--mid-gray);
+      margin-bottom: 1.4rem;
+      line-height: 1.7;
+    }
+    .shot-list-block ol {
+      list-style: none;
+      counter-reset: shot-counter;
+      padding: 0;
+    }
+    .shot-list-block ol li {
+      counter-increment: shot-counter;
+      font-size: 0.85rem;
+      color: #444;
+      line-height: 1.7;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--warm-gray);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+    .shot-list-block ol li:last-child { border-bottom: none; }
+    .shot-list-block ol li::before {
+      content: counter(shot-counter);
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--mid-gray);
+      flex-shrink: 0;
+      min-width: 1.4rem;
+    }
+    .shot-list-block .sl-time {
+      color: var(--mid-gray);
+      font-style: italic;
+    }
     /* ── NEXT STEPS ── */
     .next-section {
       padding: 3.5rem 0;
@@ -418,7 +467,6 @@
       color: #555;
       line-height: 1.75;
     }
-
     /* ── PDF VIEWER ── */
     .pdf-section {
       padding: 3.5rem 0;
@@ -495,7 +543,6 @@
       color: #c8c4be;
       font-style: italic;
     }
-
     /* ── CTA ── */
     .cta-section {
       padding: 4rem 0 0;
@@ -512,7 +559,6 @@
       font-size: 0.85rem;
       color: var(--mid-gray);
     }
-
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--warm-gray);
@@ -527,7 +573,6 @@
     }
     footer a { color: var(--mid-gray); text-decoration: none; }
     footer a:hover { color: var(--black); }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 1.2rem 1.5rem; }
@@ -546,7 +591,6 @@
   </style>
 </head>
 <body>
-
   <!-- NAV -->
   <nav>
     <a href="https://brigregoryphotos.com" class="nav-logo">Brianna Gregory Photography</a>
@@ -557,7 +601,6 @@
       <li><a href="https://brigregoryphotos.com/main/booking/">Book</a></li>
     </ul>
   </nav>
-
   <!-- HERO -->
   <section class="confirm-hero">
     <div class="status-badge"><span class="dot"></span>Booking Confirmed</div>
@@ -565,9 +608,7 @@
     <h1>You're all set,<br><em>Pusong UPSE.</em></h1>
     <p class="sub">Your retainer has been received and your date is officially reserved. Here's your payment confirmation and everything you need to know from here.</p>
   </section>
-
   <div class="page-wrap">
-
     <!-- PAYMENT RECEIPT -->
     <div class="receipt-section">
       <p class="section-label">Payment Receipt</p>
@@ -576,7 +617,6 @@
           <h2>Retainer received. <em>Date secured.</em></h2>
           <p>Your $50 non-refundable retainer has been received via Zelle on June 14, 2026. September 13, 2026 is now exclusively reserved for the Pusong UPSE Reunion at The Westgate Hotel in San Diego.</p>
           <p>The remaining balance of <strong>$450</strong> is due from Liza Mayo on or before the event date. Payment may be made via Zelle, Apple Cash, Venmo, or cash.</p>
-
           <div class="balance-callout">
             <div>
               <p class="bc-label">Remaining Balance</p>
@@ -585,7 +625,6 @@
             <p class="bc-note">Due on or before September 13, 2026. Accepted via Zelle · Apple Cash · Venmo · Cash. Parking at The Westgate Hotel is covered separately by Pusong UPSE.</p>
           </div>
         </div>
-
         <div>
           <div class="paid-strip">
             <div>
@@ -631,7 +670,6 @@
         </div>
       </div>
     </div>
-
     <!-- EVENT SUMMARY -->
     <div class="event-section">
       <p class="section-label">Booking Summary</p>
@@ -696,7 +734,6 @@
         </div>
       </div>
     </div>
-
     <!-- WHAT'S INCLUDED -->
     <div class="scope-section">
       <p class="section-label">What's Included</p>
@@ -718,8 +755,26 @@
           </ul>
         </div>
       </div>
+      <div class="provided-note">
+        <strong>Provided so far:</strong> A rough shot list was received from Jay Ortega on July 23, 2026, outlining the group, candid, and detail photos requested for the evening (listed below). The event program will be shared separately once it becomes available.
+      </div>
+      <div class="shot-list-block">
+        <h4>Reunion Shot List</h4>
+        <p class="sl-sub">List of photos provided by the Pusong UPSE team — more to be added if needed.</p>
+        <ol>
+          <li>Group photos of Tag Team at the foyer and staircase <span class="sl-time">— 5:00 PM</span></li>
+          <li>All alumni by the lobby grand staircase <span class="sl-time">— 5:30 PM</span></li>
+          <li>Photo of ballroom, tables, table assignments, foyer, etc. before party starts</li>
+          <li>Group photos at the foyer</li>
+          <li>Group photos by table</li>
+          <li>Group photo by grad/batch year <span class="sl-time">— around 6:45 PM</span></li>
+          <li>Photos of raffle winners</li>
+          <li>Lots of candid photos — during program, games, raffle, dance, and dinner</li>
+          <li>All attendees inside ballroom</li>
+          <li>All attendees inside ballroom (wacky)</li>
+        </ol>
+      </div>
     </div>
-
     <!-- NEXT STEPS -->
     <div class="next-section">
       <p class="section-label">What Happens Next</p>
@@ -748,7 +803,6 @@
         </div>
       </div>
     </div>
-
     <!-- PDF VIEWER -->
     <div class="pdf-section">
       <p class="section-label">Booking Confirmation Document</p>
@@ -766,7 +820,6 @@
         </div>
       </div>
     </div>
-
     <!-- COI PDF VIEWER -->
     <div class="pdf-section">
       <p class="section-label">Certificate of Liability Insurance</p>
@@ -784,20 +837,16 @@
         </div>
       </div>
     </div>
-
     <!-- CTA -->
     <div class="cta-section">
       <h3>Questions? <em>Just reach out.</em></h3>
       <p>Don't hesitate to get in touch at any point leading up to your event.</p>
     </div>
-
   </div>
-
   <!-- FOOTER -->
   <footer>
     <span>© 2026 Brianna Gregory Photography</span>
     <span><a href="https://brigregoryphotos.com">brigregoryphotos.com</a> &nbsp;·&nbsp; <a href="https://instagram.com/photo.britheg">@photo.britheg</a> &nbsp;·&nbsp; <a href="https://brigregoryphotos.com/privacy-policy/">Privacy Policy</a></span>
   </footer>
-
 </body>
 </html>
