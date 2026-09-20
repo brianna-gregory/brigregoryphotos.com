@@ -15,8 +15,8 @@
     body {
       overflow-x: hidden;
       font-family: 'Cormorant Garant', 'Times New Roman', serif;
-      background: #f7f3ee;
-      color: #1a1614;
+      background: #f5f1ed;
+      color: #2a2a2a;
       -webkit-font-smoothing: antialiased;
     }
     a { text-decoration: none; color: inherit; }
@@ -37,8 +37,8 @@
       max-width: 320px;
       height: 100%;
       z-index: 200;
-      background: #f7f3ee;
-      border-right: 1px solid #ddd5ca;
+      background: #f5f1ed;
+      border-right: 1px solid #e0dbd5;
       padding: 90px 30px;
       transition: left 0.32s ease;
     }
@@ -49,7 +49,7 @@
       font-size: 28px;
       cursor: pointer;
       font-weight: 300;
-      color: #6b5f58;
+      color: #7a7a7a;
     }
     .side-menu a {
       display: block;
@@ -58,14 +58,14 @@
       letter-spacing: 0.32em;
       text-transform: uppercase;
       font-weight: 300;
-      color: #6b5f58;
+      color: #7a7a7a;
     }
-    .side-menu a:hover { color: #1a1614; }
+    .side-menu a:hover { color: #2a2a2a; }
     .menu-toggle:checked ~ .side-menu { left: 0; }
     /* ─── HEADER ─── */
     .site-header {
-      background: #f7f3ee;
-      border-bottom: 1px solid #ddd5ca;
+      background: #f5f1ed;
+      border-bottom: 1px solid #e0dbd5;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -82,100 +82,103 @@
       letter-spacing: 0.38em;
       text-transform: uppercase;
       font-weight: 300;
-      color: #1a1614;
+      color: #2a2a2a;
     }
     .nav-links { display: flex; gap: 50px; }
     .nav-links a {
       font-size: 10.5px;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: #6b5f58;
+      color: #7a7a7a;
       font-weight: 300;
       transition: color 0.25s;
     }
-    .nav-links a:hover { color: #1a1614; }
-    /* ─── SECTION LABEL ─── */
-    .section-label {
-      display: block;
-      font-size: 10.5px;
-      letter-spacing: 0.52em;
-      text-transform: uppercase;
-      color: #9a8f86;
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
+    .nav-links a:hover { color: #2a2a2a; }
     /* ─── BUTTON ─── */
     .btn-outline {
       display: inline-block;
       margin-top: 32px;
-      padding: 14px 32px;
-      border: 1px solid #1a1614;
-      color: #1a1614;
+      padding: 16px 40px;
+      border: 1px solid #2a2a2a;
+      color: #2a2a2a;
       text-transform: uppercase;
       letter-spacing: 0.28em;
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 300;
       transition: all 0.25s ease;
     }
     .btn-outline:hover {
-      background: #1a1614;
-      color: #f7f3ee;
+      background: #2a2a2a;
+      color: #f5f1ed;
     }
-    /* ─── HERO ─── */
+    /* ─── HERO & ABOUT PARAGRAPH ─── */
     .about-hero {
-      background: #fff;
-      padding: 100px 6%;
+      background: #f5f1ed;
+      padding: 120px 6% 100px;
+      text-align: center;
     }
     .hero-inner {
-      max-width: 980px;
+      max-width: 800px;
       margin: 0 auto;
     }
-    .hero-inner h1 {
-      font-size: clamp(52px, 6vw, 90px);
+    .hero-label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.52em;
+      text-transform: uppercase;
+      color: #9a9a9a;
       font-weight: 300;
-      line-height: 0.92;
-      letter-spacing: -0.04em;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
+    }
+    .hero-inner h1 {
+      font-size: clamp(56px, 8vw, 96px);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
     }
     .hero-inner h1 em { font-style: italic; }
     .hero-rule {
-      width: 38px;
+      width: 40px;
       height: 1px;
-      background: #c4b9b0;
-      margin-bottom: 48px;
+      background: #d0cbc3;
+      margin: 36px auto 48px;
     }
     /* ─── ABOUT PARAGRAPH ─── */
     .about-para {
-      font-size: 18px;
-      line-height: 2.0;
-      color: #6b5f58;
+      font-size: 17px;
+      line-height: 1.95;
+      color: #6a6a6a;
       font-weight: 300;
-      max-width: 900px;
+      max-width: 720px;
+      margin: 0 auto;
     }
     .about-para strong {
       font-weight: 400;
-      color: #1a1614;
+      color: #2a2a2a;
     }
     /* ─── PHOTOS SECTION ─── */
     .photos-section {
-      background: #fff;
+      background: #f5f1ed;
       padding: 100px 6%;
     }
     .photos-inner {
-      max-width: 1300px;
+      max-width: 1400px;
       margin: 0 auto;
     }
     .photos-inner h2 {
-      font-size: clamp(32px, 3.5vw, 50px);
+      font-size: 14px;
+      letter-spacing: 0.52em;
+      text-transform: uppercase;
+      color: #9a9a9a;
       font-weight: 300;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-      margin-bottom: 56px;
+      margin-bottom: 60px;
+      text-align: center;
     }
     .photos-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
+      gap: 50px;
     }
     .photo-item {
       overflow: hidden;
@@ -187,40 +190,37 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      filter: saturate(0.88) contrast(0.97);
+      filter: saturate(0.92) contrast(0.95);
     }
     /* ─── CTA ─── */
     .contact-section {
-      padding: 96px 6%;
-      background: #f7f3ee;
+      padding: 120px 6%;
+      background: #f5f1ed;
+      text-align: center;
     }
     .contact-inner {
-      max-width: 1200px;
+      max-width: 700px;
       margin: 0 auto;
-      border-top: 1px solid #ddd5ca;
-      padding-top: 36px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
     }
     .contact-inner h2 {
-      font-size: clamp(32px, 3.5vw, 52px);
+      font-size: clamp(36px, 5vw, 64px);
       font-weight: 300;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 32px;
     }
     .contact-inner h2 em { font-style: italic; }
-    .contact-right p {
+    .contact-inner p {
       font-size: 17px;
-      line-height: 1.9;
-      color: #6b5f58;
+      line-height: 1.95;
+      color: #6a6a6a;
       font-weight: 300;
+      margin-bottom: 0;
     }
     /* ─── FOOTER ─── */
     .site-footer {
-      background: #f7f3ee;
-      border-top: 1px solid #ddd5ca;
+      background: #f5f1ed;
+      border-top: 1px solid #e0dbd5;
       text-align: center;
       padding: 52px 20px;
     }
@@ -229,18 +229,18 @@
       font-size: 15px;
       font-style: italic;
       font-weight: 300;
-      color: #9a8f86;
-      border-bottom: 1px solid #9a8f86;
+      color: #9a9a9a;
+      border-bottom: 1px solid #9a9a9a;
       padding-bottom: 2px;
       margin-bottom: 20px;
       transition: color 0.25s;
     }
-    .site-footer a:hover { color: #1a1614; }
+    .site-footer a:hover { color: #2a2a2a; }
     .site-footer p {
       font-size: 10px;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: #b0a69c;
+      color: #b5b0a8;
       font-weight: 300;
     }
     /* ─── MOBILE ─── */
@@ -259,16 +259,14 @@
         display: block;
         height: 1px;
         margin: 8px 0;
-        background: #1a1614;
+        background: #2a2a2a;
       }
-      .about-hero { padding: 48px 6%; }
+      .about-hero { padding: 60px 6% 50px; }
       .photos-grid { grid-template-columns: 1fr; gap: 30px; }
-      .contact-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
       .photos-section,
-      .contact-section { padding: 64px 6%; }
+      .contact-section { padding: 60px 6%; }
+      .hero-label { margin-bottom: 30px; }
+      .hero-rule { margin: 28px auto 36px; }
     }
   </style>
 </head>
@@ -302,7 +300,8 @@
     <!-- HERO & ABOUT PARAGRAPH -->
     <section class="about-hero">
       <div class="hero-inner">
-        <h1>Hi, I'm<br /><em>Brianna.</em></h1>
+        <span class="hero-label">San Diego Photographer</span>
+        <h1>About <em>Brianna</em></h1>
         <div class="hero-rule"></div>
         <p class="about-para">
           I've always had a creative side since I was a kid and I got my first professional camera back in 2018 as a side hobby. At the time, I was living in Sonoma County, where I explored nature and outdoors and capturing popular areas like Bodega Bay, the Russian River, and many more beautiful places, including taking pictures of post thunderstorm images. Something about the beauty of nature captivated me. While I was studying for my bachelor's degree and MBA, photography was always something I enjoyed doing for fun when I wasn't studying. Then I dove into new areas and found a passion for taking photos of my friends, family and capturing our moments at personal photoshoots, birthdays, holidays, baby showers, from backyard boogies to more professional events. I moved back to my hometown in San Diego, and thought that I could take this even further. Now I'm a product manager on the weekdays and snapping photos on the weekends for fun or when I get a gig. I truly love to capture people, I enjoy different environments and laughing with multiple generations of people at events, having a good time. I bring the fun and professionalism while having fun. It's turned into something that I truly enjoy.
@@ -329,18 +328,13 @@
     <!-- CTA -->
     <section class="contact-section">
       <div class="contact-inner">
-        <div class="contact-left">
-          <span class="section-label">Let's Work Together</span>
-          <h2>Ready to make something <em>worth keeping?</em></h2>
-        </div>
-        <div class="contact-right">
-          <p>
-            Whether it's a portrait session, a family gathering, a birthday,
-            or any moment that matters—I'd love to be there to capture it.
-            Let's create something beautiful together.
-          </p>
-          <a href="/main/booking/" class="btn-outline">Book a Session</a>
-        </div>
+        <h2>Ready to make something <em>worth keeping?</em></h2>
+        <p>
+          Whether it's a portrait session, a family gathering, a birthday,
+          or any moment that matters—I'd love to be there to capture it.
+          Let's create something beautiful together.
+        </p>
+        <a href="/main/booking/" class="btn-outline">Book a Session</a>
       </div>
     </section>
   </main>
