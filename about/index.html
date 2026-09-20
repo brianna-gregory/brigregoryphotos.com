@@ -111,38 +111,43 @@
       background: #2a2a2a;
       color: #f5f1ed;
     }
-    /* ─── HERO & ABOUT PARAGRAPH ─── */
-    .about-hero {
+    /* ─── ABOUT SECTION ─── */
+    .about-section {
       background: #f5f1ed;
-      padding: 120px 6% 100px;
-      text-align: center;
+      padding: 80px 6%;
     }
-    .hero-inner {
-      max-width: 800px;
+    .about-inner {
+      max-width: 1400px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
     }
-    .hero-label {
-      display: block;
-      font-size: 11px;
-      letter-spacing: 0.52em;
-      text-transform: uppercase;
-      color: #9a9a9a;
-      font-weight: 300;
-      margin-bottom: 40px;
+    .about-photo {
+      overflow: hidden;
+      background: #e8e2db;
     }
-    .hero-inner h1 {
-      font-size: clamp(56px, 8vw, 96px);
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(0.92) contrast(0.95);
+    }
+    .about-copy h1 {
+      font-size: clamp(48px, 6vw, 72px);
       font-weight: 300;
-      line-height: 1.0;
+      line-height: 1.1;
       letter-spacing: -0.02em;
-      margin-bottom: 20px;
+      margin-bottom: 32px;
     }
-    .hero-inner h1 em { font-style: italic; }
-    .hero-rule {
+    .about-copy h1 em { font-style: italic; }
+    .about-rule {
       width: 40px;
       height: 1px;
       background: #d0cbc3;
-      margin: 36px auto 48px;
+      margin-bottom: 32px;
     }
     /* ─── ABOUT PARAGRAPH ─── */
     .about-para {
@@ -150,47 +155,10 @@
       line-height: 1.95;
       color: #6a6a6a;
       font-weight: 300;
-      max-width: 720px;
-      margin: 0 auto;
     }
     .about-para strong {
       font-weight: 400;
       color: #2a2a2a;
-    }
-    /* ─── PHOTOS SECTION ─── */
-    .photos-section {
-      background: #f5f1ed;
-      padding: 100px 6%;
-    }
-    .photos-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .photos-inner h2 {
-      font-size: 14px;
-      letter-spacing: 0.52em;
-      text-transform: uppercase;
-      color: #9a9a9a;
-      font-weight: 300;
-      margin-bottom: 60px;
-      text-align: center;
-    }
-    .photos-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 50px;
-    }
-    .photo-item {
-      overflow: hidden;
-      background: #e8e2db;
-      aspect-ratio: 4 / 5;
-    }
-    .photo-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      filter: saturate(0.92) contrast(0.95);
     }
     /* ─── CTA ─── */
     .contact-section {
@@ -261,12 +229,12 @@
         margin: 8px 0;
         background: #2a2a2a;
       }
-      .about-hero { padding: 60px 6% 50px; }
-      .photos-grid { grid-template-columns: 1fr; gap: 30px; }
-      .photos-section,
+      .about-section { padding: 60px 6%; }
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
       .contact-section { padding: 60px 6%; }
-      .hero-label { margin-bottom: 30px; }
-      .hero-rule { margin: 28px auto 36px; }
     }
   </style>
 </head>
@@ -297,31 +265,22 @@
     </nav>
   </header>
   <main>
-    <!-- HERO & ABOUT PARAGRAPH -->
-    <section class="about-hero">
-      <div class="hero-inner">
-        <span class="hero-label">San Diego Photographer</span>
-        <h1>About <em>Brianna</em></h1>
-        <div class="hero-rule"></div>
-        <p class="about-para">
-          I've always had a creative side since I was a kid and I got my first professional camera back in 2018 as a side hobby. At the time, I was living in Sonoma County, where I explored nature and outdoors and capturing popular areas like Bodega Bay, the Russian River, and many more beautiful places, including taking pictures of post thunderstorm images. Something about the beauty of nature captivated me. While I was studying for my bachelor's degree and MBA, photography was always something I enjoyed doing for fun when I wasn't studying. Then I dove into new areas and found a passion for taking photos of my friends, family and capturing our moments at personal photoshoots, birthdays, holidays, baby showers, from backyard boogies to more professional events. I moved back to my hometown in San Diego, and thought that I could take this even further. Now I'm a product manager on the weekdays and snapping photos on the weekends for fun or when I get a gig. I truly love to capture people, I enjoy different environments and laughing with multiple generations of people at events, having a good time. I bring the fun and professionalism while having fun. It's turned into something that I truly enjoy.
-        </p>
-      </div>
-    </section>
-    <!-- PHOTOS -->
-    <section class="photos-section">
-      <div class="photos-inner">
-        <h2>Gallery</h2>
-        <div class="photos-grid">
-          <div class="photo-item">
-            <img src="/photos/photo-1.jpg" alt="Gallery photo" />
-          </div>
-          <div class="photo-item">
-            <img src="/photos/photo-2.jpg" alt="Gallery photo" />
-          </div>
-          <div class="photo-item">
-            <img src="/photos/photo-3.jpg" alt="Gallery photo" />
-          </div>
+    <!-- ABOUT PHOTO + TEXT -->
+    <section class="about-section">
+      <div class="about-inner">
+        <div class="about-photo">
+          <img
+            src="/about/IMG_6682.jpg"
+            alt="Brianna Gregory"
+            loading="lazy"
+          />
+        </div>
+        <div class="about-copy">
+          <h1>About <em>Brianna</em></h1>
+          <div class="about-rule"></div>
+          <p class="about-para">
+            I've always had a creative side since I was a kid and I got my first professional camera back in 2018 as a side hobby. At the time, I was living in Sonoma County, where I explored nature and outdoors and capturing popular areas like Bodega Bay, the Russian River, and many more beautiful places, including taking pictures of post thunderstorm images. Something about the beauty of nature captivated me. While I was studying for my bachelor's degree and MBA, photography was always something I enjoyed doing for fun when I wasn't studying. Then I dove into new areas and found a passion for taking photos of my friends, family and capturing our moments at personal photoshoots, birthdays, holidays, baby showers, from backyard boogies to more professional events. I moved back to my hometown in San Diego, and thought that I could take this even further. Now I'm a product manager on the weekdays and snapping photos on the weekends for fun or when I get a gig. I truly love to capture people, I enjoy different environments and laughing with multiple generations of people at events, having a good time. I bring the fun and professionalism while having fun. It's turned into something that I truly enjoy.
+          </p>
         </div>
       </div>
     </section>
