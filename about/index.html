@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Brianna Gregory Photography</title>
-  <meta name="description" content="Brianna Gregory — San Diego portrait, lifestyle, and special occasion photographer. Born and raised in San Diego, based in the Bay Area, shooting everywhere in between." />
+  <meta name="description" content="Brianna Gregory — San Diego portrait, lifestyle, and special occasion photographer." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
@@ -123,192 +123,76 @@
     }
     /* ─── HERO ─── */
     .about-hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 680px;
+      background: #fff;
+      padding: 100px 6%;
     }
-    .hero-photo {
-      overflow: hidden;
-      background: #e8e2db;
+    .hero-inner {
+      max-width: 980px;
+      margin: 0 auto;
     }
-    .hero-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      filter: saturate(0.88) contrast(0.97);
-    }
-    .hero-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 80px 8%;
-    }
-    .hero-copy h1 {
+    .hero-inner h1 {
       font-size: clamp(52px, 6vw, 90px);
       font-weight: 300;
       line-height: 0.92;
       letter-spacing: -0.04em;
       margin-bottom: 32px;
     }
-    .hero-copy h1 em { font-style: italic; }
+    .hero-inner h1 em { font-style: italic; }
     .hero-rule {
       width: 38px;
       height: 1px;
       background: #c4b9b0;
-      margin-bottom: 28px;
+      margin-bottom: 48px;
     }
-    .hero-copy p {
+    /* ─── ABOUT PARAGRAPH ─── */
+    .about-para {
       font-size: 18px;
-      line-height: 1.9;
+      line-height: 2.0;
       color: #6b5f58;
       font-weight: 300;
-      max-width: 440px;
-      margin-bottom: 16px;
+      max-width: 900px;
     }
-    /* ─── CREATIVE JOURNEY ─── */
-    .journey-section {
+    .about-para strong {
+      font-weight: 400;
+      color: #1a1614;
+    }
+    /* ─── PHOTOS SECTION ─── */
+    .photos-section {
       background: #fff;
       padding: 100px 6%;
     }
-    .journey-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: start;
-    }
-    .journey-left h2 {
-      font-size: clamp(36px, 4vw, 58px);
-      font-weight: 300;
-      line-height: 1.0;
-      letter-spacing: -0.03em;
-      margin-bottom: 0;
-    }
-    .journey-left h2 em { font-style: italic; }
-    .journey-right p {
-      font-size: 17px;
-      line-height: 1.95;
-      color: #6b5f58;
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
-    .journey-right p:last-child { margin-bottom: 0; }
-    /* ─── SONOMA TO SAN DIEGO ─── */
-    .transition-section {
-      background: #fff;
-      padding: 100px 6%;
-    }
-    .transition-inner {
+    .photos-inner {
       max-width: 1300px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
     }
-    .transition-photo {
+    .photos-inner h2 {
+      font-size: clamp(32px, 3.5vw, 50px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 56px;
+    }
+    .photos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+    .photo-item {
       overflow: hidden;
       background: #e8e2db;
       aspect-ratio: 4 / 5;
     }
-    .transition-photo img {
+    .photo-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
       filter: saturate(0.88) contrast(0.97);
     }
-    .transition-copy h2 {
-      font-size: clamp(34px, 3.8vw, 56px);
-      font-weight: 300;
-      line-height: 1.0;
-      letter-spacing: -0.03em;
-      margin-bottom: 28px;
-    }
-    .transition-copy h2 em { font-style: italic; }
-    .transition-copy p {
-      font-size: 17px;
-      line-height: 1.95;
-      color: #6b5f58;
-      font-weight: 300;
-      margin-bottom: 20px;
-    }
-    .transition-copy p:last-of-type { margin-bottom: 0; }
-    /* ─── WHAT DRIVES ME ─── */
-    .drives-section {
-      background: #f7f3ee;
-      padding: 100px 6%;
-    }
-    .drives-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .drives-title {
-      font-size: clamp(32px, 3.5vw, 50px);
-      font-weight: 300;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-      margin-bottom: 56px;
-      max-width: 580px;
-    }
-    .drives-title em { font-style: italic; }
-    .drives-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-    .drives-item {
-      padding: 32px 36px 32px 0;
-      border-top: 1px solid #ddd5ca;
-    }
-    .drives-item + .drives-item {
-      border-left: 1px solid #ddd5ca;
-      padding-left: 36px;
-    }
-    .drives-item h3 {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.4em;
-      font-weight: 300;
-      color: #9a8f86;
-      margin-bottom: 14px;
-    }
-    .drives-item p {
-      font-size: 16px;
-      line-height: 1.9;
-      color: #6b5f58;
-      font-weight: 300;
-    }
-    /* ─── MY PHILOSOPHY ─── */
-    .philosophy-section {
-      background: #e8e2db;
-      padding: 100px 6%;
-      text-align: center;
-    }
-    .philosophy-section h2 {
-      max-width: 800px;
-      margin: 0 auto 28px;
-      font-size: clamp(34px, 4vw, 58px);
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      color: #1a1614;
-    }
-    .philosophy-section p {
-      max-width: 580px;
-      margin: 0 auto;
-      font-size: 17px;
-      line-height: 1.95;
-      color: #6b5f58;
-      font-weight: 300;
-    }
     /* ─── CTA ─── */
     .contact-section {
       padding: 96px 6%;
-      background: #fff;
+      background: #f7f3ee;
     }
     .contact-inner {
       max-width: 1200px;
@@ -377,32 +261,14 @@
         margin: 8px 0;
         background: #1a1614;
       }
-      .about-hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding-top: 58px;
-      }
-      .hero-photo { height: 420px; }
-      .hero-copy { padding: 48px 6% 56px; }
-      .journey-inner,
-      .transition-inner,
+      .about-hero { padding: 48px 6%; }
+      .photos-grid { grid-template-columns: 1fr; gap: 30px; }
       .contact-inner {
         grid-template-columns: 1fr;
         gap: 40px;
       }
-      .journey-section,
-      .transition-section,
-      .drives-section,
-      .philosophy-section,
+      .photos-section,
       .contact-section { padding: 64px 6%; }
-      .drives-grid { grid-template-columns: 1fr; }
-      .drives-item + .drives-item {
-        border-left: none;
-        padding-left: 0;
-      }
-      .drives-item { padding-right: 0; }
-      .transition-photo { aspect-ratio: 4 / 3; }
-      .about-hero { padding-top: 0; }
     }
   </style>
 </head>
@@ -433,118 +299,32 @@
     </nav>
   </header>
   <main>
-    <!-- HERO -->
+    <!-- HERO & ABOUT PARAGRAPH -->
     <section class="about-hero">
-      <div class="hero-photo">
-        <img
-          src="/photos/self-portrait.jpg"
-          alt="Brianna Gregory — San Diego photographer"
-          loading="eager"
-          fetchpriority="high"
-        />
-      </div>
-      <div class="hero-copy">
-        <span class="section-label">San Diego Photographer</span>
+      <div class="hero-inner">
         <h1>Hi, I'm<br /><em>Brianna.</em></h1>
         <div class="hero-rule"></div>
-        <p>
-          I've always had a creative side. Growing up, it was art. Today, it's
-          telling stories through photography.
+        <p class="about-para">
+          I've always had a creative side since I was a kid and I got my first professional camera back in 2018 as a side hobby. At the time, I was living in Sonoma County, where I explored nature and outdoors and capturing popular areas like Bodega Bay, the Russian River, and many more beautiful places, including taking pictures of post thunderstorm images. Something about the beauty of nature captivated me. While I was studying for my bachelor's degree and MBA, photography was always something I enjoyed doing for fun when I wasn't studying. Then I dove into new areas and found a passion for taking photos of my friends, family and capturing our moments at personal photoshoots, birthdays, holidays, baby showers, from backyard boogies to more professional events. I moved back to my hometown in San Diego, and thought that I could take this even further. Now I'm a product manager on the weekdays and snapping photos on the weekends for fun or when I get a gig. I truly love to capture people, I enjoy different environments and laughing with multiple generations of people at events, having a good time. I bring the fun and professionalism while having fun. It's turned into something that I truly enjoy.
         </p>
       </div>
     </section>
-    <!-- CREATIVE JOURNEY -->
-    <section class="journey-section">
-      <div class="journey-inner">
-        <div class="journey-left">
-          <span class="section-label">The Beginning</span>
-          <h2>It all started in <em>2018</em> with a camera.</h2>
-        </div>
-        <div class="journey-right">
-          <p>
-            I got my first professional camera in 2018 as a side hobby while living in
-            Sonoma County. I was immediately obsessed. I'd spend weekends exploring nature—Bodega Bay,
-            the Russian River, hidden trails everywhere. There's something about capturing
-            the beauty of thunderstorms and raw natural light that just captivated me.
-            I was studying for my bachelor's degree and MBA at the time, but photography
-            stayed with me as my creative escape.
-          </p>
-        </div>
-      </div>
-    </section>
-    <!-- SONOMA TO SAN DIEGO -->
-    <section class="transition-section">
-      <div class="transition-inner">
-        <div class="transition-photo">
-          <img
-            src="/photos/japan-sitting.jpg"
-            alt="Photography moments at celebrations and events"
-          />
-        </div>
-        <div class="transition-copy">
-          <span class="section-label">Evolution</span>
-          <h2>Then I discovered the joy of capturing <em>people and moments.</em></h2>
-          <p>
-            I started photographing my friends and family—at personal photoshoots, birthdays,
-            holidays, baby showers, backyard hangouts, more professional events. There's something
-            different about capturing people than landscapes. You're documenting relationships, joy,
-            connection—the stuff that actually matters.
-          </p>
-          <p>
-            I moved back to my hometown in San Diego and thought I could take this further. Now I'm a
-            product manager on the weekdays and a photographer on the weekends when inspiration strikes.
-            I love laughing with multiple generations at events, bringing the fun and professionalism
-            together. It's turned into something I truly enjoy.
-          </p>
-        </div>
-      </div>
-    </section>
-    <!-- WHAT DRIVES ME -->
-    <section class="drives-section">
-      <div class="drives-inner">
-        <span class="section-label">What I'm About</span>
-        <h2 class="drives-title">People, environments, and <em>capturing joy.</em></h2>
-        <div class="drives-grid">
-          <div class="drives-item">
-            <h3>Connection</h3>
-            <p>
-              I capture real moments—genuine expressions, laughter, connection. The stuff
-              that tells your story.
-            </p>
+    <!-- PHOTOS -->
+    <section class="photos-section">
+      <div class="photos-inner">
+        <h2>Gallery</h2>
+        <div class="photos-grid">
+          <div class="photo-item">
+            <img src="/photos/photo-1.jpg" alt="Gallery photo" />
           </div>
-          <div class="drives-item">
-            <h3>Celebration</h3>
-            <p>
-              Birthdays, graduations, holidays, events. Documenting the moments
-              you'll want to remember forever.
-            </p>
+          <div class="photo-item">
+            <img src="/photos/photo-2.jpg" alt="Gallery photo" />
           </div>
-          <div class="drives-item">
-            <h3>Diverse Settings</h3>
-            <p>
-              I adapt and thrive everywhere—from San Diego beaches to backyard gatherings
-              to professional events.
-            </p>
-          </div>
-          <div class="drives-item">
-            <h3>Good Energy</h3>
-            <p>
-              I bring fun and professionalism. You should genuinely enjoy your
-              photo session with me.
-            </p>
+          <div class="photo-item">
+            <img src="/photos/photo-3.jpg" alt="Gallery photo" />
           </div>
         </div>
       </div>
-    </section>
-    <!-- MY PHILOSOPHY -->
-    <section class="philosophy-section">
-      <span class="section-label">My Approach</span>
-      <h2>I bring the fun <em>and the professionalism.</em></h2>
-      <p>
-        Photo sessions shouldn't feel awkward or stiff. My job is making sure yours doesn't.
-        I keep it moving, keep it light, keep you laughing. The goal is photos you'd genuinely
-        want to display—something that looks like you on a really good day.
-      </p>
     </section>
     <!-- CTA -->
     <section class="contact-section">
@@ -555,9 +335,9 @@
         </div>
         <div class="contact-right">
           <p>
-            Whether it's a portrait session, a family gathering, a birthday celebration,
-            or any moment that matters—I'd love to be there to capture it. Let's create
-            something beautiful together.
+            Whether it's a portrait session, a family gathering, a birthday,
+            or any moment that matters—I'd love to be there to capture it.
+            Let's create something beautiful together.
           </p>
           <a href="/main/booking/" class="btn-outline">Book a Session</a>
         </div>
